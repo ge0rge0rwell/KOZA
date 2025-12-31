@@ -1,0 +1,148 @@
+/* From Uiverse.io by vinodjangid07 */
+.messageBox {
+    width: 100%;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1a;
+    padding: 0 15px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.messageBox:focus-within {
+    border: 1px solid rgba(147, 51, 234, 0.5);
+    background-color: #242424;
+    box-shadow: 0 10px 40px -10px rgba(147, 51, 234, 0.2);
+}
+
+.fileUploadWrapper {
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#file {
+    display: none;
+}
+
+.fileUploadWrapper label {
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+.fileUploadWrapper label:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.fileUploadWrapper label svg {
+    height: 20px;
+}
+
+.fileUploadWrapper label svg path {
+    transition: all 0.3s;
+    stroke: #737373;
+}
+
+.fileUploadWrapper label svg circle {
+    transition: all 0.3s;
+    stroke: #737373;
+}
+
+.fileUploadWrapper label:hover svg path {
+    stroke: #fff;
+}
+
+.fileUploadWrapper label:hover svg circle {
+    stroke: #fff;
+    fill: rgba(147, 51, 234, 0.2);
+}
+
+.fileUploadWrapper label:hover .tooltip {
+    display: block;
+    opacity: 1;
+}
+
+.tooltip {
+    position: absolute;
+    top: -45px;
+    display: none;
+    opacity: 0;
+    color: white;
+    font-size: 11px;
+    font-weight: 500;
+    text-wrap: nowrap;
+    background-color: #000;
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s;
+    pointer-events: none;
+}
+
+#messageInput {
+    flex: 1;
+    height: 100%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding: 0 15px;
+    color: white;
+    font-size: 15px;
+}
+
+#messageInput::placeholder {
+    color: #525252;
+}
+
+#sendButton {
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 10px;
+}
+
+#sendButton:hover {
+    background-color: rgba(147, 51, 234, 0.1);
+}
+
+#sendButton svg {
+    height: 20px;
+    transition: all 0.3s;
+}
+
+#sendButton svg path {
+    transition: all 0.3s;
+    stroke: #737373;
+}
+
+#sendButton:hover svg path {
+    stroke: #a855f7;
+    fill: rgba(147, 51, 234, 0.1);
+}
+
+/* State when input has value */
+#messageInput:not(:placeholder-shown)~#sendButton svg path {
+    stroke: #fff;
+}
