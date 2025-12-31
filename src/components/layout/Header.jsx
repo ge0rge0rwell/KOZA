@@ -1,12 +1,14 @@
-import { LogOut, Cloud, CloudOff, RefreshCw } from 'lucide-react';
+import { LogOut, Cloud, CloudOff, RefreshCw, User as UserIcon } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { useAuth } from '../../context/AuthContext';
 import { useUser } from '../../context/UserContext';
+import React, { useState } from 'react';
 
 const Header = () => {
     const { setCurrentView, setActiveTab } = useApp();
     const { user: authUser, signOut, firestoreEnabled } = useAuth();
     const { user, isSyncing, cloudSynced } = useUser();
+    const [imgError, setImgError] = useState(false);
 
     const handleSignOut = async () => {
         await signOut();
@@ -32,7 +34,7 @@ const Header = () => {
                     {/* Cloud Sync Status */}
                     {authUser && (
                         <div className={`flex items-center gap-1.5 px-2 py-1 rounded-full text-[10px] font-bold uppercase transition-all hidden sm:flex ${isSyncing ? 'bg-primary-50 text-primary-600' :
-                                cloudSynced ? 'bg-green-50 text-green-600' : 'bg-neutral-50 text-neutral-400'
+                            cloudSynced ? 'bg-green-50 text-green-600' : 'bg-neutral-50 text-neutral-400'
                             }`}>
                             {isSyncing ? (
                                 <>
@@ -60,12 +62,17 @@ const Header = () => {
 
                     {authUser && (
                         <div className="flex items-center gap-2 pl-2 border-l border-neutral-200">
-                            {authUser.photoURL && (
+                            {authUser.photoURL && !imgError ? (
                                 <img
                                     src={authUser.photoURL}
                                     alt={authUser.displayName || 'User'}
-                                    className="w-8 h-8 rounded-full ring-2 ring-primary-500/20 shadow-md"
+                                    className="w-8 h-8 rounded-full ring-2 ring-primary-500/20 shadow-md object-cover"
+                                    onError={() => setImgError(true)}
                                 />
+                            ) : (
+                                <div className="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 shadow-inner">
+                                    <UserIcon size={16} />
+                                </div>
                             )}
                             <button
                                 onClick={handleSignOut}

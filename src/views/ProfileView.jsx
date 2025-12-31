@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
-import { X, Trash2, BookOpen } from 'lucide-react';
+import { X, Trash2, BookOpen, User as UserIcon } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 const ProfileView = ({ onClose }) => {
     const { user, savedStories, deleteStory, setCurrentView } = useApp();
+    const { user: authUser } = useAuth();
+    const [imgError, setImgError] = useState(false);
 
     const progressPercent = (user.xp / user.nextLevelXp) * 100;
 
@@ -12,10 +15,32 @@ const ProfileView = ({ onClose }) => {
             <div className="max-w-4xl mx-auto px-4 py-12">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-8">
-                    <h1 className="text-3xl font-bold">Profilim</h1>
+                    <div className="flex items-center gap-4">
+                        <div className="relative">
+                            {authUser?.photoURL && !imgError ? (
+                                <img
+                                    src={authUser.photoURL}
+                                    alt={authUser.displayName || 'User'}
+                                    className="w-16 h-16 rounded-2xl ring-4 ring-white shadow-xl object-cover"
+                                    onError={() => setImgError(true)}
+                                />
+                            ) : (
+                                <div className="w-16 h-16 rounded-2xl bg-primary-100 flex items-center justify-center text-primary-600 shadow-xl border-4 border-white">
+                                    <UserIcon size={32} />
+                                </div>
+                            )}
+                            <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 border-2 border-white rounded-full" title="Çevrimiçi" />
+                        </div>
+                        <div>
+                            <h1 className="text-3xl font-bold tracking-tight">
+                                {authUser?.displayName || 'Gezgin'}
+                            </h1>
+                            <p className="text-neutral-500 font-medium">{user.title || 'Empati Çırağı'}</p>
+                        </div>
+                    </div>
                     <button
                         onClick={onClose}
-                        className="p-2 hover:bg-neutral-100 rounded-lg transition-colors"
+                        className="p-3 bg-white hover:bg-neutral-100 rounded-xl transition-all shadow-sm border border-neutral-200"
                     >
                         <X size={20} />
                     </button>
