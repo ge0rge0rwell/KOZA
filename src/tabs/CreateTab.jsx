@@ -1,9 +1,4 @@
-import React, { useState } from 'react';
-import { useApp } from '../context/AppContext';
-import { generateStorybook, generateGame } from '../services/geminiService';
-import { validateStoryInput } from '../utils/validation';
-import { Sparkles, BookOpen, Gamepad2, Loader2, AlertCircle } from 'lucide-react';
-import MessageBox from '../components/input/MessageBox';
+import Loader from '../components/Loader';
 
 const CreateTab = () => {
     const { activeStory, setActiveStory, isProcessing, setIsProcessing, setCurrentView, awardXP, saveStory, setAnalysisResult, analysisResult, addToast } = useApp();
@@ -125,15 +120,8 @@ const CreateTab = () => {
                         )}
 
                         {isProcessing && (
-                            <div className="flex flex-col items-center gap-4 mt-8 animate-fade-in text-center">
-                                <div className="relative">
-                                    <div className="w-12 h-12 border-4 border-primary-100 border-t-primary-600 rounded-full animate-spin"></div>
-                                    <Sparkles size={20} className="absolute inset-0 m-auto text-primary-400 animate-pulse" />
-                                </div>
-                                <div className="space-y-1">
-                                    <p className="font-bold text-neutral-900">{stage}</p>
-                                    <p className="text-sm text-neutral-500">Kozadaki metamorfoz sürüyor, az kaldı...</p>
-                                </div>
+                            <div className="mt-12 animate-fade-in flex justify-center">
+                                <Loader message={stage} />
                             </div>
                         )}
                     </div>
