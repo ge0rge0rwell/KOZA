@@ -34,7 +34,7 @@ const EarlyStirring = ({ progress }) => {
                         right: crack.right,
                         transform: `rotate(${crack.rotation}deg)`,
                         animationDelay: `${crack.delay}s`,
-                        opacity: Math.min(progress / 100, 1)
+                        opacity: 0.4 + (progress / 200) // Base opacity + progress boost
                     }}
                 />
             ))}

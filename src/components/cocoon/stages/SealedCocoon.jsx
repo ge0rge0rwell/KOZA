@@ -8,13 +8,11 @@ const SealedCocoon = ({ progress }) => {
             <div className={styles.silkTexture} />
 
             {/* Subtle internal glow based on progress */}
-            <div style={{
-                position: 'absolute',
-                inset: '20%',
-                background: `radial-gradient(ellipse at center, rgba(255, 215, 0, ${progress * 0.002}) 0%, transparent 70%)`,
-                borderRadius: '50%',
-                pointerEvents: 'none'
-            }} />
+            {/* Dynamic glow intensity based on progress */}
+            <div
+                className={styles.innerGlow}
+                style={{ opacity: 0.3 + (progress * 0.005) }}
+            />
         </div>
     );
 };
