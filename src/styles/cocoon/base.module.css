@@ -343,7 +343,17 @@
 }
 
 .wingUnfurling .wing {
-    composes: wingBase;
+    position: absolute;
+    /* Gradient mesh simulation */
+    background:
+        radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 20%),
+        linear-gradient(135deg, #FF1493 0%, #9370DB 50%, #00CED1 100%);
+    background-size: 200% 200%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    /* Glass-like quality */
+    opacity: 0.95;
+    mix-blend-mode: normal;
+
     width: 45%;
     height: 55%;
     top: 25%;
