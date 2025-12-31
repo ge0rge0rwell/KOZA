@@ -1,0 +1,123 @@
+/* From Uiverse.io by Admin12121 - Adapted for KOZA */
+.bottom-nav-container {
+    padding: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.menu-wrapper {
+    display: flex;
+    gap: 8px;
+    max-width: 600px;
+    width: 100%;
+    justify-content: center;
+}
+
+.link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 52px;
+    border-radius: 16px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transform-origin: center left;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s;
+    text-decoration: none;
+    color: #737373;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+}
+
+.link:before {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    display: block;
+    border-radius: 16px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center right;
+    background-color: #faf5ff;
+    /* primary-50 */
+}
+
+.link:hover,
+.link:focus,
+.link.active {
+    outline: 0;
+    width: 110px;
+    color: #9333ea;
+    /* primary-600 */
+}
+
+@media (min-width: 640px) {
+
+    .link:hover,
+    .link:focus,
+    .link.active {
+        width: 130px;
+    }
+}
+
+.link:hover:before,
+.link:focus:before,
+.link.active:before {
+    transform: translateX(0);
+}
+
+.link:hover .link-title,
+.link:focus .link-title,
+.link.active .link-title {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.link-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: absolute;
+    left: 14px;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link:hover .link-icon,
+.link:focus .link-icon,
+.link.active .link-icon {
+    left: 16px;
+}
+
+.link-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.link-title {
+    transform: translateX(50%);
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s;
+    transform-origin: center right;
+    display: block;
+    text-align: right;
+    padding-right: 16px;
+    width: 100%;
+    font-weight: 700;
+    font-size: 13px;
+    white-space: nowrap;
+}

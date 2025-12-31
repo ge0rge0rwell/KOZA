@@ -6,6 +6,10 @@ import { AppProvider } from './context/AppContext.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
 import ErrorBoundary from './components/ErrorBoundary.jsx';
 import { googleAnalytics } from './utils/googleAnalytics';
+import { registerSW } from 'virtual:pwa-register';
+
+// Register PWA service worker
+registerSW({ immediate: true });
 
 // Initialize Google Analytics
 googleAnalytics.initialize();
