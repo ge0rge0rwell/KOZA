@@ -5,62 +5,24 @@ import styles from '../../../styles/cocoon/base.module.css';
 
 const MajesticButterfly = ({ progress }) => {
     return (
-        <div className={styles.majesticButterfly}>
-            {/* Cosmic aura radiance */}
-            <div className={styles.cosmicAura} />
+        <div className="relative w-full h-full flex items-center justify-center">
+            {/* The Majestic Crystal Form */}
+            <div className="relative w-64 h-80 animate-pulse duration-[4000ms]">
+                {/* Main Wings Layer 1 */}
+                <div className={styles.crystalWing} style={{ left: '0', transformOrigin: 'right center', opacity: 0.8 }} />
+                <div className={styles.crystalWing} style={{ right: '0', transformOrigin: 'left center', opacity: 0.8 }} />
 
-            <div className={styles.butterflyBody} />
+                {/* Secondary Prismatic Shells */}
+                <div className={styles.crystalWing} style={{ left: '0', transformOrigin: 'right center', transform: 'scale(1.1) rotateY(20deg)', opacity: 0.3, filter: 'hue-rotate(90deg)' }} />
+                <div className={styles.crystalWing} style={{ right: '0', transformOrigin: 'left center', transform: 'scale(1.1) rotateY(-20deg)', opacity: 0.3, filter: 'hue-rotate(-90deg)' }} />
 
-            {/* Multi-layered Majestic Wings */}
-            {/* Primary Wings */}
-            <div className={styles.majesticWingLeft}>
-                <div className={styles.wingPattern} style={{ opacity: 0.8 }} />
-                <div className={styles.wingInnerShine} />
+                {/* The Core Light */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-32 bg-primary-100 blur-xl rounded-full opacity-60" />
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-24 bg-white blur-sm rounded-full" />
             </div>
-            <div className={styles.majesticWingRight}>
-                <div className={styles.wingPattern} style={{ opacity: 0.8 }} />
-                <div className={styles.wingInnerShine} />
-            </div>
 
-            {/* Secondary Prismatic Overlays */}
-            <div className={styles.majesticWingLeft} style={{
-                opacity: 0.4,
-                filter: 'hue-rotate(30deg) blur(2px)',
-                transform: 'scale(1.05) translate(-2%, -2%)',
-                animationDelay: '-1s'
-            }} />
-            <div className={styles.majesticWingRight} style={{
-                opacity: 0.4,
-                filter: 'hue-rotate(-30deg) blur(2px)',
-                transform: 'scale(1.05) translate(2%, -2%)',
-                animationDelay: '-1s'
-            }} />
-
-            {/* Orbiting Elements */}
-            <AuraParticles count={30} />
-            <CosmicDust count={60} />
-
-            {/* Background "Ghost" Butterflies */}
-            {[0, 1].map((i) => (
-                <div
-                    key={i}
-                    className="absolute pointer-events-none"
-                    style={{
-                        left: `${15 + i * 50}%`,
-                        top: `${20 + i * 30}%`,
-                        width: '50%',
-                        height: '50%',
-                        opacity: 0.15,
-                        filter: 'blur(4px)',
-                        transform: `scale(${0.4 + i * 0.2})`,
-                        animation: `float ${10 + i * 5}s ease-in-out infinite`,
-                        zIndex: -1
-                    }}
-                >
-                    <div className={styles.majesticWingLeft} />
-                    <div className={styles.majesticWingRight} />
-                </div>
-            ))}
+            {/* Orbiting Sacred Geometry Sparks */}
+            <TransformationCanvas color="#fff" intensity={2} active={true} />
         </div>
     );
 };

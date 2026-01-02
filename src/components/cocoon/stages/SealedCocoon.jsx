@@ -3,20 +3,15 @@ import styles from '../../../styles/cocoon/base.module.css';
 
 const SealedCocoon = ({ progress }) => {
     return (
-        <div className={styles.sealedCocoon}>
-            {/* Multi-layered silk texture for depth */}
-            <div className={styles.silkTexture} style={{ opacity: 1 }} />
-            <div className={styles.silkTexture} style={{ transform: 'rotate(90deg)', opacity: 0.5 }} />
-            <div className={styles.silkTexture} style={{ transform: 'rotate(45deg)', opacity: 0.3 }} />
+        <div className="flex items-center justify-center w-full h-full">
+            {/* The Core Seed Crystal */}
+            <div className={styles.seedShard}>
+                <div className={styles.prismaticEffect} />
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent" />
+            </div>
 
-            {/* Subtle internal metabolic glow */}
-            <div
-                className={styles.innerGlow}
-                style={{
-                    opacity: 0.2 + (progress * 0.003),
-                    transform: `scale(${1 + (progress * 0.001)})`
-                }}
-            />
+            {/* Ambient Pulsing Shadow */}
+            <div className="absolute w-32 h-8 bg-black/40 blur-xl rounded-full bottom-20 animate-pulse" />
         </div>
     );
 };

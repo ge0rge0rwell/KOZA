@@ -6,51 +6,29 @@ const Emergence = ({ progress }) => {
     const wingBudScale = Math.min(progress / 100, 1);
 
     return (
-        <div className={styles.emergence}>
-            <div className={styles.chrysalis}>
-                <div className={styles.butterflyBody} style={{ opacity: 0.5, transform: 'translate(-50%, -50%) scale(0.8)' }} />
-
-                {/* Wing buds with refined visuals */}
-                <div
-                    className={styles.wingBudLeft}
-                    style={{
-                        transform: `scaleX(${wingBudScale}) scaleY(${wingBudScale}) translate(-10%, -10%)`,
-                        opacity: wingBudScale * 0.8,
-                        background: 'rgba(255, 255, 255, 0.2)',
-                        borderRadius: '50% 5% 50% 50%'
-                    }}
-                />
-                <div
-                    className={styles.wingBudRight}
-                    style={{
-                        transform: `scaleX(${wingBudScale}) scaleY(${wingBudScale}) translate(10%, -10%)`,
-                        opacity: wingBudScale * 0.8,
-                        background: 'rgba(255, 255, 255, 0.2)',
-                        borderRadius: '5% 50% 50% 50%'
-                    }}
-                />
+        <div className="relative w-full h-full flex items-center justify-center">
+            {/* The Geometric Ghost form */}
+            <div className="relative w-48 h-64">
+                {Array.from({ length: 12 }).map((_, i) => (
+                    <div
+                        key={i}
+                        className={`${styles.crystalShard} ${i % 2 === 0 ? styles['shard-tri'] : styles['shard-quad']}`}
+                        style={{
+                            width: '60px',
+                            height: '80px',
+                            top: `${20 + (i * 5)}%`,
+                            left: `${20 + (Math.sin(i) * 20)}%`,
+                            opacity: 0.4 + (progress / 200),
+                            transform: `rotate(${i * 30 + (100 - progress)}deg)`,
+                            border: '1px solid rgba(0, 242, 254, 0.3)',
+                            background: 'rgba(0, 242, 254, 0.05)'
+                        }}
+                    />
+                ))}
             </div>
 
-            {/* Dynamic Transformation Ripples */}
-            {[0, 1, 2, 3].map((i) => (
-                <div
-                    key={i}
-                    style={{
-                        position: 'absolute',
-                        left: '50%',
-                        top: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        width: `${120 + i * 60}px`,
-                        height: `${120 + i * 60}px`,
-                        border: '1px solid rgba(147, 51, 234, 0.2)',
-                        borderRadius: '50%',
-                        animation: 'transformationRipple 3s cubic-bezier(0.2, 0.8, 0.2, 1) infinite',
-                        animationDelay: `${i * 0.6}s`,
-                        pointerEvents: 'none',
-                        boxShadow: 'inset 0 0 20px rgba(147, 51, 234, 0.1)'
-                    }}
-                />
-            ))}
+            {/* Expansion ripples */}
+            <div className="absolute w-64 h-64 border border-primary-500/20 rounded-full animate-ping" />
         </div>
     );
 };

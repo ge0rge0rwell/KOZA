@@ -5,34 +5,33 @@ const WingUnfurling = ({ progress }) => {
     const unfurlProgress = Math.min(progress / 100, 1);
 
     return (
-        <div className={styles.wingUnfurling}>
-            <div className={styles.butterflyBody} />
-
-            {/* Multi-layered Unfurling Wings */}
+        <div className="relative w-full h-full flex items-center justify-center">
+            {/* Left Crystal Wing */}
             <div
-                className={styles.wingLeft}
+                className={styles.crystalWing}
                 style={{
-                    transform: `scale(${unfurlProgress}) rotate(${(1 - unfurlProgress) * 20}deg)`,
-                    opacity: unfurlProgress
+                    left: '10%',
+                    transformOrigin: 'right center',
+                    transform: `scale(${0.5 + progress / 200}) rotateY(${(100 - progress)}deg)`
                 }}
             >
-                <div className={styles.wingPattern} />
-                <div className={styles.wingInnerShine} />
+                <div className={styles.prismaticEffect} />
             </div>
 
+            {/* Right Crystal Wing */}
             <div
-                className={styles.wingRight}
+                className={styles.crystalWing}
                 style={{
-                    transform: `scale(${unfurlProgress}) rotate(${(1 - unfurlProgress) * -20}deg)`,
-                    opacity: unfurlProgress
+                    right: '10%',
+                    transformOrigin: 'left center',
+                    transform: `scale(${0.5 + progress / 200}) rotateY(${(progress - 100)}deg)`
                 }}
             >
-                <div className={styles.wingPattern} />
-                <div className={styles.wingInnerShine} />
+                <div className={styles.prismaticEffect} />
             </div>
 
-            {/* Glow Aura during unfurling */}
-            <div className={styles.cosmicAura} style={{ opacity: unfurlProgress * 0.5 }} />
+            {/* Spark of Life */}
+            <div className="w-4 h-12 bg-white/40 blur-md rounded-full shadow-[0_0_20px_white]" />
         </div>
     );
 };

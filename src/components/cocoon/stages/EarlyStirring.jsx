@@ -20,30 +20,28 @@ const EarlyStirring = ({ progress }) => {
     }, [crackCount]);
 
     return (
-        <div className={styles.earlyStirring}>
-            <div className={styles.silkTexture} />
-            <div className={styles.silkTexture} style={{ transform: 'rotate(90deg)', opacity: 0.4 }} />
+        <div className="relative w-full h-full flex items-center justify-center">
+            {/* Main Core */}
+            <div className={styles.seedShard} style={{ transform: `scale(${1 + progress / 500})` }}>
+                <div className={styles.prismaticEffect} />
+            </div>
 
-            {cracks.map((crack, index) => (
+            {/* Orbiting fragments */}
+            {Array.from({ length: 5 }).map((_, i) => (
                 <div
-                    key={index}
-                    className={styles.crack}
+                    key={i}
+                    className={`${styles.crystalShard} ${styles['shard-tri']}`}
                     style={{
-                        left: crack.left,
-                        right: crack.right,
-                        transform: `rotate(${crack.rotation}deg)`,
-                        animationDelay: `${crack.delay}s`,
-                        opacity: 0.5 + (progress / 150),
-                        boxShadow: `0 0 ${10 + (progress / 5)}px rgba(255, 215, 0, 0.4)`
+                        width: '40px',
+                        height: '40px',
+                        top: `${40 + Math.sin(i + progress / 20) * 20}%`,
+                        left: `${40 + Math.cos(i + progress / 20) * 20}%`,
+                        opacity: 0.6,
+                        transform: `rotate(${i * 72 + progress}deg) scale(0.6)`,
+                        border: '1px solid rgba(255,255,255,0.2)'
                     }}
                 />
             ))}
-
-            {/* Internal glow leaking through cracks */}
-            <div className={styles.innerGlow} style={{
-                opacity: 0.1 + (progress / 400),
-                filter: 'blur(30px)'
-            }} />
         </div>
     );
 };

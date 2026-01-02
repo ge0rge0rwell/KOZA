@@ -8,34 +8,29 @@ const BreakingThrough = ({ progress }) => {
     const beamCount = useMemo(() => Math.min(Math.floor(progress / 15), 7), [progress]);
 
     return (
-        <div className={styles.breakingThrough}>
-            <div className={styles.cocoonShell}>
-                {[35, 50, 65].map((pos, i) => (
-                    <div
-                        key={i}
-                        className={styles.majorCrack}
-                        style={{
-                            left: `${pos}%`,
-                            transform: `translateX(-50%) rotate(${i * 10 - 10}deg)`,
-                            height: `${Math.min(progress * 1.5, 100)}%`,
-                            opacity: 0.6 + (progress / 200)
-                        }}
-                    />
-                ))}
+        <div className="relative w-full h-full flex items-center justify-center">
+            {/* Igniting Core */}
+            <div className={styles.seedShard} style={{
+                boxShadow: `0 0 ${40 + progress}px #00f2fe`,
+                background: `rgba(255, 255, 255, ${0.1 + progress / 200})`
+            }}>
+                <div className={styles.prismaticEffect} style={{ opacity: 0.8 }} />
             </div>
 
-            <div className={styles.innerGlow} style={{
-                opacity: Math.min(progress / 80, 0.9),
-                background: 'radial-gradient(circle, rgba(255, 235, 59, 0.6) 0%, transparent 70%)'
-            }} />
-
-            {/* Dramatic light beams */}
-            {progress > 15 && (
-                <div className={styles.lightBeam} style={{
-                    opacity: progress / 100,
-                    transform: `scale(${1 + progress / 100})`
-                }} />
-            )}
+            {/* High-intensity light streaks */}
+            {Array.from({ length: 8 }).map((_, i) => (
+                <div
+                    key={i}
+                    className="absolute bg-white/20 blur-sm"
+                    style={{
+                        width: '2px',
+                        height: '200px',
+                        transform: `rotate(${i * 45}deg) translateY(-50%)`,
+                        opacity: (progress / 100) * (Math.random() * 0.5 + 0.5),
+                        transition: 'opacity 0.2s'
+                    }}
+                />
+            ))}
         </div>
     );
 };

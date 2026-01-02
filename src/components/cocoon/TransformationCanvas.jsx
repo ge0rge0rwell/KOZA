@@ -12,7 +12,7 @@ const TransformationCanvas = ({ color = '#9333EA', intensity = 1, active = true 
         const particles = [];
         const particleCount = 40 * intensity;
 
-        class Particle {
+        class ShardParticle {
             constructor() {
                 this.reset();
             }
@@ -20,48 +20,51 @@ const TransformationCanvas = ({ color = '#9333EA', intensity = 1, active = true 
             reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 3 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.8;
-                this.speedY = (Math.random() - 0.5) * 0.8 - (0.5 * intensity); // Slight upward float
-                this.opacity = Math.random() * 0.6 + 0.1;
+                this.size = Math.random() * 8 + 2;
+                this.speedX = (Math.random() - 0.5) * 1.5;
+                this.speedY = (Math.random() - 0.5) * 1.5;
+                this.rotation = Math.random() * Math.PI * 2;
+                this.rotSpeed = (Math.random() - 0.5) * 0.1;
+                this.opacity = Math.random() * 0.4 + 0.1;
                 this.life = Math.random() * 200 + 100;
-                this.maxLife = this.life;
-                this.history = [];
+                this.sides = Math.random() > 0.5 ? 3 : 4;
             }
 
             update() {
-                this.history.push({ x: this.x, y: this.y });
-                if (this.history.length > 5) this.history.shift();
-
                 this.x += this.speedX;
                 this.y += this.speedY;
+                this.rotation += this.rotSpeed;
                 this.life -= 1;
-                this.opacity = (this.life / this.maxLife) * 0.6;
-
                 if (this.life <= 0) this.reset();
             }
 
             draw() {
-                // Draw Tail
-                if (this.history.length > 1) {
-                    ctx.beginPath();
-                    ctx.moveTo(this.history[0].x, this.history[0].y);
-                    for (let i = 1; i < this.history.length; i++) {
-                        ctx.lineTo(this.history[i].x, this.history[i].y);
-                    }
-                    ctx.strokeStyle = `${color}${Math.floor(this.opacity * 100).toString(16).padStart(2, '0')}`;
-                    ctx.lineWidth = this.size;
-                    ctx.lineCap = 'round';
-                    ctx.stroke();
-                }
-
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `${color}${Math.floor(this.opacity * 255).toString(16).padStart(2, '0')}`;
+
+                const step = (Math.PI * 2) / this.sides;
+                ctx.moveTo(this.size, 0);
+                for (let i = 1; i <= this.sides; i++) {
+                    ctx.lineTo(this.size * Math.cos(step * i), this.size * Math.sin(step * i));
+                }
+                ctx.closePath();
+
+                // Prismatic flash based on rotation
+                const hue = (this.rotation * 50) % 360;
+                ctx.fillStyle = `hsla(${hue}, 70%, 70%, ${this.opacity})`;
                 ctx.fill();
 
-                // Bloom effect
-                ctx.shadowBlur = 15;
+                // Edge highlight
+                ctx.strokeStyle = `rgba(255, 255, 255, ${this.opacity * 2})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+
+                ctx.restore();
+
+                // Bloom
+                ctx.shadowBlur = 10;
                 ctx.shadowColor = color;
             }
         }
@@ -69,7 +72,7 @@ const TransformationCanvas = ({ color = '#9333EA', intensity = 1, active = true 
         const init = () => {
             particles.length = 0;
             for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
+                particles.push(new ShardParticle());
             }
         };
 

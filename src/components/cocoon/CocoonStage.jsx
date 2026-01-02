@@ -85,15 +85,16 @@ const CocoonStage = ({ totalOz, onStageChange }) => {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
-            {/* High-Fidelity Magical Particles */}
+            {/* Crystalline Background Elements */}
+            <div className={styles.caustics} />
+            <div className={styles.prismaticEffect} />
+
+            {/* High-Fidelity Crystal Shard Particles */}
             <TransformationCanvas
                 color={themeColor}
-                intensity={stage / 3}
+                intensity={stage / 2}
                 active={true}
             />
-
-            {/* Background "Staircase of Light" Grid */}
-            <div className={styles.staircaseLight} style={{ opacity: 0.1 + (progress / 200) }} />
 
             <div
                 className={styles.cocoonWrapper}
@@ -102,58 +103,47 @@ const CocoonStage = ({ totalOz, onStageChange }) => {
                 }}
             >
                 {renderStage()}
-
-                {/* Dynamic Aura tinting */}
-                <div
-                    className={styles.cosmicAura}
-                    style={{
-                        background: `radial-gradient(circle, ${themeColor}44 0%, transparent 70%)`,
-                        opacity: 0.5 + (stage / 14)
-                    }}
-                />
             </div>
 
-            {/* Premium Description Card */}
-            <div className={`absolute bottom-0 left-0 right-0 p-6 ${styles.glassMaterial} rounded-2xl animate-fade-in`} style={{
-                transform: 'translateY(50%)',
+            {/* Glassmorphism Navigation Card */}
+            <div className="absolute bottom-6 left-6 right-6 p-6 rounded-3xl overflow-hidden animate-fade-in" style={{
+                background: 'rgba(255, 255, 255, 0.03)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
                 zIndex: 10
             }}>
-                <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-bold text-lg text-primary-900">{stageInfo?.title}</h3>
-                    <span className="text-xs font-semibold px-2 py-1 bg-primary-100 text-primary-700 rounded-full">
-                        {Math.round(progress)}% Metamorfoz
-                    </span>
+                <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-bold text-xl text-white tracking-tight">{stageInfo?.title}</h3>
+                    <div className="flex flex-col items-end">
+                        <span className="text-[10px] text-white/50 uppercase tracking-widest mb-1">Metamorfosis</span>
+                        <span className="text-sm font-mono text-primary-400">
+                            {Math.round(progress)}%
+                        </span>
+                    </div>
                 </div>
-                <p className="text-sm text-neutral-600 mb-4 leading-relaxed">
+
+                <p className="text-sm text-white/60 mb-5 leading-relaxed font-light">
                     {stageInfo?.text}
                 </p>
-                <div className="h-1.5 w-full bg-neutral-100 rounded-full overflow-hidden">
-                    <div
-                        className="h-full transition-all duration-1000 ease-out"
-                        style={{
-                            width: `${progress}%`,
-                            background: `linear-gradient(90deg, ${themeColor}, #c084fc, #e879f9)`
-                        }}
-                    />
+
+                {/* Modern Segmented Progress Bar */}
+                <div className="flex gap-1 h-1.5 w-full">
+                    {Array.from({ length: 12 }).map((_, i) => (
+                        <div
+                            key={i}
+                            className="h-full flex-1 rounded-full transition-all duration-700"
+                            style={{
+                                background: (i / 12) * 100 < progress
+                                    ? `linear-gradient(to bottom, ${themeColor}, ${themeColor}dd)`
+                                    : 'rgba(255, 255, 255, 0.05)',
+                                boxShadow: (i / 12) * 100 < progress
+                                    ? `0 0 10px ${themeColor}44`
+                                    : 'none'
+                            }}
+                        />
+                    ))}
                 </div>
             </div>
-
-            {/* Organic Movement Filters */}
-            <svg className={styles.liquidFilter}>
-                <defs>
-                    <filter id="liquid-goo">
-                        <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur" />
-                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
-                        <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-                    </filter>
-                    <filter id="organic-morph">
-                        <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" seed="1">
-                            <animate attributeName="baseFrequency" dur="10s" values="0.01;0.015;0.01" repeatCount="indefinite" />
-                        </feTurbulence>
-                        <feDisplacementMap in="SourceGraphic" scale="5" />
-                    </filter>
-                </defs>
-            </svg>
         </div>
     );
 };
