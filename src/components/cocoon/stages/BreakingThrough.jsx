@@ -9,25 +9,53 @@ const BreakingThrough = ({ progress }) => {
 
     return (
         <div className="relative w-full h-full flex items-center justify-center">
-            {/* Igniting Core */}
-            <div className={styles.seedShard} style={{
-                boxShadow: `0 0 ${40 + progress}px #00f2fe`,
-                background: `rgba(255, 255, 255, ${0.1 + progress / 200})`
-            }}>
-                <div className={styles.prismaticEffect} style={{ opacity: 0.8 }} />
+            {/* Physical Shell Fragments pulling away */}
+            <div className="relative w-full h-full flex items-center justify-center">
+                {/* Core Light source */}
+                <div className="absolute w-32 h-48 bg-white blur-2xl opacity-40 animate-pulse" />
+
+                {/* Left Fragment */}
+                <div className={`${styles.cocoonVessel} absolute animate-none`} style={{
+                    clipPath: 'polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%)',
+                    transform: `translateX(-${progress / 5}%) rotateY(-${progress / 4}deg)`,
+                    boxShadow: 'none',
+                    borderRight: '2px solid white'
+                }}>
+                    <div className={styles.frostedSilk} />
+                    <div className={styles.prismaticEffect} />
+                </div>
+
+                {/* Right Fragment */}
+                <div className={`${styles.cocoonVessel} absolute animate-none`} style={{
+                    clipPath: 'polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%)',
+                    transform: `translateX(${progress / 5}%) rotateY(${progress / 4}deg)`,
+                    boxShadow: 'none',
+                    borderLeft: '2px solid white'
+                }}>
+                    <div className={styles.frostedSilk} />
+                    <div className={styles.prismaticEffect} />
+                </div>
             </div>
 
-            {/* High-intensity light streaks */}
-            {Array.from({ length: 8 }).map((_, i) => (
+            {/* Intense internal light pouring from the gap */}
+            <div className="absolute w-4 h-full bg-white blur-xl" style={{
+                opacity: progress / 100,
+                transform: `scaleX(${progress / 2})`
+            }} />
+
+            {/* Flying physical shards */}
+            {Array.from({ length: 15 }).map((_, i) => (
                 <div
                     key={i}
-                    className="absolute bg-white/20 blur-sm"
+                    className={`${styles.crystalShard} ${styles['shard-hex']}`}
                     style={{
-                        width: '2px',
-                        height: '200px',
-                        transform: `rotate(${i * 45}deg) translateY(-50%)`,
-                        opacity: (progress / 100) * (Math.random() * 0.5 + 0.5),
-                        transition: 'opacity 0.2s'
+                        width: '10px',
+                        height: '10px',
+                        top: '50%',
+                        left: '50%',
+                        transform: `translate(${(Math.random() - 0.5) * progress * 2}px, ${(Math.random() - 0.5) * progress * 2}px) rotate(${Math.random() * 360}deg)`,
+                        opacity: (progress / 100) * 0.8,
+                        background: 'white'
                     }}
                 />
             ))}

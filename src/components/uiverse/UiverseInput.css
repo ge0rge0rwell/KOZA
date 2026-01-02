@@ -1,0 +1,57 @@
+.uiverse-input-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.uiverse-input {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    outline: none;
+    backdrop-filter: blur(5px);
+}
+
+.uiverse-input:focus {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #9333ea;
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.2);
+}
+
+.uiverse-label {
+    position: absolute;
+    left: 12px;
+    top: -10px;
+    background: #0a0a0f;
+    padding: 0 8px;
+    font-size: 12px;
+    color: #a855f7;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.input-glow {
+    position: absolute;
+    bottom: 0;
+    left: 12px;
+    right: 12px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #9333ea, #d8b4fe, transparent);
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+    opacity: 0.5;
+}
+
+.uiverse-input:focus~.input-glow {
+    transform: scaleX(1);
+}
+
+.uiverse-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}

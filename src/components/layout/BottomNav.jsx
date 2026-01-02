@@ -78,19 +78,22 @@ const BottomNav = () => {
     };
 
     return (
-        <nav className="fixed bottom-0 left-0 right-0 z-40 bg-white sm:bg-transparent">
-            <div className="bottom-nav-container">
-                <div className="menu-wrapper">
+        <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 px-4 w-full max-w-lg">
+            <div className="uiverse-nav-container">
+                <div className="uiverse-nav-glow" style={{
+                    left: `${(navItems.findIndex(i => i.id === activeTab) * 20) + 10}%`
+                }} />
+                <div className="nav-items-wrapper">
                     {navItems.map((item) => (
                         <button
                             key={item.id}
-                            className={`link ${activeTab === item.id ? 'active' : ''}`}
+                            className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
                             onClick={() => handleNavClick(item.id)}
                         >
-                            <span className="link-icon">
+                            <span className="nav-icon">
                                 {item.icon}
                             </span>
-                            <span className="link-title">{item.label}</span>
+                            <span className="nav-label">{activeTab === item.id ? item.label : ''}</span>
                         </button>
                     ))}
                 </div>

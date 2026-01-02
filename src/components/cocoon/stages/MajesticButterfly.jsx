@@ -1,6 +1,7 @@
 import React from 'react';
 import CosmicDust from '../particles/CosmicDust';
 import AuraParticles from '../particles/AuraParticles';
+import TransformationCanvas from '../TransformationCanvas';
 import styles from '../../../styles/cocoon/base.module.css';
 
 const MajesticButterfly = ({ progress }) => {

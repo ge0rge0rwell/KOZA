@@ -5,6 +5,8 @@ import { validateStoryInput } from '../utils/validation';
 import { Sparkles, BookOpen, Gamepad2, AlertCircle } from 'lucide-react';
 import MessageBox from '../components/input/MessageBox';
 import Loader from '../components/Loader';
+import UiverseButton from '../components/uiverse/UiverseButton';
+import UiverseCard from '../components/uiverse/UiverseCard';
 
 const CreateTab = () => {
     const { activeStory, setActiveStory, isProcessing, setIsProcessing, setCurrentView, awardXP, saveStory, setAnalysisResult, analysisResult, addToast } = useApp();
@@ -132,7 +134,7 @@ const CreateTab = () => {
                         )}
                     </div>
                 ) : (
-                    <div className="bg-white rounded-3xl border border-neutral-200 p-10 shadow-xl animate-fade-in text-center">
+                    <UiverseCard className="text-center p-10">
                         <div className={`w-20 h-20 mx-auto rounded-3xl flex items-center justify-center mb-6 shadow-lg ${analysisResult.type === 'story' ? 'bg-primary-600 text-white' : 'bg-neutral-800 text-white'
                             }`}>
                             {analysisResult.type === 'story' ? <BookOpen size={40} /> : <Gamepad2 size={40} />}
@@ -145,39 +147,40 @@ const CreateTab = () => {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <button
+                            <UiverseButton
                                 onClick={viewResult}
-                                className="flex-1 bg-primary-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-primary-700 hover:scale-[1.02] transition-all shadow-lg active:scale-95"
+                                className="flex-1"
                             >
                                 {analysisResult.type === 'story' ? 'Hikayeyi Oku' : 'Oyunu Oyna'}
-                            </button>
-                            <button
+                            </UiverseButton>
+                            <UiverseButton
                                 onClick={() => {
                                     setAnalysisResult(null);
                                     setActiveStory('');
                                 }}
-                                className="px-8 py-4 bg-neutral-100 text-neutral-700 rounded-2xl font-bold hover:bg-neutral-200 transition-all active:scale-95"
+                                variant="secondary"
+                                className="flex-1"
                             >
                                 Yeni Oluştur
-                            </button>
+                            </UiverseButton>
                         </div>
-                    </div>
+                    </UiverseCard>
                 )}
             </div>
 
             <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
-                <div className="p-6 bg-white rounded-2xl border border-neutral-200 shadow-sm hover:shadow-md transition-shadow">
+                <UiverseCard className="p-6">
                     <div className="text-3xl font-black text-primary-600 mb-1">5</div>
                     <div className="text-sm font-bold text-neutral-400 uppercase tracking-wider">Altın Sayfa</div>
-                </div>
-                <div className="p-6 bg-white rounded-2xl border border-neutral-200 shadow-sm hover:shadow-md transition-shadow">
+                </UiverseCard>
+                <UiverseCard className="p-6">
                     <div className="text-3xl font-black text-primary-600 mb-1">AI</div>
                     <div className="text-sm font-bold text-neutral-400 uppercase tracking-wider">Mistik Rejisör</div>
-                </div>
-                <div className="p-6 bg-white rounded-2xl border border-neutral-200 shadow-sm hover:shadow-md transition-shadow">
+                </UiverseCard>
+                <UiverseCard className="p-6">
                     <div className="text-3xl font-black text-primary-600 mb-1">500</div>
                     <div className="text-sm font-bold text-neutral-400 uppercase tracking-wider">Öz Birikimi</div>
-                </div>
+                </UiverseCard>
             </div>
         </div>
     );

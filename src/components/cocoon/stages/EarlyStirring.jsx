@@ -19,26 +19,57 @@ const EarlyStirring = ({ progress }) => {
         return positions.slice(0, crackCount);
     }, [crackCount]);
 
+    const [surfaceCracks] = useState(() => Array.from({ length: 12 }).map(() => ({
+        top: Math.random() * 80 + 10,
+        left: Math.random() * 80 + 10,
+        width: Math.random() * 40 + 20,
+        height: 1,
+        rotation: Math.random() * 360,
+        delay: Math.random() * 2
+    })));
+
     return (
         <div className="relative w-full h-full flex items-center justify-center">
-            {/* Main Core */}
-            <div className={styles.seedShard} style={{ transform: `scale(${1 + progress / 500})` }}>
-                <div className={styles.prismaticEffect} />
+            {/* The Stirring Vessel */}
+            <div className={styles.cocoonVessel} style={{ transform: `scale(${1 + progress / 500})` }}>
+                <div className={styles.frostedSilk} />
+                <div className={styles.internalGlow} style={{
+                    opacity: 0.4 + progress / 200,
+                    transform: 'scale(1.2)'
+                }} />
+                <div className={styles.prismaticEffect} style={{ opacity: 0.3 }} />
+
+                {/* Physical Surface Cracks */}
+                {surfaceCracks.map((crack, i) => (
+                    <div
+                        key={i}
+                        className={styles.surfaceCrack}
+                        style={{
+                            top: `${crack.top}%`,
+                            left: `${crack.left}%`,
+                            width: `${crack.width}px`,
+                            height: `${crack.height}px`,
+                            transform: `rotate(${crack.rotation}deg)`,
+                            opacity: progress > 10 ? (progress / 100) * 0.7 : 0,
+                            animation: progress > 20 ? `${styles.crackSurge} 0.5s forwards` : 'none',
+                            animationDelay: `${crack.delay}s`
+                        }}
+                    />
+                ))}
             </div>
 
-            {/* Orbiting fragments */}
+            {/* Orbiting shards representing the 'cracking' energy */}
             {Array.from({ length: 5 }).map((_, i) => (
                 <div
                     key={i}
                     className={`${styles.crystalShard} ${styles['shard-tri']}`}
                     style={{
-                        width: '40px',
-                        height: '40px',
-                        top: `${40 + Math.sin(i + progress / 20) * 20}%`,
-                        left: `${40 + Math.cos(i + progress / 20) * 20}%`,
-                        opacity: 0.6,
-                        transform: `rotate(${i * 72 + progress}deg) scale(0.6)`,
-                        border: '1px solid rgba(255,255,255,0.2)'
+                        width: '30px',
+                        height: '30px',
+                        top: `${40 + Math.sin(i + progress / 20) * 15}%`,
+                        left: `${45 + Math.cos(i + progress / 20) * 15}%`,
+                        opacity: 0.4,
+                        transform: `rotate(${i * 72 + progress}deg) scale(0.5)`,
                     }}
                 />
             ))}

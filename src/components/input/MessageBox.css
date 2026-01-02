@@ -1,22 +1,23 @@
-/* From Uiverse.io by vinodjangid07 - Light Theme Variant */
 .messageBox {
     width: 100%;
-    height: 52px;
+    height: 54px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
     padding: 0 15px;
     border-radius: 16px;
-    border: 1px solid #e5e5e5;
-    box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .messageBox:focus-within {
-    border: 1px solid rgba(147, 51, 234, 0.5);
-    background-color: #ffffff;
-    box-shadow: 0 10px 40px -10px rgba(147, 51, 234, 0.1);
+    border-color: #9333ea;
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.2);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .fileUploadWrapper {
@@ -25,73 +26,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-#file {
-    display: none;
+    margin-right: 12px;
 }
 
 .fileUploadWrapper label {
-    cursor: pointer;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     border-radius: 10px;
-    transition: all 0.2s;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .fileUploadWrapper label:hover {
-    background-color: #f5f5f5;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
 }
 
-.fileUploadWrapper label svg {
-    height: 20px;
-}
-
-.fileUploadWrapper label svg path {
-    transition: all 0.3s;
-    stroke: #737373;
-}
-
-.fileUploadWrapper label svg circle {
-    transition: all 0.3s;
-    stroke: #737373;
-}
-
-.fileUploadWrapper label:hover svg path {
-    stroke: #9333ea;
-}
-
-.fileUploadWrapper label:hover svg circle {
-    stroke: #9333ea;
-    fill: #faf5ff;
-}
-
-.fileUploadWrapper label:hover .tooltip {
-    display: block;
-    opacity: 1;
-}
-
-.tooltip {
-    position: absolute;
-    top: -45px;
+.fileUploadWrapper input {
     display: none;
-    opacity: 0;
-    color: #171717;
-    font-size: 11px;
-    font-weight: 600;
-    text-wrap: nowrap;
-    background-color: #ffffff;
-    padding: 6px 12px;
-    border: 1px solid #e5e5e5;
-    border-radius: 8px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s;
-    pointer-events: none;
 }
 
 #messageInput {
@@ -100,50 +58,69 @@
     background-color: transparent;
     outline: none;
     border: none;
-    padding: 0 15px;
-    color: #171717;
+    color: white;
     font-size: 15px;
     font-weight: 500;
 }
 
 #messageInput::placeholder {
-    color: #a3a3a3;
+    color: rgba(255, 255, 255, 0.3);
 }
 
 #sendButton {
-    width: 36px;
-    height: 36px;
-    background-color: transparent;
-    outline: none;
-    border: none;
+    width: 32px;
+    height: 32px;
+    background-color: #9333ea;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s;
+    border: none;
     border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    color: white;
+    margin-left: 12px;
+    box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
 }
 
 #sendButton:hover {
-    background-color: #faf5ff;
+    transform: scale(1.1) rotate(-5deg);
+    background-color: #a855f7;
+    box-shadow: 0 6px 20px rgba(147, 51, 234, 0.5);
 }
 
-#sendButton svg {
-    height: 20px;
-    transition: all 0.3s;
+#sendButton:disabled {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
 }
 
-#sendButton svg path {
-    transition: all 0.3s;
-    stroke: #737373;
+.messageBox::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #9333ea, #a855f7, #d8b4fe, #9333ea);
+    background-size: 300% 100%;
+    animation: gradientSweep 3s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-#sendButton:hover svg path {
-    stroke: #9333ea;
-    fill: #faf5ff;
+.messageBox:focus-within::after {
+    opacity: 1;
 }
 
-/* State when input has value */
-#messageInput:not(:placeholder-shown)~#sendButton svg path {
-    stroke: #9333ea;
+@keyframes gradientSweep {
+    0% {
+        background-position: 100% 0%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
 }
