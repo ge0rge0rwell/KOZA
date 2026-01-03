@@ -2,11 +2,18 @@ import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { generateStorybook, generateGame } from '../services/geminiService';
 import { validateStoryInput } from '../utils/validation';
-import { Sparkles, BookOpen, Gamepad2, AlertCircle } from 'lucide-react';
+import { Sparkles, BookOpen, Gamepad2, AlertCircle, Zap, Star } from 'lucide-react';
+
+// Galaxy Components
 import GalaxyButton from '../components/galaxy/GalaxyButton';
 import GalaxyCard from '../components/galaxy/GalaxyCard';
-import GalaxyLoader from '../components/galaxy/GalaxyLoader';
-import MessageBox from '../components/input/MessageBox';
+import GalaxyLoader from '../components/galaxy/GalaxyLoader'; // Using the existing specialized loader for now, could switch to GalaxySpinner + GalaxyBackdrop
+import GalaxyTextarea from '../components/galaxy/GalaxyTextarea';
+import GalaxyTabs from '../components/galaxy/GalaxyTabs';
+import GalaxyAlert from '../components/galaxy/GalaxyAlert';
+import GalaxyGrid from '../components/galaxy/GalaxyGrid';
+import GalaxyStat from '../components/galaxy/GalaxyStat';
+import GalaxyContainer from '../components/galaxy/GalaxyContainer';
 
 const CreateTab = () => {
     const { activeStory, setActiveStory, isProcessing, setIsProcessing, setCurrentView, awardXP, saveStory, setAnalysisResult, analysisResult, addToast } = useApp();
@@ -16,7 +23,6 @@ const CreateTab = () => {
 
     const handleGenerate = async () => {
         if (!activeStory.trim() || isProcessing) return;
-
         setError(null);
 
         const validation = validateStoryInput(activeStory);
@@ -68,13 +74,13 @@ const CreateTab = () => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto px-4 py-8">
+        <GalaxyContainer className="py-8">
             <div className="text-center mb-12">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-100/50 text-primary-700 rounded-full text-sm font-medium mb-4 border border-primary-200">
                     <Sparkles size={16} />
                     AI Destekli Dönüşüm Aracı
                 </div>
-                <h1 className="text-3xl sm:text-4xl font-bold mb-3 tracking-tight text-neutral-900">
+                <h1 className="text-4xl font-extrabold mb-3 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 animate-float">
                     Deneyimini Dönüştür
                 </h1>
                 <p className="text-neutral-500 text-lg">
@@ -84,47 +90,43 @@ const CreateTab = () => {
 
             <div className="max-w-2xl mx-auto">
                 {!analysisResult ? (
-                    <div className="space-y-6">
+                    <div className="space-y-8">
                         {/* Mode Toggle */}
-                        <div className="flex p-1 bg-white/40 backdrop-blur-md rounded-2xl w-fit mx-auto shadow-sm border border-white/60">
-                            <button
-                                onClick={() => setCreationMode('story')}
-                                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all ${creationMode === 'story'
-                                    ? 'bg-white/80 text-primary-700 shadow-sm'
-                                    : 'text-neutral-500 hover:text-neutral-700'}`}
-                            >
-                                <BookOpen size={18} />
-                                Hikaye
-                            </button>
-                            <button
-                                onClick={() => setCreationMode('game')}
-                                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all ${creationMode === 'game'
-                                    ? 'bg-white/80 text-primary-700 shadow-sm'
-                                    : 'text-neutral-500 hover:text-neutral-700'}`}
-                            >
-                                <Gamepad2 size={18} />
-                                Oyun
-                            </button>
-                        </div>
-
-                        <div className="animate-slide-up">
-                            <MessageBox
-                                value={activeStory}
-                                onChange={(val) => {
-                                    setActiveStory(val);
-                                    setError(null);
-                                }}
-                                onSend={handleGenerate}
-                                placeholder={creationMode === 'story' ? "Zorlandığın bir anı anlat, hikaye olsun..." : "Bir zorluğu anlat, üstesinden gelme oyunu olsun..."}
-                                disabled={isProcessing}
+                        <div className="flex justify-center">
+                            <GalaxyTabs
+                                activeTab={creationMode}
+                                onChange={setCreationMode}
+                                tabs={[
+                                    { id: 'story', label: 'Hikaye', icon: BookOpen },
+                                    { id: 'game', label: 'Oyun', icon: Gamepad2 }
+                                ]}
                             />
                         </div>
 
-                        {error && (
-                            <div className="mt-4 p-4 bg-red-50 border border-red-100 rounded-xl flex items-start gap-3 text-red-600 animate-slide-down">
-                                <AlertCircle size={18} className="flex-shrink-0 mt-0.5" />
-                                <span className="text-sm font-medium">{error}</span>
+                        <div className="animate-slide-up">
+                            <GalaxyTextarea
+                                value={activeStory}
+                                onChange={setActiveStory}
+                                placeholder={creationMode === 'story' ? "Zorlandığın bir anı anlat, hikaye olsun..." : "Bir zorluğu anlat, üstesinden gelme oyunu olsun..."}
+                                disabled={isProcessing}
+                                minHeight="150px"
+                            />
+
+                            <div className="mt-6 flex justify-end">
+                                <GalaxyButton
+                                    onClick={handleGenerate}
+                                    disabled={!activeStory.trim() || isProcessing}
+                                    icon={Sparkles}
+                                >
+                                    {creationMode === 'story' ? 'Hikayeye Dönüştür' : 'Oyuna Dönüştür'}
+                                </GalaxyButton>
                             </div>
+                        </div>
+
+                        {error && (
+                            <GalaxyAlert type="error" title="Giriş Hatası">
+                                {error}
+                            </GalaxyAlert>
                         )}
 
                         {isProcessing && (
@@ -147,11 +149,8 @@ const CreateTab = () => {
                                 : 'Zorluğun artık heyecanlı bir oyun.'}
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <GalaxyButton
-                                onClick={viewResult}
-                                className="flex-1"
-                            >
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <GalaxyButton onClick={viewResult}>
                                 {analysisResult.type === 'story' ? 'Hikayeyi Oku' : 'Oyunu Oyna'}
                             </GalaxyButton>
                             <GalaxyButton
@@ -160,7 +159,6 @@ const CreateTab = () => {
                                     setActiveStory('');
                                 }}
                                 variant="secondary"
-                                className="flex-1"
                             >
                                 Yeni Oluştur
                             </GalaxyButton>
@@ -169,12 +167,14 @@ const CreateTab = () => {
                 )}
             </div>
 
-            <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                <GalaxyCard title="5" subtitle="Altın Sayfa" emoji="✨" />
-                <GalaxyCard title="AI" subtitle="Mistik Rejisör" emoji="🎭" />
-                <GalaxyCard title="500" subtitle="Öz Birikimi" emoji="💎" />
+            <div className="mt-20">
+                <GalaxyGrid cols={3}>
+                    <GalaxyStat label="Altın Sayfa" value={5} icon={Star} />
+                    <GalaxyStat label="Mistik Rejisör" value="AI" icon={Sparkles} />
+                    <GalaxyStat label="Öz Birikimi" value={500} icon={Zap} suffix="+" />
+                </GalaxyGrid>
             </div>
-        </div>
+        </GalaxyContainer>
     );
 };
 
