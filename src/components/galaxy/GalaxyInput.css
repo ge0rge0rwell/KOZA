@@ -1,0 +1,81 @@
+/* Adapted from Uiverse.io by 0xnihilism & AmruthLP12 - hybrid Liquid/Brutalist */
+
+.galaxy-input-container {
+    position: relative;
+    width: 100%;
+    padding-top: 25px;
+    /* Space for label */
+}
+
+.galaxy-input {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #171717;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 18px;
+    outline: none;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.03),
+        inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.galaxy-input:focus {
+    background: rgba(255, 255, 255, 0.65);
+    border-color: #9333ea;
+    box-shadow:
+        0 8px 24px rgba(147, 51, 234, 0.15),
+        inset 0 0 15px rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.galaxy-input-label {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    font-size: 11px;
+    font-weight: 800;
+    color: #9333ea;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.galaxy-input:focus+.galaxy-input-label {
+    background: #9333ea;
+    color: white;
+    transform: translateY(-4px) rotate(-1deg);
+    box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
+}
+
+.galaxy-input::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+}
+
+.galaxy-input-glow {
+    position: absolute;
+    inset: -10px;
+    background: radial-gradient(circle at center, rgba(147, 51, 234, 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: -1;
+    border-radius: 28px;
+}
+
+.galaxy-input:focus~.galaxy-input-glow {
+    opacity: 1;
+}

@@ -3,7 +3,7 @@ import { useApp } from '../../context/AppContext';
 import './BottomNav.css';
 
 const BottomNav = () => {
-    const { activeTab, setActiveTab, currentView } = useApp();
+    const { activeTab, setActiveTab, currentView, addToast } = useApp();
 
     if (currentView) return null;
 
@@ -67,7 +67,6 @@ const BottomNav = () => {
         }
     ];
 
-    const { addToast } = useApp();
 
     const handleNavClick = (id) => {
         if (id === 'search') {

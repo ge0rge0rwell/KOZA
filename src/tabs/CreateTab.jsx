@@ -3,10 +3,9 @@ import { useApp } from '../context/AppContext';
 import { generateStorybook, generateGame } from '../services/geminiService';
 import { validateStoryInput } from '../utils/validation';
 import { Sparkles, BookOpen, Gamepad2, AlertCircle } from 'lucide-react';
-import MessageBox from '../components/input/MessageBox';
-import Loader from '../components/Loader';
-import UiverseButton from '../components/uiverse/UiverseButton';
-import UiverseCard from '../components/uiverse/UiverseCard';
+import GalaxyButton from '../components/galaxy/GalaxyButton';
+import GalaxyCard from '../components/galaxy/GalaxyCard';
+import GalaxyLoader from '../components/galaxy/GalaxyLoader';
 
 const CreateTab = () => {
     const { activeStory, setActiveStory, isProcessing, setIsProcessing, setCurrentView, awardXP, saveStory, setAnalysisResult, analysisResult, addToast } = useApp();
@@ -70,14 +69,14 @@ const CreateTab = () => {
     return (
         <div className="max-w-4xl mx-auto px-4 py-8">
             <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-50 text-primary-700 rounded-full text-sm font-medium mb-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-100/50 text-primary-700 rounded-full text-sm font-medium mb-4 border border-primary-200">
                     <Sparkles size={16} />
                     AI Destekli Dönüşüm Aracı
                 </div>
-                <h1 className="text-3xl sm:text-4xl font-bold mb-3 tracking-tight">
+                <h1 className="text-3xl sm:text-4xl font-bold mb-3 tracking-tight text-neutral-900">
                     Deneyimini Dönüştür
                 </h1>
-                <p className="text-neutral-600 text-lg">
+                <p className="text-neutral-500 text-lg">
                     Yaşadığın zorluğu anlat, AI ile güçlendirici bir dünyaya adım at.
                 </p>
             </div>
@@ -86,11 +85,11 @@ const CreateTab = () => {
                 {!analysisResult ? (
                     <div className="space-y-6">
                         {/* Mode Toggle */}
-                        <div className="flex p-1 bg-neutral-100 rounded-xl w-fit mx-auto shadow-inner border border-neutral-200">
+                        <div className="flex p-1 bg-white/40 backdrop-blur-md rounded-2xl w-fit mx-auto shadow-sm border border-white/60">
                             <button
                                 onClick={() => setCreationMode('story')}
-                                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${creationMode === 'story'
-                                    ? 'bg-white text-primary-600 shadow-sm'
+                                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all ${creationMode === 'story'
+                                    ? 'bg-white/80 text-primary-700 shadow-sm'
                                     : 'text-neutral-500 hover:text-neutral-700'}`}
                             >
                                 <BookOpen size={18} />
@@ -98,8 +97,8 @@ const CreateTab = () => {
                             </button>
                             <button
                                 onClick={() => setCreationMode('game')}
-                                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${creationMode === 'game'
-                                    ? 'bg-white text-primary-600 shadow-sm'
+                                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all ${creationMode === 'game'
+                                    ? 'bg-white/80 text-primary-700 shadow-sm'
                                     : 'text-neutral-500 hover:text-neutral-700'}`}
                             >
                                 <Gamepad2 size={18} />
@@ -128,18 +127,19 @@ const CreateTab = () => {
                         )}
 
                         {isProcessing && (
-                            <div className="mt-12 animate-fade-in flex justify-center">
-                                <Loader message={stage} />
+                            <div className="mt-12 animate-fade-in flex flex-col items-center gap-4">
+                                <GalaxyLoader size="large" />
+                                <p className="text-primary-600 font-bold animate-pulse">{stage}</p>
                             </div>
                         )}
                     </div>
                 ) : (
-                    <UiverseCard className="text-center p-10">
-                        <div className={`w-20 h-20 mx-auto rounded-3xl flex items-center justify-center mb-6 shadow-lg ${analysisResult.type === 'story' ? 'bg-primary-600 text-white' : 'bg-neutral-800 text-white'
-                            }`}>
-                            {analysisResult.type === 'story' ? <BookOpen size={40} /> : <Gamepad2 size={40} />}
-                        </div>
-                        <h3 className="text-3xl font-black mb-2 tracking-tight">{analysisResult.category}</h3>
+                    <GalaxyCard
+                        className="text-center"
+                        title={analysisResult.category}
+                        subtitle={analysisResult.type === 'story' ? 'Hikaye Tamamlandı' : 'Oyun Hazır'}
+                        emoji={analysisResult.type === 'story' ? '📖' : '🎮'}
+                    >
                         <p className="text-neutral-500 text-lg mb-10">
                             {analysisResult.type === 'story'
                                 ? 'Deneyimin artık epik bir hikaye.'
@@ -147,13 +147,13 @@ const CreateTab = () => {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <UiverseButton
+                            <GalaxyButton
                                 onClick={viewResult}
                                 className="flex-1"
                             >
                                 {analysisResult.type === 'story' ? 'Hikayeyi Oku' : 'Oyunu Oyna'}
-                            </UiverseButton>
-                            <UiverseButton
+                            </GalaxyButton>
+                            <GalaxyButton
                                 onClick={() => {
                                     setAnalysisResult(null);
                                     setActiveStory('');
@@ -162,25 +162,16 @@ const CreateTab = () => {
                                 className="flex-1"
                             >
                                 Yeni Oluştur
-                            </UiverseButton>
+                            </GalaxyButton>
                         </div>
-                    </UiverseCard>
+                    </GalaxyCard>
                 )}
             </div>
 
-            <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
-                <UiverseCard className="p-6">
-                    <div className="text-3xl font-black text-primary-600 mb-1">5</div>
-                    <div className="text-sm font-bold text-neutral-400 uppercase tracking-wider">Altın Sayfa</div>
-                </UiverseCard>
-                <UiverseCard className="p-6">
-                    <div className="text-3xl font-black text-primary-600 mb-1">AI</div>
-                    <div className="text-sm font-bold text-neutral-400 uppercase tracking-wider">Mistik Rejisör</div>
-                </UiverseCard>
-                <UiverseCard className="p-6">
-                    <div className="text-3xl font-black text-primary-600 mb-1">500</div>
-                    <div className="text-sm font-bold text-neutral-400 uppercase tracking-wider">Öz Birikimi</div>
-                </UiverseCard>
+            <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <GalaxyCard title="5" subtitle="Altın Sayfa" emoji="✨" />
+                <GalaxyCard title="AI" subtitle="Mistik Rejisör" emoji="🎭" />
+                <GalaxyCard title="500" subtitle="Öz Birikimi" emoji="💎" />
             </div>
         </div>
     );

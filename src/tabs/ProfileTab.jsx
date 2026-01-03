@@ -5,8 +5,8 @@ import { Trash2, BookOpen, Gamepad2, Award, TrendingUp, Lock } from 'lucide-reac
 import CocoonStage from '../components/cocoon/CocoonStage';
 import MilestoneNotification from '../components/cocoon/MilestoneNotification';
 import { getOzToNextStage } from '../utils/cocoon/stageCalculator';
-import UiverseCard from '../components/uiverse/UiverseCard';
-import UiverseButton from '../components/uiverse/UiverseButton';
+import GalaxyCard from '../components/galaxy/GalaxyCard';
+import GalaxyButton from '../components/galaxy/GalaxyButton';
 
 const ProfileTab = () => {
     const { user, savedStories, deleteStory, setCurrentView } = useApp();
@@ -42,11 +42,7 @@ const ProfileTab = () => {
             <MilestoneNotification previousOz={previousOz} currentOz={user.totalXP} />
 
             {/* Cocoon Transformation Display */}
-            <UiverseCard className="mb-6">
-                <div className="text-center mb-6">
-                    <h2 className="text-2xl font-bold mb-2 text-white">Dönüşüm Yolculuğun</h2>
-                    <p className="text-neutral-400">Her ÖZ ile kelebeğe yaklaşıyorsun</p>
-                </div>
+            <GalaxyCard className="mb-6" title="Dönüşüm Yolculuğun" subtitle="Her ÖZ ile kelebeğe yaklaşıyorsun" emoji="🦋">
 
                 {/* Cocoon Display */}
                 <div style={{ minHeight: '600px', position: 'relative' }}>
@@ -57,76 +53,64 @@ const ProfileTab = () => {
                 <div className="mt-8 text-center">
                     <div className="inline-flex items-center gap-4 px-6 py-3 bg-gradient-to-r from-primary-500/10 to-purple-500/10 rounded-full border border-primary-500/20">
                         <div>
-                            <p className="text-sm text-neutral-400">Toplam ÖZ</p>
-                            <p className="text-2xl font-bold text-primary-400">{user.totalXP}</p>
+                            <p className="text-sm text-neutral-500">Toplam ÖZ</p>
+                            <p className="text-2xl font-bold text-primary-600">{user.totalXP}</p>
                         </div>
                         {ozToNextStage > 0 && (
                             <>
                                 <div className="w-px h-8 bg-neutral-700" />
                                 <div>
-                                    <p className="text-sm text-neutral-400">Sonraki Aşamaya</p>
-                                    <p className="text-xl font-semibold text-neutral-300">{ozToNextStage} ÖZ</p>
+                                    <p className="text-sm text-neutral-500">Sonraki Aşamaya</p>
+                                    <p className="text-xl font-semibold text-neutral-700">{ozToNextStage} ÖZ</p>
                                 </div>
                             </>
                         )}
                     </div>
                 </div>
-            </UiverseCard>
+            </GalaxyCard>
 
             {/* Stats Card */}
-            <UiverseCard className="mb-6">
-                <div className="flex items-center justify-between mb-6">
-                    <div>
-                        <p className="text-sm text-neutral-400 mb-1">Seviye</p>
-                        <h2 className="text-4xl font-bold text-white">{user.level}</h2>
-                        <p className="text-sm text-primary-400 mt-1 font-semibold">{user.title}</p>
-                    </div>
+            <GalaxyCard className="mb-6" title={user.level.toString()} subtitle={user.title} emoji="📈">
+                <div className="flex items-center justify-between mb-6 -mt-4">
                     <div className="text-right">
                         <p className="text-sm text-neutral-400 mb-1">İlerleme</p>
-                        <p className="text-2xl font-semibold text-primary-500">
+                        <p className="text-2xl font-semibold text-primary-600">
                             {user.xp} / {user.nextLevelXp} ÖZ
                         </p>
                     </div>
                 </div>
 
                 {/* Progress Bar */}
-                <div className="h-3 bg-white/5 rounded-full overflow-hidden mb-6 border border-white/10">
+                <div className="h-3 bg-white/40 rounded-full overflow-hidden mb-6 border border-white/60 shadow-inner">
                     <div
-                        className="h-full bg-gradient-to-r from-primary-400 to-primary-600 transition-all duration-500 shadow-[0_0_10px_rgba(79,172,254,0.3)]"
+                        className="h-full bg-gradient-to-r from-primary-500 to-purple-600 transition-all duration-500 shadow-[0_0_10px_rgba(147,51,234,0.2)]"
                         style={{ width: `${progressPercent}%` }}
                     />
                 </div>
 
                 {/* Activity Stats */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                    <div className="p-4 bg-white/5 rounded-xl border border-white/10">
-                        <div className="text-2xl font-bold mb-1 text-white">{stats.storiesCreated}</div>
-                        <div className="text-sm text-neutral-400">Hikaye</div>
+                    <div className="p-4 bg-white/40 rounded-xl border border-white/60">
+                        <div className="text-2xl font-bold mb-1 text-neutral-900">{stats.storiesCreated}</div>
+                        <div className="text-sm text-neutral-500">Hikaye</div>
                     </div>
-                    <div className="p-4 bg-white/5 rounded-xl border border-white/10">
-                        <div className="text-2xl font-bold mb-1 text-white">{stats.gamesCreated}</div>
-                        <div className="text-sm text-neutral-400">Oyun</div>
+                    <div className="p-4 bg-white/40 rounded-xl border border-white/60">
+                        <div className="text-2xl font-bold mb-1 text-neutral-900">{stats.gamesCreated}</div>
+                        <div className="text-sm text-neutral-500">Oyun</div>
                     </div>
-                    <div className="p-4 bg-white/5 rounded-xl border border-white/10">
-                        <div className="text-2xl font-bold mb-1 text-white">{stats.totalXP}</div>
-                        <div className="text-sm text-neutral-400">Toplam ÖZ</div>
+                    <div className="p-4 bg-white/40 rounded-xl border border-white/60">
+                        <div className="text-2xl font-bold mb-1 text-neutral-900">{stats.totalXP}</div>
+                        <div className="text-sm text-neutral-500">Toplam ÖZ</div>
                     </div>
-                    <div className="p-4 bg-white/5 rounded-xl border border-white/10">
-                        <div className="text-2xl font-bold mb-1 text-white">{stats.dailyStreak}</div>
-                        <div className="text-sm text-neutral-400">Gün Serisi</div>
+                    <div className="p-4 bg-white/40 rounded-xl border border-white/60">
+                        <div className="text-2xl font-bold mb-1 text-neutral-900">{stats.dailyStreak}</div>
+                        <div className="text-sm text-neutral-500">Gün Serisi</div>
                     </div>
                 </div>
-            </UiverseCard>
+            </GalaxyCard>
 
             {/* Achievements */}
-            <UiverseCard className="mb-6">
-                <div className="flex items-center gap-2 mb-4">
-                    <Award size={20} className="text-primary-500" />
-                    <h3 className="font-semibold text-white">Başarılar</h3>
-                    <span className="text-sm text-neutral-400">
-                        ({unlockedAchievements.length} / {ACHIEVEMENTS.length})
-                    </span>
-                </div>
+            <GalaxyCard className="mb-6" title="Başarılar" subtitle={`(${unlockedAchievements.length} / ${ACHIEVEMENTS.length})`} emoji="🏆">
 
                 {/* Unlocked Achievements */}
                 {unlockedAchievements.length > 0 && (
@@ -139,9 +123,9 @@ const ProfileTab = () => {
                                     className="p-4 rounded-xl border border-primary-500/30 bg-primary-500/5 backdrop-blur-sm"
                                 >
                                     <div className="text-3xl mb-2">{achievement.icon}</div>
-                                    <p className="font-semibold text-sm mb-1 text-white">{achievement.name}</p>
-                                    <p className="text-xs text-neutral-400 mb-2 line-clamp-2">{achievement.description}</p>
-                                    <p className="text-xs font-medium text-primary-400">+{achievement.xp} ÖZ</p>
+                                    <p className="font-semibold text-sm mb-1 text-neutral-900">{achievement.name}</p>
+                                    <p className="text-xs text-neutral-500 mb-2 line-clamp-2">{achievement.description}</p>
+                                    <p className="text-xs font-medium text-primary-600">+{achievement.xp} ÖZ</p>
                                 </div>
                             ))}
                         </div>
@@ -179,15 +163,10 @@ const ProfileTab = () => {
                         </div>
                     </div>
                 )}
-            </UiverseCard>
+            </GalaxyCard>
 
             {/* Saved Stories */}
-            <UiverseCard>
-                <div className="flex items-center gap-2 mb-6">
-                    <TrendingUp size={20} className="text-primary-500" />
-                    <h3 className="font-semibold text-white">Hikayelerim</h3>
-                    <span className="text-sm text-neutral-400">({savedStories.length})</span>
-                </div>
+            <GalaxyCard title="Hikayelerim" subtitle={`(${savedStories.length})`} emoji="📚">
 
                 {savedStories.length === 0 ? (
                     <div className="text-center py-12">
@@ -209,7 +188,7 @@ const ProfileTab = () => {
                                     onClick={() => setCurrentView({ type: story.type, data: story })}
                                     className="flex-1 text-left"
                                 >
-                                    <h4 className="font-semibold mb-1 text-white group-hover:text-primary-400 transition-colors">
+                                    <h4 className="font-semibold mb-1 text-neutral-900 group-hover:text-primary-600 transition-colors">
                                         {story.title}
                                     </h4>
                                     <p className="text-sm text-neutral-400 line-clamp-2 mb-1">
@@ -229,7 +208,7 @@ const ProfileTab = () => {
                         ))}
                     </div>
                 )}
-            </UiverseCard>
+            </GalaxyCard>
         </div>
     );
 };

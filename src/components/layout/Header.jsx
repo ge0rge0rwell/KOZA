@@ -15,14 +15,14 @@ const Header = () => {
     };
 
     return (
-        <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b border-neutral-200 z-40">
+        <header className="fixed top-0 left-0 right-0 bg-white/20 backdrop-blur-3xl border-b border-white/80 z-40 shadow-sm">
             <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
                 <button
                     onClick={() => {
                         setCurrentView(null);
                         setActiveTab('create');
                     }}
-                    className="flex items-center gap-2 font-semibold text-lg hover:text-primary-600 transition-all active:scale-95"
+                    className="flex items-center gap-2 font-semibold text-lg text-neutral-900 hover:text-primary-600 transition-all active:scale-95"
                 >
                     <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold shadow-lg shadow-primary-500/20">
                         K
@@ -34,7 +34,7 @@ const Header = () => {
                     {/* Cloud Sync Status */}
                     {authUser && (
                         <div className={`flex items-center gap-1.5 px-2 py-1 rounded-full text-[10px] font-bold uppercase transition-all hidden sm:flex ${isSyncing ? 'bg-primary-50 text-primary-600' :
-                            cloudSynced ? 'bg-green-50 text-green-600' : 'bg-neutral-50 text-neutral-400'
+                            cloudSynced ? 'bg-green-50 text-green-600' : 'bg-white/40 text-neutral-500'
                             }`}>
                             {isSyncing ? (
                                 <>
@@ -55,7 +55,7 @@ const Header = () => {
                         </div>
                     )}
 
-                    <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-neutral-100 rounded-full border border-neutral-200 shadow-sm">
+                    <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-white/40 rounded-full border border-white/60 shadow-sm">
                         <div className="w-2 h-2 bg-primary-600 rounded-full animate-pulse" />
                         <span className="font-bold text-xs">{user.xp} / {user.nextLevelXp} ÖZ</span>
                     </div>
@@ -70,13 +70,13 @@ const Header = () => {
                                     onError={() => setImgError(true)}
                                 />
                             ) : (
-                                <div className="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 shadow-inner">
+                                <div className="w-8 h-8 rounded-full bg-white/40 flex items-center justify-center text-primary-600 shadow-inner border border-white/60">
                                     <UserIcon size={16} />
                                 </div>
                             )}
                             <button
                                 onClick={handleSignOut}
-                                className="p-2 text-neutral-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all"
+                                className="p-2 text-neutral-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all"
                                 title="Çıkış Yap"
                             >
                                 <LogOut size={18} />

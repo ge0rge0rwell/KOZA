@@ -10,7 +10,7 @@ const MainLayout = ({ children }) => {
     const { notification, toasts, showOnboarding, setShowOnboarding } = useApp();
 
     return (
-        <div className="min-h-screen bg-neutral-50 pb-20">
+        <div className="min-h-screen text-neutral-900 pb-20 overflow-x-hidden">
             {/* Onboarding Overlay */}
             {showOnboarding && <Onboarding onComplete={() => setShowOnboarding(false)} />}
 

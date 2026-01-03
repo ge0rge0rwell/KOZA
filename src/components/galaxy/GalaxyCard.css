@@ -1,0 +1,122 @@
+/* Adapted from Uiverse.io by 0xnihilism - moody-moth-91 */
+
+.galaxy-card-container {
+  perspective: 1500px;
+  width: 100%;
+}
+
+.galaxy-card {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 30px;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+              background 0.4s ease;
+  transform-style: preserve-3d;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.04),
+    inset 0 0 20px rgba(255, 255, 255, 0.4);
+  overflow: hidden;
+}
+
+.galaxy-card:hover {
+  transform: translateZ(30px) rotateX(2deg) rotateY(-2deg);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0 25px 60px rgba(147, 51, 234, 0.1),
+    0 0 30px rgba(147, 51, 234, 0.05);
+}
+
+.galaxy-card-content {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.4s ease-out;
+}
+
+.galaxy-card:hover .galaxy-card-content {
+    transform: translateZ(40px);
+}
+
+.galaxy-card-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #171717;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.galaxy-card-subtitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: #9333ea;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+}
+
+.galaxy-card-emoji {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    transition: transform 0.4s ease-out, opacity 0.3s ease;
+    z-index: 3;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
+}
+
+.galaxy-card:hover .galaxy-card-emoji {
+    transform: translateZ(60px) rotate(12deg) scale(1.2);
+}
+
+.galaxy-card-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg, 
+        rgba(255, 255, 255, 0.4) 0%, 
+        transparent 50%, 
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.galaxy-card:hover .galaxy-card-shine {
+    opacity: 1;
+}
+
+.galaxy-card-dots {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    filter: blur(30px);
+    opacity: 0.15;
+    z-index: 0;
+    transition: all 0.6s ease;
+}
+
+.orange-dots {
+    bottom: -20px;
+    right: -20px;
+    background: #f43f5e;
+}
+
+.pink-dots {
+    top: -20px;
+    left: -20px;
+    background: #9333ea;
+}
+
+.galaxy-card:hover .galaxy-card-dots {
+    opacity: 0.3;
+    transform: scale(1.5);
+}

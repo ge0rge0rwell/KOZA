@@ -1,0 +1,97 @@
+/* Adapted from Uiverse.io by 0x-Sarthak - hungry-penguin-30 */
+
+.galaxy-cta {
+    position: relative;
+    margin: auto;
+    padding: 12px 24px;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    border: 2px solid #9333ea;
+    border-radius: 50px;
+    background: #9333ea;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(147, 51, 234, 0.2);
+}
+
+.galaxy-cta:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    width: 45px;
+    height: 45px;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 0;
+}
+
+.galaxy-cta span {
+    position: relative;
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.galaxy-cta svg {
+    position: relative;
+    z-index: 1;
+    margin-left: 8px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: white;
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.4s ease;
+}
+
+.galaxy-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(147, 51, 234, 0.3);
+}
+
+.galaxy-cta:hover:before {
+    width: 100%;
+    background: #7e22ce;
+}
+
+.galaxy-cta:hover svg {
+    transform: translateX(0);
+}
+
+.galaxy-cta:active {
+    transform: scale(0.96);
+}
+
+.galaxy-cta:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Secondary variant with light glass feel */
+.galaxy-cta.secondary {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.galaxy-cta.secondary span {
+    color: #9333ea;
+}
+
+.galaxy-cta.secondary svg {
+    stroke: #9333ea;
+}
+
+.galaxy-cta.secondary:hover:before {
+    background: rgba(255, 255, 255, 0.8);
+}
