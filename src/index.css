@@ -16,32 +16,17 @@
     --color-primary-800: #6b21a8;
     --color-primary-900: #581c87;
 
-    /* Neutral - Remapped to "White Crystal" (Deep Purple tints on White) */
-    --color-neutral-50: #1a1629;
-    --color-neutral-100: #2e2645;
-    --color-neutral-200: #463b66;
-    --color-neutral-300: #605285;
-    --color-neutral-400: #8072a3;
-    --color-neutral-500: #a59ac2;
-    --color-neutral-600: #c5bed9;
-    --color-neutral-700: #e0dced;
-    --color-neutral-800: #f0eff5;
-    --color-neutral-900: #fbfbfe;
-    /* Lightest is now "900" relative to old dark mode logic, or we just flip usage? 
-       Actually, standard is 50=light, 900=dark. 
-       Let's keep standard scale but make the VALUES appropriate for a light theme base.
-    */
-    --color-neutral-50: #ffffff;
-    --color-neutral-100: #f8fafc;
-    --color-neutral-200: #f1f5f9;
-    --color-neutral-300: #e2e8f0;
-    --color-neutral-400: #cbd5e1;
-    --color-neutral-500: #94a3b8;
+    /* Neutral - Standard Slate (High Contrast) */
+    --color-neutral-50: #f8fafc;
+    --color-neutral-100: #f1f5f9;
+    --color-neutral-200: #e2e8f0;
+    --color-neutral-300: #cbd5e1;
+    --color-neutral-400: #94a3b8;
+    --color-neutral-500: #64748b;
     --color-neutral-600: #475569;
     --color-neutral-700: #334155;
     --color-neutral-800: #1e293b;
     --color-neutral-900: #0f172a;
-    /* Deep blue-black for text */
 
     --color-success: #10b981;
     --color-warning: #f59e0b;
@@ -56,16 +41,16 @@
 
     body {
         @apply font-sans antialiased text-neutral-900 bg-white;
-        /* White Mode */
 
         /* Application Background: Pure White / Snow */
         background-color: #ffffff;
-        background-image: linear-gradient(to bottom right, #ffffff, #f0f4ff, #eef2ff);
+        background-image: none;
+        /* Removed gradient for cleanliness */
         min-height: 100vh;
 
         /* Text Discipline: High contrast dark */
-        color: #1e1b4b;
-        /* Cosmic dark blue */
+        color: #0f172a;
+        /* Slate 900 */
 
         font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
     }
@@ -79,8 +64,7 @@
         /* Headings */
         @apply font-semibold tracking-tight;
         letter-spacing: -0.025em;
-        color: #1e1b4b;
-        /* Dark blue/purple for headings */
+        color: #0f172a;
     }
 
     /* Screen reader only */

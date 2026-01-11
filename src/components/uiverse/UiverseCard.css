@@ -80,8 +80,8 @@
 .card-content {
     position: relative;
     z-index: 2;
-    color: #1e1b4b;
-    /* Dark Deep Blue Text */
+    color: #0f172a;
+    /* Slate 900 */
 }
 
 /* Interactive Ripple (Optional, if we had JS for mouse tracking, but using simple pseudo for now) */

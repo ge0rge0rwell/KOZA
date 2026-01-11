@@ -4,14 +4,15 @@
     padding: 12px 32px;
     border-radius: 9999px;
     /* Pill shape for modern feel */
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(15, 23, 42, 0.2);
+    /* Slate border */
     cursor: pointer;
     font-size: 15px;
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    background: transparent;
+    background: #0f172a;
     color: #ffffff;
     overflow: hidden;
     display: flex;
