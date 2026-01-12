@@ -77,11 +77,8 @@ const BottomNav = () => {
     };
 
     return (
-        <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 px-4 w-full max-w-lg">
+        <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 px-4">
             <div className="uiverse-nav-container">
-                <div className="uiverse-nav-glow" style={{
-                    left: `${(navItems.findIndex(i => i.id === activeTab) * 20) + 10}%`
-                }} />
                 <div className="nav-items-wrapper">
                     {navItems.map((item) => (
                         <button
@@ -92,7 +89,10 @@ const BottomNav = () => {
                             <span className="nav-icon">
                                 {item.icon}
                             </span>
-                            <span className="nav-label">{activeTab === item.id ? item.label : ''}</span>
+                            <span className="nav-label">{item.label}</span>
+                            {activeTab === item.id && (
+                                <div className="uiverse-nav-glow left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+                            )}
                         </button>
                     ))}
                 </div>

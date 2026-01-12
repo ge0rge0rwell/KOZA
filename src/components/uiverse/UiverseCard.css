@@ -1,103 +1,37 @@
-/* Liquid Crystal Card - White Edition */
 .uiverse-card {
-    position: relative;
-    background: rgba(255, 255, 255, 0.7);
-    /* White glass base */
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: 20px;
-    padding: 30px;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0 10px 30px rgba(88, 28, 135, 0.1);
-    /* Very soft purple shadow */
+    @apply liquid-glass transition-liquid rounded-3xl p-6 relative overflow-hidden;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: var(--shadow-liquid);
 }
 
-/* Prismatic Border / Glow */
-.uiverse-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    padding: 2px;
-    /* Border width */
-    background: linear-gradient(135deg,
-            rgba(147, 51, 234, 0.2),
-            rgba(255, 255, 255, 0) 40%,
-            rgba(255, 255, 255, 0) 60%,
-            rgba(147, 51, 234, 0.2));
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    pointer-events: none;
-    transition: all 0.5s ease;
-}
-
-/* Liquid/Nebula Background Effect */
-.card-shine {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at center,
-            rgba(147, 51, 234, 0.15) 0%,
-            transparent 50%);
-    opacity: 0;
-    transform: scale(0.8);
-    transition: all 0.6s ease;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Hover Effects */
 .uiverse-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow:
-        0 20px 40px rgba(88, 28, 135, 0.15),
-        0 0 50px rgba(147, 51, 234, 0.1);
-    /* Purple atmosphere */
-    border-color: rgba(147, 51, 234, 0.3);
+    @apply -translate-y-1;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: var(--shadow-liquid-deep);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+.uiverse-card:active {
+    @apply translate-y-0 scale-[0.98];
+}
+
+.card-shine {
+    @apply absolute inset-0 pointer-events-none opacity-0 transition-liquid z-0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, transparent 50%, rgba(255, 255, 255, 0.2) 100%);
 }
 
 .uiverse-card:hover .card-shine {
-    opacity: 1;
-    transform: scale(1.2) rotate(15deg);
-}
-
-.uiverse-card:hover::before {
-    background: linear-gradient(135deg, #ff00cc, #333399, #00d4ff);
-    opacity: 0.8;
+    @apply opacity-100;
 }
 
 .card-content {
-    position: relative;
-    z-index: 2;
-    color: #0f172a;
-    /* Slate 900 */
+    @apply relative z-10;
 }
 
-/* Interactive Ripple (Optional, if we had JS for mouse tracking, but using simple pseudo for now) */
+/* Internal Refraction Micro-light */
 .uiverse-card::after {
     content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
-            rgba(255, 255, 255, 0.05),
-            transparent 40%);
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.uiverse-card:hover::after {
-    opacity: 1;
+    @apply absolute top-0 left-0 right-0 h-[1px] bg-white/60 z-20;
 }

@@ -21,13 +21,21 @@ const AppRouter = () => {
     }
 
     // 2. Tab Navigation
-    switch (activeTab) {
-        case 'create': return <CreateTab />;
-        case 'community': return <CommunityTab />;
-        case 'learn': return <LearnTab />;
-        case 'profile': return <ProfileTab />;
-        default: return <CreateTab />;
-    }
+    const TabContent = () => {
+        switch (activeTab) {
+            case 'create': return <CreateTab />;
+            case 'community': return <CommunityTab />;
+            case 'learn': return <LearnTab />;
+            case 'profile': return <ProfileTab />;
+            default: return <CreateTab />;
+        }
+    };
+
+    return (
+        <div key={activeTab + (currentView?.type || 'none')} className="animate-liquid">
+            <TabContent />
+        </div>
+    );
 };
 
 export default AppRouter;

@@ -4,19 +4,19 @@
 @theme {
     --font-sans: "Inter", system-ui, sans-serif;
 
-    /* Primary - KOZA Purple */
-    --color-primary-50: #faf5ff;
-    --color-primary-100: #f3e8ff;
-    --color-primary-200: #e9d5ff;
-    --color-primary-300: #d8b4fe;
-    --color-primary-400: #c084fc;
-    --color-primary-500: #a855f7;
-    --color-primary-600: #9333ea;
-    --color-primary-700: #7e22ce;
-    --color-primary-800: #6b21a8;
-    --color-primary-900: #581c87;
+    /* Primary - KOZA Purple (Premium Deep Violet) */
+    --color-primary-50: #f5f3ff;
+    --color-primary-100: #ede9fe;
+    --color-primary-200: #ddd6fe;
+    --color-primary-300: #c4b5fd;
+    --color-primary-400: #a78bfa;
+    --color-primary-500: #8b5cf6;
+    --color-primary-600: #7c3aed;
+    --color-primary-700: #6d28d9;
+    --color-primary-800: #5b21b6;
+    --color-primary-900: #4c1d95;
 
-    /* Neutral - Standard Slate (High Contrast) */
+    /* Neutral - Premium Slate (High Contrast) */
     --color-neutral-50: #f8fafc;
     --color-neutral-100: #f1f5f9;
     --color-neutral-200: #e2e8f0;
@@ -26,33 +26,31 @@
     --color-neutral-600: #475569;
     --color-neutral-700: #334155;
     --color-neutral-800: #1e293b;
-    --color-neutral-900: #0f172a;
+    --color-neutral-900: #020617;
+    /* Deepest Navy */
 
     --color-success: #10b981;
     --color-warning: #f59e0b;
     --color-error: #ef4444;
+
+    /* Advanced Shadows */
+    --shadow-premium: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-premium-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+    --shadow-premium-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
 }
 
 @layer base {
     * {
-        @apply border-neutral-200;
-        /* Verified light border */
+        @apply border-neutral-200/60;
     }
 
     body {
         @apply font-sans antialiased text-neutral-900 bg-white;
-
-        /* Application Background: Pure White / Snow */
         background-color: #ffffff;
-        background-image: none;
-        /* Removed gradient for cleanliness */
         min-height: 100vh;
-
-        /* Text Discipline: High contrast dark */
-        color: #0f172a;
-        /* Slate 900 */
-
-        font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+        color: #020617;
+        /* Slate 950 */
+        font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     }
 
     h1,
@@ -61,63 +59,55 @@
     h4,
     h5,
     h6 {
-        /* Headings */
-        @apply font-semibold tracking-tight;
-        letter-spacing: -0.025em;
-        color: #0f172a;
-    }
-
-    /* Screen reader only */
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
+        @apply font-bold tracking-tight text-neutral-950;
+        letter-spacing: -0.04em;
     }
 }
 
 @layer utilities {
-    .text-balance {
-        text-wrap: balance;
+    .glass {
+        @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-premium;
     }
 
-    /* Focus visible improvements */
-    .focus-ring {
-        @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    .glass-dark {
+        @apply bg-neutral-900/40 backdrop-blur-xl border border-white/10;
     }
 
-    /* Smooth transitions */
-    .transition-smooth {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    .mesh-gradient {
+        background-color: #ffffff;
+        background-image:
+            radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.1) 0px, transparent 50%),
+            radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.1) 0px, transparent 50%),
+            radial-gradient(at 0% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 50%);
+    }
+
+    .transition-premium {
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     }
 }
 
-/* Scrollbar */
+/* Scrollbar Refinement */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    @apply bg-neutral-100;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-neutral-300 rounded-full;
+    @apply bg-neutral-200 rounded-full hover:bg-neutral-300 transition-colors;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    @apply bg-neutral-400;
+/* Base Utility Classes */
+.text-balance {
+    text-wrap: balance;
 }
 
-/* Focus visible */
-*:focus-visible {
-    @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+.focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:ring-offset-2;
 }
 
 /* Animations */

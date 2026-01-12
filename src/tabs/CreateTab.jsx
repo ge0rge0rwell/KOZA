@@ -75,16 +75,16 @@ const CreateTab = () => {
 
     return (
         <GalaxyContainer className="py-8">
-            <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-100/50 text-primary-700 rounded-full text-sm font-medium mb-4 border border-primary-200">
-                    <Sparkles size={16} />
-                    AI Destekli Dönüşüm Aracı
+            <div className="text-center mb-16 px-4">
+                <div className="galaxy-badge primary mb-6 group cursor-default">
+                    <Sparkles size={14} className="group-hover:rotate-12 transition-liquid" />
+                    <span>AI-Powered Metamorphosis</span>
                 </div>
-                <h1 className="text-4xl font-extrabold mb-3 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 animate-float">
-                    Deneyimini Dönüştür
+                <h1 className="text-5xl font-black mb-4 tracking-tighter italic text-shimmer">
+                    Transform Experience
                 </h1>
-                <p className="text-neutral-500 text-lg">
-                    Yaşadığın zorluğu anlat, AI ile güçlendirici bir dünyaya adım at.
+                <p className="text-neutral-500 text-lg font-medium max-w-xl mx-auto leading-relaxed">
+                    Turn your challenges into empowering stories and immersive games.
                 </p>
             </div>
 

@@ -52,13 +52,13 @@ const CommunityTab = () => {
         <GalaxyContainer className="py-8">
             <GalaxyStack spacing={8}>
                 {/* Header */}
-                <GalaxyBox className="text-center sm:text-left">
-                    <GalaxyHeading as="h1" gradient className="mb-2">
-                        Topluluk
-                    </GalaxyHeading>
-                    <GalaxyText className="text-neutral-500">
-                        Diğer kullanıcıların dönüşüm hikayelerini keşfet
-                    </GalaxyText>
+                <GalaxyBox className="text-center sm:text-left mb-6">
+                    <h1 className="text-4xl font-black mb-2 italic tracking-tighter text-shimmer">
+                        Community
+                    </h1>
+                    <p className="text-neutral-500 font-medium">
+                        Explore the transformative journeys of others.
+                    </p>
                 </GalaxyBox>
 
                 {/* Search */}

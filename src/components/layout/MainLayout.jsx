@@ -10,7 +10,14 @@ const MainLayout = ({ children }) => {
     const { notification, toasts, showOnboarding, setShowOnboarding } = useApp();
 
     return (
-        <div className="min-h-screen text-neutral-900 pb-20 overflow-x-hidden">
+        <div className="min-h-screen text-neutral-900 pb-20 overflow-x-hidden selection:bg-primary-200 selection:text-primary-900">
+            {/* Liquid Background Blobs */}
+            <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-200/30 blur-[120px] rounded-full animate-pulse-subtle" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-200/20 blur-[120px] rounded-full animate-float" />
+                <div className="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-purple-200/20 blur-[120px] rounded-full animate-morph-slow" />
+            </div>
+
             {/* Onboarding Overlay */}
             {showOnboarding && <Onboarding onComplete={() => setShowOnboarding(false)} />}
 
@@ -18,7 +25,7 @@ const MainLayout = ({ children }) => {
             <Header />
 
             {/* Main Content */}
-            <main className="pt-16">
+            <main className="relative z-10 pt-20 max-w-6xl mx-auto px-4 animate-liquid">
                 {children}
             </main>
 

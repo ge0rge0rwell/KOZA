@@ -1,35 +1,31 @@
-/* Holographic Field Input */
+/* Liquid Field Input */
 .uiverse-input-container {
     position: relative;
     width: 100%;
-    margin-bottom: 32px;
-    /* More space for the float effect */
+    margin-bottom: 28px;
 }
 
 .uiverse-input {
     width: 100%;
     padding: 12px 0;
-    /* Remove side padding for minimal look */
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.2);
-    color: #0f172a;
+    border-bottom: 1.5px solid var(--color-neutral-200);
+    color: var(--color-neutral-900);
     font-size: 16px;
     font-family: inherit;
-    transition: all 0.3s ease;
+    transition: var(--transition-liquid);
     outline: none;
     border-radius: 0;
-    /* Flat bottom border only */
 }
 
 /* Placeholder */
 .uiverse-input::placeholder {
     color: transparent;
-    /* Hide placeholder to use floating label primarily */
 }
 
 .uiverse-input:focus {
-    border-bottom-color: #9333ea;
+    border-bottom-color: var(--color-primary-500);
 }
 
 /* Floating Label */
@@ -37,48 +33,48 @@
     position: absolute;
     left: 0;
     top: 12px;
-    font-size: 16px;
-    color: #64748b;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-neutral-400);
     pointer-events: none;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition-liquid);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-/* Activate state for label (when input has value or is focused) */
-.uiverse-input:focus~.uiverse-label,
-.uiverse-input:not(:placeholder-shown)~.uiverse-label {
-    top: -12px;
-    font-size: 11px;
-    color: #d8b4fe;
-    /* Light purple */
-    text-shadow: 0 0 5px rgba(216, 180, 254, 0.5);
     letter-spacing: 0.1em;
 }
 
-/* Holographic Glow Line */
+/* Activate state for label */
+.uiverse-input:focus~.uiverse-label,
+.uiverse-input:not(:placeholder-shown)~.uiverse-label {
+    top: -14px;
+    font-size: 10px;
+    color: var(--color-primary-500);
+    font-weight: 800;
+    letter-spacing: 0.15em;
+}
+
+/* Sophisticated Bottom Line Glow */
 .input-glow {
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 2px;
+    height: 1.5px;
     width: 100%;
-    background: linear-gradient(90deg, #ff00cc, #333399, #00d4ff);
+    background: var(--color-primary-500);
     transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    transform-origin: center;
+    transition: var(--transition-liquid);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
 }
 
 .uiverse-input:focus~.input-glow {
     transform: scaleX(1);
 }
 
-/* Error State (Optional, logic handled in usage usually) */
+/* Error State */
 .uiverse-input-container.error .input-glow {
-    background: #ef4444;
+    background: var(--color-error);
 }
 
 .uiverse-input-container.error .uiverse-label {
-    color: #ef4444;
+    @apply text-error;
 }
