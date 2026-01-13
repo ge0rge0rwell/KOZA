@@ -1,27 +1,66 @@
 @reference "../../index.css";
 
+.uiverse-card-container {
+    perspective: 1200px;
+}
+
 .uiverse-card {
-    @apply liquid-glass transition-liquid rounded-3xl p-6 relative overflow-hidden;
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: var(--shadow-liquid);
+    @apply transition-liquid rounded-[40px] p-8 relative overflow-hidden;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(var(--blur-premium, 32px)) saturate(180%);
+    border: 1px solid var(--glass-border);
+
+    /* Quantum Depth - Multi-layered internal shadows */
+    box-shadow:
+        var(--shadow-liquid),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.4),
+        inset 0 10px 20px rgba(255, 255, 255, 0.2),
+        inset 0 -10px 20px rgba(0, 0, 0, 0.02),
+        inset 0 0 20px rgba(0, 122, 255, 0.01);
+
+    transform: rotateX(calc(var(--rotate-x, 0) * 1deg)) rotateY(calc(var(--rotate-y, 0) * 1deg));
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 0.1s ease-out, filter 0.5s ease-out, box-shadow 0.5s ease;
+}
+
+/* Holographic Prismatic Glint */
+.uiverse-card::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 z-10;
+    background: linear-gradient(135deg,
+            rgba(255, 0, 128, 0.1) 0%,
+            rgba(0, 255, 255, 0.1) 50%,
+            rgba(150, 0, 255, 0.1) 100%);
+    filter: blur(20px);
+    mix-blend-mode: color-dodge;
+    transform: translate(calc(var(--rotate-y, 0) * -2px), calc(var(--rotate-x, 0) * 2px));
+}
+
+.uiverse-card:hover::before {
+    @apply opacity-100;
 }
 
 .uiverse-card:hover {
-    @apply -translate-y-1;
-    background: rgba(255, 255, 255, 0.6);
-    box-shadow: var(--shadow-liquid-deep);
-    border-color: rgba(255, 255, 255, 0.8);
+    filter: url(#liquid-refraction);
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow:
+        var(--shadow-liquid-deep),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+        inset 0 20px 40px rgba(255, 255, 255, 0.3),
+        inset 0 -20px 40px rgba(0, 0, 0, 0.03);
+    border-color: var(--glass-border-bright);
 }
 
 .uiverse-card:active {
-    @apply translate-y-0 scale-[0.98];
+    @apply scale-[0.985];
 }
 
 .card-shine {
-    @apply absolute inset-0 pointer-events-none opacity-0 transition-liquid z-0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, transparent 50%, rgba(255, 255, 255, 0.2) 100%);
+    @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300 z-0;
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
+            rgba(255, 255, 255, 0.5),
+            transparent 35%);
 }
 
 .uiverse-card:hover .card-shine {
@@ -29,11 +68,12 @@
 }
 
 .card-content {
-    @apply relative z-10;
+    @apply relative z-20;
+    transform: translateZ(40px);
 }
 
 /* Internal Refraction Micro-light */
 .uiverse-card::after {
     content: '';
-    @apply absolute top-0 left-0 right-0 h-[1px] bg-white/60 z-20;
+    @apply absolute top-0 left-0 right-0 h-[1.5px] bg-white/80 z-30 shadow-[0_1px_5px_rgba(255, 255, 255, 0.5)];
 }

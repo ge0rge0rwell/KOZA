@@ -30,7 +30,8 @@ const LearnTab = () => {
             subtitle: "Modül 01",
             description: "Öfke, korku ve hayal kırıklığını anlamak ve onları yakıta dönüştürmek.",
             icon: Brain,
-            color: "primary"
+            color: "primary",
+            progress: 65
         },
         {
             id: 2,
@@ -38,7 +39,8 @@ const LearnTab = () => {
             subtitle: "Modül 02",
             description: "Siber dünyada sınırlarını çizmek ve dijital ayak izini yönetmek.",
             icon: Shield,
-            color: "success"
+            color: "success",
+            progress: 30
         },
         {
             id: 3,
@@ -46,7 +48,8 @@ const LearnTab = () => {
             subtitle: "Modül 03",
             description: "Başkalarının gözünden bakabilmek için derin dinleme teknikleri.",
             icon: Users,
-            color: "warning"
+            color: "warning",
+            progress: 0
         },
         {
             id: 4,
@@ -54,93 +57,101 @@ const LearnTab = () => {
             subtitle: "Modül 04",
             description: "Kendini doğru ifade etme ve çatışmaları barışçıl çözme rehberi.",
             icon: MessageCircle,
-            color: "error"
+            color: "error",
+            progress: 10
         }
     ];
 
     return (
-        <GalaxyContainer className="py-8">
-            <GalaxyStack spacing={8}>
-                {/* Header */}
-                <GalaxyBox className="text-center sm:text-left">
-                    <GalaxyHeading as="h1" gradient className="mb-2">
-                        Akademi
+        <GalaxyContainer className="py-12 px-6">
+            <GalaxyStack spacing={12}>
+                {/* Header Section - Airy & Modern */}
+                <header className="max-w-3xl animate-slide-up">
+                    <GalaxyHeading as="h1" className="text-4xl sm:text-6xl font-black mb-6 tracking-tighter chromatic-shimmer">
+                        Koza <span className="text-primary-500">Akademi</span>
                     </GalaxyHeading>
-                    <GalaxyText className="text-neutral-500">
-                        Dönüşüm yolculuğunda sana rehberlik edecek modüller
+                    <GalaxyText className="text-xl text-neutral-500 leading-relaxed font-medium">
+                        Dönüşüm yolculuğunda sana rehberlik edecek, modern ve etkileşimli modülleri keşfet.
                     </GalaxyText>
-                </GalaxyBox>
+                </header>
 
-                {/* Featured */}
-                <GalaxyCard
-                    title="Duygusal Rehber"
-                    subtitle="Yeni Başlayanlar İçin"
-                    emoji="🚀"
-                >
-                    <GalaxyFlex direction="column" className="md:flex-row items-center gap-8 relative z-10">
-                        <GalaxyBox className="flex-1">
-                            <GalaxyText className="text-neutral-500 mb-8 leading-relaxed max-w-lg">
-                                Zorbalık sadece bir olay değil, bir iletişim biçimi hatasıdır. Kendini ve sınırlarını korumayı öğrenmek, dönüşümün ilk adımıdır.
-                            </GalaxyText>
-                            <GalaxyButton onClick={() => console.log('Start Academy')} className="!px-10 shadow-xl shadow-primary-500/20">
-                                <PlayCircle size={20} />
-                                Akademiyi Başlat
-                            </GalaxyButton>
-                        </GalaxyBox>
-                        <GalaxyBox className="w-full md:w-80 h-auto bg-neutral-100 rounded-2xl border border-neutral-200 flex items-center justify-center shadow-lg group cursor-pointer hover:border-primary-500/50 transition-all overflow-hidden relative">
-                            <GalaxyAspectRatio ratio={16 / 9}>
-                                <div className="absolute inset-0 bg-gradient-to-br from-primary-600/10 to-purple-600/10 group-hover:opacity-100 opacity-60 transition-opacity" />
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform relative z-10">
-                                        <PlayCircle size={32} className="text-white ml-1" />
-                                    </div>
-                                </div>
-                            </GalaxyAspectRatio>
-                        </GalaxyBox>
-                    </GalaxyFlex>
+                {/* Hero / Featured Card */}
+                <GalaxyCard className="!p-0 border-none shadow-none group">
+                    <div className="relative overflow-hidden rounded-[40px] liquid-glass p-8 sm:p-12">
+                        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary-500/10 to-transparent -z-10" />
+                        <GalaxyFlex direction="column" className="lg:flex-row items-center gap-12">
+                            <div className="flex-1 space-y-6">
+                                <GalaxyTag size="lg" className="bg-primary-500 text-white border-none px-4 py-1">Öne Çıkan</GalaxyTag>
+                                <GalaxyHeading as="h2" size="3xl" className="font-bold">Duygusal Dayanıklılık</GalaxyHeading>
+                                <GalaxyText className="text-lg text-neutral-500 max-w-lg leading-relaxed font-medium">
+                                    Zorbalıkla başa çıkma ve içsel huzuru bulma konusundaki en kapsamlı rehberimiz.
+                                </GalaxyText>
+                                <GalaxyButton onClick={() => console.log('Start Academy')} className="!px-12 !py-4 text-lg">
+                                    <PlayCircle size={24} className="mr-2" />
+                                    Hemen Başla
+                                </GalaxyButton>
+                            </div>
+                            <div className="w-full lg:w-1/3 aspect-video lg:aspect-square bg-white/40 rounded-[32px] border border-white/60 flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-500 shadow-xl relative overflow-hidden">
+                                <div className="absolute inset-0 bg-primary-500/5 group-hover:bg-primary-500/10 transition-colors" />
+                                <PlayCircle size={64} className="text-primary-500 drop-shadow-lg" />
+                            </div>
+                        </GalaxyFlex>
+                    </div>
                 </GalaxyCard>
 
-                {/* Modules */}
-                <GalaxyGrid templateColumns="repeat(auto-fill, minmax(250px, 1fr))" gap={6}>
-                    {modules.map(module => {
-                        const Icon = module.icon;
-                        return (
-                            <GalaxyCard key={module.id} className="h-full flex flex-col">
-                                <GalaxyFlex justify="space-between" align="flex-start" className="mb-4">
-                                    <GalaxyFlex
-                                        align="center"
-                                        justify="center"
-                                        className={`w-12 h-12 rounded-2xl border ${module.color === 'primary' ? 'bg-primary-500/10 border-primary-500/20 text-primary-600' :
-                                            module.color === 'success' ? 'bg-green-500/10 border-green-500/20 text-green-600' :
-                                                module.color === 'warning' ? 'bg-amber-500/10 border-amber-500/20 text-amber-600' :
-                                                    'bg-red-500/10 border-red-500/20 text-red-600'
-                                            }`}
-                                    >
-                                        <Icon size={24} />
+                {/* Modules Grid */}
+                <section>
+                    <GalaxyFlex justify="space-between" align="center" className="mb-8 px-2">
+                        <GalaxyHeading as="h2" size="xl">Tüm Modüller</GalaxyHeading>
+                        <GalaxyText className="text-neutral-400 font-bold uppercase tracking-widest text-[10px]">Modül Sayısı: {modules.length}</GalaxyText>
+                    </GalaxyFlex>
+                    <GalaxyGrid templateColumns="repeat(auto-fill, minmax(300px, 1fr))" gap={8}>
+                        {modules.map((module, index) => {
+                            const Icon = module.icon;
+                            return (
+                                <GalaxyCard key={module.id} className="group hover:!border-primary-500/40 animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
+                                    <GalaxyFlex direction="column" className="h-full">
+                                        <div className="flex justify-between items-start mb-8">
+                                            <div className={`p-4 rounded-3xl ${module.color === 'primary' ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/20' :
+                                                module.color === 'success' ? 'bg-green-500 text-white' :
+                                                    module.color === 'warning' ? 'bg-amber-500 text-white' :
+                                                        'bg-red-500 text-white'
+                                                }`}>
+                                                <Icon size={28} />
+                                            </div>
+                                            <span className="text-[10px] font-black text-neutral-400 uppercase tracking-tighter">{module.subtitle}</span>
+                                        </div>
+
+                                        <GalaxyHeading as="h3" size="lg" className="mb-3 font-bold group-hover:text-primary-600 transition-colors">
+                                            {module.title}
+                                        </GalaxyHeading>
+                                        <GalaxyText className="text-neutral-500 text-sm leading-relaxed mb-8 flex-1 font-medium italic">
+                                            "{module.description}"
+                                        </GalaxyText>
+
+                                        {/* Progress Bar */}
+                                        <div className="space-y-2 mb-8">
+                                            <div className="flex justify-between text-[10px] font-bold text-neutral-400">
+                                                <span>İLERLEME</span>
+                                                <span>{module.progress}%</span>
+                                            </div>
+                                            <div className="h-1.5 w-full bg-neutral-200/50 rounded-full overflow-hidden">
+                                                <div
+                                                    className="h-full bg-primary-500 rounded-full transition-all duration-1000"
+                                                    style={{ width: `${module.progress}%` }}
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <GalaxyButton variant="secondary" className="w-full !rounded-2xl group-hover:bg-primary-500 group-hover:text-white group-hover:border-primary-500 transition-all">
+                                            İncele
+                                        </GalaxyButton>
                                     </GalaxyFlex>
-                                    <GalaxyTag size="sm" variant="outline" className="text-[10px]">
-                                        <GalaxyTagLabel>{module.subtitle}</GalaxyTagLabel>
-                                    </GalaxyTag>
-                                </GalaxyFlex>
-
-                                <GalaxyHeading as="h3" size="lg" className="text-neutral-900 mb-2">
-                                    {module.title}
-                                </GalaxyHeading>
-                                <GalaxyText size="sm" className="text-neutral-500 leading-relaxed mb-6 flex-1">
-                                    {module.description}
-                                </GalaxyText>
-
-                                <GalaxyButton
-                                    className="w-full !py-2 !text-xs uppercase tracking-wider"
-                                    variant="secondary"
-                                    onClick={() => { }}
-                                >
-                                    Modüle Git
-                                </GalaxyButton>
-                            </GalaxyCard>
-                        );
-                    })}
-                </GalaxyGrid>
+                                </GalaxyCard>
+                            );
+                        })}
+                    </GalaxyGrid>
+                </section>
             </GalaxyStack>
         </GalaxyContainer>
     );

@@ -2,9 +2,9 @@
 
 .uiverse-button {
     @apply transition-liquid relative overflow-hidden;
-    padding: 10px 24px;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 122, 255, 0.1);
+    padding: 12px 28px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     background: var(--color-primary-500);
     color: white;
     font-size: 14px;
@@ -21,18 +21,19 @@
 .uiverse-button:hover {
     @apply -translate-y-0.5;
     background: var(--color-primary-600);
-    box-shadow: 0 6px 16px rgba(0, 122, 255, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 122, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .uiverse-button:active {
-    @apply translate-y-0.5 scale-[0.97];
+    @apply scale-[0.97] translate-y-0;
 }
 
 /* Secondary / Glass Variant */
 .uiverse-button.secondary {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--glass-border);
     color: var(--color-neutral-900);
     box-shadow: var(--shadow-liquid);
 }
@@ -40,15 +41,28 @@
 .uiverse-button.secondary:hover {
     background: rgba(255, 255, 255, 0.8);
     box-shadow: var(--shadow-liquid-deep);
+    border-color: var(--glass-border-bright);
 }
 
-/* Morphing micro-animation for the shape */
-.uiverse-button {
-    border-radius: 12px;
+/* Ripples */
+.ripples {
+    @apply absolute inset-0 pointer-events-none;
 }
 
-.uiverse-button:hover {
-    border-radius: 10px 14px 11px 15px;
+.ripple {
+    @apply absolute rounded-full bg-white/30 scale-0;
+    animation: ripple-animation 0.6s ease-out;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+.uiverse-button.secondary .ripple {
+    @apply bg-primary-500/20;
 }
 
 .uiverse-button:disabled {

@@ -49,119 +49,97 @@ const CommunityTab = () => {
     });
 
     return (
-        <GalaxyContainer className="py-8">
-            <GalaxyStack spacing={8}>
-                {/* Header */}
-                <GalaxyBox className="text-center sm:text-left mb-6">
-                    <h1 className="text-4xl font-black mb-2 italic tracking-tighter text-shimmer">
-                        Community
-                    </h1>
-                    <p className="text-neutral-500 font-medium">
-                        Explore the transformative journeys of others.
-                    </p>
-                </GalaxyBox>
+        <GalaxyContainer className="py-12 px-6">
+            <GalaxyStack spacing={12}>
+                {/* Header Section */}
+                <header className="max-w-3xl animate-slide-up">
+                    <GalaxyHeading as="h1" className="text-4xl sm:text-6xl font-black mb-6 tracking-tighter chromatic-shimmer">
+                        Topluluk <span className="text-primary-500">Galerisi</span>
+                    </GalaxyHeading>
+                    <GalaxyText className="text-xl text-neutral-500 leading-relaxed font-medium">
+                        Başkalarının dönüşüm yolculuklarına tanıklık et, ilham al ve paylaş.
+                    </GalaxyText>
+                </header>
 
-                {/* Search */}
-                <GalaxyInputGroup>
-                    <GalaxyInputLeftElement>
-                        <Search size={20} />
-                    </GalaxyInputLeftElement>
-                    <GalaxyInput
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        placeholder="Hikaye veya oyun ara..."
-                        className="pl-10"
-                    />
-                </GalaxyInputGroup>
-
-                {/* Filter */}
-                <GalaxyFlex gap={3} className="overflow-x-auto pb-2 scrollbar-none items-center">
-                    <GalaxyTag
-                        size="md"
-                        variant={filter === 'all' ? 'solid' : 'subtle'}
-                        onClick={() => setFilter('all')}
-                        className="cursor-pointer hover:opacity-80"
-                    >
-                        <GalaxyTagLabel>Hepsi</GalaxyTagLabel>
-                    </GalaxyTag>
-
-                    <GalaxyTag
-                        size="md"
-                        variant={filter === 'story' ? 'solid' : 'subtle'}
-                        onClick={() => setFilter('story')}
-                        className="cursor-pointer hover:opacity-80"
-                    >
-                        <GalaxyTagLeftIcon as={BookOpen} />
-                        <GalaxyTagLabel>Hikayeler</GalaxyTagLabel>
-                    </GalaxyTag>
-
-                    <GalaxyTag
-                        size="md"
-                        variant={filter === 'game' ? 'solid' : 'subtle'}
-                        onClick={() => setFilter('game')}
-                        className="cursor-pointer hover:opacity-80"
-                    >
-                        <GalaxyTagLeftIcon as={Gamepad2} />
-                        <GalaxyTagLabel>Oyunlar</GalaxyTagLabel>
-                    </GalaxyTag>
+                {/* Controls Section */}
+                <GalaxyFlex direction="column" className="md:flex-row gap-6 items-center">
+                    <div className="flex-1 w-full">
+                        <GalaxyInput
+                            label="Hikaye veya oyun ara..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                    </div>
+                    <GalaxyFlex gap={2} className="w-full md:w-auto overflow-x-auto pb-2 scrollbar-none">
+                        {['all', 'story', 'game'].map((f) => (
+                            <button
+                                key={f}
+                                onClick={() => setFilter(f)}
+                                className={`px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all ${filter === f
+                                    ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/20'
+                                    : 'bg-white/40 border border-white/60 text-neutral-500 hover:bg-white/60'
+                                    }`}
+                            >
+                                {f === 'all' ? 'Hepsi' : f === 'story' ? 'Hikayeler' : 'Oyunlar'}
+                            </button>
+                        ))}
+                    </GalaxyFlex>
                 </GalaxyFlex>
 
-                {/* Works Grid */}
+                {/* Grid */}
                 {filteredWorks.length === 0 ? (
-                    <GalaxyEmptyState
-                        icon={BookOpen}
-                        title="Sonuç bulunamadı"
-                        description="Aradığınız kriterlere uygun bir içerik yok."
-                    />
+                    <GalaxyCard className="py-32 flex flex-center">
+                        <GalaxyEmptyState
+                            icon={BookOpen}
+                            title="İçerik Bulunamadı"
+                            description="Aramana uygun harika şeyler henüz burada değil."
+                        />
+                    </GalaxyCard>
                 ) : (
-                    <GalaxyGrid templateColumns="repeat(auto-fill, minmax(280px, 1fr))" gap={6}>
-                        {filteredWorks.map(work => (
-                            <GalaxyCard
-                                key={work.id}
-                                title={work.title}
-                                subtitle={
-                                    <GalaxyFlex align="center" gap={2} className="mt-1">
-                                        <GalaxyTag size="sm" variant="outline" className="text-[10px] h-5">
-                                            <GalaxyTagLabel>{work.category}</GalaxyTagLabel>
+                    <GalaxyGrid templateColumns="repeat(auto-fill, minmax(320px, 1fr))" gap={10}>
+                        {filteredWorks.map((work, index) => (
+                            <GalaxyCard key={work.id} className="animate-slide-up group" style={{ animationDelay: `${index * 50}ms` }}>
+                                <GalaxyFlex direction="column" className="h-full">
+                                    <div className="flex justify-between items-start mb-6">
+                                        <div className="text-4xl">{work.type === 'story' ? '📖' : '🎮'}</div>
+                                        <GalaxyTag size="sm" className="bg-primary-500/10 text-primary-600 border-none font-bold uppercase tracking-tighter text-[9px]">
+                                            {work.category}
                                         </GalaxyTag>
-                                    </GalaxyFlex>
-                                }
-                                emoji={work.type === 'story' ? '📖' : '🎮'}
-                            >
-                                <GalaxyFlex align="center" gap={3} className="mb-4 -mt-1">
-                                    <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-purple-500 to-blue-500 flex items-center justify-center text-[10px] font-bold text-white uppercase">
-                                        {work.author[0]}
                                     </div>
-                                    <span className="text-xs font-bold text-neutral-500 uppercase tracking-wider">
-                                        {work.author}
-                                    </span>
-                                </GalaxyFlex>
 
-                                <GalaxyText size="sm" className="text-neutral-600 mb-6 line-clamp-3 leading-relaxed opacity-80">
-                                    {work.preview}
-                                </GalaxyText>
+                                    <GalaxyHeading as="h3" size="lg" className="mb-2 font-bold group-hover:text-primary-600 transition-colors">
+                                        {work.title}
+                                    </GalaxyHeading>
 
-                                <GalaxyFlex align="center" justify="space-between" className="pt-4 border-t border-primary-500/10">
-                                    <GalaxyFlex align="center" gap={4} className="text-sm text-neutral-500">
-                                        <span className="flex items-center gap-1.5 hover:text-primary-600 transition-colors cursor-pointer group">
-                                            <Eye size={16} className="group-hover:text-primary-500 transition-colors" />
-                                            {work.views}
-                                        </span>
-                                        <button
-                                            onClick={() => awardXP(10, 'Topluluk desteği')}
-                                            className="flex items-center gap-1.5 hover:text-red-500 transition-all hover:scale-110 group"
-                                        >
-                                            <Heart size={16} className="group-hover:fill-red-500 transition-colors" />
-                                            {work.likes}
-                                        </button>
-                                    </GalaxyFlex>
-                                    <GalaxyButton
-                                        className="!py-1.5 !px-4 !text-[11px] uppercase tracking-wide"
-                                        onClick={() => { }}
-                                        variant="secondary"
-                                    >
-                                        Görüntüle
-                                    </GalaxyButton>
+                                    <div className="flex items-center gap-2 mb-6">
+                                        <div className="w-5 h-5 rounded-full bg-primary-100 flex items-center justify-center text-[8px] font-black text-primary-700">
+                                            {work.author[0]}
+                                        </div>
+                                        <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest">{work.author}</span>
+                                    </div>
+
+                                    <GalaxyText className="text-neutral-500 text-sm leading-relaxed mb-10 flex-1 line-clamp-3 font-medium">
+                                        {work.preview}
+                                    </GalaxyText>
+
+                                    <div className="flex items-center justify-between pt-6 border-t border-neutral-100">
+                                        <div className="flex items-center gap-6">
+                                            <span className="flex items-center gap-2 text-xs font-bold text-neutral-400">
+                                                <Eye size={14} className="text-primary-400" />
+                                                {work.views}
+                                            </span>
+                                            <button
+                                                onClick={() => awardXP(10, 'Destek')}
+                                                className="flex items-center gap-2 text-xs font-bold text-neutral-400 hover:text-red-500 transition-colors group/heart"
+                                            >
+                                                <Heart size={14} className="group-hover/heart:fill-red-500" />
+                                                {work.likes}
+                                            </button>
+                                        </div>
+                                        <GalaxyButton variant="secondary" className="!px-6 !py-2 !text-[10px] !rounded-xl">
+                                            Keşfet
+                                        </GalaxyButton>
+                                    </div>
                                 </GalaxyFlex>
                             </GalaxyCard>
                         ))}

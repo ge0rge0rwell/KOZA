@@ -6,6 +6,11 @@ import Header from './Header';
 import GalaxyBottomNav from '../galaxy/GalaxyBottomNav';
 import GalaxyFab from '../galaxy/GalaxyFab';
 import { Home, Users, Book, Search, User, Plus } from 'lucide-react';
+import MorphCursor from '../optics/MorphCursor';
+import LiquidOptics from '../optics/LiquidOptics';
+import LiquidHUD from '../optics/LiquidHUD';
+import FluidBackground from '../optics/FluidBackground';
+import SynapseLayer from '../optics/SynapseLayer';
 
 const MainLayout = ({ children }) => {
     const {
@@ -17,6 +22,25 @@ const MainLayout = ({ children }) => {
         showOnboarding,
         setShowOnboarding
     } = useApp();
+
+    const [velocity, setVelocity] = useState(0);
+    const lastMousePos = useRef({ x: 0, y: 0 });
+
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            const dx = e.clientX - lastMousePos.current.x;
+            const dy = e.clientY - lastMousePos.current.y;
+            const v = Math.min(Math.hypot(dx, dy) / 20, 5); // Max aberration factor
+            setVelocity(v);
+            lastMousePos.current = { x: e.clientX, y: e.clientY };
+
+            // Decelerate velocity
+            const timer = setTimeout(() => setVelocity(0), 100);
+            return () => clearTimeout(timer);
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
 
     const navItems = [
         { id: 'create', label: 'Keşfet', icon: <Home size={20} />, dot: true },
@@ -35,12 +59,41 @@ const MainLayout = ({ children }) => {
     };
 
     return (
-        <div className="min-h-screen text-neutral-900 pb-20 overflow-x-hidden selection:bg-primary-200 selection:text-primary-900">
-            {/* Liquid Background Blobs */}
-            <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-200/30 blur-[120px] rounded-full animate-pulse-subtle" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-200/20 blur-[120px] rounded-full animate-float" />
-                <div className="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-purple-200/20 blur-[120px] rounded-full animate-morph-slow" />
+        <div
+            className="min-h-screen text-neutral-900 pb-20 overflow-x-hidden selection:bg-primary-200 selection:text-primary-900 transition-all duration-300"
+            style={{
+                filter: `contrast(${100 + velocity}%) saturate(${100 + velocity * 2}%)`,
+            }}
+        >
+            <MorphCursor />
+            <LiquidOptics />
+            <LiquidHUD />
+            <FluidBackground />
+            <SynapseLayer />
+
+            {/* Volumetric Parallax Planes */}
+            <div className="fixed inset-0 pointer-events-none z-[10001] overflow-hidden">
+                {/* Plane 1: Deep Grain */}
+                <div className="absolute inset-x-[-10%] inset-y-[-10%] w-[120%] h-[120%] grain-texture opacity-[0.05]"
+                    style={{ transform: 'translate3d(calc(var(--mouse-x) * -0.01), calc(var(--mouse-y) * -0.01), 0)' }}
+                />
+
+                {/* Atmospheric Singularity Flares */}
+                <div className="absolute top-0 right-0 w-[80%] h-full bg-gradient-to-l from-primary-500/5 to-transparent skew-x-[-20%] pointer-events-none animate-pulse-slow"
+                    style={{ transform: `translate3d(calc(var(--mouse-x) * 0.05), 0, 0)` }}
+                />
+                <div className="absolute bottom-0 left-0 w-[50%] h-[60%] bg-blue-400/5 blur-[160px] rounded-full"
+                    style={{ transform: `translate3d(calc(var(--mouse-x) * -0.02), calc(var(--mouse-y) * -0.02), 0)` }}
+                />
+
+                {/* Plane 2: Light Leak 1 */}
+                <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-blue-400/5 blur-[120px] rounded-full animate-float"
+                    style={{ transform: 'translate3d(calc(var(--mouse-x) * 0.02), calc(var(--mouse-y) * 0.02), 0)' }}
+                />
+                {/* Plane 3: Primary Glow Pulse */}
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary-500/5 blur-[150px] rounded-full animate-pulse"
+                    style={{ transform: 'translate3d(calc(var(--mouse-x) * -0.03), calc(var(--mouse-y) * -0.03), 0)' }}
+                />
             </div>
 
             {/* Onboarding Overlay */}

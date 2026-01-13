@@ -2,81 +2,41 @@
 
 /* Liquid Field Input */
 .uiverse-input-container {
-    position: relative;
-    width: 100%;
-    margin-bottom: 28px;
+    @apply relative w-full mb-8 pt-4;
 }
 
 .uiverse-input {
-    width: 100%;
-    padding: 12px 0;
-    background: transparent;
-    border: none;
-    border-bottom: 1.5px solid var(--color-neutral-200);
-    color: var(--color-neutral-900);
-    font-size: 16px;
-    font-family: inherit;
-    transition: var(--transition-liquid);
-    outline: none;
-    border-radius: 0;
-}
-
-/* Placeholder */
-.uiverse-input::placeholder {
-    color: transparent;
-}
-
-.uiverse-input:focus {
-    border-bottom-color: var(--color-primary-500);
+    @apply w-full px-4 py-4 bg-white/20 backdrop-blur-xl rounded-2xl border border-white/40;
+    @apply transition-liquid text-neutral-900 focus:outline-none focus:border-primary-500/50 focus:bg-white/40;
+    @apply shadow-liquid font-medium;
 }
 
 /* Floating Label */
 .uiverse-label {
-    position: absolute;
-    left: 0;
-    top: 12px;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--color-neutral-400);
-    pointer-events: none;
-    transition: var(--transition-liquid);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    @apply absolute left-4 top-[28px] pointer-events-none transition-liquid;
+    @apply text-neutral-400 text-sm font-semibold uppercase tracking-wider;
 }
 
-/* Activate state for label */
-.uiverse-input:focus~.uiverse-label,
-.uiverse-input:not(:placeholder-shown)~.uiverse-label {
-    top: -14px;
-    font-size: 10px;
-    color: var(--color-primary-500);
-    font-weight: 800;
-    letter-spacing: 0.15em;
+.uiverse-input:focus+.uiverse-label,
+.uiverse-input:not(:placeholder-shown)+.uiverse-label {
+    @apply -top-1 left-2 text-[10px] font-black bg-white/80 px-2 rounded-lg text-primary-600 border border-white/50 shadow-sm opacity-100;
 }
 
 /* Sophisticated Bottom Line Glow */
 .input-glow {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 1.5px;
-    width: 100%;
-    background: var(--color-primary-500);
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: var(--transition-liquid);
-    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+    @apply absolute inset-[-1px] rounded-[17px] opacity-0 transition-opacity duration-500 -z-10;
+    background: linear-gradient(135deg, var(--color-primary-400), var(--color-primary-600));
 }
 
 .uiverse-input:focus~.input-glow {
-    transform: scaleX(1);
+    @apply opacity-30;
 }
 
 /* Error State */
-.uiverse-input-container.error .input-glow {
-    background: var(--color-error);
+.uiverse-input-container.error .uiverse-input {
+    @apply border-red-500/50 bg-red-500/5;
 }
 
 .uiverse-input-container.error .uiverse-label {
-    @apply text-error;
+    @apply text-red-600;
 }

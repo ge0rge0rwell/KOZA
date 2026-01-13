@@ -53,192 +53,134 @@ const ProfileTab = () => {
     }, [user.totalXP]);
 
     const unlockedAchievements = ACHIEVEMENTS.filter(a => user.achievements?.includes(a.id));
-    const lockedAchievements = ACHIEVEMENTS.filter(a => !user.achievements?.includes(a.id));
-
-    const stats = {
-        storiesCreated: user.storiesCreated || 0,
-        gamesCreated: user.gamesCreated || 0,
-        level: user.level,
-        totalXP: user.totalXP || user.xp,
-        dailyStreak: user.dailyStreak || 0
-    };
 
     return (
-        <GalaxyBox className="max-w-6xl mx-auto px-4 py-8 pb-32">
+        <GalaxyContainer className="py-12 px-6">
             <MilestoneNotification previousOz={previousOz} currentOz={user.totalXP} />
+            <GalaxyStack spacing={12}>
 
-            <GalaxyStack spacing={6}>
-                {/* Cocoon Transformation Display */}
-                <GalaxyCard title="Dönüşüm Yolculuğun" subtitle="Her ÖZ ile kelebeğe yaklaşıyorsun" emoji="🦋">
-                    <GalaxyBox style={{ minHeight: '600px', position: 'relative' }}>
-                        <CocoonStage totalOz={user.totalXP} />
-                    </GalaxyBox>
+                {/* Profile Header & Cocoon */}
+                <header className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div className="space-y-8 animate-slide-up">
+                        <div className="space-y-2">
+                            <GalaxyTag className="bg-primary-500 text-white font-black px-4 py-1 border-none">SEVİYE {user.level}</GalaxyTag>
+                            <GalaxyHeading as="h1" className="text-5xl sm:text-7xl font-black tracking-tighter italic">
+                                {user.displayName || 'Gezgin'}
+                            </GalaxyHeading>
+                            <GalaxyText className="text-xl text-neutral-400 font-bold uppercase tracking-[0.2em]">{user.title || 'Dönüşüm Yolcusu'}</GalaxyText>
+                        </div>
 
-                    <GalaxyFlex justify="center" className="mt-8">
-                        <GalaxyFlex align="center" gap={6} className="px-8 py-4 bg-gradient-to-r from-primary-500/10 to-purple-500/10 rounded-full border border-primary-500/20 backdrop-blur-sm">
-                            <GalaxyStat className="items-center">
-                                <GalaxyStatLabel>Toplam ÖZ</GalaxyStatLabel>
-                                <GalaxyStatNumber gradient>{user.totalXP}</GalaxyStatNumber>
-                            </GalaxyStat>
+                        <div className="space-y-4">
+                            <div className="flex justify-between items-end">
+                                <GalaxyText className="font-black text-neutral-400 text-[10px] tracking-widest uppercase">Gelişim İlerlemesi</GalaxyText>
+                                <GalaxyText className="font-black text-primary-500">{Math.round(progressPercent)}%</GalaxyText>
+                            </div>
+                            <div className="h-2 w-full bg-neutral-200/50 rounded-full overflow-hidden">
+                                <div className="h-full bg-primary-500 rounded-full transition-all duration-1000 shadow-[0_0_20px_rgba(0,122,255,0.4)]" style={{ width: `${progressPercent}%` }} />
+                            </div>
+                        </div>
 
-                            {ozToNextStage > 0 && (
-                                <>
-                                    <GalaxyDivider orientation="vertical" className="h-10 border-neutral-200" />
-                                    <GalaxyStat className="items-center">
-                                        <GalaxyStatLabel>Sonraki Aşamaya</GalaxyStatLabel>
-                                        <GalaxyStatNumber className="!text-xl !text-neutral-700">{ozToNextStage} ÖZ</GalaxyStatNumber>
-                                    </GalaxyStat>
-                                </>
-                            )}
-                        </GalaxyFlex>
-                    </GalaxyFlex>
-                </GalaxyCard>
-
-                {/* Stats Card */}
-                <GalaxyCard title={user.level.toString()} subtitle={user.title} emoji="📈">
-                    <GalaxyFlex justify="space-between" align="center" className="mb-6 -mt-4">
-                        <GalaxyBox className="ml-auto text-right">
-                            <GalaxyText size="sm" className="text-neutral-400 mb-1">İlerleme</GalaxyText>
-                            <GalaxyText size="2xl" className="font-semibold text-primary-600">
-                                {user.xp} / {user.nextLevelXp} ÖZ
-                            </GalaxyText>
-                        </GalaxyBox>
-                    </GalaxyFlex>
-
-                    {/* Custom Linear Progress (using div for now as GalaxyProgressCircle is circular) */}
-                    <div className="h-3 bg-neutral-100 rounded-full overflow-hidden mb-8 border border-neutral-200 shadow-inner">
-                        <div
-                            className="h-full bg-gradient-to-r from-primary-500 to-purple-600 transition-all duration-500 shadow-[0_0_10px_rgba(147,51,234,0.2)]"
-                            style={{ width: `${progressPercent}%` }}
-                        />
+                        <GalaxyGrid templateColumns="repeat(3, 1fr)" gap={4}>
+                            <div className="liquid-glass p-6 rounded-[32px] text-center border-none">
+                                <GalaxyText className="text-2xl font-black text-primary-500 mb-1">{user.totalXP}</GalaxyText>
+                                <GalaxyText className="text-[9px] font-black text-neutral-400 uppercase tracking-tighter">Toplam ÖZ</GalaxyText>
+                            </div>
+                            <div className="liquid-glass p-6 rounded-[32px] text-center border-none">
+                                <GalaxyText className="text-2xl font-black text-neutral-900 mb-1">{savedStories.length}</GalaxyText>
+                                <GalaxyText className="text-[9px] font-black text-neutral-400 uppercase tracking-tighter">Eser</GalaxyText>
+                            </div>
+                            <div className="liquid-glass p-6 rounded-[32px] text-center border-none">
+                                <GalaxyText className="text-2xl font-black text-neutral-900 mb-1">{unlockedAchievements.length}</GalaxyText>
+                                <GalaxyText className="text-[9px] font-black text-neutral-400 uppercase tracking-tighter">Başarı</GalaxyText>
+                            </div>
+                        </GalaxyGrid>
                     </div>
 
-                    <GalaxyStatGroup>
-                        <GalaxyStat className="p-4 bg-neutral-50 rounded-xl border border-neutral-200 text-center">
-                            <GalaxyStatNumber className="!text-2xl text-neutral-900">{stats.storiesCreated}</GalaxyStatNumber>
-                            <GalaxyStatLabel>Hikaye</GalaxyStatLabel>
-                        </GalaxyStat>
-                        <GalaxyStat className="p-4 bg-neutral-50 rounded-xl border border-neutral-200 text-center">
-                            <GalaxyStatNumber className="!text-2xl text-neutral-900">{stats.gamesCreated}</GalaxyStatNumber>
-                            <GalaxyStatLabel>Oyun</GalaxyStatLabel>
-                        </GalaxyStat>
-                        <GalaxyStat className="p-4 bg-neutral-50 rounded-xl border border-neutral-200 text-center">
-                            <GalaxyStatNumber className="!text-2xl text-neutral-900">{stats.totalXP}</GalaxyStatNumber>
-                            <GalaxyStatLabel>Toplam ÖZ</GalaxyStatLabel>
-                        </GalaxyStat>
-                        <GalaxyStat className="p-4 bg-neutral-50 rounded-xl border border-neutral-200 text-center">
-                            <GalaxyStatNumber className="!text-2xl text-neutral-900">{stats.dailyStreak}</GalaxyStatNumber>
-                            <GalaxyStatLabel>Gün Serisi</GalaxyStatLabel>
-                        </GalaxyStat>
-                    </GalaxyStatGroup>
-                </GalaxyCard>
+                    <div className="relative aspect-square lg:aspect-auto lg:h-[600px] animate-fade-in delay-300">
+                        <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/5 to-transparent rounded-[80px]" />
+                        <CocoonStage totalOz={user.totalXP} />
+                        {ozToNextStage > 0 && (
+                            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 px-8 py-3 liquid-glass rounded-full border-white/60 text-[10px] font-black text-neutral-500 uppercase tracking-widest whitespace-nowrap shadow-xl">
+                                Bir sonraki evre için <span className="text-primary-500">{ozToNextStage} ÖZ</span> kaldı
+                            </div>
+                        )}
+                    </div>
+                </header>
 
-                {/* Achievements */}
-                <GalaxyCard title="Başarılar" subtitle={`(${unlockedAchievements.length} / ${ACHIEVEMENTS.length})`} emoji="🏆">
-                    {/* Unlocked */}
-                    {unlockedAchievements.length > 0 && (
-                        <GalaxyBox className="mb-8">
-                            <GalaxyText size="sm" className="font-medium text-neutral-500 mb-3">Kazanıldı</GalaxyText>
-                            <GalaxyGrid templateColumns="repeat(auto-fill, minmax(140px, 1fr))" gap={3}>
-                                {unlockedAchievements.map(achievement => (
-                                    <GalaxyBox
-                                        key={achievement.id}
-                                        className="p-4 rounded-xl border border-primary-500/30 bg-primary-500/5 backdrop-blur-sm"
-                                    >
-                                        <div className="text-3xl mb-2">{achievement.icon}</div>
-                                        <GalaxyText className="font-semibold text-sm mb-1 text-neutral-900">{achievement.name}</GalaxyText>
-                                        <GalaxyText className="text-xs text-neutral-500 mb-2 line-clamp-2">{achievement.description}</GalaxyText>
-                                        <GalaxyText className="text-xs font-medium text-primary-600">+{achievement.xp} ÖZ</GalaxyText>
-                                    </GalaxyBox>
+                <GalaxyDivider className="opacity-10" />
+
+                {/* Achievements & Creations */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    {/* Achievements Sidebar */}
+                    <section className="lg:col-span-1 space-y-8">
+                        <GalaxyHeading as="h2" size="xl" className="font-bold flex items-center gap-3">
+                            <Star className="text-amber-500 fill-amber-500" size={24} />
+                            Başarılar
+                        </GalaxyHeading>
+                        <div className="space-y-4">
+                            {unlockedAchievements.slice(0, 5).map((achievement) => (
+                                <div key={achievement.id} className="p-4 liquid-glass rounded-[24px] flex items-center gap-4 group hover:border-primary-500/40 transition-all border-none">
+                                    <div className="text-3xl transition-transform group-hover:scale-110">{achievement.icon}</div>
+                                    <div>
+                                        <GalaxyText className="font-bold text-neutral-900 text-sm">{achievement.name}</GalaxyText>
+                                        <GalaxyText className="text-[10px] text-neutral-500 italic">+{achievement.xp} ÖZ Kazandın</GalaxyText>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Creations Section */}
+                    <section className="lg:col-span-2 space-y-8">
+                        <GalaxyHeading as="h2" size="xl" className="font-bold flex items-center gap-3">
+                            <BookOpen className="text-primary-500" size={24} />
+                            Eserlerin
+                        </GalaxyHeading>
+                        {savedStories.length === 0 ? (
+                            <GalaxyCard className="py-20 text-center border-none bg-neutral-50">
+                                <GalaxyEmptyState icon={BookOpen} title="Henüz Eser Yok" description="Dönüştür sayfasından ilk hikayeni oluştur." />
+                            </GalaxyCard>
+                        ) : (
+                            <GalaxyGrid templateColumns="repeat(auto-fill, minmax(280px, 1fr))" gap={6}>
+                                {savedStories.map((story) => (
+                                    <GalaxyCard key={story.id} className="group hover:!border-primary-500/40 animate-slide-up">
+                                        <GalaxyFlex direction="column" className="h-full">
+                                            <div className="flex justify-between items-start mb-6">
+                                                <div className="text-3xl">{story.type === 'story' ? '📖' : '🎮'}</div>
+                                                <button
+                                                    onClick={(e) => { e.stopPropagation(); deleteStory(story.id); }}
+                                                    className="p-2 text-neutral-300 hover:text-red-500 transition-colors"
+                                                >
+                                                    <Trash2 size={16} />
+                                                </button>
+                                            </div>
+                                            <GalaxyHeading as="h3" size="md" className="mb-4 font-bold group-hover:text-primary-600 transition-colors">
+                                                {story.title}
+                                            </GalaxyHeading>
+                                            <div className="flex-1">
+                                                <GalaxyText className="text-[11px] text-neutral-400 font-bold uppercase mb-2">
+                                                    {new Date(story.createdAt).toLocaleDateString('tr-TR')}
+                                                </GalaxyText>
+                                                <GalaxyText className="text-xs text-neutral-500 line-clamp-3 italic mb-8">
+                                                    "{story.content}"
+                                                </GalaxyText>
+                                            </div>
+                                            <GalaxyButton
+                                                variant="secondary"
+                                                className="w-full !rounded-xl !text-[10px]"
+                                                onClick={() => setCurrentView({ type: story.type, data: story })}
+                                            >
+                                                Görüntüle
+                                            </GalaxyButton>
+                                        </GalaxyFlex>
+                                    </GalaxyCard>
                                 ))}
                             </GalaxyGrid>
-                        </GalaxyBox>
-                    )}
-
-                    {/* Locked */}
-                    {lockedAchievements.length > 0 && (
-                        <GalaxyBox>
-                            <GalaxyText size="sm" className="font-medium text-neutral-500 mb-3">Kilitli</GalaxyText>
-                            <GalaxyGrid templateColumns="repeat(auto-fill, minmax(140px, 1fr))" gap={3}>
-                                {lockedAchievements.map(achievement => {
-                                    const progress = getAchievementProgress(achievement.id, stats);
-                                    return (
-                                        <GalaxyBox
-                                            key={achievement.id}
-                                            className="p-4 rounded-xl border border-neutral-200 bg-neutral-100 relative overflow-hidden"
-                                        >
-                                            <div className="absolute inset-y-0 left-0 bg-primary-500 opacity-10" style={{ width: `${progress}%` }} />
-                                            <div className="relative">
-                                                <div className="text-3xl mb-2 opacity-30 grayscale">{achievement.icon}</div>
-                                                <GalaxyText className="font-semibold text-sm mb-1 flex items-center gap-1 text-neutral-700">
-                                                    <Lock size={12} />
-                                                    {achievement.name}
-                                                </GalaxyText>
-                                                <GalaxyText className="text-xs text-neutral-500 mb-2 line-clamp-2">{achievement.description}</GalaxyText>
-                                                <GalaxyFlex justify="space-between">
-                                                    <GalaxyText className="text-xs font-medium text-neutral-500">+{achievement.xp} ÖZ</GalaxyText>
-                                                    <GalaxyText className="text-xs font-medium text-primary-400">{Math.round(progress)}%</GalaxyText>
-                                                </GalaxyFlex>
-                                            </div>
-                                        </GalaxyBox>
-                                    );
-                                })}
-                            </GalaxyGrid>
-                        </GalaxyBox>
-                    )}
-                </GalaxyCard>
-
-                {/* Saved Stories */}
-                <GalaxyCard title="Hikayelerim" subtitle={`(${savedStories.length})`} emoji="📚">
-                    {savedStories.length === 0 ? (
-                        <GalaxyEmptyState
-                            icon={BookOpen}
-                            title="Hikaye Yok"
-                            description="Henüz bir hikaye oluşturmadın."
-                            className="bg-transparent border-none py-12"
-                        />
-                    ) : (
-                        <GalaxyList spacing={3}>
-                            {savedStories.map(story => (
-                                <GalaxyListItem
-                                    key={story.id}
-                                    className="p-4 rounded-xl bg-neutral-50 border border-neutral-200 hover:bg-neutral-100 transition-colors cursor-pointer group"
-                                    onClick={() => setCurrentView({ type: story.type, data: story })}
-                                >
-                                    <GalaxyFlex justify="space-between" align="center">
-                                        <GalaxyFlex align="center" gap={4}>
-                                            <div className="p-2 rounded-lg bg-neutral-100 text-primary-600">
-                                                {story.type === 'story' ? <BookOpen size={20} /> : <Gamepad2 size={20} />}
-                                            </div>
-                                            <div>
-                                                <GalaxyText className="font-medium text-neutral-600 group-hover:text-primary-400 transition-colors">
-                                                    {story.title}
-                                                </GalaxyText>
-                                                <GalaxyFlex align="center" gap={2} className="text-xs text-neutral-500 mt-1">
-                                                    <span>{new Date(story.createdAt).toLocaleDateString('tr-TR')}</span>
-                                                    <span className="w-1 h-1 rounded-full bg-neutral-600" />
-                                                    <span className="truncate max-w-[200px]">{story.content}</span>
-                                                </GalaxyFlex>
-                                            </div>
-                                        </GalaxyFlex>
-
-                                        <button
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                deleteStory(story.id);
-                                            }}
-                                            className="p-2 text-neutral-400 hover:text-red-500 hover:bg-red-500/10 rounded-full transition-colors opacity-0 group-hover:opacity-100"
-                                        >
-                                            <Trash2 size={18} />
-                                        </button>
-                                    </GalaxyFlex>
-                                </GalaxyListItem>
-                            ))}
-                        </GalaxyList>
-                    )}
-                </GalaxyCard>
+                        )}
+                    </section>
+                </div>
             </GalaxyStack>
-        </GalaxyBox>
+        </GalaxyContainer>
     );
 };
 

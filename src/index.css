@@ -8,9 +8,24 @@
         @apply border-neutral-200/60 transition-colors duration-300;
     }
 
+    .uiverse-card,
+    .liquid-glass {
+        @apply biometric-breathing;
+    }
+
     body {
-        @apply font-sans antialiased text-neutral-900 overflow-x-hidden;
+        @apply font-sans antialiased text-neutral-900 overflow-x-hidden selection:bg-primary-100 selection:text-primary-900;
         background-color: #f5f5f7;
+        letter-spacing: -0.01em;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply tracking-tight font-bold;
     }
 }
 
@@ -28,24 +43,24 @@
 @keyframes slide-up {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(20px) scale(0.95);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
 @keyframes slide-down {
     from {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(-20px) scale(0.95);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -72,15 +87,15 @@
 }
 
 .animate-fade-in {
-    animation: fade-in 0.2s ease-out;
+    animation: fade-in 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .animate-slide-up {
-    animation: slide-up 0.3s ease-out;
+    animation: slide-up 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .animate-slide-down {
-    animation: slide-down 0.3s ease-out;
+    animation: slide-down 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .animate-pulse-subtle {
@@ -100,32 +115,20 @@
 
     0%,
     100% {
-        transform: translateY(0);
+        transform: translateY(0) rotate(0);
     }
 
-    50% {
-        transform: translateY(-6px);
-    }
-}
-
-.animate-float {
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
+    33% {
+        transform: translateY(-8px) rotate(1deg);
     }
 
-    50% {
-        transform: translateY(-6px);
+    66% {
+        transform: translateY(4px) rotate(-1deg);
     }
 }
 
 .animate-float {
-    animation: float 3s ease-in-out infinite;
+    animation: float 6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
 /* Reduced motion support */

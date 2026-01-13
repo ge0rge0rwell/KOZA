@@ -1,3 +1,23 @@
+@utility biometric-breathing {
+    animation: biometric-breathing 5s ease-in-out infinite;
+}
+
+@keyframes biometric-breathing {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.95;
+        filter: saturate(100%) blur(0px);
+    }
+
+    50% {
+        transform: scale(1.01);
+        opacity: 1;
+        filter: saturate(110%) blur(0.5px);
+    }
+}
+
 @theme {
     --font-sans: "Inter", system-ui, sans-serif;
 
@@ -29,13 +49,24 @@
     --color-warning: #ff9500;
     --color-error: #ff3b30;
 
-    /* Liquid Shadows */
-    --shadow-liquid: 0 8px 32px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-    --shadow-liquid-deep: 0 20px 48px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+    /* Liquid Shadows - Multi-layered for depth */
+    --shadow-liquid:
+        0 2px 4px rgba(0, 0, 0, 0.02),
+        0 10px 20px rgba(0, 0, 0, 0.04),
+        0 20px 40px rgba(0, 0, 0, 0.04);
+    --shadow-liquid-deep:
+        0 4px 8px rgba(0, 0, 0, 0.04),
+        0 20px 40px rgba(0, 0, 0, 0.08),
+        0 40px 80px rgba(0, 0, 0, 0.08);
     --shadow-liquid-glow: 0 0 40px rgba(0, 122, 255, 0.15);
 
     --shadow-premium: var(--shadow-liquid);
     --shadow-premium-lg: var(--shadow-liquid-deep);
+
+    /* Glass Tokens */
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --glass-border-bright: rgba(255, 255, 255, 0.8);
+    --blur-premium: 32px;
 }
 
 @utility liquid-glass {
@@ -69,4 +100,24 @@
     background-image: linear-gradient(135deg, var(--color-neutral-900) 0%, var(--color-neutral-500) 50%, var(--color-neutral-900) 100%);
     background-size: 200% auto;
     animation: text-shimmer 4s linear infinite;
+}
+
+@utility chromatic-shimmer {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(90deg,
+            #ff0080, #7928ca, #0070f3, #00dfd8, #ff0080);
+    background-size: 400% auto;
+    animation: chromatic-shimmer 8s linear infinite;
+}
+
+@keyframes chromatic-shimmer {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 400% center;
+    }
 }
