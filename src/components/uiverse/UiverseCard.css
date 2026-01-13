@@ -75,5 +75,6 @@
 /* Internal Refraction Micro-light */
 .uiverse-card::after {
     content: '';
-    @apply absolute top-0 left-0 right-0 h-[1.5px] bg-white/80 z-30 shadow-[0_1px_5px_rgba(255, 255, 255, 0.5)];
+    @apply absolute top-0 left-0 right-0 h-[1.5px] bg-white/80 z-30;
+    box-shadow: 0 1px 5px rgba(255, 255, 255, 0.5);
 }
