@@ -5,7 +5,7 @@ import GalaxyToastContainer from '../galaxy/GalaxyToastContainer';
 import Header from './Header';
 
 import Sidebar from './Sidebar';
-import { Home, Users, Book, Search, User, Bell } from 'lucide-react';
+import { Home, Users, Book, User, Bell } from 'lucide-react';
 
 const MainLayout = ({ children }) => {
     const {

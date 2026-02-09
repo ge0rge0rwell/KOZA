@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Users, Book, Search, User, LogOut } from 'lucide-react';
+import { Home, Users, Book, User, LogOut } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { useAuth } from '../../context/AuthContext';
 
@@ -11,16 +11,10 @@ const Sidebar = () => {
         { id: 'create', label: 'Keşfet', icon: <Home size={20} /> },
         { id: 'community', label: 'Topluluk', icon: <Users size={20} /> },
         { id: 'learn', label: 'Akademi', icon: <Book size={20} /> },
-        { id: 'search', label: 'Ara', icon: <Search size={20} /> },
         { id: 'profile', label: 'Profil', icon: <User size={20} /> },
     ];
 
     const handleTabChange = (id) => {
-        if (id === 'search') {
-            // Toast logic handled in MainLayout or AppContext usually, 
-            // but for now we just set the tab. 
-            // If the toast logic was critical we'd need to import addToast here too.
-        }
         setActiveTab(id);
         setCurrentView(null); // Reset to main view of that tab
     };
