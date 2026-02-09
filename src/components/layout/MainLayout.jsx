@@ -6,7 +6,7 @@ import Header from './Header';
 import GalaxyBottomNav from '../galaxy/GalaxyBottomNav';
 import GalaxyFab from '../galaxy/GalaxyFab';
 import { Home, Users, Book, Search, User, Plus, Bell } from 'lucide-react';
-import MorphCursor from '../optics/MorphCursor';
+
 import LiquidOptics from '../optics/LiquidOptics';
 import LiquidHUD from '../optics/LiquidHUD';
 import FluidBackground from '../optics/FluidBackground';
@@ -69,7 +69,7 @@ const MainLayout = ({ children }) => {
                 filter: `contrast(${100 + velocity}%) saturate(${100 + velocity * 2}%)`,
             }}
         >
-            <MorphCursor />
+
             <LiquidOptics />
             <LiquidHUD />
             <FluidBackground />
