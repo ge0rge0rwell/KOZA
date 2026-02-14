@@ -10,7 +10,6 @@ const BottomMenu = () => {
         { id: 'create', label: 'Keşfet', icon: <Home /> },
         { id: 'community', label: 'Topluluk', icon: <Users /> },
         { id: 'learn', label: 'Akademi', icon: <Book /> },
-        { id: 'profile', label: 'Profil', icon: <User /> },
     ];
 
     const handleTabChange = (id) => {

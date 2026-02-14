@@ -51,7 +51,7 @@ const HomePage = () => {
 
     const renderGetStarted = () => (
         <div className="flex flex-col items-center animate-slide-up">
-            <h2 className="text-4xl font-bold mb-12 text-center">KOZA.AI ÖZELLİKLERİ?</h2>
+            <h2 className="text-4xl font-bold mb-12 text-center">KOZA.AI ÖZELLİKLERİ</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 w-full max-w-5xl">
                 <div className="p-8 rounded-3xl bg-neutral-50 border border-neutral-200 backdrop-blur-md">

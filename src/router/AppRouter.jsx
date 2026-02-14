@@ -3,7 +3,6 @@ import { useApp } from '../context/AppContext';
 import CreateTab from '../tabs/CreateTab';
 import CommunityTab from '../tabs/CommunityTab';
 import LearnTab from '../tabs/LearnTab';
-import ProfileTab from '../tabs/ProfileTab';
 import StoryView from '../views/StoryView';
 import GameView from '../views/GameView';
 
@@ -26,7 +25,6 @@ const AppRouter = () => {
             case 'create': return <CreateTab />;
             case 'community': return <CommunityTab />;
             case 'learn': return <LearnTab />;
-            case 'profile': return <ProfileTab />;
             default: return <CreateTab />;
         }
     };

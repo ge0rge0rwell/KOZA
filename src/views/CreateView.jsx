@@ -45,7 +45,7 @@ const CreateView = () => {
             <div className="text-center mb-12">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-50 text-primary-700 rounded-full text-sm font-medium mb-4">
                     <Sparkles size={16} />
-                    AI Destekli Hikaye Oluşturucu
+                    AI Destekli Hikaye Oluşturma
                 </div>
                 <h1 className="text-4xl font-bold mb-3 text-balance">
                     Deneyimini Hikayeye Dönüştür

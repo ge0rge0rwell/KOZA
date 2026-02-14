@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { generateStorybook, generateGame } from '../services/geminiService';
 import { validateStoryInput } from '../utils/validation';
-import { Sparkles, BookOpen, Gamepad2, AlertCircle, Zap, Star } from 'lucide-react';
+import { Sparkles, BookOpen, Gamepad2, AlertCircle, Zap, Star, GamepadIcon, HeadphonesIcon } from 'lucide-react';
 
 // Galaxy Components
 import GalaxyButton from '../components/galaxy/GalaxyButton';
@@ -32,7 +32,7 @@ const CreateTab = () => {
         }
 
         setIsProcessing(true);
-        setStage(creationMode === 'story' ? 'Hikaye oluşturuluyor...' : 'Oyun tasarlanıyor...');
+        setStage(creationMode === 'story' ? 'Hikayeniz oluşturuluyor....' : 'Oyun tasarlanıyor...');
 
         try {
             const result = creationMode === 'story'
@@ -146,7 +146,7 @@ const CreateTab = () => {
                     >
                         <p className="text-neutral-500 text-lg mb-10">
                             {analysisResult.type === 'story'
-                                ? 'Deneyimin artık epik bir hikaye.'
+                                ? 'Deneyimin artık moral verici bir hikaye.'
                                 : 'Zorluğun artık heyecanlı bir oyun.'}
                         </p>
 
@@ -170,9 +170,9 @@ const CreateTab = () => {
 
             <div className="mt-20">
                 <GalaxyGrid cols={3}>
-                    <GalaxyStat label="Altın Sayfa" value={5} icon={Star} />
-                    <GalaxyStat label="Mistik Rejisör" value="AI" icon={Sparkles} />
-                    <GalaxyStat label="Öz Birikimi" value={500} icon={Zap} suffix="+" />
+                    <GalaxyStat  icon={BookOpen} label="Oluşturulan Hikayeler" value={5}  />
+                    <GalaxyStat icon={GamepadIcon} label="Oluşturulan Oyunlar" value={5} />
+                    <GalaxyStat icon={HeadphonesIcon} label="Oluşturulan Sesli Kitaplar" value={5} />
                 </GalaxyGrid>
             </div>
         </GalaxyContainer>
