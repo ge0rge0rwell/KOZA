@@ -27,5 +27,6 @@ Logo yapılacak
  Next js taşınabilir 
  Projenin yapısı daha iyi debuglamak için modüler bir yapıya bölünebilir
  Şimdilik aklıma gelenler bu kadar
+ Story gen düzeltilecek
 
- Son güncelleme 14 Şubat 2026(Cumartesi)
+ Son güncelleme 15 Şubat 2026(Pazar)
