@@ -25,47 +25,42 @@
     --font-serif: "Fraunces", serif;
     --font-heading: "Outfit", sans-serif;
 
-    /* Futuristic Dark Palette */
-    --color-dark-950: #05070a;
-    --color-dark-900: #0a0f18;
-    --color-dark-800: #141b2d;
+    /* Deep Space Palette */
+    --color-dark-950: #020b12;
+    --color-dark-900: #023047;
+    --color-dark-800: #075985;
 
-    /* Neon Accents */
-    --color-neon-purple: #d946ef;
-    --color-neon-blue: #3b82f6;
-    --color-neon-cyan: #06b6d4;
+    /* Highlight Accents */
+    --color-neon-blue: #219EBC;
+    --color-neon-cyan: #8ECAE6;
+    --color-neon-amber: #FFB703;
+    --color-neon-orange: #FB8500;
 
-    /* Sage Green Palette */
-    --color-sage-50: #f4f6f3;
-    --color-sage-100: #e7ece5;
-    --color-sage-200: #d1dbcf;
-    --color-sage-300: #b0c2ac;
-    --color-sage-400: #8da382;
-    --color-sage-500: #718468;
-    --color-sage-600: #586851;
-    --color-sage-700: #465341;
-    --color-sage-800: #3a4436;
-    --color-sage-900: #313a2e;
-    --color-sage-950: #1a1f18;
+    /* Primary - Ocean & Sky */
+    --color-primary-50: #f0f9ff;
+    --color-primary-100: #e0f2fe;
+    --color-primary-200: #bae6fd;
+    --color-primary-300: #8ECAE6;
+    /* Sky Blue */
+    --color-primary-400: #5cbce0;
+    --color-primary-500: #219EBC;
+    /* Blue Green */
+    --color-primary-600: #0284c7;
+    --color-primary-700: #0369a1;
+    --color-primary-800: #075985;
+    --color-primary-900: #023047;
+    /* Deep Space Blue */
+    --color-primary-950: #011b29;
 
-    /* Primary - Vibrant Violet / Electric Indigo */
-    --color-primary-50: #f5f3ff;
-    --color-primary-100: #ede9fe;
-    --color-primary-200: #ddd6fe;
-    --color-primary-300: #c4b5fd;
-    --color-primary-400: #a78bfa;
-    --color-primary-500: #8b5cf6;
-    --color-primary-600: #7c3aed;
-    --color-primary-700: #6d28d9;
-    --color-primary-800: #5b21b6;
-    --color-primary-900: #4c1d95;
-    --color-primary-950: #2e1065;
+    /* Secondary - Fire & Energy */
+    --color-secondary-400: #ffcf54;
+    --color-secondary-500: #FFB703;
+    /* Amber Flame */
+    --color-secondary-600: #FB8500;
+    /* Tiger Orange */
+    --color-secondary-700: #ea580c;
 
-    /* Secondary - Hot Pink / Magenta for accents */
-    --color-secondary-500: #ec4899;
-    --color-secondary-600: #db2777;
-
-    /* Neutral - Slate / Deep Graphite */
+    /* Neutral - Cool Slate */
     --color-neutral-50: #f8fafc;
     --color-neutral-100: #f1f5f9;
     --color-neutral-200: #e2e8f0;
@@ -79,23 +74,22 @@
     --color-neutral-950: #020617;
 
     --color-success: #10b981;
-    --color-warning: #f59e0b;
+    --color-warning: #FFB703;
     --color-error: #ef4444;
 
-    /* Liquid Shadows - Multi-layered for depth */
+    /* Liquid Shadows - Ocean Tinted */
     --shadow-liquid:
-        0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgba(0, 0, 0, 0.06),
-        0 0 0 1px rgba(139, 92, 246, 0.05);
-    /* Violet tint */
+        0 4px 6px -1px rgba(33, 158, 188, 0.1),
+        0 2px 4px -1px rgba(33, 158, 188, 0.06),
+        0 0 0 1px rgba(142, 202, 230, 0.1);
 
     --shadow-liquid-deep:
-        0 10px 15px -3px rgba(0, 0, 0, 0.1),
-        0 4px 6px -2px rgba(0, 0, 0, 0.05),
-        0 20px 25px -5px rgba(0, 0, 0, 0.1),
-        0 0 0 1px rgba(139, 92, 246, 0.1);
+        0 10px 15px -3px rgba(2, 48, 71, 0.15),
+        0 4px 6px -2px rgba(2, 48, 71, 0.1),
+        0 20px 25px -5px rgba(2, 48, 71, 0.1),
+        0 0 0 1px rgba(33, 158, 188, 0.15);
 
-    --shadow-liquid-glow: 0 0 20px rgba(139, 92, 246, 0.3);
+    --shadow-liquid-glow: 0 0 20px rgba(33, 158, 188, 0.25);
 
     --shadow-premium: var(--shadow-liquid);
     --shadow-premium-lg: var(--shadow-liquid-deep);
@@ -134,9 +128,10 @@
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    background-image: linear-gradient(135deg, var(--color-neutral-900) 0%, var(--color-neutral-500) 50%, var(--color-neutral-900) 100%);
+    background-image: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-500) 50%, var(--color-primary-900) 100%);
     background-size: 200% auto;
     animation: text-shimmer 4s linear infinite;
+    will-change: background-position;
 }
 
 @utility chromatic-shimmer {
@@ -144,7 +139,7 @@
     -webkit-background-clip: text;
     color: transparent;
     background-image: linear-gradient(90deg,
-            #ff0080, #7928ca, #0070f3, #00dfd8, #ff0080);
+            #FFB703, #FB8500, #219EBC, #8ECAE6, #FFB703);
     background-size: 400% auto;
     animation: chromatic-shimmer 8s linear infinite;
 }
@@ -161,8 +156,8 @@
 
 @utility koza-pattern {
     --s: 120px;
-    --c1: rgba(139, 92, 246, 0.02);
-    --c2: rgba(139, 92, 246, 0.08);
+    --c1: rgba(33, 158, 188, 0.02);
+    --c2: rgba(142, 202, 230, 0.05);
 
     --_g: var(--c2) 4% 14%, var(--c1) 14% 24%, var(--c2) 22% 34%,
         var(--c1) 34% 44%, var(--c2) 44% 56%, var(--c1) 56% 66%, var(--c2) 66% 76%,
@@ -247,10 +242,12 @@
 
 @utility animate-fade-in-left {
     animation: fade-in-left 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    will-change: transform, opacity;
 }
 
 @utility animate-fade-in-right {
     animation: fade-in-right 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    will-change: transform, opacity;
 }
 
 @utility font-serif {

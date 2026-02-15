@@ -1,6 +1,6 @@
-import React, { Suspense, lazy } from 'react';
-import { useApp } from '../context/AppContext';
-import GalaxySpinner from '../components/galaxy/GalaxySpinner'; // Lighter loader for page delivery
+import React, { Suspense, lazy, memo } from 'react';
+import { useUI } from '../context/UIContext';
+import GalaxySpinner from '../components/galaxy/GalaxySpinner';
 
 // Lazy Load Components (Lightspeed Optimization)
 const CreateTab = lazy(() => import('../tabs/CreateTab'));
@@ -8,17 +8,18 @@ const CommunityTab = lazy(() => import('../tabs/CommunityTab'));
 const LearnTab = lazy(() => import('../tabs/LearnTab'));
 const StoryView = lazy(() => import('../views/StoryView'));
 const GameView = lazy(() => import('../views/GameView'));
+const ProfileView = lazy(() => import('../views/ProfileView'));
 
 const FallbackLoader = () => (
-    <div className="flex items-center justify-center p-20 animate-fade-in">
+    <div className="flex items-center justify-center p-20 animate-fade-in-up">
         <GalaxySpinner size="large" />
     </div>
 );
 
 const AppRouter = () => {
-    const { currentView, setCurrentView, activeTab } = useApp();
+    const { currentView, setCurrentView, activeTab } = useUI();
 
-    // 1. Full Screen Views (Story / Game)
+    // 1. Full Screen Overlay Views
     if (currentView?.type === 'story') {
         return (
             <Suspense fallback={<FallbackLoader />}>
@@ -35,23 +36,28 @@ const AppRouter = () => {
         );
     }
 
-    // 2. Tab Navigation
-    const renderTabContent = () => {
-        switch (activeTab) {
-            case 'create': return <CreateTab />;
-            case 'community': return <CommunityTab />;
-            case 'learn': return <LearnTab />;
-            default: return <CreateTab />;
-        }
+    if (currentView?.type === 'profile') {
+        return (
+            <Suspense fallback={<FallbackLoader />}>
+                <ProfileView onClose={() => setCurrentView(null)} />
+            </Suspense>
+        );
+    }
+
+    // 2. Tab Navigation Content
+    const TabMap = {
+        'create': <CreateTab />,
+        'community': <CommunityTab />,
+        'learn': <LearnTab />
     };
 
     return (
-        <div key={activeTab + (currentView?.type || 'none')} className="animate-liquid">
+        <div key={activeTab} className="will-change-contents">
             <Suspense fallback={<FallbackLoader />}>
-                {renderTabContent()}
+                {TabMap[activeTab] || <CreateTab />}
             </Suspense>
         </div>
     );
 };
 
-export default AppRouter;
+export default memo(AppRouter);

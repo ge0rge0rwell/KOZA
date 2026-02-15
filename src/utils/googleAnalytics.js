@@ -4,6 +4,7 @@ import { ANALYTICS_CONFIG } from '../config';
 class GoogleAnalytics {
     constructor() {
         this.initialized = false;
+        this.queue = [];
     }
 
     initialize() {
@@ -11,21 +12,39 @@ class GoogleAnalytics {
             return;
         }
 
-        try {
-            ReactGA.initialize(ANALYTICS_CONFIG.measurementId, {
-                gaOptions: {
-                    anonymizeIp: true,
+        // Use requestIdleCallback or setTimeout to initialize without blocking LCP
+        const init = () => {
+            try {
+                ReactGA.initialize(ANALYTICS_CONFIG.measurementId, {
+                    gaOptions: {
+                        anonymizeIp: true,
+                    }
+                });
+                this.initialized = true;
+                console.log('📊 Google Analytics initialized (non-blocking)');
+
+                // Process queued events
+                while (this.queue.length > 0) {
+                    const { type, args } = this.queue.shift();
+                    this[type](...args);
                 }
-            });
-            this.initialized = true;
-            console.log('📊 Google Analytics initialized');
-        } catch (error) {
-            console.error('Failed to initialize Google Analytics:', error);
+            } catch (error) {
+                console.error('Failed to initialize Google Analytics:', error);
+            }
+        };
+
+        if (window.requestIdleCallback) {
+            window.requestIdleCallback(init);
+        } else {
+            setTimeout(init, 2000);
         }
     }
 
     trackPageView(path) {
-        if (!this.initialized) return;
+        if (!this.initialized) {
+            this.queue.push({ type: 'trackPageView', args: [path] });
+            return;
+        }
 
         try {
             ReactGA.send({ hitType: 'pageview', page: path });
@@ -35,7 +54,10 @@ class GoogleAnalytics {
     }
 
     trackEvent(category, action, label, value) {
-        if (!this.initialized) return;
+        if (!this.initialized) {
+            this.queue.push({ type: 'trackEvent', args: [category, action, label, value] });
+            return;
+        }
 
         try {
             ReactGA.event({
@@ -50,7 +72,10 @@ class GoogleAnalytics {
     }
 
     setUserProperties(properties) {
-        if (!this.initialized) return;
+        if (!this.initialized) {
+            this.queue.push({ type: 'setUserProperties', args: [properties] });
+            return;
+        }
 
         try {
             ReactGA.set(properties);

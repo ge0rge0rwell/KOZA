@@ -27,8 +27,22 @@ export const AppProvider = ({ children }) => {
 
 // Internal bridge to handle side-effects between contexts (like User Level Up -> UI Notification)
 const AppContextBridge = ({ children }) => {
-    const { lastUserEvent, setLastUserEvent } = useUser();
+    const { lastUserEvent, setLastUserEvent, setUser } = useUser();
+    const { lastSavedStory, setLastSavedStory } = useStory();
     const { triggerNotification, addToast } = useUI();
+
+    // Listen to Story events to update User stats
+    useEffect(() => {
+        if (!lastSavedStory) return;
+
+        setUser(prev => ({
+            ...prev,
+            storiesCreated: lastSavedStory.type === 'story' ? prev.storiesCreated + 1 : prev.storiesCreated,
+            gamesCreated: lastSavedStory.type === 'game' ? prev.gamesCreated + 1 : prev.gamesCreated
+        }));
+
+        setLastSavedStory(null); // Clear event
+    }, [lastSavedStory, setUser, setLastSavedStory]);
 
     // Listen to User events and trigger UI
     useEffect(() => {

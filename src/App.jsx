@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useApp } from './context/AppContext';
+import React, { useEffect, memo } from 'react';
+import { useUI } from './context/UIContext';
 import { useAuth } from './context/AuthContext';
 import HomePage from './pages/HomePage';
 import { googleAnalytics } from './utils/googleAnalytics';
@@ -10,7 +10,7 @@ import AppRouter from './router/AppRouter';
 import KozaLoader from './components/ui/KozaLoader';
 
 const App = () => {
-    const { currentView, activeTab } = useApp();
+    const { currentView, activeTab } = useUI();
     const { user: authUser, loading: authLoading } = useAuth();
 
     // Track page views
@@ -22,7 +22,7 @@ const App = () => {
     // Show loading state while checking auth
     if (authLoading) {
         return (
-            <KozaLoader fullScreen message="Yükleniyor..." />
+            <KozaLoader fullScreen message="Dönüşüm Hazırlanıyor..." />
         );
     }
 
@@ -37,4 +37,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default memo(App);

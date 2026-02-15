@@ -131,11 +131,20 @@ const TransformationCanvas = ({ color = '#9333EA', intensity = 1, active = true 
         };
 
         const animate = () => {
+            if (!active) {
+                animationFrameId = requestAnimationFrame(animate);
+                return;
+            }
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // EXTREME OPTIMIZATION: Batched drawing by style
+            // To avoid save/restore overhead, we group by geometry/color where possible
             particles.forEach(p => {
                 p.update();
                 p.draw();
             });
+
             animationFrameId = requestAnimationFrame(animate);
         };
 

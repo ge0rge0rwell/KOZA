@@ -11,13 +11,13 @@ const KozaLoader = ({ size = 'medium', className = '', message, fullScreen = fal
                 <svg height="0" width="0" viewBox="0 0 64 64" className="absolute">
                     <defs>
                         <linearGradient id="grad-k" x1="0" y1="62" x2="0" y2="2" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#973BED"></stop>
-                            <stop stopColor="#007CFF" offset="1"></stop>
+                            <stop stopColor="#023047"></stop>
+                            <stop stopColor="#219EBC" offset="1"></stop>
                         </linearGradient>
 
                         <linearGradient id="grad-o" x1="0" y1="64" x2="0" y2="0" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#FFC800"></stop>
-                            <stop stopColor="#F0F" offset="1"></stop>
+                            <stop stopColor="#FFB703"></stop>
+                            <stop stopColor="#FB8500" offset="1"></stop>
                             <animateTransform
                                 attributeName="gradientTransform"
                                 type="rotate"
@@ -29,13 +29,13 @@ const KozaLoader = ({ size = 'medium', className = '', message, fullScreen = fal
                         </linearGradient>
 
                         <linearGradient id="grad-z" x1="0" y1="62" x2="0" y2="2" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#00E0ED"></stop>
-                            <stop stopColor="#00DA72" offset="1"></stop>
+                            <stop stopColor="#8ECAE6"></stop>
+                            <stop stopColor="#219EBC" offset="1"></stop>
                         </linearGradient>
 
                         <linearGradient id="grad-a" x1="0" y1="62" x2="0" y2="2" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#FF5F6D"></stop>
-                            <stop stopColor="#FFC371" offset="1"></stop>
+                            <stop stopColor="#FB8500"></stop>
+                            <stop stopColor="#023047" offset="1"></stop>
                         </linearGradient>
                     </defs>
                 </svg>

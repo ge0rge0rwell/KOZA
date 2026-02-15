@@ -18,45 +18,39 @@ const COMMUNITY_WORKS = [
 
 export const StoryProvider = ({ children }) => {
     const { user: authUser, firestoreEnabled } = useAuth();
-    const { setUser } = useUser(); // To update stats
+    const { cloudSynced } = useUser();
 
     const [savedStories, setSavedStories] = useLocalStorage('koza-stories', []);
     const [activeStory, setActiveStory] = useState('');
     const [isProcessing, setIsProcessing] = useState(false);
-    const [analysisResult, setAnalysisResult] = useState(null); // Moved analysis here as it relates to story creation
+    const [analysisResult, setAnalysisResult] = useState(null);
+    const [lastSavedStory, setLastSavedStory] = useState(null); // Cross-context communication
 
-    // Sync Stories
+    // Load/Sync Stories from Cloud
     useEffect(() => {
-        if (!authUser || !firestoreEnabled) return;
+        if (!authUser || !firestoreEnabled || !cloudSynced) return;
 
         const loadStories = async () => {
             try {
                 const cloudStories = await firestoreService.getUserStories(authUser.uid);
-                if (cloudStories && cloudStories.length > 0) {
+                if (cloudStories) {
                     setSavedStories(prev => {
-                        // Create a map by ID to ensure uniqueness
                         const storyMap = new Map();
-
-                        // Local stories (might have newer unsynced items)
                         prev.forEach(s => storyMap.set(String(s.id), s));
-
-                        // Cloud stories (take precedence on conflict or just add new)
                         cloudStories.forEach(s => storyMap.set(String(s.id), s));
 
-                        // Sort by date desc
                         return Array.from(storyMap.values())
-                            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                            .sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0))
                             .slice(0, 50);
                     });
                 }
             } catch (error) {
-                console.error("Story load error", error);
+                console.error("Story load error:", error);
             }
         };
 
         loadStories();
 
-        // Subscribe with merge logic
         const unsubscribe = firestoreService.subscribeToStories(authUser.uid, (data) => {
             if (!data) return;
             setSavedStories(prev => {
@@ -65,39 +59,30 @@ export const StoryProvider = ({ children }) => {
                 data.forEach(s => storyMap.set(String(s.id), s));
 
                 const merged = Array.from(storyMap.values())
-                    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                    .sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0))
                     .slice(0, 50);
 
-                if (JSON.stringify(prev) !== JSON.stringify(merged)) {
-                    return merged;
-                }
-                return prev;
+                return JSON.stringify(prev) !== JSON.stringify(merged) ? merged : prev;
             });
         });
+
         return () => unsubscribe();
-    }, [authUser, firestoreEnabled]); // Removed setSavedStories from deps to avoid loop if it's not stable
+    }, [authUser, firestoreEnabled, cloudSynced, setSavedStories]);
 
     const saveStory = useCallback(async (story) => {
+        const storyId = String(Date.now());
         const newStory = {
-            id: Date.now(),
+            id: storyId,
             ...story,
             createdAt: new Date().toISOString()
         };
 
         setSavedStories(prev => [newStory, ...prev].slice(0, 50));
+        setLastSavedStory(newStory); // Emit event for UserContext/Bridge
 
-        // Track
         const eventType = story.type === 'story' ? 'story_created' : 'game_created';
         analytics.track(eventType, { title: story.title });
 
-        // Update User Stats
-        setUser(prev => ({
-            ...prev,
-            storiesCreated: story.type === 'story' ? prev.storiesCreated + 1 : prev.storiesCreated,
-            gamesCreated: story.type === 'game' ? prev.gamesCreated + 1 : prev.gamesCreated
-        }));
-
-        // Cloud
         if (authUser && firestoreEnabled) {
             try {
                 await firestoreService.saveStory(authUser.uid, newStory);
@@ -105,20 +90,22 @@ export const StoryProvider = ({ children }) => {
                 console.error("Save story failed", e);
             }
         }
-    }, [authUser, firestoreEnabled, setUser, setSavedStories]);
+    }, [authUser, firestoreEnabled, setSavedStories]);
 
     const deleteStory = useCallback(async (id) => {
-        setSavedStories(prev => prev.filter(s => s.id !== id));
+        const stringId = String(id);
+        setSavedStories(prev => prev.filter(s => String(s.id) !== stringId));
         if (authUser && firestoreEnabled) {
             try {
-                await firestoreService.deleteStory(authUser.uid, id);
+                await firestoreService.deleteStory(authUser.uid, stringId);
             } catch (e) {
                 console.error("Delete story failed", e);
             }
         }
     }, [authUser, firestoreEnabled, setSavedStories]);
 
-    const value = {
+    // EXTREME OPTIMIZATION: Memoized Context Value
+    const value = React.useMemo(() => ({
         savedStories,
         activeStory,
         setActiveStory,
@@ -126,10 +113,20 @@ export const StoryProvider = ({ children }) => {
         setIsProcessing,
         analysisResult,
         setAnalysisResult,
+        lastSavedStory,
+        setLastSavedStory,
         communityWorks: COMMUNITY_WORKS,
         saveStory,
         deleteStory
-    };
+    }), [
+        savedStories,
+        activeStory,
+        isProcessing,
+        analysisResult,
+        lastSavedStory,
+        saveStory,
+        deleteStory
+    ]);
 
     return <StoryContext.Provider value={value}>{children}</StoryContext.Provider>;
 };

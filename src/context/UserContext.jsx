@@ -70,22 +70,24 @@ export const UserProvider = ({ children }) => {
         const syncData = async () => {
             setIsSyncing(true);
             try {
-                console.log('🔄 User: Syncing data with cloud...');
-                // Note: We only sync USER data here. Stories are in StoryContext.
-                // However, the original code synced everything together.
-                // We'll proceed with user-only sync here.
+                console.log('🔄 User: Initiating full cloud synchronization...');
 
-                // We might need to split the syncLocalToCloud function if it handles both.
-                // For now, let's assume we can just sync/fetch user profile.
-                const cloudProfile = await firestoreService.getUserProfile(authUser.uid);
+                // Get local stories directly from localStorage for the migration helper
+                // because we want to migrate them in one batch if it's the first login.
+                const localStories = JSON.parse(localStorage.getItem('koza-stories') || '[]');
 
-                if (cloudProfile) {
-                    setUser(prev => ({ ...prev, ...cloudProfile }));
+                const syncResult = await firestoreService.syncLocalToCloud(authUser.uid, {
+                    user: user,
+                    stories: localStories
+                });
+
+                if (syncResult && syncResult.profile) {
+                    setUser(prev => ({ ...prev, ...syncResult.profile }));
                     setCloudSynced(true);
-                } else {
-                    // First time? Create/Update.
-                    await firestoreService.updateUserProfile(authUser.uid, user);
-                    setCloudSynced(true);
+
+                    if (syncResult.migrated) {
+                        console.log('✅ Local data successfully migrated to cloud');
+                    }
                 }
             } catch (error) {
                 console.error('User Sync error:', error);
@@ -95,7 +97,7 @@ export const UserProvider = ({ children }) => {
         };
 
         syncData();
-    }, [authUser, firestoreEnabled]);
+    }, [authUser, firestoreEnabled, cloudSynced]);
 
     // Real-time Updates
     useEffect(() => {
@@ -188,15 +190,23 @@ export const UserProvider = ({ children }) => {
 
     }, [setUser]);
 
-    const value = {
+    const value = React.useMemo(() => ({
         user,
         setUser,
         awardXP,
         isSyncing,
         cloudSynced,
-        lastUserEvent,     // Expose this for UIContext to listen to
-        setLastUserEvent   // Allow clearing
-    };
+        lastUserEvent,
+        setLastUserEvent
+    }), [
+        user,
+        awardXP,
+        isSyncing,
+        cloudSynced,
+        lastUserEvent,
+        setUser,
+        setLastUserEvent
+    ]);
 
     return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
