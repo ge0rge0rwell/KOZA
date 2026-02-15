@@ -39,8 +39,48 @@ const StoryView = ({ story, onClose }) => {
         return () => stop();
     }, [stop]);
 
-    const nextPage = () => setCurrentPage(prev => Math.min(prev + 1, totalPages - 1));
-    const prevPage = () => setCurrentPage(prev => Math.max(prev - 1, 0));
+    const nextPage = () => setCurrentPage(prev => Math.min(prev + 2, totalPages % 2 === 0 ? totalPages - 2 : totalPages - 1));
+    const prevPage = () => setCurrentPage(prev => Math.max(prev - 2, 0));
+
+    // Functional Handlers
+    const toggleFullscreen = () => {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen().catch(e => console.log(e));
+            }
+        }
+    };
+
+    const handlePrint = () => {
+        // Clear any active processing or expensive effects before printing
+        // Wrapping in requestAnimationFrame for an "instant" UI response
+        requestAnimationFrame(() => {
+            window.print();
+        });
+    };
+
+    const handleShare = async () => {
+        const shareData = {
+            title: story.title,
+            text: `KOZA ile oluşturduğum bu hikayeyi oku: ${story.title}`,
+            url: window.location.href
+        };
+        try {
+            if (navigator.share) {
+                await navigator.share(shareData);
+            } else {
+                await navigator.clipboard.writeText(window.location.href);
+                alert("Bağlantı panoya kopyalandı!");
+            }
+        } catch (err) {
+            console.error('Paylaşım hatası:', err);
+        }
+    };
+
+    const resetToFirst = () => setCurrentPage(0);
+    const jumpToLast = () => setCurrentPage(totalPages - 1);
 
     if (!pages.length) {
         return (
@@ -69,12 +109,20 @@ const StoryView = ({ story, onClose }) => {
                     <h1 className="font-bold text-neutral-800 text-sm tracking-tight truncate max-w-[200px]">
                         {story.title}
                     </h1>
-                    <div className="flex items-center gap-1 ml-4 py-1 px-2 hover:bg-neutral-50 rounded-lg transition-colors cursor-pointer">
+                    <button
+                        onClick={resetToFirst}
+                        title="En Başa Dön"
+                        className="flex items-center gap-1 ml-4 py-1 px-2 hover:bg-neutral-50 rounded-lg transition-colors cursor-pointer"
+                    >
                         <RotateCcw size={16} className="text-neutral-400" />
-                    </div>
-                    <div className="flex items-center gap-1 py-1 px-2 hover:bg-neutral-50 rounded-lg transition-colors cursor-pointer">
+                    </button>
+                    <button
+                        onClick={jumpToLast}
+                        title="En Sona Git"
+                        className="flex items-center gap-1 py-1 px-2 hover:bg-neutral-50 rounded-lg transition-colors cursor-pointer"
+                    >
                         <RotateCw size={16} className="text-neutral-400" />
-                    </div>
+                    </button>
                 </div>
 
                 {/* Page Navigation Center */}
@@ -100,13 +148,25 @@ const StoryView = ({ story, onClose }) => {
 
                 <div className="flex items-center gap-2">
                     <div className="flex items-center gap-1 px-2 border-r border-neutral-200">
-                        <button className="p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600">
+                        <button
+                            onClick={toggleFullscreen}
+                            title="Tam Ekran"
+                            className="p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600"
+                        >
                             <Maximize2 size={18} />
                         </button>
-                        <button className="p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600">
+                        <button
+                            onClick={handlePrint}
+                            title="Yazdır"
+                            className="p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600"
+                        >
                             <Printer size={18} />
                         </button>
-                        <button className="p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600">
+                        <button
+                            onClick={handleShare}
+                            title="Paylaş"
+                            className="p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600"
+                        >
                             <Share2 size={18} />
                         </button>
                     </div>
@@ -115,8 +175,8 @@ const StoryView = ({ story, onClose }) => {
                         <button
                             onClick={toggle}
                             className={`flex items-center gap-2 px-4 py-1.5 rounded-full transition-all text-sm font-bold ${isSpeaking
-                                    ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/20'
-                                    : 'bg-primary-100 text-primary-600 hover:bg-primary-200'
+                                ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/20'
+                                : 'bg-primary-100 text-primary-600 hover:bg-primary-200'
                                 }`}
                         >
                             {isSpeaking ? <VolumeX size={16} /> : <Volume2 size={16} />}
@@ -136,64 +196,101 @@ const StoryView = ({ story, onClose }) => {
             </header>
 
             {/* Main Content Area */}
-            <main className="flex-1 flex items-center justify-center p-6 sm:p-12 relative z-10 overflow-auto">
-                <div className="w-full max-w-6xl aspect-[1.4/1] bg-white rounded-3xl book-depth flex relative overflow-hidden group">
+            <main className="flex-1 relative z-10 overflow-hidden">
+                <div className="w-full h-full bg-white book-depth flex relative overflow-hidden group shadow-2xl">
                     {/* Spine Fold */}
                     <div className="book-spine" />
 
-                    {/* Left Page: Illustration Area */}
-                    <div className="flex-1 bg-neutral-100 relative overflow-hidden flex items-center justify-center">
-                        {/* Placeholder for Story Illustration with spotlight effect */}
-                        <div className="absolute inset-0 opacity-20" style={{ background: themeColor }} />
-                        <div className="w-full h-full relative z-10 p-12 flex flex-col items-center justify-center">
-                            <div className="w-64 h-64 rounded-full mix-blend-overlay blur-3xl opacity-50 absolute top-0 left-1/2 -translate-x-1/2" style={{ background: themeColor }} />
+                    {/* Left Page: Interactive Navigation Area */}
+                    <div
+                        onClick={prevPage}
+                        className={`flex-1 relative overflow-hidden flex flex-col p-8 sm:p-16 lg:p-24 border-r border-neutral-100 transition-all duration-500 cursor-pointer hover:bg-neutral-50/50 ${currentPage === 0 ? 'opacity-50 cursor-default' : ''}`}
+                    >
+                        <div className="absolute inset-0 paper-texture pointer-events-none" />
 
-                            {/* The actual image or illustration placeholder */}
-                            <div className="w-full h-full rounded-2xl border-4 border-white/50 shadow-2xl flex items-center justify-center bg-white/5 border-dashed overflow-hidden relative">
-                                <div className="absolute inset-0 flex items-center justify-center transform rotate-12 scale-150 opacity-10">
-                                    <Book size={200} />
-                                </div>
-                                <div className="relative z-10 text-center px-8">
-                                    <div className="w-16 h-1 w-full max-w-xs mx-auto mb-4 bg-gradient-to-r from-transparent via-primary-500 to-transparent opacity-50" />
-                                    <h4 className="text-xl font-bold opacity-30 italic text-neutral-400">
-                                        {currentPageData.title}
-                                    </h4>
+                        {/* Page Content N */}
+                        <div className="relative z-10 flex flex-col h-full max-w-2xl mx-auto w-full">
+                            {/* Author Tag (Left) */}
+                            <div className="text-[10px] sm:text-xs font-black tracking-[0.2em] text-neutral-300 uppercase mb-8">
+                                {author}
+                            </div>
+
+                            <div className="flex-1 flex flex-col justify-start animate-fade-in-left">
+                                <h3 className="text-xl font-bold mb-6 text-primary-600/60 uppercase tracking-widest text-sm">
+                                    {pages[currentPage]?.title}
+                                </h3>
+                                <div className="prose prose-slate max-w-none">
+                                    <p className="text-neutral-800 leading-relaxed font-serif text-lg sm:text-xl lg:text-3xl selection:bg-primary-100 overflow-y-auto max-h-[60vh] pr-4 custom-scrollbar">
+                                        {pages[currentPage]?.content}
+                                    </p>
                                 </div>
                             </div>
+
+                            {/* Page Number (Left) */}
+                            <div className="mt-8 text-sm font-bold text-neutral-300 tabular-nums">
+                                {currentPage + 1}
+                            </div>
+                        </div>
+
+                        {/* Back Arrow Hint on Hover */}
+                        <div className="absolute left-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-20 transition-opacity pointer-events-none">
+                            <ChevronLeft size={64} className="text-neutral-400" />
                         </div>
                     </div>
 
-                    {/* Right Page: Text Content */}
-                    <div className="flex-1 paper-texture p-12 sm:p-20 flex flex-col relative">
-                        {/* Author Tag */}
-                        <div className="absolute top-10 right-12 text-[10px] sm:text-xs font-black tracking-[0.2em] text-neutral-400 uppercase">
-                            {author}
-                        </div>
+                    {/* Right Page: Interactive Navigation Area */}
+                    <div
+                        onClick={nextPage}
+                        className={`flex-1 relative overflow-hidden flex flex-col p-8 sm:p-16 lg:p-24 transition-all duration-500 cursor-pointer hover:bg-neutral-50/50 ${currentPage + 1 >= totalPages ? 'bg-neutral-50/10' : ''}`}
+                    >
+                        <div className="absolute inset-0 paper-texture pointer-events-none" />
 
-                        {/* Content Container */}
-                        <div className="flex-1 flex flex-col justify-center animate-fade-in py-12">
-                            <div className="prose prose-slate prose-lg sm:prose-xl max-w-none">
-                                <p className="text-neutral-800 leading-loose font-serif text-lg sm:text-xl md:text-2xl selection:bg-primary-100">
-                                    {currentPageData.content}
-                                </p>
+                        {/* Page Content N+1 */}
+                        {currentPage + 1 < totalPages ? (
+                            <div className="relative z-10 flex flex-col h-full max-w-2xl mx-auto w-full">
+                                {/* Author Tag (Right) */}
+                                <div className="text-[10px] sm:text-xs font-black tracking-[0.2em] text-neutral-300 uppercase mb-8 text-right">
+                                    {author}
+                                </div>
+
+                                <div className="flex-1 flex flex-col justify-start animate-fade-in-right">
+                                    <h3 className="text-xl font-bold mb-6 text-primary-600/60 uppercase tracking-widest text-sm text-right">
+                                        {pages[currentPage + 1]?.title}
+                                    </h3>
+                                    <div className="prose prose-slate max-w-none">
+                                        <p className="text-neutral-800 leading-relaxed font-serif text-lg sm:text-xl lg:text-3xl selection:bg-primary-100 text-right overflow-y-auto max-h-[60vh] pl-4 custom-scrollbar">
+                                            {pages[currentPage + 1]?.content}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Page Number (Right) */}
+                                <div className="mt-8 text-sm font-bold text-neutral-300 tabular-nums text-right">
+                                    {currentPage + 2}
+                                </div>
                             </div>
-                        </div>
+                        ) : (
+                            <div className="relative z-10 flex flex-col items-center justify-center h-full text-center p-8 animate-pulse text-neutral-300">
+                                <Book size={64} className="mb-4 opacity-20" />
+                                <p className="font-serif italic text-lg">Son Sayfa</p>
+                            </div>
+                        )}
 
-                        {/* Page Number */}
-                        <div className="absolute bottom-10 right-12 text-sm font-bold text-neutral-300 tabular-nums">
-                            {currentPage + 1}
+                        {/* Next Arrow Hint on Hover */}
+                        <div className="absolute right-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-20 transition-opacity pointer-events-none">
+                            <ChevronRight size={64} className="text-neutral-400" />
                         </div>
                     </div>
 
                     {/* Metamorphosis Completion (Last Page Overlay) */}
                     {currentPage === totalPages - 1 && (
                         <div className="absolute inset-0 z-40 bg-white/60 backdrop-blur-md flex items-center justify-center animate-fade-in">
-                            <div className="text-center p-8 bg-white rounded-3xl shadow-2xl border border-neutral-100 scale-110">
-                                <h3 className="text-2xl font-bold mb-4 text-primary-600">Harika Bir Yolculuktu!</h3>
-                                <p className="text-neutral-600 mb-8 max-w-xs mx-auto font-medium">Bu hikaye metamorfozunu tamamladı. Yeni hikayeler seni bekliyor.</p>
+                            <div className="text-center p-12 bg-white rounded-[48px] shadow-2xl border border-neutral-100 scale-110">
+                                <h3 className="text-3xl font-bold mb-4 text-primary-600">Harika Bir Yolculuktu!</h3>
+                                <p className="text-neutral-600 mb-8 max-w-xs mx-auto font-medium text-lg">Bu hikaye metamorfozunu tamamladı. Yeni hikayeler seni bekliyor.</p>
                                 <GalaxyButton
                                     onClick={onClose}
-                                    className="!py-4 !px-12 !text-lg !rounded-full shadow-xl"
+                                    className="!py-6 !px-16 !text-xl !rounded-full shadow-2xl"
                                     icon={Check}
                                 >
                                     Bitir ve Dön
