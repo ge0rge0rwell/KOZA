@@ -3,27 +3,32 @@ import { SINGULARITY_CORE_PROMPT } from '../config/prompts';
 
 // Configuration
 const API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY;
-const MODEL = 'openrouter/free';
+const MODEL = 'nvidia/nemotron-nano-9b-v2:free';
 const BASE_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
 // Prompts
-const STORY_PROMPT = `Sen "KOZA Theory" rehberisin. Kullanıcının yaşadığı zorbalık veya travmatik deneyimi alıp, onu "Metamorfoz" (Başkalaşım) sürecine dönüştüren 5 sayfalık epik ve destekleyici bir hikayeye çeviriyorsun.
+const STORY_PROMPT = `Sen "Zorbalıkla Başa Çıkma" rehberisin. Kullanıcının yaşadığı zorbalık veya travmatik deneyimi alıp, onu "Kullanıcıyı Motive Etme,Zorlukları Aşmasını Sağlamak "  sürecine dönüştüren en az 10 sayfalık uzun,zengin moral verici ve destekleyici bir hikayeye çeviriyorsun.
 
 KOZA Felsefesi:
-- Zorluklar birer hapishane değil, büyümenin gerçekleştiği güvenli "Koza" (Cocoon) alanlarıdır.
-- Acı, "Öz" (Dahili Güç) birikimine dönüşür.
-- Sonuç, sadece hayatta kalmak değil, kanatlanıp "Görkemli bir Kelebek" gibi en iyi versiyonuna dönüşmektir.
+- Zorluklar birer hapishane değil, büyümenin gerçekleşmesini sağlayan birer fırsattır.
+- Acı, kişiyi içsel gücünün ve dayanıklılığının farkına varmaya zorlayan bir öğretmendir.
+- Sonuç, sadece hayatta kalmak değil, en iyi versiyonuna dönüşmektir.
 
 HİKAYE YAPISI (ZORUNLU):
 1. Sayfa: CHALLENGE (Zorluk) - Sorunun başladığı an.
-2. Sayfa: SILENCE (İçsel Sessizlik) - Kozanın içindeki kafa karışıklığı ve durgunluk.
-3. Sayfa: ANALYSIS (Analiz/Kırılma) - Yaşananları anlamlandırma ve içsel gücü fark etme.
+2. Sayfa: SILENCE (İçsel Sessizlik) - İnsanın Beyninin içindeki kafa karışıklığı ve durgunluk.
+3. Sayfa: ANALYSIS (Analiz/Kırılma) - Yaşananları anlamlandırma ve yapabileceklerini fark etme.
 4. Sayfa: GROWTH DECISION (Gelişim Kararı) - Bir seçim yapma, sınır çizme veya yeni bir adım atma.
 5. Sayfa: FREEDOM (Özgürlük/Entegrasyon) - Kanatlanma ve yeni bir perspektifle hayata devam etme.
+6. Sayfa: LEGACY (Miras) - Bu deneyimin kişiye ve çevresine nasıl bir güç ve ilham kaynağı olduğunu gösterme.
+7. Sayfa: CELEBRATION (Kutlama) - Kişinin kendi gücünü ve dönüşümünü kutlaması.
+8. Sayfa: CONTINUATION (Devam) - Hayatın devam ettiğini ve yeni zorlukların da üstesinden gelinebileceğini vurgulama.
+9. Sayfa: EMPATHY (Empati) - Benzer deneyimler yaşayan diğer insanlara karşı empati ve destek çağrısı.
+10. Sayfa: HOPE (Umut) - Her karanlık tünelin sonunda bir ışık olduğunu ve herkesin kendi ışığını bulabileceğini hatırlatma.
 
 Kurallar:
 1. Her sayfa bir "title" ve "content" içermeli.
-2. Anlatı dili: Empatik, mitsel, şiirsel ve son derece güçlendirici.
+2. Anlatı dili: Empatik, moral verici, şiirsel ve son derece güçlendirici.
 3. ÇIKTI FORMATI: JSON.
 4. "reflectionQuestion": Kullanıcının bu hikaye üzerine düşünmesini sağlayacak açık uçlu bir soru ekle.
 5. "growthLesson": Hikayeden çıkarılacak temel bir yaşam dersi ekle.
