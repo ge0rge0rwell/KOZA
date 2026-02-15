@@ -15,7 +15,19 @@ import GalaxyStat from '../components/galaxy/GalaxyStat';
 import KozaLoader from '../components/ui/KozaLoader';
 
 const CreateTab = () => {
-    const { activeStory, setActiveStory, isProcessing, setIsProcessing, setCurrentView, awardXP, saveStory, setAnalysisResult, analysisResult, addToast } = useApp();
+    const {
+        user,
+        activeStory,
+        setActiveStory,
+        isProcessing,
+        setIsProcessing,
+        setCurrentView,
+        awardXP,
+        saveStory,
+        setAnalysisResult,
+        analysisResult,
+        addToast
+    } = useApp();
     const [stage, setStage] = useState('');
     const [error, setError] = useState(null);
     const [creationMode, setCreationMode] = useState('story'); // 'story' or 'game'
@@ -167,9 +179,9 @@ const CreateTab = () => {
 
             <div className="mt-20">
                 <GalaxyGrid cols={3}>
-                    <GalaxyStat icon={BookOpen} label="Oluşturulan Hikayeler" value={5} />
-                    <GalaxyStat icon={GamepadIcon} label="Oluşturulan Oyunlar" value={5} />
-                    <GalaxyStat icon={HeadphonesIcon} label="Oluşturulan Sesli Kitaplar" value={5} />
+                    <GalaxyStat icon={BookOpen} label="Oluşturulan Hikayeler" value={user?.storiesCreated || 0} />
+                    <GalaxyStat icon={GamepadIcon} label="Oluşturulan Oyunlar" value={user?.gamesCreated || 0} />
+                    <GalaxyStat icon={HeadphonesIcon} label="Oluşturulan Sesli Kitaplar" value={Math.floor((user?.storiesCreated || 0) * 0.4)} />
                 </GalaxyGrid>
             </div>
         </GalaxyContainer>

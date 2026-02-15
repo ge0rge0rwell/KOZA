@@ -32,9 +32,22 @@ export const StoryProvider = ({ children }) => {
         const loadStories = async () => {
             try {
                 const cloudStories = await firestoreService.getUserStories(authUser.uid);
-                // Simple merge strategy: Cloud wins or we just check length
                 if (cloudStories && cloudStories.length > 0) {
-                    setSavedStories(cloudStories);
+                    setSavedStories(prev => {
+                        // Create a map by ID to ensure uniqueness
+                        const storyMap = new Map();
+
+                        // Local stories (might have newer unsynced items)
+                        prev.forEach(s => storyMap.set(String(s.id), s));
+
+                        // Cloud stories (take precedence on conflict or just add new)
+                        cloudStories.forEach(s => storyMap.set(String(s.id), s));
+
+                        // Sort by date desc
+                        return Array.from(storyMap.values())
+                            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                            .slice(0, 50);
+                    });
                 }
             } catch (error) {
                 console.error("Story load error", error);
@@ -43,17 +56,26 @@ export const StoryProvider = ({ children }) => {
 
         loadStories();
 
-        // Subscribe
+        // Subscribe with merge logic
         const unsubscribe = firestoreService.subscribeToStories(authUser.uid, (data) => {
+            if (!data) return;
             setSavedStories(prev => {
-                if (JSON.stringify(prev) !== JSON.stringify(data)) {
-                    return data;
+                const storyMap = new Map();
+                prev.forEach(s => storyMap.set(String(s.id), s));
+                data.forEach(s => storyMap.set(String(s.id), s));
+
+                const merged = Array.from(storyMap.values())
+                    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                    .slice(0, 50);
+
+                if (JSON.stringify(prev) !== JSON.stringify(merged)) {
+                    return merged;
                 }
                 return prev;
             });
         });
         return () => unsubscribe();
-    }, [authUser, firestoreEnabled, setSavedStories]);
+    }, [authUser, firestoreEnabled]); // Removed setSavedStories from deps to avoid loop if it's not stable
 
     const saveStory = useCallback(async (story) => {
         const newStory = {
