@@ -27,7 +27,7 @@ const Sidebar = () => {
     };
 
     return (
-        <aside className="w-64 h-screen bg-white/40 backdrop-blur-md border-r border-neutral-200 flex flex-col flex-shrink-0">
+        <aside className="w-64 h-screen bg-white/20 backdrop-blur-3xl border-r border-white/10 flex flex-col flex-shrink-0">
             {/* Logo Area */}
             <div className="h-20 flex items-center px-6 border-b border-neutral-100">
                 <Logo size="lg" />

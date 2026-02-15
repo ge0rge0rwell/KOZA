@@ -19,7 +19,7 @@
 
 .uiverse-input:focus+.uiverse-label,
 .uiverse-input:not(:placeholder-shown)+.uiverse-label {
-    @apply -top-1 left-2 text-[10px] font-black bg-white/80 px-2 rounded-lg text-primary-600 border border-white/50 shadow-sm opacity-100;
+    @apply -top-1 left-2 text-[10px] font-black bg-white/10 backdrop-blur-md px-2 rounded-lg text-primary-600 border border-white/20 shadow-sm opacity-100;
 }
 
 /* Sophisticated Bottom Line Glow */

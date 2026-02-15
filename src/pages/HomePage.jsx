@@ -158,13 +158,13 @@ const HomePage = () => {
     );
 
     return (
-        <div className="min-h-screen bg-white/60 koza-pattern text-neutral-900 relative overflow-hidden font-sans">
+        <div className="min-h-screen bg-white/10 koza-pattern text-neutral-900 relative overflow-hidden font-sans">
             {/* Immersive Background */}
             <TransformationCanvas color="#9333EA" intensity={0.4} />
             <div className="absolute inset-0 bg-radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.05) 0%, transparent 80%) pointer-events-none" />
 
             {/* Header */}
-            <header className="fixed top-0 left-0 right-0 bg-white/40 backdrop-blur-xl border-b border-neutral-200 z-50">
+            <header className="fixed top-0 left-0 right-0 bg-white/10 backdrop-blur-xl border-b border-white/10 z-50">
                 <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
                     <div className="flex items-center gap-3 text-neutral-900">
                         <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-primary-500/20">

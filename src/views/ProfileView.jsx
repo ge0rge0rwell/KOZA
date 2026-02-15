@@ -11,7 +11,7 @@ const ProfileView = ({ onClose }) => {
     const progressPercent = (user.xp / user.nextLevelXp) * 100;
 
     return (
-        <div className="min-h-screen bg-neutral-50">
+        <div className="min-h-screen bg-white/10 backdrop-blur-3xl relative overflow-hidden">
             <div className="max-w-4xl mx-auto px-4 py-12">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-8">
@@ -40,14 +40,14 @@ const ProfileView = ({ onClose }) => {
                     </div>
                     <button
                         onClick={onClose}
-                        className="p-3 bg-white hover:bg-neutral-100 rounded-xl transition-all shadow-sm border border-neutral-200"
+                        className="p-3 bg-white/10 hover:bg-white/20 rounded-xl transition-all shadow-sm border border-white/10"
                     >
                         <X size={20} />
                     </button>
                 </div>
 
                 {/* Stats Card */}
-                <div className="bg-white rounded-2xl border border-neutral-200 p-8 mb-6">
+                <div className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/10 p-8 mb-6">
                     <div className="flex items-center justify-between mb-6">
                         <div>
                             <div className="text-sm text-neutral-600 mb-1">Seviye</div>
@@ -62,7 +62,7 @@ const ProfileView = ({ onClose }) => {
                     </div>
 
                     {/* Progress Bar */}
-                    <div className="h-3 bg-neutral-100 rounded-full overflow-hidden">
+                    <div className="h-3 bg-white/5 rounded-full overflow-hidden">
                         <div
                             className="h-full bg-gradient-to-r from-primary-500 to-primary-600 transition-all duration-500"
                             style={{ width: `${progressPercent}%` }}
@@ -70,7 +70,7 @@ const ProfileView = ({ onClose }) => {
                     </div>
 
                     {/* Activity Stats */}
-                    <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-neutral-200">
+                    <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-white/10">
                         <div>
                             <div className="text-2xl font-bold mb-1">{user.storiesCreated}</div>
                             <div className="text-sm text-neutral-600">Hikaye Oluşturuldu</div>
@@ -87,7 +87,7 @@ const ProfileView = ({ onClose }) => {
                     <h2 className="text-xl font-semibold mb-4">Hikayelerim</h2>
 
                     {savedStories.length === 0 ? (
-                        <div className="bg-white rounded-2xl border border-neutral-200 p-12 text-center">
+                        <div className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/10 p-12 text-center">
                             <BookOpen size={48} className="mx-auto mb-4 text-neutral-300" />
                             <p className="text-neutral-600 mb-4">Henüz hikaye oluşturmadın</p>
                             <button
@@ -102,7 +102,7 @@ const ProfileView = ({ onClose }) => {
                             {savedStories.map(story => (
                                 <div
                                     key={story.id}
-                                    className="bg-white rounded-xl border border-neutral-200 p-4 hover:border-neutral-300 transition-colors group"
+                                    className="bg-white/10 backdrop-blur-xl rounded-xl border border-white/10 p-4 hover:border-white/20 transition-colors group"
                                 >
                                     <div className="flex items-start justify-between gap-4">
                                         <button

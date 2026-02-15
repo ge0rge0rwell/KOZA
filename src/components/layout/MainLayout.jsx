@@ -21,7 +21,7 @@ const MainLayout = ({ children }) => {
     } = useApp();
 
     return (
-        <div className="flex h-screen bg-white/60 backdrop-blur-md koza-pattern text-neutral-900 selection:bg-primary-100 selection:text-primary-900 overflow-hidden">
+        <div className="flex h-screen bg-white/10 backdrop-blur-3xl koza-pattern text-neutral-900 selection:bg-primary-100 selection:text-primary-900 overflow-hidden">
             {/* Sidebar (History Only) */}
             <Sidebar />
 

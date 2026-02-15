@@ -15,7 +15,7 @@ const Header = () => {
     };
 
     return (
-        <header className="absolute top-0 right-0 w-full h-16 flex items-center justify-end px-6 z-40">
+        <header className="absolute top-0 right-0 w-full h-16 flex items-center justify-end px-6 z-40 bg-white/10 backdrop-blur-xl border-b border-white/10">
 
 
             <div className="flex items-center gap-3">

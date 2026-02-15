@@ -91,7 +91,7 @@ const LearnTab = () => {
                                     Hemen Başla
                                 </GalaxyButton>
                             </div>
-                            <div className="w-full lg:w-1/3 aspect-video lg:aspect-square bg-white/40 rounded-[32px] border border-white/60 flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-500 shadow-xl relative overflow-hidden">
+                            <div className="w-full lg:w-1/3 aspect-video lg:aspect-square bg-white/10 rounded-[32px] border border-white/20 flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-500 shadow-xl relative overflow-hidden">
                                 <div className="absolute inset-0 bg-primary-500/5 group-hover:bg-primary-500/10 transition-colors" />
                                 <PlayCircle size={64} className="text-primary-500 drop-shadow-lg" />
                             </div>

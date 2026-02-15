@@ -1,11 +1,11 @@
 /* GalaxyTabs.css - Sliding Indicator */
 .galaxy-tabs {
     display: inline-flex;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(40px);
     border-radius: 99px;
     padding: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
 }

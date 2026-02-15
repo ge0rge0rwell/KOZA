@@ -5,12 +5,12 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     padding: 0 15px;
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -55,7 +55,7 @@
 .fileUploadWrapper label {
     width: 32px;
     height: 32px;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.1);
     color: #9333ea;
     display: flex;
     align-items: center;
@@ -63,7 +63,7 @@
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .fileUploadWrapper label:hover {

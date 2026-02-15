@@ -77,7 +77,7 @@ const CommunityTab = () => {
                                 onClick={() => setFilter(f)}
                                 className={`px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all ${filter === f
                                     ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/20'
-                                    : 'bg-white/40 border border-white/60 text-neutral-500 hover:bg-white/60'
+                                    : 'bg-white/10 border border-white/10 text-neutral-500 hover:bg-white/20'
                                     }`}
                             >
                                 {f === 'all' ? 'Hepsi' : f === 'story' ? 'Hikayeler' : 'Oyunlar'}

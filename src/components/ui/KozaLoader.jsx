@@ -102,7 +102,7 @@ const KozaLoader = ({ size = 'medium', className = '', message, fullScreen = fal
 
     if (fullScreen) {
         return (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/90 backdrop-blur-sm">
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/10 backdrop-blur-3xl">
                 {loaderContent}
             </div>
         );

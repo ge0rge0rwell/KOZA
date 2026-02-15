@@ -46,14 +46,14 @@ const StoryView = ({ story, onClose }) => {
     const progressValue = ((currentPage + 1) / totalPages) * 100;
 
     return (
-        <div className="min-h-screen bg-white text-neutral-900 relative overflow-hidden" style={{
+        <div className="min-h-screen bg-white/10 text-neutral-900 relative overflow-hidden" style={{
             backgroundImage: `radial-gradient(circle at 50% 50%, ${themeColor}08 0%, transparent 80%)`
         }}>
             {/* Background Particles */}
             <TransformationCanvas color={themeColor} intensity={0.5} />
 
             {/* Header */}
-            <div className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b border-neutral-200 z-50 transition-all duration-300">
+            <div className="fixed top-0 left-0 right-0 bg-white/10 backdrop-blur-xl border-b border-white/10 z-50 transition-all duration-300">
                 <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
                     <button
                         onClick={onClose}
@@ -97,7 +97,7 @@ const StoryView = ({ story, onClose }) => {
                             {currentPageData.title}
                         </h2>
 
-                        <div className={`bg-white/60 backdrop-blur-sm p-8 md:p-12 rounded-3xl border border-neutral-200 shadow-xl transition-all duration-500 ${isSpeaking ? 'ring-2 ring-primary-400 ring-offset-4' : ''}`}>
+                        <div className={`bg-white/10 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-white/10 shadow-xl transition-all duration-500 ${isSpeaking ? 'ring-2 ring-primary-400 ring-offset-4' : ''}`}>
                             <div className="prose prose-slate prose-xl max-w-none">
                                 <p className="text-neutral-900 leading-relaxed text-balance text-center font-serif text-lg first-letter:text-5xl first-letter:font-serif first-letter:mr-2 first-letter:float-left first-letter:text-primary-600">
                                     {currentPageData.content}

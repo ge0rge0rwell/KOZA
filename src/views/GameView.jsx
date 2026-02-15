@@ -41,9 +41,9 @@ const GameView = ({ game, onClose }) => {
     const isCompleted = currentLevel === levels.length - 1 && showFeedback;
 
     return (
-        <div className="min-h-screen bg-white text-neutral-900 relative">
+        <div className="min-h-screen bg-white/10 text-neutral-900 relative overflow-hidden">
             {/* Header */}
-            <div className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b border-neutral-200 z-50">
+            <div className="fixed top-0 left-0 right-0 bg-white/10 backdrop-blur-xl border-b border-white/10 z-50">
                 <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
                     <div>
                         <p className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold">Oyun Modu</p>
@@ -91,7 +91,7 @@ const GameView = ({ game, onClose }) => {
                                             ? option.isCorrect
                                                 ? 'border-green-500/50 bg-green-50 shadow-sm'
                                                 : 'border-red-500/50 bg-red-50 shadow-sm'
-                                            : 'border-neutral-200 bg-white hover:bg-neutral-50 hover:border-neutral-300 shadow-sm'
+                                            : 'border-white/10 bg-white/10 hover:bg-white/20 hover:border-white/30 shadow-sm'
                                             } ${showFeedback ? 'cursor-default' : 'cursor-pointer'}`}
                                     >
                                         <div className="flex items-start gap-4 relative z-10">

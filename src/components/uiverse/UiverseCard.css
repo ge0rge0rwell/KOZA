@@ -6,9 +6,9 @@
 
 .uiverse-card {
     @apply transition-liquid rounded-[40px] p-8 relative overflow-hidden;
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(var(--blur-premium, 32px)) saturate(180%);
-    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(40px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 
     /* Quantum Depth - Multi-layered internal shadows */
     box-shadow:
