@@ -27,3 +27,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Admin panel (private)
+src/components/admin/AdminPanel.jsx

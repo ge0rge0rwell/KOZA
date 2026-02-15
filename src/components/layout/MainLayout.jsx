@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { useUI } from '../../context/UIContext';
 import { useAuth } from '../../context/AuthContext';
 import Onboarding from '../Onboarding';
@@ -6,7 +6,9 @@ import GalaxyToastContainer from '../galaxy/GalaxyToastContainer';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import BottomMenu from './BottomMenu';
+import AdminPanel from '../admin/AdminPanel';
 import { Bell } from 'lucide-react';
+import '../../utils/errorTracker'; // Initialize error tracker
 
 const NotificationOverlay = memo(({ notification }) => {
     if (!notification) return null;
@@ -27,7 +29,23 @@ const NotificationOverlay = memo(({ notification }) => {
 
 const MainLayout = ({ children }) => {
     const { notification, showOnboarding, setShowOnboarding } = useUI();
-    const { user: authUser } = useAuth();
+    const { user: authUser, isAdmin } = useAuth();
+    const [showAdminPanel, setShowAdminPanel] = useState(false);
+
+    // Hidden admin panel trigger: Ctrl+Shift+A
+    useEffect(() => {
+        if (!isAdmin) return;
+
+        const handleKeyDown = (e) => {
+            if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+                e.preventDefault();
+                setShowAdminPanel(prev => !prev);
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [isAdmin]);
 
     return (
         <div className="flex h-screen bg-white/10 backdrop-blur-3xl koza-pattern text-neutral-900 selection:bg-primary-100 selection:text-primary-900 overflow-hidden font-sans">
@@ -48,6 +66,11 @@ const MainLayout = ({ children }) => {
 
                 <NotificationOverlay notification={notification} />
                 <GalaxyToastContainer />
+
+                {/* Hidden Admin Panel */}
+                {isAdmin && showAdminPanel && (
+                    <AdminPanel onClose={() => setShowAdminPanel(false)} />
+                )}
             </div>
         </div>
     );
