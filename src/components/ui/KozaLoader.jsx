@@ -90,6 +90,15 @@ const KozaLoader = ({ size = 'medium', className = '', message, fullScreen = fal
 
                 {/* Letter K */}
                 <svg viewBox="0 0 64 64" height={dimension} width={dimension} className="inline-block">
+                    {/* Background Track */}
+                    <path
+                        strokeLinejoin="round"
+                        strokeLinecap="round"
+                        strokeWidth="8"
+                        stroke="#000000"
+                        opacity="0.1"
+                        d="M 52,4 L 12,32 M 12,4 V 60 M 12,32 L 52,60"
+                    ></path>
                     <path
                         strokeLinejoin="round"
                         strokeLinecap="round"
@@ -103,6 +112,15 @@ const KozaLoader = ({ size = 'medium', className = '', message, fullScreen = fal
 
                 {/* Letter O */}
                 <svg viewBox="0 0 64 64" height={dimension} width={dimension} className="inline-block">
+                    {/* Background Track */}
+                    <path
+                        strokeLinejoin="round"
+                        strokeLinecap="round"
+                        strokeWidth="10"
+                        stroke="#000000"
+                        opacity="0.1"
+                        d="M 32 32 m 0 -27 a 27 27 0 1 1 0 54 a 27 27 0 1 1 0 -54"
+                    ></path>
                     <path
                         strokeLinejoin="round"
                         strokeLinecap="round"
@@ -116,6 +134,15 @@ const KozaLoader = ({ size = 'medium', className = '', message, fullScreen = fal
 
                 {/* Letter Z */}
                 <svg viewBox="0 0 64 64" height={dimension} width={dimension} className="inline-block">
+                    {/* Background Track */}
+                    <path
+                        strokeLinejoin="round"
+                        strokeLinecap="round"
+                        strokeWidth="8"
+                        stroke="#000000"
+                        opacity="0.1"
+                        d="M 12,12 H 52 L 12,52 H 52"
+                    ></path>
                     <path
                         strokeLinejoin="round"
                         strokeLinecap="round"
@@ -129,6 +156,15 @@ const KozaLoader = ({ size = 'medium', className = '', message, fullScreen = fal
 
                 {/* Letter A */}
                 <svg viewBox="0 0 64 64" height={dimension} width={dimension} className="inline-block">
+                    {/* Background Track */}
+                    <path
+                        strokeLinejoin="round"
+                        strokeLinecap="round"
+                        strokeWidth="8"
+                        stroke="#000000"
+                        opacity="0.1"
+                        d="M 12,60 L 32,4 L 52,60 M 20,40 H 44"
+                    ></path>
                     <path
                         strokeLinejoin="round"
                         strokeLinecap="round"
