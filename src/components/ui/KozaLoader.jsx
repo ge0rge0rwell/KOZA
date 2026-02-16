@@ -1,12 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './KozaLoader.css';
 
-const KozaLoader = ({ size = 'medium', className = '', message, fullScreen = false }) => {
+const KozaLoader = ({ size = 'medium', className = '', message, fullScreen = false, interactive = false }) => {
     const scale = size === 'small' ? 0.5 : size === 'large' ? 1.5 : 1;
     const dimension = 64 * scale;
+    const containerRef = useRef(null);
+    const [rotation, setRotation] = useState({ x: 0, y: 0 });
+    const [isHovered, setIsHovered] = useState(false);
+
+    useEffect(() => {
+        if (!interactive || !containerRef.current) return;
+
+        const handleMouseMove = (e) => {
+            const rect = containerRef.current.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            const deltaX = (e.clientX - centerX) / rect.width;
+            const deltaY = (e.clientY - centerY) / rect.height;
+
+            setRotation({
+                x: deltaY * 15, // Max 15deg rotation
+                y: deltaX * 15
+            });
+        };
+
+        const handleMouseLeave = () => {
+            setRotation({ x: 0, y: 0 });
+            setIsHovered(false);
+        };
+
+        const container = containerRef.current;
+        container.addEventListener('mousemove', handleMouseMove);
+        container.addEventListener('mouseleave', handleMouseLeave);
+
+        return () => {
+            container.removeEventListener('mousemove', handleMouseMove);
+            container.removeEventListener('mouseleave', handleMouseLeave);
+        };
+    }, [interactive]);
+
+    const containerStyle = interactive ? {
+        transform: `perspective(1000px) rotateX(${-rotation.x}deg) rotateY(${rotation.y}deg) scale(${isHovered ? 1.05 : 1})`,
+        transition: 'transform 0.1s ease-out, filter 0.3s ease',
+        filter: isHovered ? 'drop-shadow(0 20px 40px rgba(33, 158, 188, 0.3))' : 'none',
+        cursor: 'pointer'
+    } : {};
 
     const loaderContent = (
-        <div className={`koza-loader-wrapper flex flex-col items-center justify-center ${className}`}>
+        <div
+            ref={interactive ? containerRef : null}
+            className={`koza-loader-wrapper flex flex-col items-center justify-center ${className}`}
+            style={containerStyle}
+            onMouseEnter={() => interactive && setIsHovered(true)}
+            onMouseLeave={() => interactive && setIsHovered(false)}
+        >
             <div className="koza-loader-container">
                 <svg height="0" width="0" viewBox="0 0 64 64" className="absolute">
                     <defs>

@@ -29,7 +29,7 @@ const HeroSection = memo(({ onStart }) => (
             <div className="relative h-[180px] flex flex-col items-center justify-center">
                 <div className="absolute inset-0 bg-radial-gradient(circle at 50% 50%, rgba(33, 158, 188, 0.1) 0%, transparent 70%)" />
                 <div className="scale-110 md:scale-125 transform-gpu">
-                    <KozaLoader size="large" />
+                    <KozaLoader size="large" interactive />
                 </div>
             </div>
         </div>

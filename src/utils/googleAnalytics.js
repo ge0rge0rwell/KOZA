@@ -1,5 +1,6 @@
 import ReactGA from 'react-ga4';
 import { ANALYTICS_CONFIG } from '../config';
+import { localAnalytics } from './localAnalytics';
 
 class GoogleAnalytics {
     constructor() {
@@ -41,6 +42,9 @@ class GoogleAnalytics {
     }
 
     trackPageView(path) {
+        // Always track locally for admin panel
+        localAnalytics.trackPageView(path);
+
         if (!this.initialized) {
             this.queue.push({ type: 'trackPageView', args: [path] });
             return;
@@ -54,6 +58,9 @@ class GoogleAnalytics {
     }
 
     trackEvent(category, action, label, value) {
+        // Always track locally for admin panel
+        localAnalytics.trackEvent(category, action, label);
+
         if (!this.initialized) {
             this.queue.push({ type: 'trackEvent', args: [category, action, label, value] });
             return;
