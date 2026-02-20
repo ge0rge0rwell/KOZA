@@ -14,9 +14,9 @@ module WebAppControllerConcern
       policy = ContentSecurityPolicy.new
 
       if policy.sso_host.present?
-        p.form_action policy.sso_host, -> { "https://#{request.host}/auth/auth/" }
+        p.form_action :self, policy.sso_host, 'http://localhost:5173', 'http://127.0.0.1:5173'
       else
-        p.form_action :none
+        p.form_action :self, 'http://localhost:5173', 'http://127.0.0.1:5173'
       end
     end
   end

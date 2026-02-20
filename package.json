@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "vite",
     "dev:all": "npm run dev & npm run mastodon:dev",
-    "mastodon:dev": "cd mastodon && bundle exec rails s -p 3000",
+    "mastodon:dev": "cd mastodon && (RAILS_ENV=development bundle exec rails s -p 3000 & RAILS_ENV=development npm run dev)",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

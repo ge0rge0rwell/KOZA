@@ -15,7 +15,7 @@ media_hosts = policy.media_hosts
 Rails.application.config.content_security_policy do |p|
   p.base_uri        :none
   p.default_src     :none
-  p.frame_ancestors :none
+  p.frame_ancestors :self, 'http://localhost:5173', 'http://127.0.0.1:5173'
   p.font_src        :self, assets_host
   p.img_src         :self, :data, :blob, *media_hosts
   p.media_src       :self, :data, *media_hosts

@@ -46,6 +46,11 @@ export default defineConfig({
         target: 'http://localhost:3000',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/mastodon/, '')
+      },
+      '/packs-dev': {
+        target: 'http://localhost:3036',
+        changeOrigin: true,
+        ws: true
       }
     }
   }
