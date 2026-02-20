@@ -3,8 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "workspaces": [
+    "mastodon"
+  ],
   "scripts": {
     "dev": "vite",
+    "dev:all": "npm run dev & npm run mastodon:dev",
+    "mastodon:dev": "cd mastodon && bundle exec rails s -p 3000",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

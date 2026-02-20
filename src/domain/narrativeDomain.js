@@ -107,5 +107,55 @@ export const NarrativeDomain = {
 
         activeRequests.set(requestId, task);
         return task;
+    },
+
+    /**
+     * Refines an existing story based on user feedback.
+     */
+    processRefinementRequest: async (existingStory, feedback) => {
+        const requestId = `refine:${existingStory.id}:${feedback.trim().toLowerCase()}`;
+
+        if (activeRequests.has(requestId)) return activeRequests.get(requestId);
+
+        const task = (async () => {
+            try {
+                // 1. Validation 
+                const validation = validateStoryInput(feedback);
+                if (!validation.isValid) throw new Error(validation.errors[0]);
+
+                // 2. Safety Check
+                const safety = detectCrisis(validation.sanitized);
+                if (safety.isCrisis) {
+                    return { isSafetyTriggered: true, message: safety.message };
+                }
+
+                // 3. AI Refinement
+                const [result, generatedTitle] = await Promise.all([
+                    import('../services/geminiService').then(m => m.refineStorybook(existingStory, validation.sanitized)),
+                    import('../services/geminiService').then(m => m.generateContentName(validation.sanitized))
+                ]);
+
+                // 4. Result Construction
+                return {
+                    isSafetyTriggered: false,
+                    data: {
+                        id: existingStory.id,
+                        ...NarrativeDomain.resolveMetadata('story', generatedTitle, existingStory.userInput + " | Refinement: " + validation.sanitized),
+                        pages: result.pages,
+                        themeColor: result.themeColor || existingStory.themeColor,
+                        visualMood: result.visualMood || existingStory.visualMood,
+                        refinedAt: new Date().toISOString()
+                    }
+                };
+            } catch (error) {
+                console.error('Refinement Domain Error:', error);
+                throw new Error(`Hikaye düzenleme hatası: ${error.message}`);
+            } finally {
+                activeRequests.delete(requestId);
+            }
+        })();
+
+        activeRequests.set(requestId, task);
+        return task;
     }
 };

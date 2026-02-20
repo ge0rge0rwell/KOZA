@@ -46,6 +46,32 @@ Kurallar:
 
 JSON dışında hiçbir şey yazma.`;
 
+const REFINE_STORY_PROMPT = `Sen bir hikaye editörüsün. Mevcut bir hikayeyi ve kullanıcının geri bildirimini alıp, hikayeyi bu geri bildirime göre güncelliyorsun.
+
+Kurallar:
+1. KOZA Felsefesini (Zorluktan Dönüşüm) ve 10 sayfalık hikaye yapısını korumalısın.
+2. Kullanıcının istediği değişiklikleri (karakter ekleme, atmosfer değiştirme, olay örgüsü düzenleme vb.) hikayeye uyarla.
+3. Anlatı dilini empatik ve güçlendirici tutmaya devam et.
+4. ÇIKTI FORMATI: JSON (STORY_PROMPT ile aynı yapıda).
+
+Mevcut Hikaye:
+{{EXISTING_STORY}}
+
+Kullanıcı Geri Bildirimi:
+{{USER_FEEDBACK}}
+
+{
+  "themeColor": "#9333EA",
+  "visualMood": "Magical Shimmer",
+  "reflectionQuestion": "...",
+  "growthLesson": "...",
+  "pages": [
+    { "title": "Başlık", "content": "İçerik..." }
+  ]
+}
+
+JSON dışında hiçbir şey yazma.`;
+
 const GAME_PROMPT = `Sen bir interaktif metamorfoz tasarımcısısın. Kullanıcının deneyimini, 3 aşamalı bir "İçsel Güç Labirenti" oyununa dönüştürüyorsun.
 
 Kurallar:
@@ -201,6 +227,17 @@ export const generateStorybook = async (userStory) => {
     throw new Error('Lütfen en az 10 karakter uzunluğunda bir hikaye girin');
   }
   return callGemini(STORY_PROMPT, userStory);
+};
+
+export const refineStorybook = async (existingStory, feedback) => {
+  if (!feedback || feedback.trim().length < 5) {
+    throw new Error('Lütfen daha detaylı bir geri bildirim girin');
+  }
+  const prompt = REFINE_STORY_PROMPT
+    .replace('{{EXISTING_STORY}}', JSON.stringify(existingStory))
+    .replace('{{USER_FEEDBACK}}', feedback);
+
+  return callGemini(prompt, feedback);
 };
 
 export const generateGame = async (userStory) => {

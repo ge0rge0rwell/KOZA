@@ -12,11 +12,16 @@ import {
     Volume2,
     ChevronDown,
     Check,
-    VolumeX
+    VolumeX,
+    MessageSquare,
+    Sparkles,
+    Loader2
 } from 'lucide-react';
 import TransformationCanvas from '../components/cocoon/TransformationCanvas';
 import GalaxyButton from '../components/galaxy/GalaxyButton';
 import useAudioStory from '../hooks/useAudioStory';
+import MessageBox from '../components/input/MessageBox';
+import { useStory } from '../context/StoryContext';
 
 // Memoized Sub-Components
 const StoryHeader = memo(({ title, currentPage, totalPages, onPrev, onNext, onReset, onJump, onToggleFullscreen, onPrint, onShare, onToggleAudio, isSpeaking, onClose }) => (
@@ -106,7 +111,11 @@ const StoryCompletionOverlay = memo(({ onClose }) => (
 ));
 
 const StoryView = ({ story, onClose }) => {
+    const { refineStory, isProcessing } = useStory();
     const [currentPage, setCurrentPage] = useState(0);
+    const [feedback, setFeedback] = useState('');
+    const [isRefinementOpen, setIsRefinementOpen] = useState(false);
+    const [refinementStatus, setRefinementStatus] = useState(null); // 'idle', 'loading', 'success', 'error'
     const pages = useMemo(() => story.pages || [], [story.pages]);
     const totalPages = pages.length;
     const themeColor = story.themeColor || '#9333EA';
@@ -136,6 +145,23 @@ const StoryView = ({ story, onClose }) => {
         } catch (err) { console.error('Paylaşım hatası:', err); }
     }, [story.title]);
 
+    const handleRefine = async () => {
+        if (!feedback.trim()) return;
+        setRefinementStatus('loading');
+        const result = await refineStory(story, feedback);
+        if (result.success) {
+            setRefinementStatus('success');
+            setFeedback('');
+            setTimeout(() => {
+                setRefinementStatus(null);
+                setIsRefinementOpen(false);
+            }, 2000);
+        } else {
+            setRefinementStatus('error');
+            alert(result.message || "Bir hata oluştu.");
+        }
+    };
+
     if (!pages.length) return (
         <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-8">
             <div className="bg-white rounded-2xl border border-neutral-200 p-12 text-center shadow-xl">
@@ -158,6 +184,52 @@ const StoryView = ({ story, onClose }) => {
                 onToggleFullscreen={toggleFullscreen} onPrint={handlePrint} onShare={handleShare}
                 onToggleAudio={toggle} isSpeaking={isSpeaking} onClose={onClose}
             />
+
+            <div className="absolute top-20 right-6 z-50 flex flex-col items-end gap-2">
+                <button
+                    onClick={() => setIsRefinementOpen(!isRefinementOpen)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full font-bold text-sm transition-all shadow-lg active:scale-95 ${isRefinementOpen ? 'bg-indigo-600 text-white' : 'bg-white text-indigo-600 hover:bg-neutral-50'}`}
+                >
+                    <Sparkles size={16} />
+                    <span>Hikayeyi Düzenle</span>
+                </button>
+
+                {isRefinementOpen && (
+                    <div className="w-80 bg-white p-4 rounded-3xl shadow-2xl border border-indigo-100 animate-fade-in-up mt-2">
+                        <div className="flex items-center justify-between mb-3">
+                            <div className="flex items-center gap-2 text-indigo-600 font-bold text-xs uppercase tracking-wider">
+                                <MessageSquare size={14} />
+                                <span>Nasıl Değiştirelim?</span>
+                            </div>
+                            <button onClick={() => setIsRefinementOpen(false)} className="text-neutral-400 hover:text-neutral-600">
+                                <X size={16} />
+                            </button>
+                        </div>
+                        <p className="text-[10px] text-neutral-500 mb-4 leading-relaxed">
+                            Örn: "Bir yardımcı karakter ekle", "Daha büyülü bir atmosfer yarat" veya "Sonunu değiştir".
+                        </p>
+                        <MessageBox
+                            value={feedback}
+                            onChange={setFeedback}
+                            onSend={handleRefine}
+                            disabled={refinementStatus === 'loading'}
+                            placeholder="Geri bildirimin..."
+                        />
+                        {refinementStatus === 'loading' && (
+                            <div className="mt-4 flex items-center justify-center gap-2 text-indigo-600 font-bold text-xs animate-pulse">
+                                <Loader2 size={16} className="animate-spin" />
+                                <span>KOZA Hikayeni Yeniden Örüyor...</span>
+                            </div>
+                        )}
+                        {refinementStatus === 'success' && (
+                            <div className="mt-4 flex items-center justify-center gap-2 text-green-600 font-bold text-xs">
+                                <Check size={16} />
+                                <span>Dönüşüm Tamamlandı!</span>
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
 
             <main className="flex-1 relative z-10 overflow-hidden">
                 <div className="w-full h-full bg-white book-depth flex relative overflow-hidden group shadow-2xl">

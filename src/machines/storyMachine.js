@@ -38,7 +38,8 @@ export const storyMachine = setup({
                 },
                 'STORY.SET_ACTIVE': {
                     actions: assign({ activeStoryId: ({ event }) => event.id })
-                }
+                },
+                'STORY.REFINE_START': 'refining'
             }
         },
         fetching: {
@@ -60,6 +61,18 @@ export const storyMachine = setup({
                     actions: 'addStory'
                 },
                 'STORY.CREATE_FAILURE': {
+                    target: 'idle',
+                    actions: assign({ error: ({ event }) => event.error })
+                }
+            }
+        },
+        refining: {
+            on: {
+                'STORY.REFINE_SUCCESS': {
+                    target: 'idle',
+                    actions: 'updateStory'
+                },
+                'STORY.REFINE_FAILURE': {
                     target: 'idle',
                     actions: assign({ error: ({ event }) => event.error })
                 }

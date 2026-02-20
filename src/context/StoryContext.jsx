@@ -154,6 +154,38 @@ export const StoryProvider = ({ children }) => {
         }
     }, [authUser, firestoreEnabled, storyActor]);
 
+    const refineStory = useCallback(async (existingStory, feedback) => {
+        storyActor.send({ type: 'STORY.REFINE_START' });
+        setIsProcessing(true);
+
+        try {
+            const { NarrativeDomain } = await import('../domain/narrativeDomain');
+            const result = await NarrativeDomain.processRefinementRequest(existingStory, feedback);
+
+            if (result.isSafetyTriggered) {
+                storyActor.send({ type: 'STORY.REFINE_FAILURE', error: result.message });
+                return { success: false, message: result.message };
+            }
+
+            const updatedStory = result.data;
+            storyActor.send({ type: 'STORY.REFINE_SUCCESS', story: updatedStory });
+
+            analytics.track('story_refined', { title: updatedStory.title });
+
+            if (authUser && firestoreEnabled) {
+                await firestoreService.saveStory(authUser.uid, updatedStory);
+            }
+
+            return { success: true, story: updatedStory };
+        } catch (error) {
+            console.error("Refinement failed:", error);
+            storyActor.send({ type: 'STORY.REFINE_FAILURE', error: error.message });
+            return { success: false, message: error.message };
+        } finally {
+            setIsProcessing(false);
+        }
+    }, [authUser, firestoreEnabled, storyActor]);
+
     // EXTREME OPTIMIZATION: Memoized Context Value
     const value = React.useMemo(() => ({
         savedStories,
@@ -167,7 +199,8 @@ export const StoryProvider = ({ children }) => {
         setLastSavedStory,
         communityWorks: COMMUNITY_WORKS,
         saveStory,
-        deleteStory
+        deleteStory,
+        refineStory
     }), [
         savedStories,
         activeStory,
@@ -175,7 +208,8 @@ export const StoryProvider = ({ children }) => {
         analysisResult,
         lastSavedStory,
         saveStory,
-        deleteStory
+        deleteStory,
+        refineStory
     ]);
 
     return <StoryContext.Provider value={value}>{children}</StoryContext.Provider>;
