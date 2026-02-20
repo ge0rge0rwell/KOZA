@@ -47,6 +47,7 @@ export const config: UserConfigFnPromise = async ({ mode, command }) => {
       alias: {
         '~/': `${jsRoot}/`,
         '@/': `${jsRoot}/`,
+        'mastodon/': `${jsRoot}/mastodon/`,
       },
     },
     css: {
@@ -184,9 +185,9 @@ export const config: UserConfigFnPromise = async ({ mode, command }) => {
       }),
       isProdBuild && (Compress() as PluginOption),
       command === 'build' &&
-        manifestSRI({
-          manifestPaths: ['.vite/manifest.json'],
-        }),
+      manifestSRI({
+        manifestPaths: ['.vite/manifest.json'],
+      }),
       VitePWA({
         srcDir: path.resolve(jsRoot, 'mastodon/service_worker'),
         // We need to use injectManifest because we use our own service worker
@@ -215,9 +216,9 @@ export const config: UserConfigFnPromise = async ({ mode, command }) => {
       // Old library types need to be converted
       optimizeLodashImports() as PluginOption,
       !!process.env.ANALYZE_BUNDLE_SIZE &&
-        (visualizer({
-          template: process.env.CI ? 'raw-data' : 'treemap',
-        }) as PluginOption),
+      (visualizer({
+        template: process.env.CI ? 'raw-data' : 'treemap',
+      }) as PluginOption),
       MastodonNameLookup(),
     ],
   } satisfies UserConfig;

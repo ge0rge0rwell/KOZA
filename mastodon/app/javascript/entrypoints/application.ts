@@ -1,6 +1,6 @@
-import { loadLocale } from 'mastodon/locales';
-import main from 'mastodon/main';
-import { loadPolyfills } from 'mastodon/polyfills';
+import { loadLocale } from '../mastodon/locales/index';
+import main from '../mastodon/main';
+import { loadPolyfills } from '../mastodon/polyfills/index';
 
 loadPolyfills()
   .then(loadLocale)
