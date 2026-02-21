@@ -3,16 +3,17 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "workspaces": [
-    "mastodon"
-  ],
   "scripts": {
     "dev": "vite",
-    "dev:all": "npm run dev & npm run mastodon:dev",
-    "mastodon:dev": "cd mastodon && (RAILS_ENV=development bundle exec rails s -p 3000 & RAILS_ENV=development npm run dev)",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server:dev": "cd server && npm run dev",
+    "worker:publish": "cd server && npm run worker:publish",
+    "worker:sync": "cd server && npm run worker:sync",
+    "worker:refresh": "cd server && npm run worker:refresh",
+    "dev:all": "npm run dev & npm run server:dev & npm run mastodon:dev",
+    "mastodon:dev": "cd mastodon && (rm -f tmp/pids/server.pid; RAILS_ENV=development ~/.rbenv/shims/bundle exec rails s -p 3000 & RAILS_ENV=development npm run dev)"
   },
   "dependencies": {
     "@xstate/react": "^6.0.0",

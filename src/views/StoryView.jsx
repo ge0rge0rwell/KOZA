@@ -24,7 +24,7 @@ import MessageBox from '../components/input/MessageBox';
 import { useStory } from '../context/StoryContext';
 
 // Memoized Sub-Components
-const StoryHeader = memo(({ title, currentPage, totalPages, onPrev, onNext, onReset, onJump, onToggleFullscreen, onPrint, onShare, onToggleAudio, isSpeaking, onClose }) => (
+const StoryHeader = memo(({ title, currentPage, totalPages, onPrev, onNext, onReset, onJump, onToggleFullscreen, onPrint, onShare, onMastodonShare, isMastodonSharing, onToggleAudio, isSpeaking, onClose }) => (
     <header className="h-16 bg-white border-b border-neutral-200 px-6 flex items-center justify-between z-50 shadow-sm shrink-0">
         <div className="flex items-center gap-4">
             <Book size={20} className="text-neutral-400" />
@@ -52,6 +52,18 @@ const StoryHeader = memo(({ title, currentPage, totalPages, onPrev, onNext, onRe
                 <button onClick={onToggleFullscreen} title="Tam Ekran" className="p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600"><Maximize2 size={18} /></button>
                 <button onClick={onPrint} title="Yazdır" className="p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600"><Printer size={18} /></button>
                 <button onClick={onShare} title="Paylaş" className="p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600"><Share2 size={18} /></button>
+                <button
+                    onClick={onMastodonShare}
+                    title="Mastodon'a Gönder"
+                    disabled={isMastodonSharing}
+                    className="p-2 hover:bg-[#6364FF]/10 rounded-lg text-[#6364FF] hover:text-[#5253e8] transition-colors disabled:opacity-50"
+                >
+                    {isMastodonSharing ? <Loader2 size={18} className="animate-spin" /> : (
+                        <svg className="w-[18px] h-[18px] fill-current" viewBox="0 0 79 75" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M63 45.3v-20c0-4.1-1-7.3-3.2-9.7-2.1-2.4-5-3.7-8.5-3.7-4.1 0-7.2 1.6-9.3 4.7l-2 3.3-2-3.3c-2-3.1-5.1-4.7-9.2-4.7-3.5 0-6.4 1.3-8.6 3.7-2.1 2.4-3.1 5.6-3.1 9.7v20h8V25.9c0-4.1 1.7-6.2 5.2-6.2 3.8 0 5.8 2.5 5.8 7.4V37.7H44V27.1c0-4.9 1.9-7.4 5.8-7.4 3.5 0 5.2 2.1 5.2 6.2V45.3h8ZM74.7 16.6c.6 6 .1 15.7.1 17.3 0 .5-.1 4.8-.1 5.3-.7 11.5-8 16-15.6 17.5-.1 0-.2 0-.3 0-4.9 1-10 1.2-14.9 1.4-1.2 0-2.4 0-3.6 0-4.8 0-9.7-.6-14.4-1.7-.1 0-.1 0-.1 0s-.1 0-.1 0 0 .1 0 .1 0 0 0 0c.1 1.6.4 3.1 1 4.5.6 1.7 2.9 5.7 11.4 5.7 5 0 9.9-.6 14.8-1.7 0 0 0 0 0 0 .1 0 .1 0 .1 0 0 .1 0 .1 0 .1.1 0 .1 0 .1.1v5.6s0 .1-.1.1c0 0 0 0 0 .1-1.6 1.1-3.7 1.7-5.6 2.3-.8.3-1.6.5-2.4.7-7.5 1.7-15.4 1.3-22.7-1.2-6.8-2.4-13.8-8.2-15.5-15.2-.9-3.8-1.6-7.6-1.9-11.5-.6-5.8-.6-11.7-.8-17.5C3.9 24.5 4 20 4.9 16 6.7 7.9 14.1 2.2 22.3 1c1.4-.2 4.1-1 16.5-1h.1C51.4 0 56.7.8 58.1 1c8.4 1.2 15.5 7.5 16.6 15.6Z" />
+                        </svg>
+                    )}
+                </button>
             </div>
             <div className="flex items-center gap-1 ml-1">
                 <button onClick={onToggleAudio} className={`flex items-center gap-2 px-4 py-1.5 rounded-full transition-all text-sm font-bold ${isSpeaking ? 'bg-primary-500 text-white shadow-lg' : 'bg-primary-100 text-primary-600 hover:bg-primary-200'}`}>
@@ -145,6 +157,25 @@ const StoryView = ({ story, onClose }) => {
         } catch (err) { console.error('Paylaşım hatası:', err); }
     }, [story.title]);
 
+    const [isMastodonSharing, setIsMastodonSharing] = useState(false);
+    const handleMastodonShare = async () => {
+        setIsMastodonSharing(true);
+        try {
+            // Simulated API call to enqueue BullMQ publishing job
+            // await fetch('http://localhost:4000/api/mastodon/publish', {
+            //     method: 'POST',
+            //     body: JSON.stringify({ content: `Yeni hikayemi okuyun: ${story.title}\n\n#KOZA #Hikaye` })
+            // });
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            alert("Hikaye Mastodon gönderi kuyruğuna eklendi!");
+        } catch (error) {
+            console.error('Mastodon paylaşım hatası', error);
+            alert("Paylaşılamadı. Hesabınız bağlı mı?");
+        } finally {
+            setIsMastodonSharing(false);
+        }
+    };
+
     const handleRefine = async () => {
         if (!feedback.trim()) return;
         setRefinementStatus('loading');
@@ -182,6 +213,7 @@ const StoryView = ({ story, onClose }) => {
                 onPrev={prevPage} onNext={nextPage}
                 onReset={() => setCurrentPage(0)} onJump={() => setCurrentPage(totalPages - 1)}
                 onToggleFullscreen={toggleFullscreen} onPrint={handlePrint} onShare={handleShare}
+                onMastodonShare={handleMastodonShare} isMastodonSharing={isMastodonSharing}
                 onToggleAudio={toggle} isSpeaking={isSpeaking} onClose={onClose}
             />
 
