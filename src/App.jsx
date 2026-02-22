@@ -1,7 +1,7 @@
 import React, { useEffect, memo } from 'react';
 import { useUI } from './context/UIContext';
 import { useAuth } from './context/AuthContext';
-import HomePage from './pages/HomePage';
+import HomePage from './views/HomePage';
 import { googleAnalytics } from './utils/googleAnalytics';
 
 // New Architecture Components
