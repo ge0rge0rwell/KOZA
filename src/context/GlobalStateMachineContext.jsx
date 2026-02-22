@@ -1,3 +1,4 @@
+'use client';
 import React, { createContext, useContext } from 'react';
 import { useMachine } from '@xstate/react';
 import { appMachine } from '../machines/appMachine';

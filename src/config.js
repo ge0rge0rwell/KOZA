@@ -4,18 +4,18 @@ export const APP_CONFIG = {
 };
 
 export const API_CONFIG = {
-    GEMINI_API_KEY: import.meta.env.VITE_GEMINI_API_KEY || "AIzaSyDITPa_2fG8x6aUjZ8DsA_f9l3AdWA7ToQ"
+    GEMINI_API_KEY: process.env.NEXT_PUBLIC_GEMINI_API_KEY || "AIzaSyDITPa_2fG8x6aUjZ8DsA_f9l3AdWA7ToQ"
 };
 
 export const FIREBASE_CONFIG = {
-    apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "",
-    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "",
-    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "",
-    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "",
-    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "",
-    appId: import.meta.env.VITE_FIREBASE_APP_ID || ""
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "",
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "",
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "",
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "",
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "",
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || ""
 };
 
 export const ANALYTICS_CONFIG = {
-    measurementId: import.meta.env.VITE_GA_MEASUREMENT_ID || ""
+    measurementId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""
 };

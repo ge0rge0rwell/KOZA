@@ -9,7 +9,7 @@ class GoogleAnalytics {
     }
 
     initialize() {
-        if (this.initialized || !ANALYTICS_CONFIG.measurementId) {
+        if (this.initialized || !ANALYTICS_CONFIG.measurementId || typeof window === 'undefined') {
             return;
         }
 

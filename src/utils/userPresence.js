@@ -15,6 +15,8 @@ class UserPresenceTracker {
     }
 
     startTracking() {
+        if (typeof window === 'undefined') return;
+
         // Add current session
         this.activeUsers.add(this.sessionId);
 

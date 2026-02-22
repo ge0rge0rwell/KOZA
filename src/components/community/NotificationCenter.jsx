@@ -1,7 +1,8 @@
+'use client';
 import React, { useState, useEffect } from 'react';
 import { Bell, Heart, Repeat2, UserPlus, AtSign, Loader2 } from 'lucide-react';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000';
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';
 
 const NOTIF_ICONS = {
     favourite: { icon: Heart, color: 'text-rose-400', label: 'Beğendi' },

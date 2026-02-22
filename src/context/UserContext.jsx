@@ -1,3 +1,4 @@
+'use client';
 import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { useAuth } from './AuthContext';

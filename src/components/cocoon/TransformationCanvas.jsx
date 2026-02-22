@@ -1,3 +1,4 @@
+'use client';
 import React, { useRef, useEffect } from 'react';
 
 const TransformationCanvas = ({ color = '#9333EA', intensity = 1, active = true }) => {

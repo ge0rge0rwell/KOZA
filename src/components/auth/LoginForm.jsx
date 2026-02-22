@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { X, Loader2 } from 'lucide-react';

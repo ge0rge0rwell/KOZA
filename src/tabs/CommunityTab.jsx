@@ -1,10 +1,12 @@
+'use client';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PostCard from '../components/community/PostCard';
 import PostComposer from '../components/community/PostComposer';
 import NotificationCenter from '../components/community/NotificationCenter';
 import { Loader2, RefreshCw, Hash } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000';
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';
 
 const TABS = [
     { id: 'local', label: 'Topluluk' },
@@ -26,8 +28,8 @@ const CommunityTab = () => {
     const [error, setError] = useState(null);
     const sentinelRef = useRef(null);
 
-    // In production, get from AuthContext
-    const currentUserId = null;
+    const { user } = useAuth();
+    const currentUserId = user?.uid || null;
 
     const fetchFeed = useCallback(async (reset = false) => {
         if (loading && !reset) return;
@@ -73,7 +75,7 @@ const CommunityTab = () => {
 
     // Infinite scroll using IntersectionObserver
     useEffect(() => {
-        if (!hasMore || loading) return;
+        if (!hasMore || loading || error) return;
         const observer = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting) fetchFeed(false);
         }, { threshold: 0.1 });
@@ -91,8 +93,8 @@ const CommunityTab = () => {
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
                             className={`px-4 py-1.5 text-xs font-semibold rounded-lg transition-all ${activeTab === tab.id
-                                    ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/20'
-                                    : 'text-neutral-400 hover:text-white'
+                                ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/20'
+                                : 'text-neutral-400 hover:text-white'
                                 }`}
                         >
                             {tab.label}

@@ -2,7 +2,7 @@ import { API_CONFIG } from '../config';
 import { SINGULARITY_CORE_PROMPT } from '../config/prompts';
 
 // Configuration
-const API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY;
+const API_KEY = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY;
 const MODEL = 'google/gemma-3-27b-it';
 const BASE_URL = 'https://openrouter.ai/api/v1/chat/completions';
 

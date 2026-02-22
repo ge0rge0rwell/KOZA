@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useCallback } from 'react';
+'use client';
+import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 
 const UIContext = createContext(null);
 
@@ -7,9 +8,14 @@ export const UIProvider = ({ children }) => {
     const [activeTab, setActiveTab] = useState('create');
     const [notification, setNotification] = useState(null);
     const [toasts, setToasts] = useState([]);
-    const [showOnboarding, setShowOnboarding] = useState(
-        !localStorage.getItem('koza-onboarding-complete')
-    );
+    const [showOnboarding, setShowOnboarding] = useState(false);
+
+    useEffect(() => {
+        const complete = localStorage.getItem('koza-onboarding-complete');
+        if (!complete) {
+            setShowOnboarding(true);
+        }
+    }, []);
 
 
 

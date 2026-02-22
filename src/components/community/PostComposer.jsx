@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useRef } from 'react';
 import { Send, Image, Globe, Lock, Eye, X, Loader2 } from 'lucide-react';
 
@@ -8,7 +9,7 @@ const VISIBILITY_OPTIONS = [
 ];
 
 const MAX_CHARS = 500;
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000';
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';
 
 /**
  * Post Composer — sends posts to the KOZA API which enqueues them in BullMQ

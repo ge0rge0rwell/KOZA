@@ -3,6 +3,7 @@
  */
 
 export const announceToScreenReader = (message) => {
+    if (typeof document === 'undefined') return;
     const announcement = document.createElement('div');
     announcement.setAttribute('role', 'status');
     announcement.setAttribute('aria-live', 'polite');
@@ -13,7 +14,9 @@ export const announceToScreenReader = (message) => {
     document.body.appendChild(announcement);
 
     setTimeout(() => {
-        document.body.removeChild(announcement);
+        if (typeof document !== 'undefined' && announcement.parentNode) {
+            document.body.removeChild(announcement);
+        }
     }, 1000);
 };
 

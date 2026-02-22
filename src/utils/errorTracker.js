@@ -11,16 +11,20 @@ class ErrorTracker {
     }
 
     setupGlobalHandlers() {
+        if (typeof window === 'undefined') return;
+
         // Capture console.error
         const originalError = console.error;
         console.error = (...args) => {
-            this.logError({
-                type: 'console.error',
-                message: args.map(arg =>
-                    typeof arg === 'object' ? JSON.stringify(arg) : String(arg)
-                ).join(' '),
-                timestamp: new Date().toISOString()
-            });
+            if (this.errors.length < this.maxErrors) {
+                this.logError({
+                    type: 'console.error',
+                    message: args.map(arg =>
+                        typeof arg === 'object' ? JSON.stringify(arg) : String(arg)
+                    ).join(' '),
+                    timestamp: new Date().toISOString()
+                });
+            }
             originalError.apply(console, args);
         };
 
