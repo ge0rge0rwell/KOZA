@@ -9,7 +9,13 @@ import ErrorBoundary from '../components/ErrorBoundary.jsx';
 export const metadata = {
     title: 'KOZA.AI',
     description: 'KOZA.AI: Zorluklarını hikayelere dönüştürerek kendini geliştirmenin yolu.',
-    viewport: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no',
+};
+
+export const viewport = {
+    width: 'device-width',
+    initialScale: 1.0,
+    maximumScale: 1.0,
+    userScalable: false,
     themeColor: '#9333ea',
 };
 

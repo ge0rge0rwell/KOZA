@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
@@ -15,7 +14,15 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
+let analytics = null;
+if (typeof window !== "undefined") {
+    // Only initialize analytics on the client side
+    import("firebase/analytics").then(({ getAnalytics, isSupported }) => {
+        isSupported().then(yes => yes && (analytics = getAnalytics(app)));
+    });
+}
+
 const auth = getAuth(app);
 const db = getFirestore(app);
 

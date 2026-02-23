@@ -1,4 +1,4 @@
-import { doc, setDoc, getDoc, updateDoc, deleteDoc, collection, query, orderBy, onSnapshot, serverTimestamp, writeBatch } from 'firebase/firestore';
+import { doc, setDoc, getDoc, updateDoc, deleteDoc, collection, query, orderBy, limit, startAfter, getDocs, onSnapshot, serverTimestamp, writeBatch, increment } from 'firebase/firestore';
 import { db } from './firebase';
 
 // Remove the initialize function as we now import db directly
@@ -237,6 +237,112 @@ export const batchSaveStories = async (userId, stories) => {
         console.error('Error batch saving stories:', error);
         throw error;
     }
+};
+
+// ==================== COMMUNITY / PUBLIC FEED ====================
+
+export const createPublicPost = async (userId, authorData, content, type = 'text', additionalData = null) => {
+    if (!db) throw new Error('Firestore not initialized');
+
+    try {
+        const postsRef = collection(db, 'community');
+        const newPostRef = doc(postsRef);
+
+        const postData = {
+            id: newPostRef.id,
+            authorId: userId,
+            authorName: authorData.displayName || 'Anonim Koza',
+            authorAvatar: authorData.avatarUrl || '',
+            content,
+            type,
+            data: additionalData,
+            createdAt: serverTimestamp(),
+            likesCount: 0,
+            repliesCount: 0,
+            tags: extractTags(content)
+        };
+
+        await setDoc(newPostRef, postData);
+        return postData;
+    } catch (error) {
+        console.error('Error creating public post:', error);
+        throw error;
+    }
+};
+
+export const getPublicFeed = async (activeTab = 'local', lastDoc = null, limitCount = 20) => {
+    if (!db) throw new Error('Firestore not initialized');
+
+    try {
+        const postsRef = collection(db, 'community');
+        let q;
+
+        if (activeTab === 'local' || activeTab === 'all') {
+            q = query(postsRef, orderBy('createdAt', 'desc'), limit(limitCount));
+        } else {
+            const tag = activeTab.startsWith('#') ? activeTab : `#${activeTab}`;
+            q = query(postsRef, orderBy('createdAt', 'desc'), limit(limitCount));
+            // Note: In Firestore, filtering by tags usually requires array-contains or a separate structure.
+            // For now, we'll do basic global feed or specific tag if we implement it.
+            // Let's assume tags are handled via array-contains.
+            // q = query(postsRef, where('tags', 'array-contains', tag), orderBy('createdAt', 'desc'), limit(limitCount));
+        }
+
+        if (lastDoc) {
+            q = query(q, startAfter(lastDoc));
+        }
+
+        const snapshot = await getDocs(q);
+        const posts = [];
+        snapshot.forEach(doc => {
+            posts.push({ id: doc.id, ...doc.data() });
+        });
+
+        return {
+            posts,
+            lastDoc: snapshot.docs[snapshot.docs.length - 1] || null
+        };
+    } catch (error) {
+        console.error('Error getting public feed:', error);
+        throw error;
+    }
+};
+
+export const likePost = async (postId) => {
+    if (!db) throw new Error('Firestore not initialized');
+    try {
+        const postRef = doc(db, 'community', postId);
+        await updateDoc(postRef, {
+            likesCount: increment(1)
+        });
+    } catch (error) {
+        console.error('Error liking post:', error);
+    }
+};
+
+export const subscribeToNotifications = (userId, callback) => {
+    if (!db) return () => { };
+    try {
+        const notifsRef = collection(db, 'users', userId, 'notifications');
+        const q = query(notifsRef, orderBy('createdAt', 'desc'), limit(20));
+
+        return onSnapshot(q, (snapshot) => {
+            const notifs = [];
+            snapshot.forEach(doc => {
+                notifs.push({ id: doc.id, ...doc.data() });
+            });
+            callback(notifs);
+        });
+    } catch (error) {
+        console.error('Error subscribing to notifications:', error);
+        return () => { };
+    }
+};
+
+const extractTags = (text) => {
+    if (!text) return [];
+    const tags = text.match(/#\w+/g);
+    return tags ? tags.map(t => t.toLowerCase()) : [];
 };
 
 // ==================== SYNC HELPERS ====================

@@ -1,68 +1,45 @@
 'use client';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import PostCard from '../components/community/PostCard';
-import PostComposer from '../components/community/PostComposer';
-import NotificationCenter from '../components/community/NotificationCenter';
-import { Loader2, RefreshCw, Hash } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { useUser } from '../context/UserContext';
+import { getPublicFeed } from '../services/firestoreService';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';
-
-const TABS = [
-    { id: 'local', label: 'Topluluk' },
-    { id: 'koza', label: '#koza' },
-    { id: 'metamorfoz', label: '#metamorfoz' }
-];
-
-/**
- * KOZA Community Tab — powered entirely by the Mastodon local timeline API.
- * No iframes. No Mastodon UI. Pure KOZA experience.
- */
 const CommunityTab = () => {
     const [activeTab, setActiveTab] = useState('local');
     const [posts, setPosts] = useState([]);
-    const [cursor, setCursor] = useState(null);
+    const [lastDoc, setLastDoc] = useState(null);
     const [loading, setLoading] = useState(false);
     const [initialLoading, setInitialLoading] = useState(true);
     const [hasMore, setHasMore] = useState(true);
     const [error, setError] = useState(null);
     const sentinelRef = useRef(null);
 
-    const { user } = useAuth();
-    const currentUserId = user?.uid || null;
+    const { user: authUser } = useAuth();
+    const { user: profile } = useUser();
+
+    // User data for composer
+    const currentUserId = authUser?.uid || null;
+    const userName = profile?.displayName || authUser?.displayName || 'Gezgin';
+    const avatarUrl = profile?.avatarUrl || authUser?.photoURL || '';
 
     const fetchFeed = useCallback(async (reset = false) => {
         if (loading && !reset) return;
         setLoading(true);
         setError(null);
 
-        const currentCursor = reset ? undefined : cursor;
-
         try {
-            let url;
-            if (activeTab === 'local') {
-                url = `${API_BASE}/api/community/feed?limit=20${currentCursor ? `&maxId=${currentCursor}` : ''}`;
-            } else {
-                const tag = activeTab.replace('#', '');
-                url = `${API_BASE}/api/community/feed/tag/${tag}?limit=20${currentCursor ? `&maxId=${currentCursor}` : ''}`;
-            }
+            const feedResult = await getPublicFeed(activeTab, reset ? null : lastDoc);
 
-            const res = await fetch(url);
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-            const data = await res.json();
-            const newPosts = data.posts ?? [];
-
-            setPosts(prev => reset ? newPosts : [...prev, ...newPosts]);
-            setCursor(data.nextCursor ?? null);
-            setHasMore(newPosts.length >= 20 && !!data.nextCursor);
+            setPosts(prev => reset ? feedResult.posts : [...prev, ...feedResult.posts]);
+            setLastDoc(feedResult.lastDoc);
+            setHasMore(feedResult.posts.length >= 20 && !!feedResult.lastDoc);
         } catch (e) {
-            setError('Feed yüklenemedi. Sunucu bağlantısı kontrol edin.');
+            console.error('Feed error:', e);
+            setError('Paylaşımlar yüklenemedi. Lütfen internet bağlantınızı kontrol edin.');
         } finally {
             setLoading(false);
             setInitialLoading(false);
         }
-    }, [activeTab, cursor, loading]);
+    }, [activeTab, lastDoc, loading]);
 
     // Reset on tab change
     useEffect(() => {
@@ -116,7 +93,12 @@ const CommunityTab = () => {
 
             {/* Feed */}
             <div className="flex-1 overflow-y-auto px-4 py-4 space-y-0">
-                <PostComposer currentUserId={currentUserId} onPostSuccess={() => fetchFeed(true)} />
+                <PostComposer
+                    currentUserId={currentUserId}
+                    userName={userName}
+                    avatarUrl={avatarUrl}
+                    onPostSuccess={() => fetchFeed(true)}
+                />
 
                 {initialLoading && (
                     <div className="flex items-center justify-center py-20">

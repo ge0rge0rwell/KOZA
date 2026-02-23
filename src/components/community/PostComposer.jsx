@@ -2,6 +2,8 @@
 import React, { useState, useRef } from 'react';
 import { Send, Image, Globe, Lock, Eye, X, Loader2 } from 'lucide-react';
 
+import { createPublicPost } from '../../services/firestoreService';
+
 const VISIBILITY_OPTIONS = [
     { value: 'public', icon: Globe, label: 'Herkese Açık', color: 'text-emerald-400' },
     { value: 'unlisted', icon: Eye, label: 'Listelenmemiş', color: 'text-blue-400' },
@@ -9,13 +11,11 @@ const VISIBILITY_OPTIONS = [
 ];
 
 const MAX_CHARS = 500;
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';
 
 /**
- * Post Composer — sends posts to the KOZA API which enqueues them in BullMQ
- * for publishing to Mastodon.
+ * Post Composer — sends posts to Firestore community collection.
  */
-const PostComposer = ({ currentUserId, onPostSuccess }) => {
+const PostComposer = ({ currentUserId, userName, avatarUrl, onPostSuccess }) => {
     const [content, setContent] = useState('');
     const [visibility, setVisibility] = useState('unlisted');
     const [mediaFiles, setMediaFiles] = useState([]);
@@ -38,23 +38,19 @@ const PostComposer = ({ currentUserId, onPostSuccess }) => {
 
     const handleSubmit = async () => {
         if (isEmpty || isOverLimit || isSubmitting) return;
+        if (!currentUserId) {
+            setError('Paylaşım yapmak için giriş yapmalısın.');
+            return;
+        }
         setIsSubmitting(true);
         setError(null);
         try {
-            const res = await fetch(`${API_BASE}/api/mastodon/publish`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-koza-user-id': currentUserId || ''
-                },
-                body: JSON.stringify({ content: content.trim() })
-            });
-            if (!res.ok) throw new Error(await res.text());
+            await createPublicPost(currentUserId, { displayName: userName, avatarUrl }, content.trim());
             setContent('');
             setMediaFiles([]);
             onPostSuccess?.();
         } catch (err) {
-            setError('Gönderilemedi. Mastodon hesabınız bağlı mı?');
+            setError('Gönderilemedi. Lütfen tekrar deneyin.');
         } finally {
             setIsSubmitting(false);
         }
