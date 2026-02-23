@@ -1,0 +1,163 @@
+/* [project]/src/components/galaxy/GalaxyToast.css [app-client] (css) */
+.galaxy-toast-container {
+  z-index: 100;
+  pointer-events: none;
+  flex-direction: column;
+  gap: 12px;
+  display: flex;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+}
+
+.galaxy-toast {
+  pointer-events: auto;
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+  transform-origin: bottom;
+  background: #fff9;
+  border: 1px solid #fffc;
+  border-radius: 20px;
+  align-items: flex-start;
+  gap: 12px;
+  width: 320px;
+  padding: 16px;
+  animation: .4s cubic-bezier(.23, 1, .32, 1) galaxyToastIn;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px #00000014, inset 0 0 0 1px #ffffff80;
+}
+
+.galaxy-toast.exit {
+  animation: .3s cubic-bezier(.23, 1, .32, 1) forwards galaxyToastOut;
+}
+
+.galaxy-toast:before {
+  content: "";
+  opacity: .8;
+  background: #9333ea;
+  width: 4px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.galaxy-toast.success:before {
+  background: #10b981;
+}
+
+.galaxy-toast.error:before {
+  background: #ef4444;
+}
+
+.galaxy-toast.warning:before {
+  background: #f59e0b;
+}
+
+.galaxy-toast.info:before {
+  background: #3b82f6;
+}
+
+.galaxy-toast-icon {
+  color: #9333ea;
+  background: #ffffff80;
+  border-radius: 50%;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  display: flex;
+}
+
+.galaxy-toast.success .galaxy-toast-icon {
+  color: #10b981;
+  background: #10b9811a;
+}
+
+.galaxy-toast.error .galaxy-toast-icon {
+  color: #ef4444;
+  background: #ef44441a;
+}
+
+.galaxy-toast.warning .galaxy-toast-icon {
+  color: #f59e0b;
+  background: #f59e0b1a;
+}
+
+.galaxy-toast.info .galaxy-toast-icon {
+  color: #3b82f6;
+  background: #3b82f61a;
+}
+
+.galaxy-toast-content {
+  flex: 1;
+}
+
+.galaxy-toast-title {
+  color: #171717;
+  margin-bottom: 2px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.galaxy-toast-message {
+  color: #525252;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.galaxy-toast-close {
+  color: #a3a3a3;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 4px;
+  transition: all .2s;
+}
+
+.galaxy-toast-close:hover {
+  color: #171717;
+  background: #0000000d;
+}
+
+@keyframes galaxyToastIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px)scale(.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0)scale(1);
+  }
+}
+
+@keyframes galaxyToastOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+@media (max-width: 640px) {
+  .galaxy-toast-container {
+    align-items: center;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+  }
+
+  .galaxy-toast {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+/*# sourceMappingURL=src_components_galaxy_GalaxyToast_css_bad6b30c._.single.css.map*/

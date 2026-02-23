@@ -1,0 +1,224 @@
+/* [project]/src/components/uiverse/UiverseButton.css [app-client] (css) */
+@reference "../../index.css";
+
+@apply transition-liquid relative overflow-hidden;
+
+.uiverse-button {
+  background: var(--color-primary-500);
+  color: #fff;
+  letter-spacing: -.01em;
+  cursor: pointer;
+  z-index: 1;
+  border: 1px solid #fff3;
+  border-radius: 14px;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-flex;
+  box-shadow: 0 4px 12px #007aff33;
+}
+
+@apply -translate-y-0.5;
+
+.uiverse-button:hover {
+  background: var(--color-primary-600);
+  border-color: #ffffff4d;
+  box-shadow: 0 8px 20px #007aff4d;
+}
+
+@apply scale-[.97] translate-y-0;
+
+.uiverse-button.secondary {
+  -webkit-backdrop-filter: blur(40px);
+  backdrop-filter: blur(40px);
+  color: var(--color-neutral-900);
+  box-shadow: var(--shadow-liquid);
+  background: #ffffff1a;
+  border: 1px solid #ffffff1a;
+}
+
+.uiverse-button.secondary:hover {
+  box-shadow: var(--shadow-liquid-deep);
+  border-color: var(--glass-border-bright);
+  background: #fffc;
+}
+
+@apply absolute inset-0 pointer-events-none;
+
+@apply absolute rounded-full bg-white / 30 scale-0;
+
+.ripple {
+  animation: .6s ease-out ripple-animation;
+}
+
+@keyframes ripple-animation {
+  to {
+    opacity: 0;
+    transform: scale(2.5);
+  }
+}
+
+@apply bg-primary-500 / 20;
+
+@apply opacity-40 cursor-not-allowed scale-100 translate-y-0;
+
+.uiverse-button:disabled {
+  background: var(--color-neutral-200);
+  color: var(--color-neutral-400);
+  box-shadow: none;
+  border-color: #0000;
+}
+
+/* [project]/src/components/input/MessageBox.css [app-client] (css) */
+.messageBox {
+  -webkit-backdrop-filter: blur(40px);
+  background: #ffffff1a;
+  border: 1px solid #ffffff1a;
+  border-radius: 16px;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  min-height: 54px;
+  max-height: 150px;
+  padding: 0 15px;
+  transition: all .3s;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px #0000000d;
+}
+
+.messageBox:focus-within {
+  background: #fff9;
+  border-color: #9333ea66;
+  box-shadow: 0 12px 40px #9333ea1a;
+}
+
+.fileUploadWrapper {
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 54px;
+  margin-right: 12px;
+  display: flex;
+}
+
+#sendButton {
+  cursor: pointer;
+  color: #fff;
+  background-color: #9333ea;
+  border: none;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 11px;
+  margin-left: 12px;
+  transition: all .3s cubic-bezier(.23, 1, .32, 1);
+  display: flex;
+  box-shadow: 0 4px 12px #9333ea4d;
+}
+
+.fileUploadWrapper label {
+  color: #9333ea;
+  cursor: pointer;
+  background-color: #ffffff1a;
+  border: 1px solid #ffffff1a;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  transition: all .3s;
+  display: flex;
+}
+
+.fileUploadWrapper label:hover {
+  background-color: #ffffff1a;
+  transform: scale(1.05);
+}
+
+.fileUploadWrapper input {
+  display: none;
+}
+
+#messageInput {
+  color: #171717;
+  resize: none;
+  background-color: #0000;
+  border: none;
+  outline: none;
+  flex: 1;
+  height: auto;
+  max-height: 120px;
+  padding: 15px 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+#messageInput::placeholder {
+  color: #0000004d;
+}
+
+#sendButton {
+  cursor: pointer;
+  color: #fff;
+  background-color: #9333ea;
+  border: none;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  margin-left: 12px;
+  transition: all .3s cubic-bezier(.23, 1, .32, 1);
+  display: flex;
+  box-shadow: 0 4px 12px #9333ea4d;
+}
+
+#sendButton:hover {
+  background-color: #a855f7;
+  transform: scale(1.1)rotate(-5deg);
+  box-shadow: 0 6px 20px #9333ea80;
+}
+
+#sendButton:disabled {
+  color: #fff3;
+  box-shadow: none;
+  cursor: not-allowed;
+  background-color: #ffffff0d;
+  transform: none;
+}
+
+.messageBox:after {
+  content: "";
+  opacity: 0;
+  background: linear-gradient(90deg, #9333ea, #a855f7, #d8b4fe, #9333ea) 0 0 / 300% 100%;
+  width: 100%;
+  height: 2px;
+  transition: opacity .3s;
+  animation: 3s linear infinite gradientSweep;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.messageBox:focus-within:after {
+  opacity: 1;
+}
+
+@keyframes gradientSweep {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/*# sourceMappingURL=src_components_db27dda1._.css.map*/

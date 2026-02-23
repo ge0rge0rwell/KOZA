@@ -1,0 +1,30 @@
+/* [project]/src/components/galaxy/GalaxyGrid.css [app-client] (css) */
+.galaxy-grid {
+  gap: 24px;
+  width: 100%;
+  display: grid;
+}
+
+.galaxy-grid.cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.galaxy-grid.cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.galaxy-grid.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.galaxy-grid.cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 768px) {
+  .galaxy-grid.cols-2, .galaxy-grid.cols-3, .galaxy-grid.cols-4 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+/*# sourceMappingURL=src_components_galaxy_GalaxyGrid_css_bad6b30c._.single.css.map*/

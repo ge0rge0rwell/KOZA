@@ -1,0 +1,84 @@
+/* [project]/src/components/layout/BottomMenu.css [app-client] (css) */
+.menu {
+  -webkit-backdrop-filter: blur(40px);
+  background-color: #ffffff1a;
+  border: 1px solid #ffffff1a;
+  border-radius: 15px;
+  justify-content: center;
+  padding: .5rem;
+  display: flex;
+  position: relative;
+  box-shadow: 0 10px 25px #00000013;
+}
+
+.link {
+  z-index: 1;
+  transform-origin: 0;
+  width: 70px;
+  height: 50px;
+  color: inherit;
+  cursor: pointer;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: width .2s ease-in;
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.link:before {
+  z-index: -1;
+  content: "";
+  transform-origin: 100%;
+  background-color: #eee;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  transition: transform .2s ease-in;
+  display: block;
+  position: absolute;
+  top: 0;
+  transform: translateX(100%);
+}
+
+.link:hover, .link:focus, .link.active {
+  outline: 0;
+  width: 130px;
+}
+
+.link:hover:before, .link:focus:before, .link.active:before, .link:hover .link-title, .link:focus .link-title, .link.active .link-title {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.link-icon {
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  position: absolute;
+  left: 18px;
+}
+
+.link-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.link-title {
+  transform-origin: 100%;
+  text-align: center;
+  text-indent: 28px;
+  white-space: nowrap;
+  width: 100%;
+  font-weight: 500;
+  transition: transform .2s ease-in;
+  display: block;
+  transform: translateX(100%);
+}
+
+/*# sourceMappingURL=src_components_layout_BottomMenu_css_bad6b30c._.single.css.map*/

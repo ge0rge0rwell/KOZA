@@ -1,0 +1,121 @@
+/* [project]/src/components/galaxy/GalaxySpinner.css [app-client] (css) */
+.galaxy-spinner {
+  display: inline-block;
+  position: relative;
+}
+
+.galaxy-spinner.small {
+  width: 24px;
+  height: 24px;
+}
+
+.galaxy-spinner.medium {
+  width: 40px;
+  height: 40px;
+}
+
+.galaxy-spinner.large {
+  width: 64px;
+  height: 64px;
+}
+
+.galaxy-orbit {
+  border: 2px solid #9333ea1a;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.galaxy-orbit:after {
+  content: "";
+  border: 2px solid #0000;
+  border-top-color: #9333ea;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  animation: 1.5s linear infinite orbitSpin;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+}
+
+.galaxy-core {
+  background: radial-gradient(circle, #c084fc 0%, #9333ea 100%);
+  border-radius: 50%;
+  width: 50%;
+  height: 50%;
+  animation: 2s ease-in-out infinite pulseCore;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  box-shadow: 0 0 15px #9333ea80;
+}
+
+.galaxy-satellite {
+  width: 100%;
+  height: 100%;
+  animation: 2.5s cubic-bezier(.5, 0, .5, 1) infinite satelliteSpin;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.galaxy-satellite:before {
+  content: "";
+  background: #fff;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px #fff;
+}
+
+.galaxy-spinner.small .galaxy-satellite:before {
+  width: 4px;
+  height: 4px;
+}
+
+.galaxy-spinner.large .galaxy-satellite:before {
+  width: 8px;
+  height: 8px;
+}
+
+@keyframes orbitSpin {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes satelliteSpin {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes pulseCore {
+  0%, 100% {
+    opacity: .8;
+    transform: scale(.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/*# sourceMappingURL=src_components_galaxy_GalaxySpinner_css_bad6b30c._.single.css.map*/

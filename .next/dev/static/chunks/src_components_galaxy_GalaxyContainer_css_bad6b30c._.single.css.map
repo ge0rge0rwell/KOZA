@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/components/galaxy/GalaxyContainer.css"],"sourcesContent":["/* GalaxyContainer.css - Glass Wrapper */\n.galaxy-container {\n    width: 100%;\n    margin-right: auto;\n    margin-left: auto;\n    padding-right: 16px;\n    padding-left: 16px;\n    background: rgba(255, 255, 255, 0.05);\n    backdrop-filter: blur(40px);\n    border-radius: 24px;\n    border: 1px solid rgba(255, 255, 255, 0.1);\n}\n\n@media (min-width: 640px) {\n    .galaxy-container {\n        max-width: 640px;\n    }\n}\n\n@media (min-width: 768px) {\n    .galaxy-container {\n        max-width: 768px;\n    }\n}\n\n@media (min-width: 1024px) {\n    .galaxy-container {\n        max-width: 1024px;\n    }\n}\n\n@media (min-width: 1280px) {\n    .galaxy-container {\n        max-width: 1280px;\n    }\n}\n\n@media (min-width: 1536px) {\n    .galaxy-container {\n        max-width: 1536px;\n    }\n}"],"names":[],"mappings":"AACA;;;;;;;;;;;;;AAYA;EACI;;;;;AAKJ;EACI;;;;;AAKJ;EACI;;;;;AAKJ;EACI;;;;;AAKJ;EACI"}}]
+}

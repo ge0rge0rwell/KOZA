@@ -1,0 +1,70 @@
+/* [project]/src/components/uiverse/UiverseCard.css [app-client] (css) */
+@reference "../../index.css";
+
+.uiverse-card-container {
+  perspective: 1200px;
+}
+
+@apply transition-liquid rounded-[40px] p-8 relative overflow-hidden;
+
+.uiverse-card {
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  backdrop-filter: blur(40px) saturate(200%);
+  box-shadow: var(--shadow-liquid), inset 0 0 0 1px #fff6, inset 0 10px 20px #fff3, inset 0 -10px 20px #00000005, inset 0 0 20px #007aff03;
+  transform: rotateX(calc(var(--rotate-x, 0) * 1deg)) rotateY(calc(var(--rotate-y, 0) * 1deg));
+  transform-style: preserve-3d;
+  will-change: transform;
+  background: #ffffff26;
+  border: 1px solid #fff3;
+  transition: transform .1s ease-out, filter .5s ease-out, box-shadow .5s;
+}
+
+.uiverse-card:before {
+  content: "";
+}
+
+@apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 z-10;
+
+.uiverse-card:before {
+  filter: blur(20px);
+  mix-blend-mode: color-dodge;
+  transform: translate(calc(var(--rotate-y, 0) * -2px), calc(var(--rotate-x, 0) * 2px));
+  background: linear-gradient(135deg, #ff00801a 0%, #00ffff1a 50%, #9600ff1a 100%);
+}
+
+@apply opacity-100;
+
+.uiverse-card:hover {
+  filter: url("#liquid-refraction");
+  box-shadow: var(--shadow-liquid-deep), inset 0 0 0 1px #fffc, inset 0 20px 40px #ffffff4d, inset 0 -20px 40px #00000008;
+  border-color: var(--glass-border-bright);
+  background: #ffffffa6;
+}
+
+@apply scale-[.985];
+
+@apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300 z-0;
+
+.card-shine {
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), #ffffff80, transparent 35%);
+}
+
+@apply opacity-100;
+
+@apply relative z-20;
+
+.card-content {
+  transform: translateZ(40px);
+}
+
+.uiverse-card:after {
+  content: "";
+}
+
+@apply absolute top-0 left-0 right-0 h-[1.5px] bg-white / 80 z-30;
+
+.uiverse-card:after {
+  box-shadow: 0 1px 5px #ffffff80;
+}
+
+/*# sourceMappingURL=src_components_uiverse_UiverseCard_css_bad6b30c._.single.css.map*/

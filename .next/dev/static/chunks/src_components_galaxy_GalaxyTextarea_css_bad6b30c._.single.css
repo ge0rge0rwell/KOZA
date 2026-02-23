@@ -1,0 +1,65 @@
+/* [project]/src/components/galaxy/GalaxyTextarea.css [app-client] (css) */
+.galaxy-textarea-container {
+  width: 100%;
+  padding-top: 25px;
+  position: relative;
+}
+
+.galaxy-textarea {
+  color: #0f172a;
+  resize: vertical;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  outline: none;
+  width: 100%;
+  min-height: 120px;
+  padding: 16px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  transition: all .2s;
+  box-shadow: 0 1px 2px #0000000d;
+}
+
+.galaxy-textarea:focus {
+  background: #fff;
+  border-color: #9333ea;
+  box-shadow: 0 0 0 3px #9333ea1a;
+}
+
+.galaxy-textarea-label {
+  color: #9333ea;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+  z-index: 10;
+  background: #fff9;
+  border: 1px solid #ffffff80;
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  transition: all .4s cubic-bezier(.23, 1, .32, 1);
+  position: absolute;
+  top: 0;
+  left: 12px;
+  box-shadow: 0 2px 5px #0000000d;
+}
+
+.galaxy-textarea:focus + .galaxy-textarea-label {
+  color: #fff;
+  background: #9333ea;
+  border-color: #9333ea;
+  transform: translateY(-6px)translateX(2px)scale(.95);
+  box-shadow: 0 4px 12px #9333ea66;
+}
+
+.galaxy-textarea::placeholder {
+  color: #0000004d;
+  font-weight: 500;
+}
+
+/*# sourceMappingURL=src_components_galaxy_GalaxyTextarea_css_bad6b30c._.single.css.map*/

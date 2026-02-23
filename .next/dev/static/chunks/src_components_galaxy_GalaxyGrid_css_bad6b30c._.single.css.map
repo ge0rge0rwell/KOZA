@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/components/galaxy/GalaxyGrid.css"],"sourcesContent":["/* GalaxyGrid.css - Layout */\n.galaxy-grid {\n    display: grid;\n    gap: 24px;\n    width: 100%;\n}\n\n.galaxy-grid.cols-1 {\n    grid-template-columns: repeat(1, minmax(0, 1fr));\n}\n\n.galaxy-grid.cols-2 {\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n}\n\n.galaxy-grid.cols-3 {\n    grid-template-columns: repeat(3, minmax(0, 1fr));\n}\n\n.galaxy-grid.cols-4 {\n    grid-template-columns: repeat(4, minmax(0, 1fr));\n}\n\n@media (max-width: 768px) {\n\n    .galaxy-grid.cols-2,\n    .galaxy-grid.cols-3,\n    .galaxy-grid.cols-4 {\n        grid-template-columns: repeat(1, minmax(0, 1fr));\n    }\n}"],"names":[],"mappings":"AACA;;;;;;AAMA;;;;AAIA;;;;AAIA;;;;AAIA;;;;AAIA;EAEI"}}]
+}

@@ -2,7 +2,6 @@ import { API_CONFIG } from '../config';
 import { SINGULARITY_CORE_PROMPT } from '../config/prompts';
 
 // Configuration
-const API_KEY = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY;
 const MODEL = 'google/gemma-3-27b-it';
 const BASE_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
@@ -151,6 +150,11 @@ const cleanJSON = (text) => {
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 const callGemini = async (prompt, userInput, retries = 3) => {
+  const API_KEY = API_CONFIG.OPENROUTER_API_KEY;
+
+  // Dynamic referer for OpenRouter
+  const referer = typeof window !== 'undefined' ? window.location.origin : 'https://koza-app.vercel.app';
+
   // Check cache first
   const cacheKey = getCacheKey(prompt, userInput);
   const cached = cache.get(cacheKey);
@@ -169,7 +173,7 @@ const callGemini = async (prompt, userInput, retries = 3) => {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${API_KEY}`,
-          'HTTP-Referer': 'https://koza-app.vercel.app',
+          'HTTP-Referer': referer,
           'X-Title': 'KOZA App'
         },
         body: JSON.stringify({

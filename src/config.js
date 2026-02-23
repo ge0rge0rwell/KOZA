@@ -4,7 +4,7 @@ export const APP_CONFIG = {
 };
 
 export const API_CONFIG = {
-    GEMINI_API_KEY: process.env.NEXT_PUBLIC_GEMINI_API_KEY || "AIzaSyDITPa_2fG8x6aUjZ8DsA_f9l3AdWA7ToQ"
+    OPENROUTER_API_KEY: process.env.NEXT_PUBLIC_OPENROUTER_API_KEY || ""
 };
 
 export const FIREBASE_CONFIG = {
