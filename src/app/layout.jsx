@@ -1,5 +1,4 @@
 import '../index.css';
-import '../theme.css';
 import { AppProvider } from '../context/AppContext.jsx';
 import { AuthProvider } from '../context/AuthContext.jsx';
 import { UIProvider } from '../context/UIContext.jsx';
@@ -8,7 +7,7 @@ import ErrorBoundary from '../components/ErrorBoundary.jsx';
 
 export const metadata = {
     title: 'KOZA.AI',
-    description: 'KOZA.AI: Zorluklarını hikayelere dönüştürerek kendini geliştirmenin yolu.',
+    description: 'KOZA.AI: Transform your challenges into stories and evolve.',
 };
 
 export const viewport = {
@@ -21,7 +20,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="tr">
+        <html lang="en">
             <body>
                 <div id="root">
                     <ErrorBoundary>

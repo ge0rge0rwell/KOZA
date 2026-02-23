@@ -152,9 +152,18 @@
 }
 
 /* [project]/src/components/uiverse/UiverseButton.css [app-client] (css) */
-@reference "../../index.css";
-
-@apply transition-liquid relative overflow-hidden;
+@layer properties {
+  @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+    *, :before, :after, ::backdrop {
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
+    }
+  }
+}
 
 .uiverse-button {
   background: var(--color-primary-500);
@@ -169,19 +178,26 @@
   padding: 12px 28px;
   font-size: 14px;
   font-weight: 700;
+  transition: all .6s cubic-bezier(.23, 1, .32, 1);
   display: inline-flex;
+  position: relative;
+  overflow: hidden;
   box-shadow: 0 4px 12px #007aff33;
 }
 
-@apply -translate-y-0.5;
-
 .uiverse-button:hover {
+  --tw-translate-y: calc(var(--spacing, .25rem) * -.5);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
   background: var(--color-primary-600);
   border-color: #ffffff4d;
   box-shadow: 0 8px 20px #007aff4d;
 }
 
-@apply scale-[.97] translate-y-0;
+.uiverse-button:active {
+  --tw-translate-y: calc(var(--spacing, .25rem) * 0);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+  scale: .97;
+}
 
 .uiverse-button.secondary {
   -webkit-backdrop-filter: blur(40px);
@@ -198,9 +214,27 @@
   background: #fffc;
 }
 
-@apply absolute inset-0 pointer-events-none;
+.ripples {
+  pointer-events: none;
+  inset: calc(var(--spacing, .25rem) * 0);
+  position: absolute;
+}
 
-@apply absolute rounded-full bg-white / 30 scale-0;
+.ripple {
+  --tw-scale-x: 0%;
+  --tw-scale-y: 0%;
+  --tw-scale-z: 0%;
+  scale: var(--tw-scale-x) var(--tw-scale-y);
+  background-color: #ffffff4d;
+  border-radius: 3.40282e38px;
+  position: absolute;
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  .ripple {
+    background-color: color-mix(in oklab, var(--color-white, #fff) 30%, transparent);
+  }
+}
 
 .ripple {
   animation: .6s ease-out ripple-animation;
@@ -213,15 +247,65 @@
   }
 }
 
-@apply bg-primary-500 / 20;
+.uiverse-button.secondary .ripple {
+  background-color: #219ebc33;
+}
 
-@apply opacity-40 cursor-not-allowed scale-100 translate-y-0;
+@supports (color: color-mix(in lab, red, red)) {
+  .uiverse-button.secondary .ripple {
+    background-color: color-mix(in oklab, var(--color-primary-500, #219ebc) 20%, transparent);
+  }
+}
 
 .uiverse-button:disabled {
+  --tw-translate-y: calc(var(--spacing, .25rem) * 0);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+  --tw-scale-x: 100%;
+  --tw-scale-y: 100%;
+  --tw-scale-z: 100%;
+  scale: var(--tw-scale-x) var(--tw-scale-y);
+  cursor: not-allowed;
+  opacity: .4;
   background: var(--color-neutral-200);
   color: var(--color-neutral-400);
   box-shadow: none;
   border-color: #0000;
+}
+
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
 }
 
 /* [project]/src/components/galaxy/GalaxyAlert.css [app-client] (css) */
@@ -298,15 +382,20 @@
 }
 
 /* [project]/src/components/uiverse/UiverseCard.css [app-client] (css) */
-@reference "../../index.css";
+@layer properties {
+  @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+    *, :before, :after, ::backdrop {
+      --tw-duration: initial;
+    }
+  }
+}
 
 .uiverse-card-container {
   perspective: 1200px;
 }
 
-@apply transition-liquid rounded-[40px] p-8 relative overflow-hidden;
-
 .uiverse-card {
+  padding: calc(var(--spacing, .25rem) * 8);
   -webkit-backdrop-filter: blur(40px) saturate(200%);
   backdrop-filter: blur(40px) saturate(200%);
   box-shadow: var(--shadow-liquid), inset 0 0 0 1px #fff6, inset 0 10px 20px #fff3, inset 0 -10px 20px #00000005, inset 0 0 20px #007aff03;
@@ -315,23 +404,33 @@
   will-change: transform;
   background: #ffffff26;
   border: 1px solid #fff3;
+  border-radius: 40px;
   transition: transform .1s ease-out, filter .5s ease-out, box-shadow .5s;
+  position: relative;
+  overflow: hidden;
 }
 
 .uiverse-card:before {
   content: "";
-}
-
-@apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 z-10;
-
-.uiverse-card:before {
+  pointer-events: none;
+  inset: calc(var(--spacing, .25rem) * 0);
+  z-index: 10;
+  opacity: 0;
+  transition-property: opacity;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function, cubic-bezier(.4, 0, .2, 1)));
+  transition-duration: var(--tw-duration, var(--default-transition-duration, .15s));
+  --tw-duration: .5s;
   filter: blur(20px);
   mix-blend-mode: color-dodge;
   transform: translate(calc(var(--rotate-y, 0) * -2px), calc(var(--rotate-x, 0) * 2px));
   background: linear-gradient(135deg, #ff00801a 0%, #00ffff1a 50%, #9600ff1a 100%);
+  transition-duration: .5s;
+  position: absolute;
 }
 
-@apply opacity-100;
+.uiverse-card:hover:before {
+  opacity: 1;
+}
 
 .uiverse-card:hover {
   filter: url("#liquid-refraction");
@@ -340,30 +439,58 @@
   background: #ffffffa6;
 }
 
-@apply scale-[.985];
-
-@apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300 z-0;
-
-.card-shine {
-  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), #ffffff80, transparent 35%);
+.uiverse-card:active {
+  scale: .985;
 }
 
-@apply opacity-100;
+.card-shine {
+  pointer-events: none;
+  inset: calc(var(--spacing, .25rem) * 0);
+  z-index: 0;
+  opacity: 0;
+  transition-property: opacity;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function, cubic-bezier(.4, 0, .2, 1)));
+  transition-duration: var(--tw-duration, var(--default-transition-duration, .15s));
+  --tw-duration: .3s;
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), #ffffff80, transparent 35%);
+  transition-duration: .3s;
+  position: absolute;
+}
 
-@apply relative z-20;
+.uiverse-card:hover .card-shine {
+  opacity: 1;
+}
 
 .card-content {
+  z-index: 20;
+  position: relative;
   transform: translateZ(40px);
 }
 
 .uiverse-card:after {
   content: "";
+  top: calc(var(--spacing, .25rem) * 0);
+  right: calc(var(--spacing, .25rem) * 0);
+  left: calc(var(--spacing, .25rem) * 0);
+  z-index: 30;
+  background-color: #fffc;
+  height: 1.5px;
+  position: absolute;
 }
 
-@apply absolute top-0 left-0 right-0 h-[1.5px] bg-white / 80 z-30;
+@supports (color: color-mix(in lab, red, red)) {
+  .uiverse-card:after {
+    background-color: color-mix(in oklab, var(--color-white, #fff) 80%, transparent);
+  }
+}
 
 .uiverse-card:after {
   box-shadow: 0 1px 5px #ffffff80;
+}
+
+@property --tw-duration {
+  syntax: "*";
+  inherits: false
 }
 
 /* [project]/src/components/galaxy/GalaxyGrid.css [app-client] (css) */

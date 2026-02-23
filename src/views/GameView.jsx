@@ -12,7 +12,7 @@ const GameHeader = memo(({ title, progressPercent, score, onClose }) => (
     <div className="fixed top-0 left-0 right-0 bg-white/10 backdrop-blur-xl border-b border-white/10 z-50">
         <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
             <div>
-                <p className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold">Oyun Modu</p>
+                <p className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold">Game Mode</p>
                 <p className="font-semibold text-neutral-900">{title}</p>
             </div>
             <div className="flex items-center gap-6">
@@ -38,7 +38,7 @@ const LevelContent = memo(({ currentLevel, totalLevels, data, onOptionSelect, sh
     <div className="animate-fade-in">
         <div className="mb-8 text-center">
             <div className="inline-block px-4 py-1.5 bg-neutral-100 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6 border border-neutral-200 text-neutral-600">
-                Seviye {currentLevel + 1} / {totalLevels}
+                Level {currentLevel + 1} / {totalLevels}
             </div>
             <h1 className="text-2xl sm:text-4xl font-extrabold mb-4 text-balance leading-tight text-neutral-900">
                 {data.scenario}
@@ -96,16 +96,16 @@ const CompletionCard = memo(({ score, totalLevels, onClose }) => (
             <div className="w-24 h-24 bg-gradient-to-tr from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl animate-bounce-slow">
                 <Trophy size={48} className="text-white drop-shadow-md" />
             </div>
-            <h2 className="text-4xl font-extrabold mb-2 text-neutral-900">Oyun Tamamlandı!</h2>
-            <p className="text-neutral-600 mb-8">Mükemmel bir iş çıkardın.</p>
+            <h2 className="text-4xl font-extrabold mb-2 text-neutral-900">Game Completed!</h2>
+            <p className="text-neutral-600 mb-8">You did an excellent job.</p>
 
             <div className="grid grid-cols-2 gap-4 mb-8">
                 <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200">
-                    <p className="text-sm text-neutral-500 mb-1">Toplam Skor</p>
+                    <p className="text-sm text-neutral-500 mb-1">Total Score</p>
                     <p className="text-3xl font-bold text-primary-600">{score}</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200">
-                    <p className="text-sm text-neutral-500 mb-1">Seviyeler</p>
+                    <p className="text-sm text-neutral-500 mb-1">Levels</p>
                     <p className="text-3xl font-bold text-neutral-900">{totalLevels}</p>
                 </div>
             </div>
@@ -115,7 +115,7 @@ const CompletionCard = memo(({ score, totalLevels, onClose }) => (
                 className="w-full !py-4 !text-lg !rounded-xl shadow-lg"
                 icon={ArrowRight}
             >
-                Macera Tamamlandı
+                Adventure Completed
             </GalaxyButton>
         </GalaxyCard>
     </div>
@@ -137,7 +137,7 @@ const GameView = ({ game, onClose }) => {
 
         if (option.isCorrect) {
             setScore(prev => prev + 100);
-            awardXP(50, 'Doğru karar');
+            awardXP(50, 'Right decision');
         }
 
         setTimeout(() => {

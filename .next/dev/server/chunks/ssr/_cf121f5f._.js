@@ -488,7 +488,7 @@ const StoryHeader = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: onReset,
-                        title: "En Başa Dön",
+                        title: "Back to Start",
                         className: "flex items-center gap-1 ml-4 py-1 px-2 hover:bg-neutral-50 rounded-lg transition-colors cursor-pointer",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$rotate$2d$ccw$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__RotateCcw$3e$__["RotateCcw"], {
                             size: 16,
@@ -505,7 +505,7 @@ const StoryHeader = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: onJump,
-                        title: "En Sona Git",
+                        title: "Go to End",
                         className: "flex items-center gap-1 py-1 px-2 hover:bg-neutral-50 rounded-lg transition-colors cursor-pointer",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$rotate$2d$cw$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__RotateCw$3e$__["RotateCw"], {
                             size: 16,
@@ -587,14 +587,14 @@ const StoryHeader = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: onToggleFullscreen,
-                                title: "Tam Ekran",
+                                title: "Fullscreen",
                                 className: "p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$maximize$2d$2$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Maximize2$3e$__["Maximize2"], {
                                     size: 18
                                 }, void 0, false, {
                                     fileName: "[project]/src/views/StoryView.jsx",
                                     lineNumber: 52,
-                                    columnNumber: 159
+                                    columnNumber: 160
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/views/StoryView.jsx",
@@ -603,14 +603,14 @@ const StoryHeader = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: onPrint,
-                                title: "Yazdır",
+                                title: "Print",
                                 className: "p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$printer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Printer$3e$__["Printer"], {
                                     size: 18
                                 }, void 0, false, {
                                     fileName: "[project]/src/views/StoryView.jsx",
                                     lineNumber: 53,
-                                    columnNumber: 145
+                                    columnNumber: 144
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/views/StoryView.jsx",
@@ -619,51 +619,18 @@ const StoryHeader = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: onShare,
-                                title: "Paylaş",
+                                title: "Share",
                                 className: "p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$share$2d$2$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Share2$3e$__["Share2"], {
                                     size: 18
                                 }, void 0, false, {
                                     fileName: "[project]/src/views/StoryView.jsx",
                                     lineNumber: 54,
-                                    columnNumber: 145
+                                    columnNumber: 144
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/views/StoryView.jsx",
                                 lineNumber: 54,
-                                columnNumber: 17
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                onClick: onMastodonShare,
-                                title: "Mastodon'a Gönder",
-                                disabled: isMastodonSharing,
-                                className: "p-2 hover:bg-[#6364FF]/10 rounded-lg text-[#6364FF] hover:text-[#5253e8] transition-colors disabled:opacity-50",
-                                children: isMastodonSharing ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__["Loader2"], {
-                                    size: 18,
-                                    className: "animate-spin"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/views/StoryView.jsx",
-                                    lineNumber: 61,
-                                    columnNumber: 42
-                                }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                    className: "w-[18px] h-[18px] fill-current",
-                                    viewBox: "0 0 79 75",
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                        d: "M63 45.3v-20c0-4.1-1-7.3-3.2-9.7-2.1-2.4-5-3.7-8.5-3.7-4.1 0-7.2 1.6-9.3 4.7l-2 3.3-2-3.3c-2-3.1-5.1-4.7-9.2-4.7-3.5 0-6.4 1.3-8.6 3.7-2.1 2.4-3.1 5.6-3.1 9.7v20h8V25.9c0-4.1 1.7-6.2 5.2-6.2 3.8 0 5.8 2.5 5.8 7.4V37.7H44V27.1c0-4.9 1.9-7.4 5.8-7.4 3.5 0 5.2 2.1 5.2 6.2V45.3h8ZM74.7 16.6c.6 6 .1 15.7.1 17.3 0 .5-.1 4.8-.1 5.3-.7 11.5-8 16-15.6 17.5-.1 0-.2 0-.3 0-4.9 1-10 1.2-14.9 1.4-1.2 0-2.4 0-3.6 0-4.8 0-9.7-.6-14.4-1.7-.1 0-.1 0-.1 0s-.1 0-.1 0 0 .1 0 .1 0 0 0 0c.1 1.6.4 3.1 1 4.5.6 1.7 2.9 5.7 11.4 5.7 5 0 9.9-.6 14.8-1.7 0 0 0 0 0 0 .1 0 .1 0 .1 0 0 .1 0 .1 0 .1.1 0 .1 0 .1.1v5.6s0 .1-.1.1c0 0 0 0 0 .1-1.6 1.1-3.7 1.7-5.6 2.3-.8.3-1.6.5-2.4.7-7.5 1.7-15.4 1.3-22.7-1.2-6.8-2.4-13.8-8.2-15.5-15.2-.9-3.8-1.6-7.6-1.9-11.5-.6-5.8-.6-11.7-.8-17.5C3.9 24.5 4 20 4.9 16 6.7 7.9 14.1 2.2 22.3 1c1.4-.2 4.1-1 16.5-1h.1C51.4 0 56.7.8 58.1 1c8.4 1.2 15.5 7.5 16.6 15.6Z"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/views/StoryView.jsx",
-                                        lineNumber: 63,
-                                        columnNumber: 29
-                                    }, ("TURBOPACK compile-time value", void 0))
-                                }, void 0, false, {
-                                    fileName: "[project]/src/views/StoryView.jsx",
-                                    lineNumber: 62,
-                                    columnNumber: 25
-                                }, ("TURBOPACK compile-time value", void 0))
-                            }, void 0, false, {
-                                fileName: "[project]/src/views/StoryView.jsx",
-                                lineNumber: 55,
                                 columnNumber: 17
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
@@ -683,26 +650,26 @@ const StoryHeader = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                                         size: 16
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/StoryView.jsx",
-                                        lineNumber: 70,
+                                        lineNumber: 58,
                                         columnNumber: 35
                                     }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$volume$2d$2$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Volume2$3e$__["Volume2"], {
                                         size: 16
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/StoryView.jsx",
-                                        lineNumber: 70,
+                                        lineNumber: 58,
                                         columnNumber: 59
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        children: "Dinle"
+                                        children: "Listen"
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/StoryView.jsx",
-                                        lineNumber: 71,
+                                        lineNumber: 59,
                                         columnNumber: 21
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/views/StoryView.jsx",
-                                lineNumber: 69,
+                                lineNumber: 57,
                                 columnNumber: 17
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -712,18 +679,18 @@ const StoryHeader = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                                     size: 20
                                 }, void 0, false, {
                                     fileName: "[project]/src/views/StoryView.jsx",
-                                    lineNumber: 73,
+                                    lineNumber: 61,
                                     columnNumber: 145
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/views/StoryView.jsx",
-                                lineNumber: 73,
+                                lineNumber: 61,
                                 columnNumber: 17
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/views/StoryView.jsx",
-                        lineNumber: 68,
+                        lineNumber: 56,
                         columnNumber: 13
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
@@ -746,7 +713,7 @@ const StoryPage = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5
                 className: "absolute inset-0 paper-texture pointer-events-none"
             }, void 0, false, {
                 fileName: "[project]/src/views/StoryView.jsx",
-                lineNumber: 84,
+                lineNumber: 72,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -757,7 +724,7 @@ const StoryPage = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5
                         children: author
                     }, void 0, false, {
                         fileName: "[project]/src/views/StoryView.jsx",
-                        lineNumber: 86,
+                        lineNumber: 74,
                         columnNumber: 13
                     }, ("TURBOPACK compile-time value", void 0)),
                     page ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -768,7 +735,7 @@ const StoryPage = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5
                                 children: page.title
                             }, void 0, false, {
                                 fileName: "[project]/src/views/StoryView.jsx",
-                                lineNumber: 91,
+                                lineNumber: 79,
                                 columnNumber: 21
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -778,18 +745,18 @@ const StoryPage = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5
                                     children: page.content
                                 }, void 0, false, {
                                     fileName: "[project]/src/views/StoryView.jsx",
-                                    lineNumber: 95,
+                                    lineNumber: 83,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/views/StoryView.jsx",
-                                lineNumber: 94,
+                                lineNumber: 82,
                                 columnNumber: 21
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/views/StoryView.jsx",
-                        lineNumber: 90,
+                        lineNumber: 78,
                         columnNumber: 17
                     }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex-1 flex flex-col items-center justify-center animate-pulse text-neutral-300",
@@ -799,21 +766,21 @@ const StoryPage = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5
                                 className: "mb-4 opacity-20"
                             }, void 0, false, {
                                 fileName: "[project]/src/views/StoryView.jsx",
-                                lineNumber: 102,
+                                lineNumber: 90,
                                 columnNumber: 21
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "font-serif italic text-lg",
-                                children: "Son Sayfa"
+                                children: "Last Page"
                             }, void 0, false, {
                                 fileName: "[project]/src/views/StoryView.jsx",
-                                lineNumber: 103,
+                                lineNumber: 91,
                                 columnNumber: 21
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/views/StoryView.jsx",
-                        lineNumber: 101,
+                        lineNumber: 89,
                         columnNumber: 17
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -821,19 +788,19 @@ const StoryPage = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5
                         children: pageNumber
                     }, void 0, false, {
                         fileName: "[project]/src/views/StoryView.jsx",
-                        lineNumber: 106,
+                        lineNumber: 94,
                         columnNumber: 13
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/views/StoryView.jsx",
-                lineNumber: 85,
+                lineNumber: 73,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/views/StoryView.jsx",
-        lineNumber: 80,
+        lineNumber: 68,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0)));
 const StoryCompletionOverlay = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["memo"])(({ onClose })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -843,39 +810,39 @@ const StoryCompletionOverlay = /*#__PURE__*/ (0, __TURBOPACK__imported__module__
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                     className: "text-3xl font-bold mb-4 text-primary-600",
-                    children: "Harika Bir Yolculuktu!"
+                    children: "A Great Journey!"
                 }, void 0, false, {
                     fileName: "[project]/src/views/StoryView.jsx",
-                    lineNumber: 116,
+                    lineNumber: 104,
                     columnNumber: 13
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     className: "text-neutral-600 mb-8 max-w-xs mx-auto font-medium text-lg",
-                    children: "Bu hikaye metamorfozunu tamamladı. Yeni hikayeler seni bekliyor."
+                    children: "This story has completed its metamorphosis. New stories await you."
                 }, void 0, false, {
                     fileName: "[project]/src/views/StoryView.jsx",
-                    lineNumber: 117,
+                    lineNumber: 105,
                     columnNumber: 13
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$galaxy$2f$GalaxyButton$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                     onClick: onClose,
                     className: "!py-6 !px-16 !text-xl !rounded-full shadow-2xl",
                     icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Check$3e$__["Check"],
-                    children: "Bitir ve Dön"
+                    children: "Finish and Return"
                 }, void 0, false, {
                     fileName: "[project]/src/views/StoryView.jsx",
-                    lineNumber: 118,
+                    lineNumber: 106,
                     columnNumber: 13
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/src/views/StoryView.jsx",
-            lineNumber: 115,
+            lineNumber: 103,
             columnNumber: 9
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/src/views/StoryView.jsx",
-        lineNumber: 114,
+        lineNumber: 102,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0)));
 const StoryView = ({ story, onClose })=>{
@@ -889,7 +856,7 @@ const StoryView = ({ story, onClose })=>{
     ]);
     const totalPages = pages.length;
     const themeColor = story.themeColor || '#9333EA';
-    const author = "KOZA GEZGİNİ";
+    const author = "KOZA TRAVELER";
     const currentPageData = pages[currentPage];
     const { toggle, isSpeaking, stop } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useAudioStory$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(currentPageData?.content);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
@@ -913,17 +880,17 @@ const StoryView = ({ story, onClose })=>{
     const handleShare = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(async ()=>{
         const shareData = {
             title: story.title,
-            text: `KOZA ile oluşturduğum bu hikayeyi oku: ${story.title}`,
+            text: `Read this story I created with KOZA: ${story.title}`,
             url: window.location.href
         };
         try {
             if (navigator.share) await navigator.share(shareData);
             else {
                 await navigator.clipboard.writeText(window.location.href);
-                alert("Bağlantı panoya kopyalandı!");
+                alert("Link copied to clipboard!");
             }
         } catch (err) {
-            console.error('Paylaşım hatası:', err);
+            console.error('Share error:', err);
         }
     }, [
         story.title
@@ -959,7 +926,7 @@ const StoryView = ({ story, onClose })=>{
             }, 2000);
         } else {
             setRefinementStatus('error');
-            alert(result.message || "Bir hata oluştu.");
+            alert(result.message || "An error occurred.");
         }
     };
     if (!pages.length) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -969,30 +936,30 @@ const StoryView = ({ story, onClose })=>{
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     className: "text-neutral-600 mb-6 font-medium",
-                    children: "Hikaye yüklenemedi"
+                    children: "Story could not be loaded"
                 }, void 0, false, {
                     fileName: "[project]/src/views/StoryView.jsx",
-                    lineNumber: 199,
+                    lineNumber: 187,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                     onClick: onClose,
                     className: "text-primary-600 hover:text-primary-700 font-bold",
-                    children: "← Geri Dön"
+                    children: "← Go Back"
                 }, void 0, false, {
                     fileName: "[project]/src/views/StoryView.jsx",
-                    lineNumber: 200,
+                    lineNumber: 188,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/src/views/StoryView.jsx",
-            lineNumber: 198,
+            lineNumber: 186,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/src/views/StoryView.jsx",
-        lineNumber: 197,
+        lineNumber: 185,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1005,12 +972,12 @@ const StoryView = ({ story, onClose })=>{
                     intensity: 0.3
                 }, void 0, false, {
                     fileName: "[project]/src/views/StoryView.jsx",
-                    lineNumber: 208,
+                    lineNumber: 196,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/views/StoryView.jsx",
-                lineNumber: 207,
+                lineNumber: 195,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(StoryHeader, {
@@ -1031,7 +998,7 @@ const StoryView = ({ story, onClose })=>{
                 onClose: onClose
             }, void 0, false, {
                 fileName: "[project]/src/views/StoryView.jsx",
-                lineNumber: 211,
+                lineNumber: 199,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1045,20 +1012,20 @@ const StoryView = ({ story, onClose })=>{
                                 size: 16
                             }, void 0, false, {
                                 fileName: "[project]/src/views/StoryView.jsx",
-                                lineNumber: 225,
+                                lineNumber: 213,
                                 columnNumber: 21
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                children: "Hikayeyi Düzenle"
+                                children: "Edit Story"
                             }, void 0, false, {
                                 fileName: "[project]/src/views/StoryView.jsx",
-                                lineNumber: 226,
+                                lineNumber: 214,
                                 columnNumber: 21
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/views/StoryView.jsx",
-                        lineNumber: 221,
+                        lineNumber: 209,
                         columnNumber: 17
                     }, ("TURBOPACK compile-time value", void 0)),
                     isRefinementOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1074,20 +1041,20 @@ const StoryView = ({ story, onClose })=>{
                                                 size: 14
                                             }, void 0, false, {
                                                 fileName: "[project]/src/views/StoryView.jsx",
-                                                lineNumber: 233,
+                                                lineNumber: 221,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                children: "Nasıl Değiştirelim?"
+                                                children: "How shall we change it?"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/views/StoryView.jsx",
-                                                lineNumber: 234,
+                                                lineNumber: 222,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/views/StoryView.jsx",
-                                        lineNumber: 232,
+                                        lineNumber: 220,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1097,26 +1064,26 @@ const StoryView = ({ story, onClose })=>{
                                             size: 16
                                         }, void 0, false, {
                                             fileName: "[project]/src/views/StoryView.jsx",
-                                            lineNumber: 237,
+                                            lineNumber: 225,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/StoryView.jsx",
-                                        lineNumber: 236,
+                                        lineNumber: 224,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/views/StoryView.jsx",
-                                lineNumber: 231,
+                                lineNumber: 219,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-[10px] text-neutral-500 mb-4 leading-relaxed",
-                                children: 'Örn: "Bir yardımcı karakter ekle", "Daha büyülü bir atmosfer yarat" veya "Sonunu değiştir".'
+                                children: 'E.g.: "Add a side character", "Create a more magical atmosphere" or "Change the ending".'
                             }, void 0, false, {
                                 fileName: "[project]/src/views/StoryView.jsx",
-                                lineNumber: 240,
+                                lineNumber: 228,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$input$2f$MessageBox$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -1124,10 +1091,10 @@ const StoryView = ({ story, onClose })=>{
                                 onChange: setFeedback,
                                 onSend: handleRefine,
                                 disabled: refinementStatus === 'loading',
-                                placeholder: "Geri bildirimin..."
+                                placeholder: "Your feedback..."
                             }, void 0, false, {
                                 fileName: "[project]/src/views/StoryView.jsx",
-                                lineNumber: 243,
+                                lineNumber: 231,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             refinementStatus === 'loading' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1138,20 +1105,20 @@ const StoryView = ({ story, onClose })=>{
                                         className: "animate-spin"
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/StoryView.jsx",
-                                        lineNumber: 252,
+                                        lineNumber: 240,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        children: "KOZA Hikayeni Yeniden Örüyor..."
+                                        children: "KOZA is weaving your story again..."
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/StoryView.jsx",
-                                        lineNumber: 253,
+                                        lineNumber: 241,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/views/StoryView.jsx",
-                                lineNumber: 251,
+                                lineNumber: 239,
                                 columnNumber: 29
                             }, ("TURBOPACK compile-time value", void 0)),
                             refinementStatus === 'success' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1161,32 +1128,32 @@ const StoryView = ({ story, onClose })=>{
                                         size: 16
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/StoryView.jsx",
-                                        lineNumber: 258,
+                                        lineNumber: 246,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        children: "Dönüşüm Tamamlandı!"
+                                        children: "Transformation Complete!"
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/StoryView.jsx",
-                                        lineNumber: 259,
+                                        lineNumber: 247,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/views/StoryView.jsx",
-                                lineNumber: 257,
+                                lineNumber: 245,
                                 columnNumber: 29
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/views/StoryView.jsx",
-                        lineNumber: 230,
+                        lineNumber: 218,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/views/StoryView.jsx",
-                lineNumber: 220,
+                lineNumber: 208,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -1198,7 +1165,7 @@ const StoryView = ({ story, onClose })=>{
                             className: "book-spine"
                         }, void 0, false, {
                             fileName: "[project]/src/views/StoryView.jsx",
-                            lineNumber: 268,
+                            lineNumber: 256,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(StoryPage, {
@@ -1209,7 +1176,7 @@ const StoryView = ({ story, onClose })=>{
                             author: author
                         }, void 0, false, {
                             fileName: "[project]/src/views/StoryView.jsx",
-                            lineNumber: 269,
+                            lineNumber: 257,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(StoryPage, {
@@ -1220,25 +1187,25 @@ const StoryView = ({ story, onClose })=>{
                             author: author
                         }, void 0, false, {
                             fileName: "[project]/src/views/StoryView.jsx",
-                            lineNumber: 273,
+                            lineNumber: 261,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         currentPage === totalPages - 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(StoryCompletionOverlay, {
                             onClose: onClose
                         }, void 0, false, {
                             fileName: "[project]/src/views/StoryView.jsx",
-                            lineNumber: 277,
+                            lineNumber: 265,
                             columnNumber: 56
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/views/StoryView.jsx",
-                    lineNumber: 267,
+                    lineNumber: 255,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/views/StoryView.jsx",
-                lineNumber: 266,
+                lineNumber: 254,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1250,18 +1217,18 @@ const StoryView = ({ story, onClose })=>{
                     }
                 }, void 0, false, {
                     fileName: "[project]/src/views/StoryView.jsx",
-                    lineNumber: 282,
+                    lineNumber: 270,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/views/StoryView.jsx",
-                lineNumber: 281,
+                lineNumber: 269,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/views/StoryView.jsx",
-        lineNumber: 206,
+        lineNumber: 194,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };

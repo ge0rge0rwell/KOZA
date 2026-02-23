@@ -1820,21 +1820,21 @@ const DEFAULT_USER = {
     totalXP: 850,
     dailyStreak: 0,
     lastVisit: null,
-    title: "Empati Çırağı",
+    title: "Empathy Apprentice",
     badges: [
         {
             id: 1,
-            name: "İlk Adım",
+            name: "First Step",
             unlocked: true
         },
         {
             id: 2,
-            name: "Hikaye Anlatıcısı",
+            name: "Storyteller",
             unlocked: false
         },
         {
             id: 3,
-            name: "Topluluk Yıldızı",
+            name: "Transformation Specialist",
             unlocked: false
         }
     ],
@@ -1925,7 +1925,7 @@ const UserProvider = ({ children })=>{
                     setLastUserEvent({
                         type: 'xp',
                         amount: diff,
-                        reason: "Başarım"
+                        reason: "Achievement"
                     });
                 }
             }
@@ -1944,7 +1944,7 @@ const UserProvider = ({ children })=>{
                 const newAch = newIds.map({
                     "UserProvider.useEffect.newAch": (id)=>({
                             id,
-                            name: "Yeni Başarım",
+                            name: "New Achievement",
                             icon: "🏆"
                         })
                 }["UserProvider.useEffect.newAch"]); // Placeholder
@@ -2237,7 +2237,6 @@ var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.sign
 ;
 ;
 const StoryContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createContext"])(null);
-const COMMUNITY_WORKS = [];
 ;
 ;
 const StoryProvider = ({ children })=>{
@@ -2486,7 +2485,6 @@ const StoryProvider = ({ children })=>{
                 setAnalysisResult,
                 lastSavedStory,
                 setLastSavedStory,
-                communityWorks: COMMUNITY_WORKS,
                 saveStory,
                 deleteStory,
                 refineStory
@@ -2506,7 +2504,7 @@ const StoryProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "[project]/src/context/StoryContext.jsx",
-        lineNumber: 216,
+        lineNumber: 206,
         columnNumber: 12
     }, ("TURBOPACK compile-time value", void 0));
 };

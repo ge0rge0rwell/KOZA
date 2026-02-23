@@ -1764,21 +1764,21 @@ const DEFAULT_USER = {
     totalXP: 850,
     dailyStreak: 0,
     lastVisit: null,
-    title: "Empati Çırağı",
+    title: "Empathy Apprentice",
     badges: [
         {
             id: 1,
-            name: "İlk Adım",
+            name: "First Step",
             unlocked: true
         },
         {
             id: 2,
-            name: "Hikaye Anlatıcısı",
+            name: "Storyteller",
             unlocked: false
         },
         {
             id: 3,
-            name: "Topluluk Yıldızı",
+            name: "Transformation Specialist",
             unlocked: false
         }
     ],
@@ -1853,7 +1853,7 @@ const UserProvider = ({ children })=>{
                 setLastUserEvent({
                     type: 'xp',
                     amount: diff,
-                    reason: "Başarım"
+                    reason: "Achievement"
                 });
             }
         }
@@ -1869,7 +1869,7 @@ const UserProvider = ({ children })=>{
             // No, let's stick to state diffing.
             const newAch = newIds.map((id)=>({
                     id,
-                    name: "Yeni Başarım",
+                    name: "New Achievement",
                     icon: "🏆"
                 })); // Placeholder
             setLastUserEvent({
@@ -2116,7 +2116,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$xstate$2f$
 ;
 ;
 const StoryContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createContext"])(null);
-const COMMUNITY_WORKS = [];
 ;
 ;
 const StoryProvider = ({ children })=>{
@@ -2337,7 +2336,6 @@ const StoryProvider = ({ children })=>{
             setAnalysisResult,
             lastSavedStory,
             setLastSavedStory,
-            communityWorks: COMMUNITY_WORKS,
             saveStory,
             deleteStory,
             refineStory
@@ -2356,7 +2354,7 @@ const StoryProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "[project]/src/context/StoryContext.jsx",
-        lineNumber: 216,
+        lineNumber: 206,
         columnNumber: 12
     }, ("TURBOPACK compile-time value", void 0));
 };

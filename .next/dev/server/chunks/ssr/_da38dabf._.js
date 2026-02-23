@@ -429,7 +429,7 @@ const GameHeader = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             className: "text-[10px] text-neutral-500 uppercase tracking-widest font-bold",
-                            children: "Oyun Modu"
+                            children: "Game Mode"
                         }, void 0, false, {
                             fileName: "[project]/src/views/GameView.jsx",
                             lineNumber: 15,
@@ -533,7 +533,7 @@ const LevelContent = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$projec
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "inline-block px-4 py-1.5 bg-neutral-100 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6 border border-neutral-200 text-neutral-600",
                         children: [
-                            "Seviye ",
+                            "Level ",
                             currentLevel + 1,
                             " / ",
                             totalLevels
@@ -662,7 +662,7 @@ const CompletionCard = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$proj
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                     className: "text-4xl font-extrabold mb-2 text-neutral-900",
-                    children: "Oyun Tamamlandı!"
+                    children: "Game Completed!"
                 }, void 0, false, {
                     fileName: "[project]/src/views/GameView.jsx",
                     lineNumber: 99,
@@ -670,7 +670,7 @@ const CompletionCard = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$proj
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     className: "text-neutral-600 mb-8",
-                    children: "Mükemmel bir iş çıkardın."
+                    children: "You did an excellent job."
                 }, void 0, false, {
                     fileName: "[project]/src/views/GameView.jsx",
                     lineNumber: 100,
@@ -684,7 +684,7 @@ const CompletionCard = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$proj
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-sm text-neutral-500 mb-1",
-                                    children: "Toplam Skor"
+                                    children: "Total Score"
                                 }, void 0, false, {
                                     fileName: "[project]/src/views/GameView.jsx",
                                     lineNumber: 104,
@@ -709,7 +709,7 @@ const CompletionCard = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$proj
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-sm text-neutral-500 mb-1",
-                                    children: "Seviyeler"
+                                    children: "Levels"
                                 }, void 0, false, {
                                     fileName: "[project]/src/views/GameView.jsx",
                                     lineNumber: 108,
@@ -739,7 +739,7 @@ const CompletionCard = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$proj
                     onClick: onClose,
                     className: "w-full !py-4 !text-lg !rounded-xl shadow-lg",
                     icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"],
-                    children: "Macera Tamamlandı"
+                    children: "Adventure Completed"
                 }, void 0, false, {
                     fileName: "[project]/src/views/GameView.jsx",
                     lineNumber: 113,
@@ -774,7 +774,7 @@ const GameView = ({ game, onClose })=>{
         setShowFeedback(true);
         if (option.isCorrect) {
             setScore((prev)=>prev + 100);
-            awardXP(50, 'Doğru karar');
+            awardXP(50, 'Right decision');
         }
         setTimeout(()=>{
             if (currentLevel < levels.length - 1) {

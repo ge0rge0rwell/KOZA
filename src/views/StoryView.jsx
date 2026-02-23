@@ -29,10 +29,10 @@ const StoryHeader = memo(({ title, currentPage, totalPages, onPrev, onNext, onRe
         <div className="flex items-center gap-4">
             <Book size={20} className="text-neutral-400" />
             <h1 className="font-bold text-neutral-800 text-sm tracking-tight truncate max-w-[200px]">{title}</h1>
-            <button onClick={onReset} title="En Başa Dön" className="flex items-center gap-1 ml-4 py-1 px-2 hover:bg-neutral-50 rounded-lg transition-colors cursor-pointer">
+            <button onClick={onReset} title="Back to Start" className="flex items-center gap-1 ml-4 py-1 px-2 hover:bg-neutral-50 rounded-lg transition-colors cursor-pointer">
                 <RotateCcw size={16} className="text-neutral-400" />
             </button>
-            <button onClick={onJump} title="En Sona Git" className="flex items-center gap-1 py-1 px-2 hover:bg-neutral-50 rounded-lg transition-colors cursor-pointer">
+            <button onClick={onJump} title="Go to End" className="flex items-center gap-1 py-1 px-2 hover:bg-neutral-50 rounded-lg transition-colors cursor-pointer">
                 <RotateCw size={16} className="text-neutral-400" />
             </button>
         </div>
@@ -49,26 +49,14 @@ const StoryHeader = memo(({ title, currentPage, totalPages, onPrev, onNext, onRe
 
         <div className="flex items-center gap-2">
             <div className="flex items-center gap-1 px-2 border-r border-neutral-200">
-                <button onClick={onToggleFullscreen} title="Tam Ekran" className="p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600"><Maximize2 size={18} /></button>
-                <button onClick={onPrint} title="Yazdır" className="p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600"><Printer size={18} /></button>
-                <button onClick={onShare} title="Paylaş" className="p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600"><Share2 size={18} /></button>
-                <button
-                    onClick={onMastodonShare}
-                    title="Mastodon'a Gönder"
-                    disabled={isMastodonSharing}
-                    className="p-2 hover:bg-[#6364FF]/10 rounded-lg text-[#6364FF] hover:text-[#5253e8] transition-colors disabled:opacity-50"
-                >
-                    {isMastodonSharing ? <Loader2 size={18} className="animate-spin" /> : (
-                        <svg className="w-[18px] h-[18px] fill-current" viewBox="0 0 79 75" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M63 45.3v-20c0-4.1-1-7.3-3.2-9.7-2.1-2.4-5-3.7-8.5-3.7-4.1 0-7.2 1.6-9.3 4.7l-2 3.3-2-3.3c-2-3.1-5.1-4.7-9.2-4.7-3.5 0-6.4 1.3-8.6 3.7-2.1 2.4-3.1 5.6-3.1 9.7v20h8V25.9c0-4.1 1.7-6.2 5.2-6.2 3.8 0 5.8 2.5 5.8 7.4V37.7H44V27.1c0-4.9 1.9-7.4 5.8-7.4 3.5 0 5.2 2.1 5.2 6.2V45.3h8ZM74.7 16.6c.6 6 .1 15.7.1 17.3 0 .5-.1 4.8-.1 5.3-.7 11.5-8 16-15.6 17.5-.1 0-.2 0-.3 0-4.9 1-10 1.2-14.9 1.4-1.2 0-2.4 0-3.6 0-4.8 0-9.7-.6-14.4-1.7-.1 0-.1 0-.1 0s-.1 0-.1 0 0 .1 0 .1 0 0 0 0c.1 1.6.4 3.1 1 4.5.6 1.7 2.9 5.7 11.4 5.7 5 0 9.9-.6 14.8-1.7 0 0 0 0 0 0 .1 0 .1 0 .1 0 0 .1 0 .1 0 .1.1 0 .1 0 .1.1v5.6s0 .1-.1.1c0 0 0 0 0 .1-1.6 1.1-3.7 1.7-5.6 2.3-.8.3-1.6.5-2.4.7-7.5 1.7-15.4 1.3-22.7-1.2-6.8-2.4-13.8-8.2-15.5-15.2-.9-3.8-1.6-7.6-1.9-11.5-.6-5.8-.6-11.7-.8-17.5C3.9 24.5 4 20 4.9 16 6.7 7.9 14.1 2.2 22.3 1c1.4-.2 4.1-1 16.5-1h.1C51.4 0 56.7.8 58.1 1c8.4 1.2 15.5 7.5 16.6 15.6Z" />
-                        </svg>
-                    )}
-                </button>
+                <button onClick={onToggleFullscreen} title="Fullscreen" className="p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600"><Maximize2 size={18} /></button>
+                <button onClick={onPrint} title="Print" className="p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600"><Printer size={18} /></button>
+                <button onClick={onShare} title="Share" className="p-2 hover:bg-neutral-50 rounded-lg text-neutral-400 hover:text-neutral-600"><Share2 size={18} /></button>
             </div>
             <div className="flex items-center gap-1 ml-1">
                 <button onClick={onToggleAudio} className={`flex items-center gap-2 px-4 py-1.5 rounded-full transition-all text-sm font-bold ${isSpeaking ? 'bg-primary-500 text-white shadow-lg' : 'bg-primary-100 text-primary-600 hover:bg-primary-200'}`}>
                     {isSpeaking ? <VolumeX size={16} /> : <Volume2 size={16} />}
-                    <span>Dinle</span>
+                    <span>Listen</span>
                 </button>
                 <button onClick={onClose} className="p-2 hover:bg-red-50 hover:text-red-500 rounded-lg text-neutral-400 ml-2 transition-colors"><X size={20} /></button>
             </div>
@@ -100,7 +88,7 @@ const StoryPage = memo(({ page, pageNumber, alignment = 'left', onPageClick, aut
             ) : (
                 <div className="flex-1 flex flex-col items-center justify-center animate-pulse text-neutral-300">
                     <Book size={64} className="mb-4 opacity-20" />
-                    <p className="font-serif italic text-lg">Son Sayfa</p>
+                    <p className="font-serif italic text-lg">Last Page</p>
                 </div>
             )}
             <div className={`mt-8 text-sm font-bold text-neutral-300 tabular-nums ${alignment === 'right' ? 'text-right' : 'text-left'}`}>
@@ -113,10 +101,10 @@ const StoryPage = memo(({ page, pageNumber, alignment = 'left', onPageClick, aut
 const StoryCompletionOverlay = memo(({ onClose }) => (
     <div className="absolute inset-0 z-40 bg-white/60 backdrop-blur-md flex items-center justify-center animate-fade-in">
         <div className="text-center p-12 bg-white rounded-[48px] shadow-2xl border border-neutral-100 scale-110">
-            <h3 className="text-3xl font-bold mb-4 text-primary-600">Harika Bir Yolculuktu!</h3>
-            <p className="text-neutral-600 mb-8 max-w-xs mx-auto font-medium text-lg">Bu hikaye metamorfozunu tamamladı. Yeni hikayeler seni bekliyor.</p>
+            <h3 className="text-3xl font-bold mb-4 text-primary-600">A Great Journey!</h3>
+            <p className="text-neutral-600 mb-8 max-w-xs mx-auto font-medium text-lg">This story has completed its metamorphosis. New stories await you.</p>
             <GalaxyButton onClick={onClose} className="!py-6 !px-16 !text-xl !rounded-full shadow-2xl" icon={Check}>
-                Bitir ve Dön
+                Finish and Return
             </GalaxyButton>
         </div>
     </div>
@@ -131,7 +119,7 @@ const StoryView = ({ story, onClose }) => {
     const pages = useMemo(() => story.pages || [], [story.pages]);
     const totalPages = pages.length;
     const themeColor = story.themeColor || '#9333EA';
-    const author = "KOZA GEZGİNİ";
+    const author = "KOZA TRAVELER";
 
     const currentPageData = pages[currentPage];
     const { toggle, isSpeaking, stop } = useAudioStory(currentPageData?.content);
@@ -150,11 +138,11 @@ const StoryView = ({ story, onClose }) => {
     const handlePrint = useCallback(() => requestAnimationFrame(() => window.print()), []);
 
     const handleShare = useCallback(async () => {
-        const shareData = { title: story.title, text: `KOZA ile oluşturduğum bu hikayeyi oku: ${story.title}`, url: window.location.href };
+        const shareData = { title: story.title, text: `Read this story I created with KOZA: ${story.title}`, url: window.location.href };
         try {
             if (navigator.share) await navigator.share(shareData);
-            else { await navigator.clipboard.writeText(window.location.href); alert("Bağlantı panoya kopyalandı!"); }
-        } catch (err) { console.error('Paylaşım hatası:', err); }
+            else { await navigator.clipboard.writeText(window.location.href); alert("Link copied to clipboard!"); }
+        } catch (err) { console.error('Share error:', err); }
     }, [story.title]);
 
     const [isMastodonSharing, setIsMastodonSharing] = useState(false);
@@ -189,15 +177,15 @@ const StoryView = ({ story, onClose }) => {
             }, 2000);
         } else {
             setRefinementStatus('error');
-            alert(result.message || "Bir hata oluştu.");
+            alert(result.message || "An error occurred.");
         }
     };
 
     if (!pages.length) return (
         <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-8">
             <div className="bg-white rounded-2xl border border-neutral-200 p-12 text-center shadow-xl">
-                <p className="text-neutral-600 mb-6 font-medium">Hikaye yüklenemedi</p>
-                <button onClick={onClose} className="text-primary-600 hover:text-primary-700 font-bold">← Geri Dön</button>
+                <p className="text-neutral-600 mb-6 font-medium">Story could not be loaded</p>
+                <button onClick={onClose} className="text-primary-600 hover:text-primary-700 font-bold">← Go Back</button>
             </div>
         </div>
     );
@@ -223,7 +211,7 @@ const StoryView = ({ story, onClose }) => {
                     className={`flex items-center gap-2 px-4 py-2 rounded-full font-bold text-sm transition-all shadow-lg active:scale-95 ${isRefinementOpen ? 'bg-indigo-600 text-white' : 'bg-white text-indigo-600 hover:bg-neutral-50'}`}
                 >
                     <Sparkles size={16} />
-                    <span>Hikayeyi Düzenle</span>
+                    <span>Edit Story</span>
                 </button>
 
                 {isRefinementOpen && (
@@ -231,32 +219,32 @@ const StoryView = ({ story, onClose }) => {
                         <div className="flex items-center justify-between mb-3">
                             <div className="flex items-center gap-2 text-indigo-600 font-bold text-xs uppercase tracking-wider">
                                 <MessageSquare size={14} />
-                                <span>Nasıl Değiştirelim?</span>
+                                <span>How shall we change it?</span>
                             </div>
                             <button onClick={() => setIsRefinementOpen(false)} className="text-neutral-400 hover:text-neutral-600">
                                 <X size={16} />
                             </button>
                         </div>
                         <p className="text-[10px] text-neutral-500 mb-4 leading-relaxed">
-                            Örn: "Bir yardımcı karakter ekle", "Daha büyülü bir atmosfer yarat" veya "Sonunu değiştir".
+                            E.g.: "Add a side character", "Create a more magical atmosphere" or "Change the ending".
                         </p>
                         <MessageBox
                             value={feedback}
                             onChange={setFeedback}
                             onSend={handleRefine}
                             disabled={refinementStatus === 'loading'}
-                            placeholder="Geri bildirimin..."
+                            placeholder="Your feedback..."
                         />
                         {refinementStatus === 'loading' && (
                             <div className="mt-4 flex items-center justify-center gap-2 text-indigo-600 font-bold text-xs animate-pulse">
                                 <Loader2 size={16} className="animate-spin" />
-                                <span>KOZA Hikayeni Yeniden Örüyor...</span>
+                                <span>KOZA is weaving your story again...</span>
                             </div>
                         )}
                         {refinementStatus === 'success' && (
                             <div className="mt-4 flex items-center justify-center gap-2 text-green-600 font-bold text-xs">
                                 <Check size={16} />
-                                <span>Dönüşüm Tamamlandı!</span>
+                                <span>Transformation Complete!</span>
                             </div>
                         )}
                     </div>

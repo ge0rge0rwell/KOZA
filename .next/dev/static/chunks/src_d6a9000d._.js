@@ -646,7 +646,7 @@ const LoginForm = ({ onClose })=>{
         e.preventDefault();
         setError(null);
         if (isRegister && formData.password !== formData.confirmPassword) {
-            setError("Şifreler uyuşmuyor.");
+            setError("Passwords do not match.");
             return;
         }
         setIsLoading(true);
@@ -656,7 +656,7 @@ const LoginForm = ({ onClose })=>{
                 setError(result.error);
             }
         } catch (err) {
-            setError("Bir hata oluştu.");
+            setError("An error occurred.");
         } finally{
             setIsLoading(false);
         }
@@ -673,7 +673,7 @@ const LoginForm = ({ onClose })=>{
                 setError(result.error);
             }
         } catch (err) {
-            setError("Sosyal giriş başarısız.");
+            setError("Social login failed.");
         } finally{
             setIsLoading(false);
         }
@@ -699,7 +699,7 @@ const LoginForm = ({ onClose })=>{
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                 className: "title",
-                children: isRegister ? 'Kayıt Ol' : 'Hoş Geldin'
+                children: isRegister ? 'Sign Up' : 'Welcome Back'
             }, void 0, false, {
                 fileName: "[project]/src/components/auth/LoginForm.jsx",
                 lineNumber: 83,
@@ -721,7 +721,7 @@ const LoginForm = ({ onClose })=>{
                         type: "email",
                         name: "email",
                         className: "input",
-                        placeholder: "E-posta",
+                        placeholder: "Email",
                         required: true,
                         onChange: handleInputChange,
                         value: formData.email
@@ -734,7 +734,7 @@ const LoginForm = ({ onClose })=>{
                         type: "password",
                         name: "password",
                         className: "input",
-                        placeholder: "Şifre",
+                        placeholder: "Password",
                         required: true,
                         onChange: handleInputChange,
                         value: formData.password
@@ -747,7 +747,7 @@ const LoginForm = ({ onClose })=>{
                         type: "password",
                         name: "confirmPassword",
                         className: "input",
-                        placeholder: "Şifre Onay",
+                        placeholder: "Confirm Password",
                         required: true,
                         onChange: handleInputChange,
                         value: formData.confirmPassword
@@ -760,7 +760,7 @@ const LoginForm = ({ onClose })=>{
                         className: "page-link",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                             className: "page-link-label",
-                            children: "Şifremi Unuttum?"
+                            children: "Forgot Password?"
                         }, void 0, false, {
                             fileName: "[project]/src/components/auth/LoginForm.jsx",
                             lineNumber: 122,
@@ -781,7 +781,7 @@ const LoginForm = ({ onClose })=>{
                             fileName: "[project]/src/components/auth/LoginForm.jsx",
                             lineNumber: 127,
                             columnNumber: 34
-                        }, ("TURBOPACK compile-time value", void 0)) : isRegister ? 'Kayıt Ol' : 'Giriş Yap'
+                        }, ("TURBOPACK compile-time value", void 0)) : isRegister ? 'Sign Up' : 'Sign In'
                     }, void 0, false, {
                         fileName: "[project]/src/components/auth/LoginForm.jsx",
                         lineNumber: 126,
@@ -796,14 +796,14 @@ const LoginForm = ({ onClose })=>{
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                 className: "sign-up-label text-center",
                 children: [
-                    isRegister ? 'Zaten hesabın var mı?' : 'Hesabın yok mu?',
+                    isRegister ? 'Already have an account?' : "Don't have an account?",
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: "sign-up-link",
                         onClick: ()=>{
                             setIsRegister(!isRegister);
                             setError(null);
                         },
-                        children: isRegister ? 'Giriş Yap' : 'Kayıt Ol'
+                        children: isRegister ? 'Sign In' : 'Sign Up'
                     }, void 0, false, {
                         fileName: "[project]/src/components/auth/LoginForm.jsx",
                         lineNumber: 133,
@@ -873,7 +873,7 @@ const LoginForm = ({ onClose })=>{
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                            children: "Google ile Devam Et"
+                            children: "Continue with Google"
                         }, void 0, false, {
                             fileName: "[project]/src/components/auth/LoginForm.jsx",
                             lineNumber: 157,
@@ -985,7 +985,7 @@ const HeroSection = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: "block",
-                        children: "Zorbalık Seni Yıkmamalı"
+                        children: "Bullying Shouldn't Break You"
                     }, void 0, false, {
                         fileName: "[project]/src/views/HomePage.jsx",
                         lineNumber: 26,
@@ -993,7 +993,7 @@ const HeroSection = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: "bg-gradient-to-r from-primary-500 via-primary-600 to-secondary-500 bg-clip-text text-transparent",
-                        children: "Güçlendirmeli"
+                        children: "It Should Empower You"
                     }, void 0, false, {
                         fileName: "[project]/src/views/HomePage.jsx",
                         lineNumber: 27,
@@ -1046,7 +1046,7 @@ const HeroSection = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                 className: "text-lg md:text-xl text-neutral-500 max-w-2xl mx-auto font-bold leading-relaxed mb-12 opacity-80",
                 children: [
-                    "Zorbalığa karşı verdiğin mücadelede yalnız değilsin. ",
+                    "You are not alone in your struggle against bullying. ",
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {
                         className: "hidden md:block"
                     }, void 0, false, {
@@ -1054,7 +1054,7 @@ const HeroSection = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                         lineNumber: 40,
                         columnNumber: 66
                     }, ("TURBOPACK compile-time value", void 0)),
-                    "Kozandan çık, hikayeni yeniden yaz ve dönüşümün gücünü keşfet."
+                    "Step out of your cocoon, rewrite your story, and discover the power of transformation."
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/views/HomePage.jsx",
@@ -1074,7 +1074,7 @@ const HeroSection = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: "relative z-10 uppercase tracking-widest",
-                        children: "Yolculuğa Başla"
+                        children: "Start the Journey"
                     }, void 0, false, {
                         fileName: "[project]/src/views/HomePage.jsx",
                         lineNumber: 49,
@@ -1118,20 +1118,20 @@ const HomePage = ()=>{
         "HomePage.useMemo[features]": ()=>[
                 {
                     icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$zap$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Zap$3e$__["Zap"],
-                    title: "Hikayeler",
-                    description: "Olumsuzlukları güce dönüştüren her gün yeni bir hikaye.",
+                    title: "Stories",
+                    description: "A new story every day that turns negativity into power.",
                     colorClass: "hover:border-secondary-500"
                 },
                 {
                     icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$heart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Heart$3e$__["Heart"],
-                    title: "Topluluk",
-                    description: "Seninle aynı yoldan geçen binlerce kişiyle beraber.",
+                    title: "Community",
+                    description: "Together with thousands of people walking the same path.",
                     colorClass: "hover:border-primary-500"
                 },
                 {
                     icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__["Shield"],
-                    title: "Güven",
-                    description: "Verilerin uçtan uca şifreli ve tamamen güvende.",
+                    title: "Security",
+                    description: "Your data is end-to-end encrypted and completely safe.",
                     colorClass: "hover:border-primary-900"
                 }
             ]
@@ -1236,7 +1236,7 @@ const HomePage = ()=>{
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: "font-black text-sm uppercase tracking-tighter",
-                        children: "Sistem:"
+                        children: "System:"
                     }, void 0, false, {
                         fileName: "[project]/src/views/HomePage.jsx",
                         lineNumber: 103,
@@ -1371,26 +1371,26 @@ const Onboarding = ({ onComplete })=>{
     const steps = [
         {
             icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"],
-            title: "KOZA'ya Hoş Geldin",
-            description: "Deneyimlerini güçlendirici hikayelere ve oyunlara dönüştür. Her zorluk, bir dönüşüm fırsatıdır.",
+            title: "Welcome to KOZA",
+            description: "Transform your experiences into empowering stories and games. Every challenge is an opportunity for transformation.",
             color: "primary"
         },
         {
             icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$target$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Target$3e$__["Target"],
-            title: "Hikaye Oluştur",
-            description: "Yaşadığın zorluğu anlat, AI destekli araçlarımız onu anlamlı bir hikayeye dönüştürsün.",
+            title: "Create a Story",
+            description: "Tell the challenge you're facing, and let our AI-powered tools turn it into a meaningful story.",
             color: "success"
         },
         {
             icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trending$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TrendingUp$3e$__["TrendingUp"],
-            title: "Gelişimini İzle",
-            description: "Her hikaye ve oyun ile XP kazan, seviye atla ve rozetler topla.",
+            title: "Track Your Growth",
+            description: "Earn XP, level up, and collect badges with every story and game.",
             color: "warning"
         },
         {
             icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$award$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Award$3e$__["Award"],
-            title: "Topluluğa Katıl",
-            description: "Diğer kullanıcıların dönüşüm hikayelerini keşfet ve kendi deneyimlerini paylaş.",
+            title: "Your Legacy",
+            description: "Discover your own transformation and store your experiences safely.",
             color: "error"
         }
     ];
@@ -1457,7 +1457,7 @@ const Onboarding = ({ onComplete })=>{
                         step > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: ()=>setStep(step - 1),
                             className: "px-8 py-4 bg-white/50 backdrop-blur-md rounded-2xl font-bold text-neutral-500 hover:text-neutral-900 transition-liquid border border-white/50",
-                            children: "Geri"
+                            children: "Back"
                         }, void 0, false, {
                             fileName: "[project]/src/components/Onboarding.jsx",
                             lineNumber: 66,
@@ -1473,7 +1473,7 @@ const Onboarding = ({ onComplete })=>{
                                 }
                             },
                             className: "flex-1 bg-neutral-900 text-white px-8 py-4 rounded-2xl font-black italic tracking-widest hover:scale-[1.02] active:scale-95 transition-liquid shadow-xl",
-                            children: step < steps.length - 1 ? 'DEVAM' : 'BAŞLA'
+                            children: step < steps.length - 1 ? 'CONTINUE' : 'START'
                         }, void 0, false, {
                             fileName: "[project]/src/components/Onboarding.jsx",
                             lineNumber: 73,
@@ -1707,7 +1707,7 @@ const UserDropdown = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$projec
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "text-[10px] font-black text-neutral-400 uppercase tracking-[0.2em] mb-1",
-                        children: "Kimlik"
+                        children: "Identity"
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/Header.jsx",
                         lineNumber: 14,
@@ -1739,7 +1739,7 @@ const UserDropdown = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$projec
                         columnNumber: 13
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        children: "Oturumu Kapat"
+                        children: "Sign Out"
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/Header.jsx",
                         lineNumber: 23,
@@ -1835,7 +1835,7 @@ const Header = ()=>{
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                             className: "tracking-[0.2em]",
-                            children: isSyncing ? 'Eşitleniyor' : cloudSynced ? 'Bulutta' : 'Yerel'
+                            children: isSyncing ? 'Syncing' : cloudSynced ? 'Cloud' : 'Local'
                         }, void 0, false, {
                             fileName: "[project]/src/components/layout/Header.jsx",
                             lineNumber: 66,
@@ -2108,7 +2108,7 @@ const SidebarItem = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
                                 className: "font-bold text-sm text-neutral-900 break-words leading-snug",
-                                children: story.title || 'İsimsiz Dönüşüm'
+                                children: story.title || 'Untitled Transformation'
                             }, void 0, false, {
                                 fileName: "[project]/src/components/layout/Sidebar.jsx",
                                 lineNumber: 18,
@@ -2116,7 +2116,7 @@ const SidebarItem = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-[10px] font-bold text-neutral-400 mt-0.5 uppercase tracking-widest",
-                                children: new Date(story.createdAt).toLocaleDateString('tr-TR', {
+                                children: new Date(story.createdAt).toLocaleDateString('en-US', {
                                     day: 'numeric',
                                     month: 'short'
                                 })
@@ -2140,7 +2140,7 @@ const SidebarItem = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                 onClick: (e)=>onDelete(e, story.id),
                 className: "absolute top-2 right-2 p-1.5 text-neutral-400 opacity-0 group-hover:opacity-100 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all z-10",
-                title: "Sil",
+                title: "Delete",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__["Trash2"], {
                     size: 14
                 }, void 0, false, {
@@ -2178,7 +2178,7 @@ const Sidebar = ()=>{
     const handleDelete = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "Sidebar.useCallback[handleDelete]": (e, id)=>{
             e.stopPropagation();
-            if (window.confirm('Bu hikayeyi silmek istediğinize emin misiniz?')) {
+            if (window.confirm('Are you sure you want to delete this story?')) {
                 deleteStory(id);
             }
         }
@@ -2224,7 +2224,7 @@ const Sidebar = ()=>{
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                         className: "text-[10px] font-bold text-neutral-400 uppercase tracking-[0.2em] mb-4 px-3 mt-6",
-                        children: "Mirasın"
+                        children: "Your Legacy"
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/Sidebar.jsx",
                         lineNumber: 70,
@@ -2234,7 +2234,7 @@ const Sidebar = ()=>{
                         className: "text-center py-12 text-neutral-400 px-4 italic font-serif opacity-50",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             className: "text-sm",
-                            children: "Henüz bir metamorfoz hikayen yok."
+                            children: "You don't have a metamorphosis story yet."
                         }, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.jsx",
                             lineNumber: 76,
@@ -2272,7 +2272,7 @@ const Sidebar = ()=>{
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                            children: "Oturumu Kapat"
+                            children: "Sign Out"
                         }, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.jsx",
                             lineNumber: 91,
@@ -2324,7 +2324,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$UIContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/context/UIContext.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$house$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Home$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/house.js [app-client] (ecmascript) <export default as Home>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/users.js [app-client] (ecmascript) <export default as Users>");
 ;
 var _s = __turbopack_context__.k.signature();
 ;
@@ -2338,24 +2337,13 @@ const BottomMenu = ()=>{
         "BottomMenu.useMemo[navItems]": ()=>[
                 {
                     id: 'create',
-                    label: 'Keşfet',
+                    label: 'Discover',
                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$house$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Home$3e$__["Home"], {
                         size: 20
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/BottomMenu.jsx",
                         lineNumber: 10,
-                        columnNumber: 48
-                    }, ("TURBOPACK compile-time value", void 0))
-                },
-                {
-                    id: 'community',
-                    label: 'Topluluk',
-                    icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"], {
-                        size: 20
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/layout/BottomMenu.jsx",
-                        lineNumber: 11,
-                        columnNumber: 53
+                        columnNumber: 50
                     }, ("TURBOPACK compile-time value", void 0))
                 }
             ]
@@ -2382,7 +2370,7 @@ const BottomMenu = ()=>{
                             children: item.icon
                         }, void 0, false, {
                             fileName: "[project]/src/components/layout/BottomMenu.jsx",
-                            lineNumber: 28,
+                            lineNumber: 27,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2390,30 +2378,30 @@ const BottomMenu = ()=>{
                             children: item.label
                         }, void 0, false, {
                             fileName: "[project]/src/components/layout/BottomMenu.jsx",
-                            lineNumber: 31,
+                            lineNumber: 30,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0)),
                         activeTab === item.id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "absolute -bottom-1 w-1 h-1 bg-primary-600 rounded-full shadow-[0_0_8px_rgba(139,92,246,0.8)]"
                         }, void 0, false, {
                             fileName: "[project]/src/components/layout/BottomMenu.jsx",
-                            lineNumber: 35,
+                            lineNumber: 34,
                             columnNumber: 29
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, item.id, true, {
                     fileName: "[project]/src/components/layout/BottomMenu.jsx",
-                    lineNumber: 23,
+                    lineNumber: 22,
                     columnNumber: 21
                 }, ("TURBOPACK compile-time value", void 0)))
         }, void 0, false, {
             fileName: "[project]/src/components/layout/BottomMenu.jsx",
-            lineNumber: 21,
+            lineNumber: 20,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/src/components/layout/BottomMenu.jsx",
-        lineNumber: 20,
+        lineNumber: 19,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -3576,29 +3564,27 @@ var _s = __turbopack_context__.k.signature();
 // Lazy Load Components (Lightspeed Optimization)
 const CreateTab = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["lazy"])(()=>__turbopack_context__.A("[project]/src/tabs/CreateTab.jsx [app-client] (ecmascript, async loader)"));
 _c = CreateTab;
-const CommunityTab = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["lazy"])(()=>__turbopack_context__.A("[project]/src/tabs/CommunityTab.jsx [app-client] (ecmascript, async loader)"));
-_c1 = CommunityTab;
 const StoryView = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["lazy"])(()=>__turbopack_context__.A("[project]/src/views/StoryView.jsx [app-client] (ecmascript, async loader)"));
-_c2 = StoryView;
+_c1 = StoryView;
 const GameView = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["lazy"])(()=>__turbopack_context__.A("[project]/src/views/GameView.jsx [app-client] (ecmascript, async loader)"));
-_c3 = GameView;
+_c2 = GameView;
 const ProfileView = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["lazy"])(()=>__turbopack_context__.A("[project]/src/views/ProfileView.jsx [app-client] (ecmascript, async loader)"));
-_c4 = ProfileView;
+_c3 = ProfileView;
 const FallbackLoader = ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "flex items-center justify-center p-20 animate-fade-in-up",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$galaxy$2f$GalaxySpinner$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
             size: "large"
         }, void 0, false, {
             fileName: "[project]/src/router/AppRouter.jsx",
-            lineNumber: 14,
+            lineNumber: 13,
             columnNumber: 9
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/src/router/AppRouter.jsx",
-        lineNumber: 13,
+        lineNumber: 12,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
-_c5 = FallbackLoader;
+_c4 = FallbackLoader;
 const AppRouter = ()=>{
     _s();
     const { currentView, setCurrentView, activeTab } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$UIContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useUI"])();
@@ -3607,7 +3593,7 @@ const AppRouter = ()=>{
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
             fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FallbackLoader, {}, void 0, false, {
                 fileName: "[project]/src/router/AppRouter.jsx",
-                lineNumber: 24,
+                lineNumber: 23,
                 columnNumber: 33
             }, void 0),
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(StoryView, {
@@ -3615,12 +3601,12 @@ const AppRouter = ()=>{
                 onClose: ()=>setCurrentView(null)
             }, void 0, false, {
                 fileName: "[project]/src/router/AppRouter.jsx",
-                lineNumber: 25,
+                lineNumber: 24,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/src/router/AppRouter.jsx",
-            lineNumber: 24,
+            lineNumber: 23,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -3628,7 +3614,7 @@ const AppRouter = ()=>{
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
             fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FallbackLoader, {}, void 0, false, {
                 fileName: "[project]/src/router/AppRouter.jsx",
-                lineNumber: 32,
+                lineNumber: 31,
                 columnNumber: 33
             }, void 0),
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(GameView, {
@@ -3636,12 +3622,12 @@ const AppRouter = ()=>{
                 onClose: ()=>setCurrentView(null)
             }, void 0, false, {
                 fileName: "[project]/src/router/AppRouter.jsx",
-                lineNumber: 33,
+                lineNumber: 32,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/src/router/AppRouter.jsx",
-            lineNumber: 32,
+            lineNumber: 31,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -3649,56 +3635,44 @@ const AppRouter = ()=>{
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
             fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FallbackLoader, {}, void 0, false, {
                 fileName: "[project]/src/router/AppRouter.jsx",
-                lineNumber: 40,
+                lineNumber: 39,
                 columnNumber: 33
             }, void 0),
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ProfileView, {
                 onClose: ()=>setCurrentView(null)
             }, void 0, false, {
                 fileName: "[project]/src/router/AppRouter.jsx",
-                lineNumber: 41,
+                lineNumber: 40,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/src/router/AppRouter.jsx",
-            lineNumber: 40,
+            lineNumber: 39,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0));
     }
     // 2. Tab Navigation Content
-    const TabMap = {
-        'create': /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CreateTab, {}, void 0, false, {
-            fileName: "[project]/src/router/AppRouter.jsx",
-            lineNumber: 48,
-            columnNumber: 19
-        }, ("TURBOPACK compile-time value", void 0)),
-        'community': /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CommunityTab, {}, void 0, false, {
-            fileName: "[project]/src/router/AppRouter.jsx",
-            lineNumber: 49,
-            columnNumber: 22
-        }, ("TURBOPACK compile-time value", void 0))
-    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "will-change-contents",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
             fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FallbackLoader, {}, void 0, false, {
                 fileName: "[project]/src/router/AppRouter.jsx",
-                lineNumber: 54,
+                lineNumber: 48,
                 columnNumber: 33
             }, void 0),
-            children: TabMap[activeTab] || /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CreateTab, {}, void 0, false, {
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CreateTab, {}, void 0, false, {
                 fileName: "[project]/src/router/AppRouter.jsx",
-                lineNumber: 55,
-                columnNumber: 39
+                lineNumber: 49,
+                columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/src/router/AppRouter.jsx",
-            lineNumber: 54,
+            lineNumber: 48,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0))
     }, activeTab, false, {
         fileName: "[project]/src/router/AppRouter.jsx",
-        lineNumber: 53,
+        lineNumber: 47,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -3707,17 +3681,16 @@ _s(AppRouter, "VBeBpISi48GMlRgFb6ZHKWKrb/g=", false, function() {
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$UIContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useUI"]
     ];
 });
-_c6 = AppRouter;
-const __TURBOPACK__default__export__ = /*#__PURE__*/ _c7 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(AppRouter);
-var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7;
+_c5 = AppRouter;
+const __TURBOPACK__default__export__ = /*#__PURE__*/ _c6 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(AppRouter);
+var _c, _c1, _c2, _c3, _c4, _c5, _c6;
 __turbopack_context__.k.register(_c, "CreateTab");
-__turbopack_context__.k.register(_c1, "CommunityTab");
-__turbopack_context__.k.register(_c2, "StoryView");
-__turbopack_context__.k.register(_c3, "GameView");
-__turbopack_context__.k.register(_c4, "ProfileView");
-__turbopack_context__.k.register(_c5, "FallbackLoader");
-__turbopack_context__.k.register(_c6, "AppRouter");
-__turbopack_context__.k.register(_c7, "%default%");
+__turbopack_context__.k.register(_c1, "StoryView");
+__turbopack_context__.k.register(_c2, "GameView");
+__turbopack_context__.k.register(_c3, "ProfileView");
+__turbopack_context__.k.register(_c4, "FallbackLoader");
+__turbopack_context__.k.register(_c5, "AppRouter");
+__turbopack_context__.k.register(_c6, "%default%");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }

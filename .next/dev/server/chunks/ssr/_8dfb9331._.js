@@ -14,25 +14,25 @@ __turbopack_context__.s([
  * KOZA Safety Utility
  * Handles crisis detection, content filtering, and mandatory disclaimers.
  */ const CRISIS_KEYWORDS = [
-    // Turkish keywords for safety interception
-    'kendime zarar',
-    'intihar',
-    'ölmek istiyorum',
-    'canıma kıymak',
-    'bıçaklamak',
-    'silahla',
-    'asılmak',
-    'zehirlemek',
+    // English keywords for safety interception
+    'self harm',
+    'suicide',
+    'want to die',
+    'kill myself',
+    'stab',
+    'with gun',
+    'hang myself',
+    'poison',
     // High-risk violence
-    'birini öldürmek',
-    'zarar vermek istiyorum'
+    'kill someone',
+    'want to hurt'
 ];
 /**
- * Normalizes text for Turkish-aware comparison.
+ * Normalizes text for comparison.
  * @param {string} text 
  * @returns {string}
- */ const normalizeTurkish = (text)=>{
-    return text.replace(/İ/g, 'i').replace(/I/g, 'ı').toLowerCase();
+ */ const normalizeText = (text)=>{
+    return text.toLowerCase().trim();
 };
 const detectCrisis = (text)=>{
     if (!text || typeof text !== 'string') {
@@ -40,19 +40,19 @@ const detectCrisis = (text)=>{
             isCrisis: false
         };
     }
-    const normalized = normalizeTurkish(text);
+    const normalized = normalizeText(text);
     const foundKeywords = CRISIS_KEYWORDS.filter((kw)=>normalized.includes(kw));
     if (foundKeywords.length > 0) {
         return {
             isCrisis: true,
-            message: "Bu platform eğitim amaçlıdır. Kendini veya bir başkasını tehlikede hissediyorsan lütfen hemen profesyonel yardım al veya 112'yi ara."
+            message: "This platform is for educational purposes. If you feel in danger to yourself or others, please seek professional help immediately or call emergency services (e.g., 911)."
         };
     }
     return {
         isCrisis: false
     };
 };
-const SAFETY_DISCLAIMER = "KOZA bir eğitim aracıdır ve profesyonel psikolojik desteğin yerini tutmaz.";
+const SAFETY_DISCLAIMER = "KOZA is an educational tool and does not replace professional psychological support.";
 const getSafetyFilter = (text)=>{
     if (!text || typeof text !== 'string') return '';
     // Basic filter for toxic content (placeholder for more advanced NLP if needed)
@@ -631,32 +631,33 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$config$2f$prompts$2e$
 const MODEL = 'google/gemma-3-27b-it';
 const BASE_URL = 'https://openrouter.ai/api/v1/chat/completions';
 // Prompts
-const STORY_PROMPT = `Sen "Zorbalıkla Başa Çıkma" rehberisin. Kullanıcının yaşadığı zorbalık veya travmatik deneyimi alıp, onu "Kullanıcıyı Motive Etme,Zorlukları Aşmasını Sağlamak "  sürecine dönüştüren en az 10 sayfalık uzun,zengin moral verici ve destekleyici bir hikayeye çeviriyorsun.
+// Prompts
+const STORY_PROMPT = `You are a "Bullying Coping" guide. You take the bullying or traumatic experience experienced by the user and turn it into at least 10 pages of long, rich, morale-boosting and supportive story that turns it into a process of "Motivating the User, Ensuring They Overcome Difficulties".
 
-KOZA Felsefesi:
-- Zorluklar birer hapishane değil, büyümenin gerçekleşmesini sağlayan birer fırsattır.
-- Acı, kişiyi içsel gücünün ve dayanıklılığının farkına varmaya zorlayan bir öğretmendir.
-- Sonuç, sadece hayatta kalmak değil, en iyi versiyonuna dönüşmektir.
+KOZA Philosophy:
+- Difficulties are not prisons, but opportunities for growth to happen.
+- Pain is a teacher that forces one to realize their inner strength and resilience.
+- The result is not just surviving, but becoming the best version of oneself.
 
-HİKAYE YAPISI (ZORUNLU):
-1. Sayfa: CHALLENGE (Zorluk) - Sorunun başladığı an.
-2. Sayfa: SILENCE (İçsel Sessizlik) - İnsanın Beyninin içindeki kafa karışıklığı ve durgunluk.
-3. Sayfa: ANALYSIS (Analiz/Kırılma) - Yaşananları anlamlandırma ve yapabileceklerini fark etme.
-4. Sayfa: GROWTH DECISION (Gelişim Kararı) - Bir seçim yapma, sınır çizme veya yeni bir adım atma.
-5. Sayfa: FREEDOM (Özgürlük/Entegrasyon) - Kanatlanma ve yeni bir perspektifle hayata devam etme.
-6. Sayfa: LEGACY (Miras) - Bu deneyimin kişiye ve çevresine nasıl bir güç ve ilham kaynağı olduğunu gösterme.
-7. Sayfa: CELEBRATION (Kutlama) - Kişinin kendi gücünü ve dönüşümünü kutlaması.
-8. Sayfa: CONTINUATION (Devam) - Hayatın devam ettiğini ve yeni zorlukların da üstesinden gelinebileceğini vurgulama.
-9. Sayfa: EMPATHY (Empati) - Benzer deneyimler yaşayan diğer insanlara karşı empati ve destek çağrısı.
-10. Sayfa: HOPE (Umut) - Her karanlık tünelin sonunda bir ışık olduğunu ve herkesin kendi ışığını bulabileceğini hatırlatma.
+STORY STRUCTURE (REQUIRED):
+1. Page: CHALLENGE - The moment the problem started.
+2. Page: SILENCE - Confusion and stillness inside the human brain.
+3. Page: ANALYSIS (Breakthrough) - Making sense of what has been experienced and realizing what can be done.
+4. Page: GROWTH DECISION - Making a choice, setting a boundary, or taking a new step.
+5. Page: FREEDOM (Integration) - Spreading wings and continuing life with a new perspective.
+6. Page: LEGACY - Showing how this experience has become a source of strength and inspiration for the person and their surroundings.
+7. Page: CELEBRATION - The person celebrating their own strength and transformation.
+8. Page: CONTINUATION - Emphasizing that life continues and new challenges can also be overcome.
+9. Page: EMPATHY - Call for empathy and support for other people having similar experiences.
+10. Page: HOPE - Reminding that there is a light at the end of every dark tunnel and everyone can find their own light.
 
-Kurallar:
-1. Her sayfa bir "title" ve "content" içermeli.
-2. Anlatı dili: Empatik, moral verici, şiirsel ve son derece güçlendirici.
-3. ÇIKTI FORMATI: JSON.
-4. "reflectionQuestion": Kullanıcının bu hikaye üzerine düşünmesini sağlayacak açık uçlu bir soru ekle.
-5. "growthLesson": Hikayeden çıkarılacak temel bir yaşam dersi ekle.
-6. GÜVENLİK: Asla tıbbi teşhis koyma, terapi önerisinde bulunma veya kesin psikolojik iddialar yapma.
+Rules:
+1. Each page should contain a "title" and "content".
+2. Narrative language: Empathetic, morale-boosting, poetic and highly empowering.
+3. OUTPUT FORMAT: JSON.
+4. "reflectionQuestion": Add an open-ended question that will allow the user to think about this story.
+5. "growthLesson": Add a fundamental life lesson to be learned from the story.
+6. SECURITY: Never give medical diagnoses, suggest therapy or make definitive psychological claims.
 
 {
   "themeColor": "#9333EA",
@@ -664,23 +665,23 @@ Kurallar:
   "reflectionQuestion": "...",
   "growthLesson": "...",
   "pages": [
-    { "title": "Başlık", "content": "İçerik..." }
+    { "title": "Title", "content": "Content..." }
   ]
 }
 
-JSON dışında hiçbir şey yazma.`;
-const REFINE_STORY_PROMPT = `Sen bir hikaye editörüsün. Mevcut bir hikayeyi ve kullanıcının geri bildirimini alıp, hikayeyi bu geri bildirime göre güncelliyorsun.
+Write nothing besides JSON.`;
+const REFINE_STORY_PROMPT = `You are a story editor. You take an existing story and the user's feedback and update the story according to this feedback.
 
-Kurallar:
-1. KOZA Felsefesini (Zorluktan Dönüşüm) ve 10 sayfalık hikaye yapısını korumalısın.
-2. Kullanıcının istediği değişiklikleri (karakter ekleme, atmosfer değiştirme, olay örgüsü düzenleme vb.) hikayeye uyarla.
-3. Anlatı dilini empatik ve güçlendirici tutmaya devam et.
-4. ÇIKTI FORMATI: JSON (STORY_PROMPT ile aynı yapıda).
+Rules:
+1. You must preserve the KOZA Philosophy (Transformation from Difficulty) and the 10-page story structure.
+2. Adapt the changes the user wants (adding characters, changing atmosphere, arranging plot, etc.) to the story.
+3. Continue to keep the narrative language empathetic and empowering.
+4. OUTPUT FORMAT: JSON (same structure as STORY_PROMPT).
 
-Mevcut Hikaye:
+Existing Story:
 {{EXISTING_STORY}}
 
-Kullanıcı Geri Bildirimi:
+User Feedback:
 {{USER_FEEDBACK}}
 
 {
@@ -689,50 +690,50 @@ Kullanıcı Geri Bildirimi:
   "reflectionQuestion": "...",
   "growthLesson": "...",
   "pages": [
-    { "title": "Başlık", "content": "İçerik..." }
+    { "title": "Title", "content": "Content..." }
   ]
 }
 
-JSON dışında hiçbir şey yazma.`;
-const GAME_PROMPT = `Sen bir interaktif metamorfoz tasarımcısısın. Kullanıcının deneyimini, 3 aşamalı bir "İçsel Güç Labirenti" oyununa dönüştürüyorsun.
+Write nothing besides JSON.`;
+const GAME_PROMPT = `You are an interactive metamorphosis designer. You transform the user's experience into a 3-level "Inner Strength Labyrinth" game.
 
-Kurallar:
-1. Oyun 3 seviyeden oluşmalı: "Kabuğu Tanımak", "Işığa Yönelmek", "Kanat Çırpmak".
-2. Her seviye bir "scenario" ve 3 "options" içermeli.
-3. Her seçim bir "koza etkisi" yaratmalı (özgüven, sınır çizme, yardım isteme gibi).
-4. "reflectionQuestion": Oyun sonunda kullanıcının seçimlerini sorgulayacağı bir soru.
-5. "growthLesson": Oyunun öğrettiği temel beceri (Sınır çizme, öz şefkat vb.).
-6. GÜVENLİK: Asla tıbbi veya klinik tavsiye verme.
+Rules:
+1. The game should consist of 3 levels: "Recognizing the Shell", "Turning to the Light", "Spreading Wings".
+2. Each level should contain a "scenario" and 3 "options".
+3. Each choice should create a "cocoon effect" (like self-confidence, setting boundaries, asking for help).
+4. "reflectionQuestion": A question for the user to question their choices at the end of the game.
+5. "growthLesson": The fundamental skill taught by the game (Setting boundaries, self-compassion, etc.).
+6. SECURITY: Never give medical or clinical advice.
 
 {
-  "title": "Oyun Başlığı",
+  "title": "Game Title",
   "themeColor": "#D946EF",
   "reflectionQuestion": "...",
   "growthLesson": "...",
   "levels": [
     {
-      "scenario": "Durum...",
+      "scenario": "Scenario...",
       "options": [
         {
-          "text": "Seçenek...",
+          "text": "Option...",
           "isCorrect": true,
-          "feedback": "Metaforik ve güçlendirici geri bildirim..."
+          "feedback": "Metaphorical and empowering feedback..."
         }
       ]
     }
   ]
 }
 
-JSON dışında hiçbir şey yazma.`;
-const NAME_PROMPT = `Sen yaratıcı bir isimlendirme uzmanısın. Verilen hikaye veya oyun içeriğine ve bağlamına göre, "KOZA" evrenine uygun, metaforik, kısa ve etkileyici bir başlık oluştur.
+Write nothing besides JSON.`;
+const NAME_PROMPT = `You are a creative naming expert. Create a metaphorical, short, and impressive title suitable for the "KOZA" universe, according to the given story or game content and context.
 
-Kurallar:
-1. Sadece başlığı döndür (tırnak işaretleri olmadan).
-2. Maksimum 3-5 kelime.
-3. Türkçe olsun.
-4. Örnekler: "Küllerinden Doğan Anka", "Sessizliğin Yankısı", "Mavi Kanatlı Cesaret".
+Rules:
+1. Return only the title (without quotation marks).
+2. Maximum 3-5 words.
+3. Be in English.
+4. Examples: "Phoenix Rising from Ashes", "Echo of Silence", "Blue Winged Courage".
 
-Bağlam/İçerik: `;
+Context/Content: `;
 // Simple in-memory cache
 const cache = new Map();
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
@@ -1772,7 +1773,7 @@ const StatsSection = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$projec
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$galaxy$2f$GalaxyStat$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                     icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$book$2d$open$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOpen$3e$__["BookOpen"],
-                    label: "Oluşturulan Hikayeler",
+                    label: "Stories Created",
                     value: user?.storiesCreated || 0
                 }, void 0, false, {
                     fileName: "[project]/src/tabs/CreateTab.jsx",
@@ -1781,7 +1782,7 @@ const StatsSection = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$projec
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$galaxy$2f$GalaxyStat$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                     icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$gamepad$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__GamepadIcon$3e$__["GamepadIcon"],
-                    label: "Oluşturulan Oyunlar",
+                    label: "Games Created",
                     value: user?.gamesCreated || 0
                 }, void 0, false, {
                     fileName: "[project]/src/tabs/CreateTab.jsx",
@@ -1790,7 +1791,7 @@ const StatsSection = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$projec
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$galaxy$2f$GalaxyStat$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                     icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$headphones$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__HeadphonesIcon$3e$__["HeadphonesIcon"],
-                    label: "Oluşturulan Sesli Kitaplar",
+                    label: "Audiobooks Created",
                     value: Math.floor((user?.storiesCreated || 0) * 0.4)
                 }, void 0, false, {
                     fileName: "[project]/src/tabs/CreateTab.jsx",
@@ -1820,12 +1821,12 @@ const CreateTab = ()=>{
         if (!activeStory.trim() || isProcessing) return;
         setError(null);
         setIsProcessing(true);
-        setStage('Metamorfoz başlıyor...');
+        setStage('Metamorphosis beginning...');
         try {
             const result = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$domain$2f$narrativeDomain$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NarrativeDomain"].processNarrativeRequest(activeStory, creationMode);
             if (result.isSafetyTriggered) {
                 setError(result.message);
-                if (isAdmin) addToast('warning', 'Güvenlik Uyarısı', 'Girişin güvenlik filtrelerimize takıldı.');
+                if (isAdmin) addToast('warning', 'Safety Warning', 'Your input was flagged by our safety filters.');
                 return;
             }
             const { data } = result;
@@ -1835,12 +1836,12 @@ const CreateTab = ()=>{
                 data
             });
             saveStory(data);
-            awardXP(500, creationMode === 'story' ? 'Hikaye oluşturuldu' : 'Oyun oluşturuldu');
-            addToast('success', 'Başarılı!', creationMode === 'story' ? 'Hikaye oluşturuldu' : 'Oyun oluşturuldu');
+            awardXP(500, creationMode === 'story' ? 'Story created' : 'Game created');
+            addToast('success', 'Success!', creationMode === 'story' ? 'Story created' : 'Game created');
         } catch (error) {
             console.error('Generation failed:', error);
-            setError(error.message || 'Bir hata oluştu. Lütfen tekrar deneyin.');
-            if (isAdmin) addToast('error', 'Hata', error.message || 'Oluşturma başarısız oldu');
+            setError(error.message || 'An error occurred. Please try again.');
+            if (isAdmin) addToast('error', 'Error', error.message || 'Creation failed');
         } finally{
             setIsProcessing(false);
             setStage('');
@@ -1892,12 +1893,12 @@ const CreateTab = ()=>{
                                 tabs: [
                                     {
                                         id: 'story',
-                                        label: 'Hikaye',
+                                        label: 'Story',
                                         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$book$2d$open$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOpen$3e$__["BookOpen"]
                                     },
                                     {
                                         id: 'game',
-                                        label: 'Oyun',
+                                        label: 'Game',
                                         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$gamepad$2d$2$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Gamepad2$3e$__["Gamepad2"]
                                     }
                                 ]
@@ -1917,7 +1918,7 @@ const CreateTab = ()=>{
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$galaxy$2f$GalaxyTextarea$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                     value: activeStory,
                                     onChange: setActiveStory,
-                                    placeholder: creationMode === 'story' ? "Zorlandığın bir anı anlat, hikaye olsun..." : "Bir zorluğu anlat, üstesinden gelme oyunu olsun...",
+                                    placeholder: creationMode === 'story' ? "Tell a moment you struggled with, let it become a story..." : "Tell a challenge, let it become an overcoming game...",
                                     disabled: isProcessing,
                                     minHeight: "150px"
                                 }, void 0, false, {
@@ -1932,7 +1933,7 @@ const CreateTab = ()=>{
                                         disabled: !activeStory.trim() || isProcessing,
                                         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"],
                                         variant: "magic",
-                                        children: creationMode === 'story' ? 'Hikayeye Dönüştür' : 'Oyuna Dönüştür'
+                                        children: creationMode === 'story' ? 'Transform to Story' : 'Transform to Game'
                                     }, void 0, false, {
                                         fileName: "[project]/src/tabs/CreateTab.jsx",
                                         lineNumber: 127,
@@ -1951,7 +1952,7 @@ const CreateTab = ()=>{
                         }, ("TURBOPACK compile-time value", void 0)),
                         error && isAdmin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$galaxy$2f$GalaxyAlert$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                             type: "error",
-                            title: "Giriş Hatası",
+                            title: "Input Error",
                             children: error
                         }, void 0, false, {
                             fileName: "[project]/src/tabs/CreateTab.jsx",
@@ -1999,12 +2000,12 @@ const CreateTab = ()=>{
                 }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$galaxy$2f$GalaxyCard$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                     className: "text-center",
                     title: analysisResult.category,
-                    subtitle: analysisResult.type === 'story' ? 'Hikaye Tamamlandı' : 'Oyun Hazır',
+                    subtitle: analysisResult.type === 'story' ? 'Story Complete' : 'Game Ready',
                     emoji: analysisResult.type === 'story' ? '📖' : '🎮',
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             className: "text-neutral-500 text-lg mb-10",
-                            children: analysisResult.type === 'story' ? 'Deneyimin artık moral verici bir hikaye.' : 'Zorluğun artık heyecanlı bir oyun.'
+                            children: analysisResult.type === 'story' ? 'Your experience is now a morale-boosting story.' : 'Your challenge is now an exciting game.'
                         }, void 0, false, {
                             fileName: "[project]/src/tabs/CreateTab.jsx",
                             lineNumber: 163,
@@ -2015,7 +2016,7 @@ const CreateTab = ()=>{
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$galaxy$2f$GalaxyButton$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                     onClick: viewResult,
-                                    children: analysisResult.type === 'story' ? 'Hikayeyi Oku' : 'Oyunu Oyna'
+                                    children: analysisResult.type === 'story' ? 'Read the Story' : 'Play the Game'
                                 }, void 0, false, {
                                     fileName: "[project]/src/tabs/CreateTab.jsx",
                                     lineNumber: 170,
@@ -2027,7 +2028,7 @@ const CreateTab = ()=>{
                                         setActiveStory('');
                                     },
                                     variant: "secondary",
-                                    children: "Yeni Oluştur"
+                                    children: "Create New"
                                 }, void 0, false, {
                                     fileName: "[project]/src/tabs/CreateTab.jsx",
                                     lineNumber: 173,

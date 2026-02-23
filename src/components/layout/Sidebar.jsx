@@ -16,17 +16,17 @@ const SidebarItem = memo(({ story, onClick, onDelete }) => (
             </div>
             <div className="flex-1 min-w-0">
                 <h4 className="font-bold text-sm text-neutral-900 break-words leading-snug">
-                    {story.title || 'İsimsiz Dönüşüm'}
+                    {story.title || 'Untitled Transformation'}
                 </h4>
                 <p className="text-[10px] font-bold text-neutral-400 mt-0.5 uppercase tracking-widest">
-                    {new Date(story.createdAt).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' })}
+                    {new Date(story.createdAt).toLocaleDateString('en-US', { day: 'numeric', month: 'short' })}
                 </p>
             </div>
         </div>
         <button
             onClick={(e) => onDelete(e, story.id)}
             className="absolute top-2 right-2 p-1.5 text-neutral-400 opacity-0 group-hover:opacity-100 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all z-10"
-            title="Sil"
+            title="Delete"
         >
             <Trash2 size={14} />
         </button>
@@ -44,7 +44,7 @@ const Sidebar = () => {
 
     const handleDelete = useCallback((e, id) => {
         e.stopPropagation();
-        if (window.confirm('Bu hikayeyi silmek istediğinize emin misiniz?')) {
+        if (window.confirm('Are you sure you want to delete this story?')) {
             deleteStory(id);
         }
     }, [deleteStory]);
@@ -68,12 +68,12 @@ const Sidebar = () => {
 
             <div className="flex-1 overflow-y-auto px-3 pb-4 custom-scrollbar">
                 <h3 className="text-[10px] font-bold text-neutral-400 uppercase tracking-[0.2em] mb-4 px-3 mt-6">
-                    Mirasın
+                    Your Legacy
                 </h3>
 
                 {savedStories.length === 0 ? (
                     <div className="text-center py-12 text-neutral-400 px-4 italic font-serif opacity-50">
-                        <p className="text-sm">Henüz bir metamorfoz hikayen yok.</p>
+                        <p className="text-sm">You don't have a metamorphosis story yet.</p>
                     </div>
                 ) : (
                     <div className="space-y-1">
@@ -88,7 +88,7 @@ const Sidebar = () => {
                     className="w-full flex items-center gap-3 px-3 py-3 rounded-xl text-neutral-500 hover:bg-red-50 hover:text-red-600 transition-colors text-sm font-bold"
                 >
                     <LogOut size={20} />
-                    <span>Oturumu Kapat</span>
+                    <span>Sign Out</span>
                 </button>
             </div>
         </aside>

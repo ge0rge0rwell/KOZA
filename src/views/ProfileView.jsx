@@ -22,13 +22,13 @@ const ProfileHeader = memo(({ authUser, userTitle, imgError, onImgError, onClose
                         <UserIcon size={32} />
                     </div>
                 )}
-                <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 border-2 border-white rounded-full" title="Çevrimiçi" />
+                <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 border-2 border-white rounded-full" title="Online" />
             </div>
             <div>
                 <h1 className="text-3xl font-bold tracking-tight text-neutral-900">
-                    {authUser?.displayName || 'Gezgin'}
+                    {authUser?.displayName || 'Traveler'}
                 </h1>
-                <p className="text-neutral-500 font-medium">{userTitle || 'Empati Çırağı'}</p>
+                <p className="text-neutral-500 font-medium">{userTitle || 'Empathy Apprentice'}</p>
             </div>
         </div>
         <button
@@ -47,11 +47,11 @@ const StatsCard = memo(({ level, xp, nextLevelXp, storiesCreated, savedCount }) 
         <div className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/10 p-8 mb-6 shadow-sm">
             <div className="flex items-center justify-between mb-6">
                 <div>
-                    <div className="text-sm text-neutral-600 mb-1 font-bold uppercase tracking-widest text-[10px]">Seviye</div>
+                    <div className="text-sm text-neutral-600 mb-1 font-bold uppercase tracking-widest text-[10px]">Level</div>
                     <div className="text-4xl font-black text-neutral-900">{level}</div>
                 </div>
                 <div className="text-right">
-                    <div className="text-sm text-neutral-600 mb-1 font-bold uppercase tracking-widest text-[10px]">İlerleme</div>
+                    <div className="text-sm text-neutral-600 mb-1 font-bold uppercase tracking-widest text-[10px]">Progress</div>
                     <div className="text-2xl font-extrabold text-primary-600">
                         {xp} / {nextLevelXp} <span className="text-xs">XP</span>
                     </div>
@@ -68,11 +68,11 @@ const StatsCard = memo(({ level, xp, nextLevelXp, storiesCreated, savedCount }) 
             <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-white/10">
                 <div>
                     <div className="text-2xl font-black text-neutral-900 mb-1">{storiesCreated}</div>
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">Oluşturulan</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">Created</div>
                 </div>
                 <div>
                     <div className="text-2xl font-black text-neutral-900 mb-1">{savedCount}</div>
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">Koleksiyon</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">Collection</div>
                 </div>
             </div>
         </div>
@@ -93,7 +93,7 @@ const StoryListItem = memo(({ story, onView, onDelete }) => (
                     {story.pages?.[0]?.content || story.content}
                 </p>
                 <div className="text-[10px] font-bold text-neutral-400 mt-2 uppercase tracking-widest">
-                    {new Date(story.createdAt).toLocaleDateString('tr-TR')}
+                    {new Date(story.createdAt).toLocaleDateString('en-US')}
                 </div>
             </button>
             <button
@@ -150,18 +150,18 @@ const ProfileView = ({ onClose }) => {
                 <div className="mt-12">
                     <h2 className="text-sm font-black uppercase tracking-[0.2em] text-neutral-400 mb-6 flex items-center gap-2">
                         <BookOpen size={14} />
-                        Hikaye Koleksiyonu
+                        Story Collection
                     </h2>
 
                     {savedStories.length === 0 ? (
                         <div className="bg-white/20 backdrop-blur-xl rounded-2xl border border-white/10 p-16 text-center shadow-sm">
                             <BookOpen size={48} className="mx-auto mb-6 text-neutral-300 opacity-50" />
-                            <p className="text-neutral-500 mb-8 font-medium italic">Henüz bir hikaye metamorfozu gerçekleştirmedin.</p>
+                            <p className="text-neutral-500 mb-8 font-medium italic">You haven't performed a story metamorphosis yet.</p>
                             <button
                                 onClick={onClose}
                                 className="px-10 py-4 bg-primary-600 text-white rounded-full font-bold hover:bg-primary-700 transition-all shadow-lg hover:shadow-primary-600/20 active:scale-95 cursor-pointer"
                             >
-                                Serüvene Başla
+                                Start Adventure
                             </button>
                         </div>
                     ) : (

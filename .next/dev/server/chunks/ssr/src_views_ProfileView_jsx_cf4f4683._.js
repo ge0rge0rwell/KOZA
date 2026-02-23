@@ -58,7 +58,7 @@ const ProfileHeader = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$proje
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 border-2 border-white rounded-full",
-                                title: "Çevrimiçi"
+                                title: "Online"
                             }, void 0, false, {
                                 fileName: "[project]/src/views/ProfileView.jsx",
                                 lineNumber: 25,
@@ -74,7 +74,7 @@ const ProfileHeader = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$proje
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                 className: "text-3xl font-bold tracking-tight text-neutral-900",
-                                children: authUser?.displayName || 'Gezgin'
+                                children: authUser?.displayName || 'Traveler'
                             }, void 0, false, {
                                 fileName: "[project]/src/views/ProfileView.jsx",
                                 lineNumber: 28,
@@ -82,7 +82,7 @@ const ProfileHeader = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$proje
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-neutral-500 font-medium",
-                                children: userTitle || 'Empati Çırağı'
+                                children: userTitle || 'Empathy Apprentice'
                             }, void 0, false, {
                                 fileName: "[project]/src/views/ProfileView.jsx",
                                 lineNumber: 31,
@@ -136,7 +136,7 @@ const StatsCard = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "text-sm text-neutral-600 mb-1 font-bold uppercase tracking-widest text-[10px]",
-                                children: "Seviye"
+                                children: "Level"
                             }, void 0, false, {
                                 fileName: "[project]/src/views/ProfileView.jsx",
                                 lineNumber: 50,
@@ -161,7 +161,7 @@ const StatsCard = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "text-sm text-neutral-600 mb-1 font-bold uppercase tracking-widest text-[10px]",
-                                children: "İlerleme"
+                                children: "Progress"
                             }, void 0, false, {
                                 fileName: "[project]/src/views/ProfileView.jsx",
                                 lineNumber: 54,
@@ -232,7 +232,7 @@ const StatsCard = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "text-[10px] font-bold uppercase tracking-widest text-neutral-500",
-                                children: "Oluşturulan"
+                                children: "Created"
                             }, void 0, false, {
                                 fileName: "[project]/src/views/ProfileView.jsx",
                                 lineNumber: 71,
@@ -256,7 +256,7 @@ const StatsCard = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "text-[10px] font-bold uppercase tracking-widest text-neutral-500",
-                                children: "Koleksiyon"
+                                children: "Collection"
                             }, void 0, false, {
                                 fileName: "[project]/src/views/ProfileView.jsx",
                                 lineNumber: 75,
@@ -308,7 +308,7 @@ const StoryListItem = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$proje
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "text-[10px] font-bold text-neutral-400 mt-2 uppercase tracking-widest",
-                            children: new Date(story.createdAt).toLocaleDateString('tr-TR')
+                            children: new Date(story.createdAt).toLocaleDateString('en-US')
                         }, void 0, false, {
                             fileName: "[project]/src/views/ProfileView.jsx",
                             lineNumber: 95,
@@ -415,7 +415,7 @@ const ProfileView = ({ onClose })=>{
                                     lineNumber: 152,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
-                                "Hikaye Koleksiyonu"
+                                "Story Collection"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/views/ProfileView.jsx",
@@ -435,7 +435,7 @@ const ProfileView = ({ onClose })=>{
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-neutral-500 mb-8 font-medium italic",
-                                    children: "Henüz bir hikaye metamorfozu gerçekleştirmedin."
+                                    children: "You haven't performed a story metamorphosis yet."
                                 }, void 0, false, {
                                     fileName: "[project]/src/views/ProfileView.jsx",
                                     lineNumber: 159,
@@ -444,7 +444,7 @@ const ProfileView = ({ onClose })=>{
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     onClick: onClose,
                                     className: "px-10 py-4 bg-primary-600 text-white rounded-full font-bold hover:bg-primary-700 transition-all shadow-lg hover:shadow-primary-600/20 active:scale-95 cursor-pointer",
-                                    children: "Serüvene Başla"
+                                    children: "Start Adventure"
                                 }, void 0, false, {
                                     fileName: "[project]/src/views/ProfileView.jsx",
                                     lineNumber: 160,

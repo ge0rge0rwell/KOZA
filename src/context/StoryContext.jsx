@@ -8,15 +8,6 @@ import { analytics } from '../utils/analytics';
 
 const StoryContext = createContext(null);
 
-const COMMUNITY_WORKS = [
-    // TODO: Connect to 'community' collection in Firestore
-    // {
-    //     id: 1,
-    //     title: "Sessiz Çığlığın Dönüşümü",
-    //     ...
-    // }
-];
-
 // XState Imports
 import { useStoryActor } from './GlobalStateMachineContext';
 import { useSelector } from '@xstate/react';
@@ -198,7 +189,6 @@ export const StoryProvider = ({ children }) => {
         setAnalysisResult,
         lastSavedStory,
         setLastSavedStory,
-        communityWorks: COMMUNITY_WORKS,
         saveStory,
         deleteStory,
         refineStory

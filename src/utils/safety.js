@@ -4,23 +4,22 @@
  */
 
 const CRISIS_KEYWORDS = [
-    // Turkish keywords for safety interception
-    'kendime zarar', 'intihar', 'ölmek istiyorum', 'canıma kıymak',
-    'bıçaklamak', 'silahla', 'asılmak', 'zehirlemek',
+    // English keywords for safety interception
+    'self harm', 'suicide', 'want to die', 'kill myself',
+    'stab', 'with gun', 'hang myself', 'poison',
     // High-risk violence
-    'birini öldürmek', 'zarar vermek istiyorum'
+    'kill someone', 'want to hurt'
 ];
 
 /**
- * Normalizes text for Turkish-aware comparison.
+ * Normalizes text for comparison.
  * @param {string} text 
  * @returns {string}
  */
-const normalizeTurkish = (text) => {
+const normalizeText = (text) => {
     return text
-        .replace(/İ/g, 'i')
-        .replace(/I/g, 'ı')
-        .toLowerCase();
+        .toLowerCase()
+        .trim();
 };
 
 /**
@@ -33,20 +32,20 @@ export const detectCrisis = (text) => {
         return { isCrisis: false };
     }
 
-    const normalized = normalizeTurkish(text);
+    const normalized = normalizeText(text);
     const foundKeywords = CRISIS_KEYWORDS.filter(kw => normalized.includes(kw));
 
     if (foundKeywords.length > 0) {
         return {
             isCrisis: true,
-            message: "Bu platform eğitim amaçlıdır. Kendini veya bir başkasını tehlikede hissediyorsan lütfen hemen profesyonel yardım al veya 112'yi ara."
+            message: "This platform is for educational purposes. If you feel in danger to yourself or others, please seek professional help immediately or call emergency services (e.g., 911)."
         };
     }
 
     return { isCrisis: false };
 };
 
-export const SAFETY_DISCLAIMER = "KOZA bir eğitim aracıdır ve profesyonel psikolojik desteğin yerini tutmaz.";
+export const SAFETY_DISCLAIMER = "KOZA is an educational tool and does not replace professional psychological support.";
 
 /**
  * Basic filter for toxic content.

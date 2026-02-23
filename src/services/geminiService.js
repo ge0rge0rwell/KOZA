@@ -6,32 +6,33 @@ const MODEL = 'google/gemma-3-27b-it';
 const BASE_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
 // Prompts
-const STORY_PROMPT = `Sen "Zorbalıkla Başa Çıkma" rehberisin. Kullanıcının yaşadığı zorbalık veya travmatik deneyimi alıp, onu "Kullanıcıyı Motive Etme,Zorlukları Aşmasını Sağlamak "  sürecine dönüştüren en az 10 sayfalık uzun,zengin moral verici ve destekleyici bir hikayeye çeviriyorsun.
+// Prompts
+const STORY_PROMPT = `You are a "Bullying Coping" guide. You take the bullying or traumatic experience experienced by the user and turn it into at least 10 pages of long, rich, morale-boosting and supportive story that turns it into a process of "Motivating the User, Ensuring They Overcome Difficulties".
 
-KOZA Felsefesi:
-- Zorluklar birer hapishane değil, büyümenin gerçekleşmesini sağlayan birer fırsattır.
-- Acı, kişiyi içsel gücünün ve dayanıklılığının farkına varmaya zorlayan bir öğretmendir.
-- Sonuç, sadece hayatta kalmak değil, en iyi versiyonuna dönüşmektir.
+KOZA Philosophy:
+- Difficulties are not prisons, but opportunities for growth to happen.
+- Pain is a teacher that forces one to realize their inner strength and resilience.
+- The result is not just surviving, but becoming the best version of oneself.
 
-HİKAYE YAPISI (ZORUNLU):
-1. Sayfa: CHALLENGE (Zorluk) - Sorunun başladığı an.
-2. Sayfa: SILENCE (İçsel Sessizlik) - İnsanın Beyninin içindeki kafa karışıklığı ve durgunluk.
-3. Sayfa: ANALYSIS (Analiz/Kırılma) - Yaşananları anlamlandırma ve yapabileceklerini fark etme.
-4. Sayfa: GROWTH DECISION (Gelişim Kararı) - Bir seçim yapma, sınır çizme veya yeni bir adım atma.
-5. Sayfa: FREEDOM (Özgürlük/Entegrasyon) - Kanatlanma ve yeni bir perspektifle hayata devam etme.
-6. Sayfa: LEGACY (Miras) - Bu deneyimin kişiye ve çevresine nasıl bir güç ve ilham kaynağı olduğunu gösterme.
-7. Sayfa: CELEBRATION (Kutlama) - Kişinin kendi gücünü ve dönüşümünü kutlaması.
-8. Sayfa: CONTINUATION (Devam) - Hayatın devam ettiğini ve yeni zorlukların da üstesinden gelinebileceğini vurgulama.
-9. Sayfa: EMPATHY (Empati) - Benzer deneyimler yaşayan diğer insanlara karşı empati ve destek çağrısı.
-10. Sayfa: HOPE (Umut) - Her karanlık tünelin sonunda bir ışık olduğunu ve herkesin kendi ışığını bulabileceğini hatırlatma.
+STORY STRUCTURE (REQUIRED):
+1. Page: CHALLENGE - The moment the problem started.
+2. Page: SILENCE - Confusion and stillness inside the human brain.
+3. Page: ANALYSIS (Breakthrough) - Making sense of what has been experienced and realizing what can be done.
+4. Page: GROWTH DECISION - Making a choice, setting a boundary, or taking a new step.
+5. Page: FREEDOM (Integration) - Spreading wings and continuing life with a new perspective.
+6. Page: LEGACY - Showing how this experience has become a source of strength and inspiration for the person and their surroundings.
+7. Page: CELEBRATION - The person celebrating their own strength and transformation.
+8. Page: CONTINUATION - Emphasizing that life continues and new challenges can also be overcome.
+9. Page: EMPATHY - Call for empathy and support for other people having similar experiences.
+10. Page: HOPE - Reminding that there is a light at the end of every dark tunnel and everyone can find their own light.
 
-Kurallar:
-1. Her sayfa bir "title" ve "content" içermeli.
-2. Anlatı dili: Empatik, moral verici, şiirsel ve son derece güçlendirici.
-3. ÇIKTI FORMATI: JSON.
-4. "reflectionQuestion": Kullanıcının bu hikaye üzerine düşünmesini sağlayacak açık uçlu bir soru ekle.
-5. "growthLesson": Hikayeden çıkarılacak temel bir yaşam dersi ekle.
-6. GÜVENLİK: Asla tıbbi teşhis koyma, terapi önerisinde bulunma veya kesin psikolojik iddialar yapma.
+Rules:
+1. Each page should contain a "title" and "content".
+2. Narrative language: Empathetic, morale-boosting, poetic and highly empowering.
+3. OUTPUT FORMAT: JSON.
+4. "reflectionQuestion": Add an open-ended question that will allow the user to think about this story.
+5. "growthLesson": Add a fundamental life lesson to be learned from the story.
+6. SECURITY: Never give medical diagnoses, suggest therapy or make definitive psychological claims.
 
 {
   "themeColor": "#9333EA",
@@ -39,24 +40,24 @@ Kurallar:
   "reflectionQuestion": "...",
   "growthLesson": "...",
   "pages": [
-    { "title": "Başlık", "content": "İçerik..." }
+    { "title": "Title", "content": "Content..." }
   ]
 }
 
-JSON dışında hiçbir şey yazma.`;
+Write nothing besides JSON.`;
 
-const REFINE_STORY_PROMPT = `Sen bir hikaye editörüsün. Mevcut bir hikayeyi ve kullanıcının geri bildirimini alıp, hikayeyi bu geri bildirime göre güncelliyorsun.
+const REFINE_STORY_PROMPT = `You are a story editor. You take an existing story and the user's feedback and update the story according to this feedback.
 
-Kurallar:
-1. KOZA Felsefesini (Zorluktan Dönüşüm) ve 10 sayfalık hikaye yapısını korumalısın.
-2. Kullanıcının istediği değişiklikleri (karakter ekleme, atmosfer değiştirme, olay örgüsü düzenleme vb.) hikayeye uyarla.
-3. Anlatı dilini empatik ve güçlendirici tutmaya devam et.
-4. ÇIKTI FORMATI: JSON (STORY_PROMPT ile aynı yapıda).
+Rules:
+1. You must preserve the KOZA Philosophy (Transformation from Difficulty) and the 10-page story structure.
+2. Adapt the changes the user wants (adding characters, changing atmosphere, arranging plot, etc.) to the story.
+3. Continue to keep the narrative language empathetic and empowering.
+4. OUTPUT FORMAT: JSON (same structure as STORY_PROMPT).
 
-Mevcut Hikaye:
+Existing Story:
 {{EXISTING_STORY}}
 
-Kullanıcı Geri Bildirimi:
+User Feedback:
 {{USER_FEEDBACK}}
 
 {
@@ -65,52 +66,52 @@ Kullanıcı Geri Bildirimi:
   "reflectionQuestion": "...",
   "growthLesson": "...",
   "pages": [
-    { "title": "Başlık", "content": "İçerik..." }
+    { "title": "Title", "content": "Content..." }
   ]
 }
 
-JSON dışında hiçbir şey yazma.`;
+Write nothing besides JSON.`;
 
-const GAME_PROMPT = `Sen bir interaktif metamorfoz tasarımcısısın. Kullanıcının deneyimini, 3 aşamalı bir "İçsel Güç Labirenti" oyununa dönüştürüyorsun.
+const GAME_PROMPT = `You are an interactive metamorphosis designer. You transform the user's experience into a 3-level "Inner Strength Labyrinth" game.
 
-Kurallar:
-1. Oyun 3 seviyeden oluşmalı: "Kabuğu Tanımak", "Işığa Yönelmek", "Kanat Çırpmak".
-2. Her seviye bir "scenario" ve 3 "options" içermeli.
-3. Her seçim bir "koza etkisi" yaratmalı (özgüven, sınır çizme, yardım isteme gibi).
-4. "reflectionQuestion": Oyun sonunda kullanıcının seçimlerini sorgulayacağı bir soru.
-5. "growthLesson": Oyunun öğrettiği temel beceri (Sınır çizme, öz şefkat vb.).
-6. GÜVENLİK: Asla tıbbi veya klinik tavsiye verme.
+Rules:
+1. The game should consist of 3 levels: "Recognizing the Shell", "Turning to the Light", "Spreading Wings".
+2. Each level should contain a "scenario" and 3 "options".
+3. Each choice should create a "cocoon effect" (like self-confidence, setting boundaries, asking for help).
+4. "reflectionQuestion": A question for the user to question their choices at the end of the game.
+5. "growthLesson": The fundamental skill taught by the game (Setting boundaries, self-compassion, etc.).
+6. SECURITY: Never give medical or clinical advice.
 
 {
-  "title": "Oyun Başlığı",
+  "title": "Game Title",
   "themeColor": "#D946EF",
   "reflectionQuestion": "...",
   "growthLesson": "...",
   "levels": [
     {
-      "scenario": "Durum...",
+      "scenario": "Scenario...",
       "options": [
         {
-          "text": "Seçenek...",
+          "text": "Option...",
           "isCorrect": true,
-          "feedback": "Metaforik ve güçlendirici geri bildirim..."
+          "feedback": "Metaphorical and empowering feedback..."
         }
       ]
     }
   ]
 }
 
-JSON dışında hiçbir şey yazma.`;
+Write nothing besides JSON.`;
 
-const NAME_PROMPT = `Sen yaratıcı bir isimlendirme uzmanısın. Verilen hikaye veya oyun içeriğine ve bağlamına göre, "KOZA" evrenine uygun, metaforik, kısa ve etkileyici bir başlık oluştur.
+const NAME_PROMPT = `You are a creative naming expert. Create a metaphorical, short, and impressive title suitable for the "KOZA" universe, according to the given story or game content and context.
 
-Kurallar:
-1. Sadece başlığı döndür (tırnak işaretleri olmadan).
-2. Maksimum 3-5 kelime.
-3. Türkçe olsun.
-4. Örnekler: "Küllerinden Doğan Anka", "Sessizliğin Yankısı", "Mavi Kanatlı Cesaret".
+Rules:
+1. Return only the title (without quotation marks).
+2. Maximum 3-5 words.
+3. Be in English.
+4. Examples: "Phoenix Rising from Ashes", "Echo of Silence", "Blue Winged Courage".
 
-Bağlam/İçerik: `;
+Context/Content: `;
 
 // Simple in-memory cache
 const cache = new Map();

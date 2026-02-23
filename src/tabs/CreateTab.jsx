@@ -37,9 +37,9 @@ const CreateHeader = memo(() => (
 const StatsSection = memo(({ user }) => (
     <div className="mt-20">
         <GalaxyGrid cols={3}>
-            <GalaxyStat icon={BookOpen} label="Oluşturulan Hikayeler" value={user?.storiesCreated || 0} />
-            <GalaxyStat icon={GamepadIcon} label="Oluşturulan Oyunlar" value={user?.gamesCreated || 0} />
-            <GalaxyStat icon={HeadphonesIcon} label="Oluşturulan Sesli Kitaplar" value={Math.floor((user?.storiesCreated || 0) * 0.4)} />
+            <GalaxyStat icon={BookOpen} label="Stories Created" value={user?.storiesCreated || 0} />
+            <GalaxyStat icon={GamepadIcon} label="Games Created" value={user?.gamesCreated || 0} />
+            <GalaxyStat icon={HeadphonesIcon} label="Audiobooks Created" value={Math.floor((user?.storiesCreated || 0) * 0.4)} />
         </GalaxyGrid>
     </div>
 ));
@@ -63,25 +63,25 @@ const CreateTab = () => {
         if (!activeStory.trim() || isProcessing) return;
         setError(null);
         setIsProcessing(true);
-        setStage('Metamorfoz başlıyor...');
+        setStage('Metamorphosis beginning...');
 
         try {
             const result = await NarrativeDomain.processNarrativeRequest(activeStory, creationMode);
             if (result.isSafetyTriggered) {
                 setError(result.message);
-                if (isAdmin) addToast('warning', 'Güvenlik Uyarısı', 'Girişin güvenlik filtrelerimize takıldı.');
+                if (isAdmin) addToast('warning', 'Safety Warning', 'Your input was flagged by our safety filters.');
                 return;
             }
 
             const { data } = result;
             setAnalysisResult({ type: creationMode, category: data.title, data });
             saveStory(data);
-            awardXP(500, creationMode === 'story' ? 'Hikaye oluşturuldu' : 'Oyun oluşturuldu');
-            addToast('success', 'Başarılı!', creationMode === 'story' ? 'Hikaye oluşturuldu' : 'Oyun oluşturuldu');
+            awardXP(500, creationMode === 'story' ? 'Story created' : 'Game created');
+            addToast('success', 'Success!', creationMode === 'story' ? 'Story created' : 'Game created');
         } catch (error) {
             console.error('Generation failed:', error);
-            setError(error.message || 'Bir hata oluştu. Lütfen tekrar deneyin.');
-            if (isAdmin) addToast('error', 'Hata', error.message || 'Oluşturma başarısız oldu');
+            setError(error.message || 'An error occurred. Please try again.');
+            if (isAdmin) addToast('error', 'Error', error.message || 'Creation failed');
         } finally {
             setIsProcessing(false);
             setStage('');
@@ -108,8 +108,8 @@ const CreateTab = () => {
                                 activeTab={creationMode}
                                 onChange={setCreationMode}
                                 tabs={[
-                                    { id: 'story', label: 'Hikaye', icon: BookOpen },
-                                    { id: 'game', label: 'Oyun', icon: Gamepad2 }
+                                    { id: 'story', label: 'Story', icon: BookOpen },
+                                    { id: 'game', label: 'Game', icon: Gamepad2 }
                                 ]}
                             />
                         </div>
@@ -118,7 +118,7 @@ const CreateTab = () => {
                             <GalaxyTextarea
                                 value={activeStory}
                                 onChange={setActiveStory}
-                                placeholder={creationMode === 'story' ? "Zorlandığın bir anı anlat, hikaye olsun..." : "Bir zorluğu anlat, üstesinden gelme oyunu olsun..."}
+                                placeholder={creationMode === 'story' ? "Tell a moment you struggled with, let it become a story..." : "Tell a challenge, let it become an overcoming game..."}
                                 disabled={isProcessing}
                                 minHeight="150px"
                             />
@@ -130,13 +130,13 @@ const CreateTab = () => {
                                     icon={Sparkles}
                                     variant="magic"
                                 >
-                                    {creationMode === 'story' ? 'Hikayeye Dönüştür' : 'Oyuna Dönüştür'}
+                                    {creationMode === 'story' ? 'Transform to Story' : 'Transform to Game'}
                                 </GalaxyButton>
                             </div>
                         </div>
 
                         {error && isAdmin && (
-                            <GalaxyAlert type="error" title="Giriş Hatası">
+                            <GalaxyAlert type="error" title="Input Error">
                                 {error}
                             </GalaxyAlert>
                         )}
@@ -157,18 +157,18 @@ const CreateTab = () => {
                     <GalaxyCard
                         className="text-center"
                         title={analysisResult.category}
-                        subtitle={analysisResult.type === 'story' ? 'Hikaye Tamamlandı' : 'Oyun Hazır'}
+                        subtitle={analysisResult.type === 'story' ? 'Story Complete' : 'Game Ready'}
                         emoji={analysisResult.type === 'story' ? '📖' : '🎮'}
                     >
                         <p className="text-neutral-500 text-lg mb-10">
                             {analysisResult.type === 'story'
-                                ? 'Deneyimin artık moral verici bir hikaye.'
-                                : 'Zorluğun artık heyecanlı bir oyun.'}
+                                ? 'Your experience is now a morale-boosting story.'
+                                : 'Your challenge is now an exciting game.'}
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <GalaxyButton onClick={viewResult}>
-                                {analysisResult.type === 'story' ? 'Hikayeyi Oku' : 'Oyunu Oyna'}
+                                {analysisResult.type === 'story' ? 'Read the Story' : 'Play the Game'}
                             </GalaxyButton>
                             <GalaxyButton
                                 onClick={() => {
@@ -177,7 +177,7 @@ const CreateTab = () => {
                                 }}
                                 variant="secondary"
                             >
-                                Yeni Oluştur
+                                Create New
                             </GalaxyButton>
                         </div>
                     </GalaxyCard>

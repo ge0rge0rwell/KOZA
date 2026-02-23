@@ -7,26 +7,26 @@ const Onboarding = ({ onComplete }) => {
     const steps = [
         {
             icon: Sparkles,
-            title: "KOZA'ya Hoş Geldin",
-            description: "Deneyimlerini güçlendirici hikayelere ve oyunlara dönüştür. Her zorluk, bir dönüşüm fırsatıdır.",
+            title: "Welcome to KOZA",
+            description: "Transform your experiences into empowering stories and games. Every challenge is an opportunity for transformation.",
             color: "primary"
         },
         {
             icon: Target,
-            title: "Hikaye Oluştur",
-            description: "Yaşadığın zorluğu anlat, AI destekli araçlarımız onu anlamlı bir hikayeye dönüştürsün.",
+            title: "Create a Story",
+            description: "Tell the challenge you're facing, and let our AI-powered tools turn it into a meaningful story.",
             color: "success"
         },
         {
             icon: TrendingUp,
-            title: "Gelişimini İzle",
-            description: "Her hikaye ve oyun ile XP kazan, seviye atla ve rozetler topla.",
+            title: "Track Your Growth",
+            description: "Earn XP, level up, and collect badges with every story and game.",
             color: "warning"
         },
         {
             icon: Award,
-            title: "Topluluğa Katıl",
-            description: "Diğer kullanıcıların dönüşüm hikayelerini keşfet ve kendi deneyimlerini paylaş.",
+            title: "Your Legacy",
+            description: "Discover your own transformation and store your experiences safely.",
             color: "error"
         }
     ];
@@ -67,7 +67,7 @@ const Onboarding = ({ onComplete }) => {
                             onClick={() => setStep(step - 1)}
                             className="px-8 py-4 bg-white/50 backdrop-blur-md rounded-2xl font-bold text-neutral-500 hover:text-neutral-900 transition-liquid border border-white/50"
                         >
-                            Geri
+                            Back
                         </button>
                     )}
                     <button
@@ -81,7 +81,7 @@ const Onboarding = ({ onComplete }) => {
                         }}
                         className="flex-1 bg-neutral-900 text-white px-8 py-4 rounded-2xl font-black italic tracking-widest hover:scale-[1.02] active:scale-95 transition-liquid shadow-xl"
                     >
-                        {step < steps.length - 1 ? 'DEVAM' : 'BAŞLA'}
+                        {step < steps.length - 1 ? 'CONTINUE' : 'START'}
                     </button>
                 </div>
             </div>

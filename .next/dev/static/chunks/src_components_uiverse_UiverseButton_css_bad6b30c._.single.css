@@ -1,7 +1,16 @@
 /* [project]/src/components/uiverse/UiverseButton.css [app-client] (css) */
-@reference "../../index.css";
-
-@apply transition-liquid relative overflow-hidden;
+@layer properties {
+  @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+    *, :before, :after, ::backdrop {
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
+    }
+  }
+}
 
 .uiverse-button {
   background: var(--color-primary-500);
@@ -16,19 +25,26 @@
   padding: 12px 28px;
   font-size: 14px;
   font-weight: 700;
+  transition: all .6s cubic-bezier(.23, 1, .32, 1);
   display: inline-flex;
+  position: relative;
+  overflow: hidden;
   box-shadow: 0 4px 12px #007aff33;
 }
 
-@apply -translate-y-0.5;
-
 .uiverse-button:hover {
+  --tw-translate-y: calc(var(--spacing, .25rem) * -.5);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
   background: var(--color-primary-600);
   border-color: #ffffff4d;
   box-shadow: 0 8px 20px #007aff4d;
 }
 
-@apply scale-[.97] translate-y-0;
+.uiverse-button:active {
+  --tw-translate-y: calc(var(--spacing, .25rem) * 0);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+  scale: .97;
+}
 
 .uiverse-button.secondary {
   -webkit-backdrop-filter: blur(40px);
@@ -45,9 +61,27 @@
   background: #fffc;
 }
 
-@apply absolute inset-0 pointer-events-none;
+.ripples {
+  pointer-events: none;
+  inset: calc(var(--spacing, .25rem) * 0);
+  position: absolute;
+}
 
-@apply absolute rounded-full bg-white / 30 scale-0;
+.ripple {
+  --tw-scale-x: 0%;
+  --tw-scale-y: 0%;
+  --tw-scale-z: 0%;
+  scale: var(--tw-scale-x) var(--tw-scale-y);
+  background-color: #ffffff4d;
+  border-radius: 3.40282e38px;
+  position: absolute;
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  .ripple {
+    background-color: color-mix(in oklab, var(--color-white, #fff) 30%, transparent);
+  }
+}
 
 .ripple {
   animation: .6s ease-out ripple-animation;
@@ -60,15 +94,65 @@
   }
 }
 
-@apply bg-primary-500 / 20;
+.uiverse-button.secondary .ripple {
+  background-color: #219ebc33;
+}
 
-@apply opacity-40 cursor-not-allowed scale-100 translate-y-0;
+@supports (color: color-mix(in lab, red, red)) {
+  .uiverse-button.secondary .ripple {
+    background-color: color-mix(in oklab, var(--color-primary-500, #219ebc) 20%, transparent);
+  }
+}
 
 .uiverse-button:disabled {
+  --tw-translate-y: calc(var(--spacing, .25rem) * 0);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+  --tw-scale-x: 100%;
+  --tw-scale-y: 100%;
+  --tw-scale-z: 100%;
+  scale: var(--tw-scale-x) var(--tw-scale-y);
+  cursor: not-allowed;
+  opacity: .4;
   background: var(--color-neutral-200);
   color: var(--color-neutral-400);
   box-shadow: none;
   border-color: #0000;
+}
+
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
 }
 
 /*# sourceMappingURL=src_components_uiverse_UiverseButton_css_bad6b30c._.single.css.map*/

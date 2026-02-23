@@ -11,7 +11,7 @@ const UserDropdown = memo(({ authUser, onSignOut }) => (
         onClick={(e) => e.stopPropagation()}
     >
         <div className="px-4 py-3 border-b border-neutral-100 mb-2">
-            <p className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.2em] mb-1">Kimlik</p>
+            <p className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.2em] mb-1">Identity</p>
             <p className="text-sm font-black text-neutral-800 truncate">{authUser.email}</p>
         </div>
 
@@ -20,7 +20,7 @@ const UserDropdown = memo(({ authUser, onSignOut }) => (
             className="w-full flex items-center gap-3 px-4 py-3 text-sm font-bold text-red-500 hover:bg-red-50 transition-colors cursor-pointer"
         >
             <LogOut size={16} />
-            <span>Oturumu Kapat</span>
+            <span>Sign Out</span>
         </button>
     </div>
 ));
@@ -63,7 +63,7 @@ const Header = () => {
                         cloudSynced ? 'bg-green-50 text-green-600' : 'bg-neutral-50 text-neutral-500'
                         }`}>
                         {isSyncing ? <RefreshCw size={12} className="animate-spin" /> : cloudSynced ? <Cloud size={12} /> : <CloudOff size={12} />}
-                        <span className="tracking-[0.2em]">{isSyncing ? 'Eşitleniyor' : cloudSynced ? 'Bulutta' : 'Yerel'}</span>
+                        <span className="tracking-[0.2em]">{isSyncing ? 'Syncing' : cloudSynced ? 'Cloud' : 'Local'}</span>
                     </div>
                 )}
 

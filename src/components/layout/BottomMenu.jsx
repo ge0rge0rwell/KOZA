@@ -7,8 +7,7 @@ const BottomMenu = () => {
     const { activeTab, setActiveTab, setCurrentView } = useUI();
 
     const navItems = useMemo(() => [
-        { id: 'create', label: 'Keşfet', icon: <Home size={20} /> },
-        { id: 'community', label: 'Topluluk', icon: <Users size={20} /> },
+        { id: 'create', label: 'Discover', icon: <Home size={20} /> },
     ], []);
 
     const handleTabChange = useCallback((id) => {

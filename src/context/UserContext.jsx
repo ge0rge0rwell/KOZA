@@ -19,11 +19,11 @@ const DEFAULT_USER = {
     totalXP: 850,
     dailyStreak: 0,
     lastVisit: null,
-    title: "Empati Çırağı",
+    title: "Empathy Apprentice",
     badges: [
-        { id: 1, name: "İlk Adım", unlocked: true },
-        { id: 2, name: "Hikaye Anlatıcısı", unlocked: false },
-        { id: 3, name: "Topluluk Yıldızı", unlocked: false },
+        { id: 1, name: "First Step", unlocked: true },
+        { id: 2, name: "Storyteller", unlocked: false },
+        { id: 3, name: "Transformation Specialist", unlocked: false },
     ],
     achievements: []
 };
@@ -94,7 +94,7 @@ export const UserProvider = ({ children }) => {
                 // We don't have the 'reason' here easily unless we store it in machine context 
                 // or listen to the event. For now, generic reason or passed via a side-channel?
                 // Actually, we can just say "XP Kazanıldı".
-                setLastUserEvent({ type: 'xp', amount: diff, reason: "Başarım" });
+                setLastUserEvent({ type: 'xp', amount: diff, reason: "Achievement" });
             }
         }
 
@@ -109,7 +109,7 @@ export const UserProvider = ({ children }) => {
 
             // Quick fix: allow LastUserEvent to be set by the awardXP wrapper too?
             // No, let's stick to state diffing.
-            const newAch = newIds.map(id => ({ id, name: "Yeni Başarım", icon: "🏆" })); // Placeholder
+            const newAch = newIds.map(id => ({ id, name: "New Achievement", icon: "🏆" })); // Placeholder
             setLastUserEvent({ type: 'achievement', achievements: newAch });
         }
 

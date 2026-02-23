@@ -23,8 +23,8 @@ const FeatureCard = memo(({ icon: Icon, title, description, colorClass }) => (
 const HeroSection = memo(({ onStart }) => (
     <div className="text-center mb-16 animate-fade-in-up flex flex-col items-center">
         <h1 className="text-5xl md:text-8xl font-black mb-8 leading-tight tracking-tighter text-neutral-900 italic">
-            <span className="block">Zorbalık Seni Yıkmamalı</span>
-            <span className="bg-gradient-to-r from-primary-500 via-primary-600 to-secondary-500 bg-clip-text text-transparent">Güçlendirmeli</span>
+            <span className="block">Bullying Shouldn't Break You</span>
+            <span className="bg-gradient-to-r from-primary-500 via-primary-600 to-secondary-500 bg-clip-text text-transparent">It Should Empower You</span>
         </h1>
 
         <div className="w-full max-w-5xl relative mb-12 animate-float will-change-transform">
@@ -37,8 +37,8 @@ const HeroSection = memo(({ onStart }) => (
         </div>
 
         <p className="text-lg md:text-xl text-neutral-500 max-w-2xl mx-auto font-bold leading-relaxed mb-12 opacity-80">
-            Zorbalığa karşı verdiğin mücadelede yalnız değilsin. <br className="hidden md:block" />
-            Kozandan çık, hikayeni yeniden yaz ve dönüşümün gücünü keşfet.
+            You are not alone in your struggle against bullying. <br className="hidden md:block" />
+            Step out of your cocoon, rewrite your story, and discover the power of transformation.
         </p>
 
         <button
@@ -46,7 +46,7 @@ const HeroSection = memo(({ onStart }) => (
             className="group relative flex items-center justify-center gap-3 px-12 py-5 bg-neutral-900 text-white rounded-full font-black transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-neutral-900/20 cursor-pointer overflow-hidden"
         >
             <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-secondary-500/20 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
-            <span className="relative z-10 uppercase tracking-widest">Yolculuğa Başla</span>
+            <span className="relative z-10 uppercase tracking-widest">Start the Journey</span>
             <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" />
         </button>
     </div>
@@ -61,9 +61,9 @@ const HomePage = () => {
     const closeLogin = useCallback(() => setShowLogin(false), []);
 
     const features = useMemo(() => [
-        { icon: Zap, title: "Hikayeler", description: "Olumsuzlukları güce dönüştüren her gün yeni bir hikaye.", colorClass: "hover:border-secondary-500" },
-        { icon: Heart, title: "Topluluk", description: "Seninle aynı yoldan geçen binlerce kişiyle beraber.", colorClass: "hover:border-primary-500" },
-        { icon: Shield, title: "Güven", description: "Verilerin uçtan uca şifreli ve tamamen güvende.", colorClass: "hover:border-primary-900" }
+        { icon: Zap, title: "Stories", description: "A new story every day that turns negativity into power.", colorClass: "hover:border-secondary-500" },
+        { icon: Heart, title: "Community", description: "Together with thousands of people walking the same path.", colorClass: "hover:border-primary-500" },
+        { icon: Shield, title: "Security", description: "Your data is end-to-end encrypted and completely safe.", colorClass: "hover:border-primary-900" }
     ], []);
 
     return (
@@ -100,7 +100,7 @@ const HomePage = () => {
             {error && isAdmin && (
                 <div className="fixed bottom-10 left-1/2 -translate-x-1/2 bg-white text-neutral-900 px-8 py-4 rounded-2xl shadow-2xl z-[100] animate-slide-up flex items-center gap-4 border border-red-50 will-change-transform">
                     <span className="w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse" />
-                    <span className="font-black text-sm uppercase tracking-tighter">Sistem:</span>
+                    <span className="font-black text-sm uppercase tracking-tighter">System:</span>
                     <span className="font-bold text-sm">{error}</span>
                     <button onClick={() => setError(null)} className="ml-4 text-neutral-400 hover:text-neutral-900 font-bold">✕</button>
                 </div>

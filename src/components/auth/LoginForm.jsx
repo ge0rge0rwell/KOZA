@@ -31,7 +31,7 @@ const LoginForm = ({ onClose }) => {
         setError(null);
 
         if (isRegister && formData.password !== formData.confirmPassword) {
-            setError("Şifreler uyuşmuyor.");
+            setError("Passwords do not match.");
             return;
         }
 
@@ -45,7 +45,7 @@ const LoginForm = ({ onClose }) => {
                 setError(result.error);
             }
         } catch (err) {
-            setError("Bir hata oluştu.");
+            setError("An error occurred.");
         } finally {
             setIsLoading(false);
         }
@@ -64,7 +64,7 @@ const LoginForm = ({ onClose }) => {
                 setError(result.error);
             }
         } catch (err) {
-            setError("Sosyal giriş başarısız.");
+            setError("Social login failed.");
         } finally {
             setIsLoading(false);
         }
@@ -80,7 +80,7 @@ const LoginForm = ({ onClose }) => {
                 <X size={20} />
             </button>
 
-            <p className="title">{isRegister ? 'Kayıt Ol' : 'Hoş Geldin'}</p>
+            <p className="title">{isRegister ? 'Sign Up' : 'Welcome Back'}</p>
 
             {error && isAdmin && (
                 <p className="text-[10px] text-red-500 text-center mb-4 font-bold">{error}</p>
@@ -91,7 +91,7 @@ const LoginForm = ({ onClose }) => {
                     type="email"
                     name="email"
                     className="input"
-                    placeholder="E-posta"
+                    placeholder="Email"
                     required
                     onChange={handleInputChange}
                     value={formData.email}
@@ -100,7 +100,7 @@ const LoginForm = ({ onClose }) => {
                     type="password"
                     name="password"
                     className="input"
-                    placeholder="Şifre"
+                    placeholder="Password"
                     required
                     onChange={handleInputChange}
                     value={formData.password}
@@ -110,7 +110,7 @@ const LoginForm = ({ onClose }) => {
                         type="password"
                         name="confirmPassword"
                         className="input"
-                        placeholder="Şifre Onay"
+                        placeholder="Confirm Password"
                         required
                         onChange={handleInputChange}
                         value={formData.confirmPassword}
@@ -119,17 +119,17 @@ const LoginForm = ({ onClose }) => {
 
                 {!isRegister && (
                     <p className="page-link">
-                        <span className="page-link-label">Şifremi Unuttum?</span>
+                        <span className="page-link-label">Forgot Password?</span>
                     </p>
                 )}
 
                 <button className="form-btn" disabled={isLoading}>
-                    {isLoading ? <Loader2 className="animate-spin mx-auto" size={18} /> : (isRegister ? 'Kayıt Ol' : 'Giriş Yap')}
+                    {isLoading ? <Loader2 className="animate-spin mx-auto" size={18} /> : (isRegister ? 'Sign Up' : 'Sign In')}
                 </button>
             </form>
 
             <p className="sign-up-label text-center">
-                {isRegister ? 'Zaten hesabın var mı?' : 'Hesabın yok mu?'}
+                {isRegister ? 'Already have an account?' : "Don't have an account?"}
                 <span
                     className="sign-up-link"
                     onClick={() => {
@@ -137,7 +137,7 @@ const LoginForm = ({ onClose }) => {
                         setError(null);
                     }}
                 >
-                    {isRegister ? 'Giriş Yap' : 'Kayıt Ol'}
+                    {isRegister ? 'Sign In' : 'Sign Up'}
                 </span>
             </p>
 
@@ -154,7 +154,7 @@ const LoginForm = ({ onClose }) => {
                         <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571
                             c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
                     </svg>
-                    <span>Google ile Devam Et</span>
+                    <span>Continue with Google</span>
                 </div>
             </div>
         </div>
