@@ -3,7 +3,10 @@ import { useUser } from '../context/UserContext';
 import { useStory } from '../context/StoryContext';
 import { useUI } from '../context/UIContext';
 import { useAuth } from '../context/AuthContext';
-import { X, Trash2, BookOpen, User as UserIcon } from 'lucide-react';
+import { X, Trash2, BookOpen, User as UserIcon, Zap, Target, Award } from 'lucide-react';
+import { GalaxyBox, GalaxyFlex, GalaxyStack, GalaxyGrid, GalaxyCenter } from '../components/galaxy/GalaxyLayout';
+import GalaxyButton from '../components/galaxy/GalaxyButton';
+import CosmicRank from '../components/galaxy/CosmicRank';
 
 // Memoized Sub-Components
 const ProfileHeader = memo(({ authUser, userTitle, imgError, onImgError, onClose }) => (
@@ -26,9 +29,9 @@ const ProfileHeader = memo(({ authUser, userTitle, imgError, onImgError, onClose
             </div>
             <div>
                 <h1 className="text-3xl font-bold tracking-tight text-neutral-900">
-                    {authUser?.displayName || 'Traveler'}
+                    {authUser?.displayName || 'Yolcu'}
                 </h1>
-                <p className="text-neutral-500 font-medium">{userTitle || 'Newcomer'}</p>
+                <p className="text-neutral-500 font-medium">{userTitle || 'Yeni Başlayan'}</p>
             </div>
         </div>
         <button
@@ -40,20 +43,57 @@ const ProfileHeader = memo(({ authUser, userTitle, imgError, onImgError, onClose
     </div>
 ));
 
+const BiometricChart = memo(({ data }) => {
+    const points = data.map((v, i) => `${(i / (data.length - 1)) * 100},${100 - v}`).join(' ');
+
+    return (
+        <div className="relative w-full h-32 mt-8 overflow-hidden rounded-xl bg-neutral-900/50 border border-white/5 p-4">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
+                <defs>
+                    <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="var(--color-primary-500)" stopOpacity="0.5" />
+                        <stop offset="100%" stopColor="var(--color-primary-500)" stopOpacity="0" />
+                    </linearGradient>
+                </defs>
+                <polyline
+                    points={points}
+                    fill="none"
+                    stroke="var(--color-primary-500)"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="drop-shadow-[0_0_8px_rgba(147,51,234,0.5)]"
+                />
+                <path
+                    d={`M 0 100 L ${points} L 100 100 Z`}
+                    fill="url(#chartGradient)"
+                />
+            </svg>
+            <div className="absolute inset-0 grid grid-cols-6 pointer-events-none opacity-10">
+                {[...Array(6)].map((_, i) => <div key={i} className="border-r border-white" />)}
+            </div>
+            <div className="absolute top-2 left-4 text-[8px] font-black uppercase tracking-widest text-primary-400 opacity-50">
+                Dönüşüm Frekansı
+            </div>
+        </div>
+    );
+});
+
 const StatsCard = memo(({ level, xp, nextLevelXp, storiesCreated, savedCount }) => {
     const progressPercent = useMemo(() => (xp / nextLevelXp) * 100, [xp, nextLevelXp]);
+    const mockChartData = [20, 45, 30, 85, 60, 95]; // In a real app, this would be user activity
 
     return (
         <div className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/10 p-8 mb-6 shadow-sm">
             <div className="flex items-center justify-between mb-6">
                 <div>
-                    <div className="text-sm text-neutral-600 mb-1 font-bold uppercase tracking-widest text-[10px]">Level</div>
+                    <div className="text-sm text-neutral-600 mb-1 font-bold uppercase tracking-widest text-[10px]">Seviye</div>
                     <div className="text-4xl font-black text-neutral-900">{level}</div>
                 </div>
                 <div className="text-right">
-                    <div className="text-sm text-neutral-600 mb-1 font-bold uppercase tracking-widest text-[10px]">Progress</div>
+                    <div className="text-sm text-neutral-600 mb-1 font-bold uppercase tracking-widest text-[10px]">İlerleme</div>
                     <div className="text-2xl font-extrabold text-primary-600">
-                        {xp} / {nextLevelXp} <span className="text-xs">XP</span>
+                        {xp} / {nextLevelXp} <span className="text-xs">GP</span>
                     </div>
                 </div>
             </div>
@@ -65,16 +105,18 @@ const StatsCard = memo(({ level, xp, nextLevelXp, storiesCreated, savedCount }) 
                 />
             </div>
 
-            <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-white/10">
+            <BiometricChart data={mockChartData} />
+
+            <GalaxyGrid templateColumns="repeat(2, 1fr)" gap={4} className="mt-6 pt-6 border-t border-white/10">
                 <div>
                     <div className="text-2xl font-black text-neutral-900 mb-1">{storiesCreated}</div>
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">Created</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">Oluşturulan</div>
                 </div>
                 <div>
                     <div className="text-2xl font-black text-neutral-900 mb-1">{savedCount}</div>
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">Collection</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">Koleksiyon</div>
                 </div>
-            </div>
+            </GalaxyGrid>
         </div>
     );
 });
@@ -139,6 +181,10 @@ const ProfileView = ({ onClose }) => {
                     onClose={onClose}
                 />
 
+                <GalaxyCenter className="mb-12">
+                    <CosmicRank level={user.level} rank={user.rank || "Koza Yolcusu"} />
+                </GalaxyCenter>
+
                 <StatsCard
                     level={user.level}
                     xp={user.xp}
@@ -147,29 +193,30 @@ const ProfileView = ({ onClose }) => {
                     savedCount={savedStories.length}
                 />
 
-                <div className="mt-12">
+                <GalaxyStack spacing={12} className="mt-12">
                     <h2 className="text-sm font-black uppercase tracking-[0.2em] text-neutral-400 mb-6 flex items-center gap-2">
                         <BookOpen size={14} />
-                        Story Collection
+                        Hikaye Koleksiyonu
                     </h2>
 
                     {savedStories.length === 0 ? (
-                        <div className="bg-white/20 backdrop-blur-xl rounded-2xl border border-white/10 p-16 text-center shadow-sm">
+                        <GalaxyBox className="bg-white/20 backdrop-blur-xl rounded-2xl border border-white/10 p-16 text-center shadow-sm">
                             <BookOpen size={48} className="mx-auto mb-6 text-neutral-300 opacity-50" />
-                            <p className="text-neutral-500 mb-8 font-medium italic">You haven't performed a story metamorphosis yet.</p>
-                            <button
+                            <p className="text-neutral-500 mb-8 font-medium italic">Henüz bir hikaye başkalaşımı gerçekleştirmediniz.</p>
+                            <GalaxyButton
                                 onClick={onClose}
-                                className="px-10 py-4 bg-primary-600 text-white rounded-full font-bold hover:bg-primary-700 transition-all shadow-lg hover:shadow-primary-600/20 active:scale-95 cursor-pointer"
+                                variant="primary"
+                                className="!px-10 !py-4 shadow-lg"
                             >
-                                Start Adventure
-                            </button>
-                        </div>
+                                Maceraya Başla
+                            </GalaxyButton>
+                        </GalaxyBox>
                     ) : (
-                        <div className="space-y-4">
+                        <GalaxyStack spacing={4}>
                             {renderedStories}
-                        </div>
+                        </GalaxyStack>
                     )}
-                </div>
+                </GalaxyStack>
             </div>
         </div>
     );

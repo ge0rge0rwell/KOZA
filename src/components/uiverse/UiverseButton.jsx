@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import './UiverseButton.css';
 
-const UiverseButton = ({ children, onClick, variant = 'primary', className = '', type = 'button', disabled = false }) => {
+const UiverseButton = ({ children, onClick, variant = 'primary', className = '', type = 'button', disabled = false, icon: Icon }) => {
     const [ripples, setRipples] = useState([]);
     const [magneticPos, setMagneticPos] = useState({ x: 0, y: 0 });
     const buttonRef = useRef(null);
@@ -76,7 +76,10 @@ const UiverseButton = ({ children, onClick, variant = 'primary', className = '',
                     />
                 ))}
             </span>
-            <span className="button-content">{children}</span>
+            <span className="button-content">
+                {Icon && <Icon size={18} className="button-icon" />}
+                {children}
+            </span>
         </button>
     );
 };

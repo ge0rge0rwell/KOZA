@@ -15,8 +15,7 @@ import GalaxyTextarea from '../components/galaxy/GalaxyTextarea';
 import GalaxyButton from '../components/galaxy/GalaxyButton';
 import GalaxyAlert from '../components/galaxy/GalaxyAlert';
 import GalaxyCard from '../components/galaxy/GalaxyCard';
-import GalaxyGrid from '../components/galaxy/GalaxyGrid';
-import GalaxyStat from '../components/galaxy/GalaxyStat';
+import { GalaxyBox, GalaxyFlex, GalaxyStack, GalaxyGrid, GalaxyCenter } from '../components/galaxy/GalaxyLayout';
 import KozaLoader from '../components/ui/KozaLoader';
 
 // Memoized Sub-Components for Scale
@@ -24,13 +23,13 @@ const StatsSection = memo(({ user }) => {
     const entropyScore = ClarityService.getEntropyReductionScore(user);
 
     return (
-        <div className="mt-20 border-t border-neutral-200 pt-12">
-            <GalaxyGrid cols={3}>
+        <GalaxyStack spacing={12} className="mt-20 border-t border-neutral-200 pt-12">
+            <GalaxyGrid templateColumns="repeat(3, 1fr)" gap={6}>
                 <GalaxyStat icon={BookOpen} label="Tamamlanan Hikayeler" value={user?.storiesCreated || 0} />
                 <GalaxyStat icon={Zap} label="Gelişim Puanı" value={user?.xp || 0} />
                 <GalaxyStat icon={BarChart3} label="Dönüşüm Oranı" value={`${entropyScore}%`} />
             </GalaxyGrid>
-        </div>
+        </GalaxyStack>
     );
 });
 
@@ -90,10 +89,10 @@ const CreateTab = () => {
 
     return (
         <GalaxyContainer className="py-8">
-            <div className="max-w-2xl mx-auto">
+            <GalaxyStack spacing={8} className="max-w-2xl mx-auto">
                 {!analysisResult ? (
-                    <div className="space-y-8">
-                        <div className="flex justify-center">
+                    <GalaxyStack spacing={8}>
+                        <GalaxyCenter>
                             <GalaxyTabs
                                 activeTab={creationMode}
                                 onChange={setCreationMode}
@@ -102,9 +101,9 @@ const CreateTab = () => {
                                     { id: 'game', label: 'Oyun Modu', icon: Gamepad2 }
                                 ]}
                             />
-                        </div>
+                        </GalaxyCenter>
 
-                        <div className="animate-slide-up">
+                        <GalaxyStack spacing={6} className="animate-slide-up">
                             <GalaxyTextarea
                                 value={activeStory}
                                 onChange={setActiveStory}
@@ -113,17 +112,17 @@ const CreateTab = () => {
                                 minHeight="150px"
                             />
 
-                            <div className="mt-6 flex justify-end">
+                            <GalaxyFlex justify="end">
                                 <GalaxyButton
                                     onClick={handleGenerate}
                                     disabled={!activeStory.trim() || isProcessing}
                                     icon={Sparkles}
-                                    variant="primary"
+                                    variant="magic"
                                 >
                                     {creationMode === 'story' ? 'Hikayeyi Oluştur' : 'Oyunu Başlat'}
                                 </GalaxyButton>
-                            </div>
-                        </div>
+                            </GalaxyFlex>
+                        </GalaxyStack>
 
                         {error && isAdmin && (
                             <GalaxyAlert type="error" title="Giriş Hatası">
@@ -132,9 +131,9 @@ const CreateTab = () => {
                         )}
 
                         {isProcessing && (
-                            <div className="mt-12 animate-fade-in flex flex-col items-center gap-4">
+                            <GalaxyCenter className="mt-12 animate-fade-in">
                                 <KozaLoader size="large" message={stage} />
-                            </div>
+                            </GalaxyCenter>
                         )}
 
                         <div className="mt-8 p-4 bg-neutral-50/50 rounded-xl border border-neutral-100/50 text-center">
@@ -142,7 +141,7 @@ const CreateTab = () => {
                                 🔔 {SAFETY_DISCLAIMER}
                             </p>
                         </div>
-                    </div>
+                    </GalaxyStack>
                 ) : (
                     <GalaxyCard
                         className="text-center"
@@ -172,7 +171,7 @@ const CreateTab = () => {
                         </div>
                     </GalaxyCard>
                 )}
-            </div>
+            </GalaxyStack>
 
             <StatsSection user={user} />
         </GalaxyContainer>

@@ -6,6 +6,7 @@ import GalaxyButton from '../components/galaxy/GalaxyButton';
 import GalaxyCard from '../components/galaxy/GalaxyCard';
 import GalaxyProgress from '../components/galaxy/GalaxyProgress';
 import GalaxyStat from '../components/galaxy/GalaxyStat';
+import { GalaxyBox, GalaxyFlex, GalaxyStack, GalaxyCenter } from '../components/galaxy/GalaxyLayout';
 
 // Memoized Sub-Components
 const GameHeader = memo(({ title, progressPercent, score, onClose }) => (
@@ -137,7 +138,7 @@ const GameView = ({ game, onClose }) => {
 
         if (option.isCorrect) {
             setScore(prev => prev + 100);
-            awardXP(50, 'Right decision');
+            awardXP(50, 'Doğru karar');
         }
     }, [awardXP]);
 
@@ -170,8 +171,8 @@ const GameView = ({ game, onClose }) => {
                 onClose={onClose}
             />
 
-            <div className="pt-20 min-h-screen flex items-center justify-center px-4 py-8">
-                <div className="max-w-2xl w-full">
+            <GalaxyCenter className="pt-20 min-h-screen px-4 py-8">
+                <GalaxyBox className="max-w-2xl w-full">
                     {!isCompleted ? (
                         <LevelContent
                             currentLevel={currentLevel}
@@ -188,8 +189,8 @@ const GameView = ({ game, onClose }) => {
                             onClose={onClose}
                         />
                     )}
-                </div>
-            </div>
+                </GalaxyBox>
+            </GalaxyCenter>
         </div>
     );
 };

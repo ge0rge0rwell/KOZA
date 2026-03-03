@@ -14,6 +14,12 @@ const TransformationCanvas = ({ color = '#9333EA', intensity = 1, active = true 
         const particles = [];
         const particleCount = 60 * intensity;
 
+        // Pre-calculate shard paths for GPU efficiency
+        const shardPaths = {
+            3: new Path2D('M 10 0 L -5 8.66 L -5 -8.66 Z'),
+            4: new Path2D('M 7 7 L -7 7 L -7 -7 L 7 -7 Z')
+        };
+
         class ShardParticle {
             constructor() {
                 this.reset(true);
@@ -72,39 +78,31 @@ const TransformationCanvas = ({ color = '#9333EA', intensity = 1, active = true 
             }
 
             draw() {
-                // Draw trails
+                // Draw trails with reduced opacity to save on alpha blending
                 if (this.history.length > 2) {
                     ctx.beginPath();
                     ctx.moveTo(this.history[0].x, this.history[0].y);
                     for (let i = 1; i < this.history.length; i++) {
                         ctx.lineTo(this.history[i].x, this.history[i].y);
                     }
-                    ctx.strokeStyle = `hsla(${(this.rotation * 50) % 360}, 70%, 70%, ${this.opacity * 0.3})`;
-                    ctx.lineWidth = this.size / 2;
+                    ctx.strokeStyle = `hsla(${(this.rotation * 50) % 360}, 70%, 70%, ${this.opacity * 0.15})`;
+                    ctx.lineWidth = this.size / 4;
                     ctx.stroke();
                 }
 
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.rotation);
-                ctx.beginPath();
-
-                const step = (Math.PI * 2) / this.sides;
-                ctx.moveTo(this.size, 0);
-                for (let i = 1; i <= this.sides; i++) {
-                    ctx.lineTo(this.size * Math.cos(step * i), this.size * Math.sin(step * i));
-                }
-                ctx.closePath();
-
                 const hue = (this.rotation * 50) % 360;
+                ctx.setTransform(1, 0, 0, 1, this.x, this.y);
+                ctx.rotate(this.rotation);
+
                 ctx.fillStyle = `hsla(${hue}, 85%, 60%, ${this.opacity})`;
-                ctx.fill();
+                ctx.fill(shardPaths[this.sides]);
 
-                ctx.strokeStyle = `rgba(255, 255, 255, ${this.opacity * 0.8})`;
-                ctx.lineWidth = 1;
-                ctx.stroke();
+                ctx.strokeStyle = `rgba(255, 255, 255, ${this.opacity * 0.4})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke(shardPaths[this.sides]);
 
-                ctx.restore();
+                // Reset transform for next particle
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
             }
         }
 

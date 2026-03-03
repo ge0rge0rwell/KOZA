@@ -39,9 +39,43 @@
 }
 
 .uiverse-button.secondary:hover {
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: var(--shadow-liquid-deep);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow-premium-lg);
     border-color: var(--glass-border-bright);
+}
+
+/* Magic / Chromatic Variant */
+.uiverse-button.magic {
+    @apply chromatic-shimmer font-black uppercase tracking-widest text-[10px];
+    background-color: var(--color-primary-900);
+    border: 1px solid var(--color-secondary-500);
+    padding: 14px 32px;
+    border-radius: var(--radius-ultra);
+    box-shadow: 0 0 30px rgba(180, 83, 9, 0.2);
+}
+
+.uiverse-button.magic:hover {
+    @apply -translate-y-1 scale-105;
+    box-shadow: 0 0 50px rgba(180, 83, 9, 0.4);
+    background-color: var(--color-primary-950);
+}
+
+.uiverse-button.magic .button-content {
+    @apply flex items-center gap-3 brightness-150;
+    -webkit-background-clip: unset;
+    color: inherit;
+}
+
+.uiverse-button.magic .button-icon {
+    @apply text-amber-500;
+}
+
+.button-content {
+    @apply relative z-10 flex items-center gap-2;
+}
+
+.button-icon {
+    @apply shrink-0;
 }
 
 /* Ripples */

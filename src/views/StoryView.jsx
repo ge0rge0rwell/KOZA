@@ -17,6 +17,7 @@ import {
     Sparkles,
     Loader2
 } from 'lucide-react';
+import { GalaxyBox, GalaxyFlex, GalaxyStack, GalaxyCenter } from '../components/galaxy/GalaxyLayout';
 import TransformationCanvas from '../components/cocoon/TransformationCanvas';
 import GalaxyButton from '../components/galaxy/GalaxyButton';
 import useAudioStory from '../hooks/useAudioStory';
@@ -56,7 +57,7 @@ const StoryHeader = memo(({ title, currentPage, totalPages, onPrev, onNext, onRe
             <div className="flex items-center gap-1 ml-1">
                 <button onClick={onToggleAudio} className={`flex items-center gap-2 px-4 py-1.5 rounded-full transition-all text-sm font-bold ${isSpeaking ? 'bg-primary-500 text-white shadow-lg' : 'bg-primary-100 text-primary-600 hover:bg-primary-200'}`}>
                     {isSpeaking ? <VolumeX size={16} /> : <Volume2 size={16} />}
-                    <span>Dinle</span>
+                    <span>{isSpeaking ? 'Durdur' : 'Dinle'}</span>
                 </button>
                 <button onClick={onClose} className="p-2 hover:bg-red-50 hover:text-red-500 rounded-lg text-neutral-400 ml-2 transition-colors"><X size={20} /></button>
             </div>
@@ -119,7 +120,7 @@ const StoryView = ({ story, onClose }) => {
     const pages = useMemo(() => story.pages || [], [story.pages]);
     const totalPages = pages.length;
     const themeColor = story.themeColor || '#9333EA';
-    const author = "KOZA TRAVELER";
+    const author = "KOZA YOLCUSU";
 
     const currentPageData = pages[currentPage];
     const { toggle, isSpeaking, stop } = useAudioStory(currentPageData?.content);
@@ -138,7 +139,7 @@ const StoryView = ({ story, onClose }) => {
     const handlePrint = useCallback(() => requestAnimationFrame(() => window.print()), []);
 
     const handleShare = useCallback(async () => {
-        const shareData = { title: story.title, text: `Read this story I created with KOZA: ${story.title}`, url: window.location.href };
+        const shareData = { title: story.title, text: `KOZA ile oluşturduğum bu hikayeyi oku: ${story.title}`, url: window.location.href };
         try {
             if (navigator.share) await navigator.share(shareData);
             else { await navigator.clipboard.writeText(window.location.href); alert("Bağlantı kopyalandı!"); }
@@ -206,7 +207,7 @@ const StoryView = ({ story, onClose }) => {
                             </button>
                         </div>
                         <p className="text-[10px] text-neutral-500 mb-4 leading-relaxed">
-                            Örn: \"Yan bir karakter ekle\", \"Daha sihirli bir atmosfer yarat\" veya \"Sonunu değiştir\".
+                            Örn: "Yan bir karakter ekle", "Daha sihirli bir atmosfer yarat" veya "Sonunu değiştir".
                         </p>
                         <MessageBox
                             value={feedback}
@@ -231,23 +232,34 @@ const StoryView = ({ story, onClose }) => {
                 )}
             </div>
 
-            <main className="flex-1 relative z-10 overflow-hidden">
-                <div className="w-full h-full bg-white book-depth flex relative overflow-hidden group shadow-2xl">
-                    <div className="book-spine" />
+            <main className="flex-1 relative z-10 overflow-hidden liquid-entrance flex items-center justify-center p-4">
+                <div className="w-full max-w-6xl aspect-[1.4/1] bg-white rounded-2xl shadow-2xl relative overflow-hidden group page-edge-shadow flex">
+                    <div className="absolute left-1/2 top-0 bottom-0 w-px bg-neutral-200 z-30" />
+                    <div className="absolute left-1/2 top-0 bottom-0 w-8 -translate-x-1/2 bg-gradient-to-r from-black/5 via-transparent to-black/5 z-25 pointer-events-none" />
+
                     <StoryPage
-                        page={pages[currentPage]} pageNumber={currentPage + 1}
-                        alignment="left" onPageClick={prevPage} author={author}
+                        page={pages[currentPage]}
+                        pageNumber={currentPage + 1}
+                        alignment="left"
+                        onPageClick={prevPage}
+                        author={author}
                     />
                     <StoryPage
-                        page={pages[currentPage + 1]} pageNumber={currentPage + 2}
-                        alignment="right" onPageClick={nextPage} author={author}
+                        page={pages[currentPage + 1]}
+                        pageNumber={currentPage + 2}
+                        alignment="right"
+                        onPageClick={nextPage}
+                        author={author}
                     />
                     {currentPage === totalPages - 1 && <StoryCompletionOverlay onClose={onClose} />}
                 </div>
             </main>
 
             <div className="h-1 bg-neutral-200 w-full shrink-0">
-                <div className="h-full bg-primary-500 transition-all duration-700 ease-out" style={{ width: `${((currentPage + 1) / totalPages) * 100}%` }} />
+                <div
+                    className="h-full bg-primary-500 transition-all duration-700 ease-out"
+                    style={{ width: `${((currentPage + 1) / totalPages) * 100}%` }}
+                />
             </div>
         </div>
     );

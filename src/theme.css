@@ -74,11 +74,8 @@
         0 2px 4px -1px rgba(33, 158, 188, 0.06),
         0 0 0 1px rgba(142, 202, 230, 0.1);
 
-    --shadow-liquid-deep:
-        0 10px 15px -3px rgba(2, 48, 71, 0.15),
-        0 4px 6px -2px rgba(2, 48, 71, 0.1),
-        0 20px 25px -5px rgba(2, 48, 71, 0.1),
-        0 0 0 1px rgba(33, 158, 188, 0.15);
+    --shadow-liquid-deep: 0 30px 60px -12px rgba(0, 0, 0, 0.45);
+    --shadow-page: inset -10px 0 30px rgba(0, 0, 0, 0.05), 10px 0 30px rgba(0, 0, 0, 0.1);
 
     --shadow-liquid-glow: 0 0 20px rgba(33, 158, 188, 0.25);
 
@@ -86,25 +83,31 @@
     --shadow-premium-lg: var(--shadow-liquid-deep);
 
     /* Precision Tokens */
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-border-bright: rgba(255, 255, 255, 0.2);
-    --blur-premium: 10px;
-    --radius-technical: 2px;
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-bright: rgba(255, 255, 255, 0.15);
+    --blur-premium: 12px;
+    --radius-technical: 4px;
+    --radius-premium: 24px;
+    --radius-ultra: 48px;
+
+    /* Phase 5: Interaction Tokens */
+    --cursor-liquid: rgba(147, 51, 234, 0.15);
+    --magnetic-strength: 20px;
 }
 
 @utility liquid-glass {
-    background-color: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(var(--blur-premium));
+    -webkit-backdrop-filter: blur(var(--blur-premium));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-premium);
 }
 
 @utility liquid-glass-dark {
-    background-color: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(24px) saturate(200%);
-    -webkit-backdrop-filter: blur(24px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 @utility transition-liquid {
@@ -274,4 +277,24 @@
 
 @utility bg-sage {
     background-color: var(--color-sage-500);
+}
+
+@utility magnetic-item {
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    &:hover {
+        transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) scale(1.05);
+    }
+}
+
+@utility liquid-cursor-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--cursor-liquid) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
 }
