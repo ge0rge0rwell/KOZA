@@ -35,7 +35,11 @@ export const authMachine = setup({
                     {
                         target: 'unauthenticated'
                     }
-                ]
+                ],
+                'AUTH.LOGIN_SUCCESS': {
+                    target: 'authenticated',
+                    actions: 'assignUser'
+                }
             }
         },
         unauthenticated: {
@@ -43,6 +47,10 @@ export const authMachine = setup({
                 'AUTH.LOGIN_START': {
                     target: 'authenticating',
                     actions: 'clearUser' // Clear specific error if needed
+                },
+                'AUTH.LOGIN_SUCCESS': {
+                    target: 'authenticated',
+                    actions: 'assignUser'
                 }
             }
         },
