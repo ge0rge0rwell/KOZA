@@ -20,21 +20,6 @@ import GalaxyStat from '../components/galaxy/GalaxyStat';
 import KozaLoader from '../components/ui/KozaLoader';
 
 // Memoized Sub-Components for Scale
-const CreateHeader = memo(() => (
-    <div className="text-center mb-16 px-4">
-        <div className="galaxy-badge primary mb-6 group cursor-default border-neutral-800 bg-neutral-900/50 text-neutral-300">
-            <Sparkles size={14} className="text-amber-500" />
-            <span>Yeni Bir Hikaye Başlat</span>
-        </div>
-        <h1 className="text-6xl font-black mb-4 tracking-tight uppercase text-neutral-900">
-            Dönüşümü Başlat
-        </h1>
-        <p className="text-neutral-500 text-lg font-medium max-w-xl mx-auto leading-relaxed border-l-2 border-neutral-200 pl-6 text-left">
-            Zorlukları güce, acıyı hikayeye dönüştürün. Yalnız değilsiniz.
-        </p>
-    </div>
-));
-
 const StatsSection = memo(({ user }) => {
     const entropyScore = ClarityService.getEntropyReductionScore(user);
 
@@ -105,8 +90,6 @@ const CreateTab = () => {
 
     return (
         <GalaxyContainer className="py-8">
-            <CreateHeader />
-
             <div className="max-w-2xl mx-auto">
                 {!analysisResult ? (
                     <div className="space-y-8">

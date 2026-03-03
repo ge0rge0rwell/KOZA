@@ -1874,56 +1874,6 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 // Memoized Sub-Components for Scale
-const CreateHeader = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "text-center mb-16 px-4",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "galaxy-badge primary mb-6 group cursor-default border-neutral-800 bg-neutral-900/50 text-neutral-300",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"], {
-                        size: 14,
-                        className: "text-amber-500"
-                    }, void 0, false, {
-                        fileName: "[project]/src/tabs/CreateTab.jsx",
-                        lineNumber: 26,
-                        columnNumber: 13
-                    }, ("TURBOPACK compile-time value", void 0)),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        children: "Yeni Bir Hikaye Başlat"
-                    }, void 0, false, {
-                        fileName: "[project]/src/tabs/CreateTab.jsx",
-                        lineNumber: 27,
-                        columnNumber: 13
-                    }, ("TURBOPACK compile-time value", void 0))
-                ]
-            }, void 0, true, {
-                fileName: "[project]/src/tabs/CreateTab.jsx",
-                lineNumber: 25,
-                columnNumber: 9
-            }, ("TURBOPACK compile-time value", void 0)),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                className: "text-6xl font-black mb-4 tracking-tight uppercase text-neutral-900",
-                children: "Dönüşümü Başlat"
-            }, void 0, false, {
-                fileName: "[project]/src/tabs/CreateTab.jsx",
-                lineNumber: 29,
-                columnNumber: 9
-            }, ("TURBOPACK compile-time value", void 0)),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-neutral-500 text-lg font-medium max-w-xl mx-auto leading-relaxed border-l-2 border-neutral-200 pl-6 text-left",
-                children: "Zorlukları güce, acıyı hikayeye dönüştürün. Yalnız değilsiniz."
-            }, void 0, false, {
-                fileName: "[project]/src/tabs/CreateTab.jsx",
-                lineNumber: 32,
-                columnNumber: 9
-            }, ("TURBOPACK compile-time value", void 0))
-        ]
-    }, void 0, true, {
-        fileName: "[project]/src/tabs/CreateTab.jsx",
-        lineNumber: 24,
-        columnNumber: 5
-    }, ("TURBOPACK compile-time value", void 0)));
-_c = CreateHeader;
 const StatsSection = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(({ user })=>{
     const entropyScore = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$ClarityService$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ClarityService"].getEntropyReductionScore(user);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1937,7 +1887,7 @@ const StatsSection = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$projec
                     value: user?.storiesCreated || 0
                 }, void 0, false, {
                     fileName: "[project]/src/tabs/CreateTab.jsx",
-                    lineNumber: 44,
+                    lineNumber: 29,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$galaxy$2f$GalaxyStat$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1946,7 +1896,7 @@ const StatsSection = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$projec
                     value: user?.xp || 0
                 }, void 0, false, {
                     fileName: "[project]/src/tabs/CreateTab.jsx",
-                    lineNumber: 45,
+                    lineNumber: 30,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$galaxy$2f$GalaxyStat$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1955,22 +1905,22 @@ const StatsSection = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$projec
                     value: `${entropyScore}%`
                 }, void 0, false, {
                     fileName: "[project]/src/tabs/CreateTab.jsx",
-                    lineNumber: 46,
+                    lineNumber: 31,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/src/tabs/CreateTab.jsx",
-            lineNumber: 43,
+            lineNumber: 28,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/src/tabs/CreateTab.jsx",
-        lineNumber: 42,
+        lineNumber: 27,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 });
-_c1 = StatsSection;
+_c = StatsSection;
 const CreateTab = ()=>{
     _s();
     const { user, awardXP } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$UserContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useUser"])();
@@ -2043,11 +1993,6 @@ const CreateTab = ()=>{
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$galaxy$2f$GalaxyContainer$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
         className: "py-8",
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CreateHeader, {}, void 0, false, {
-                fileName: "[project]/src/tabs/CreateTab.jsx",
-                lineNumber: 108,
-                columnNumber: 13
-            }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "max-w-2xl mx-auto",
                 children: !analysisResult ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2072,12 +2017,12 @@ const CreateTab = ()=>{
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/src/tabs/CreateTab.jsx",
-                                lineNumber: 114,
+                                lineNumber: 97,
                                 columnNumber: 29
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/src/tabs/CreateTab.jsx",
-                            lineNumber: 113,
+                            lineNumber: 96,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2091,7 +2036,7 @@ const CreateTab = ()=>{
                                     minHeight: "150px"
                                 }, void 0, false, {
                                     fileName: "[project]/src/tabs/CreateTab.jsx",
-                                    lineNumber: 125,
+                                    lineNumber: 108,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2104,18 +2049,18 @@ const CreateTab = ()=>{
                                         children: creationMode === 'story' ? 'Hikayeyi Oluştur' : 'Oyunu Başlat'
                                     }, void 0, false, {
                                         fileName: "[project]/src/tabs/CreateTab.jsx",
-                                        lineNumber: 134,
+                                        lineNumber: 117,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/tabs/CreateTab.jsx",
-                                    lineNumber: 133,
+                                    lineNumber: 116,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/tabs/CreateTab.jsx",
-                            lineNumber: 124,
+                            lineNumber: 107,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0)),
                         error && isAdmin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$galaxy$2f$GalaxyAlert$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -2124,7 +2069,7 @@ const CreateTab = ()=>{
                             children: error
                         }, void 0, false, {
                             fileName: "[project]/src/tabs/CreateTab.jsx",
-                            lineNumber: 146,
+                            lineNumber: 129,
                             columnNumber: 29
                         }, ("TURBOPACK compile-time value", void 0)),
                         isProcessing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2134,12 +2079,12 @@ const CreateTab = ()=>{
                                 message: stage
                             }, void 0, false, {
                                 fileName: "[project]/src/tabs/CreateTab.jsx",
-                                lineNumber: 153,
+                                lineNumber: 136,
                                 columnNumber: 33
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/src/tabs/CreateTab.jsx",
-                            lineNumber: 152,
+                            lineNumber: 135,
                             columnNumber: 29
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2152,18 +2097,18 @@ const CreateTab = ()=>{
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/tabs/CreateTab.jsx",
-                                lineNumber: 158,
+                                lineNumber: 141,
                                 columnNumber: 29
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/src/tabs/CreateTab.jsx",
-                            lineNumber: 157,
+                            lineNumber: 140,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/tabs/CreateTab.jsx",
-                    lineNumber: 112,
+                    lineNumber: 95,
                     columnNumber: 21
                 }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$galaxy$2f$GalaxyCard$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                     className: "text-center",
@@ -2176,7 +2121,7 @@ const CreateTab = ()=>{
                             children: analysisResult.type === 'story' ? 'Deneyiminiz artık moral verici bir hikaye.' : 'Zorluğunuz artık heyecan verici bir oyun.'
                         }, void 0, false, {
                             fileName: "[project]/src/tabs/CreateTab.jsx",
-                            lineNumber: 170,
+                            lineNumber: 153,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2187,7 +2132,7 @@ const CreateTab = ()=>{
                                     children: analysisResult.type === 'story' ? 'Hikayeyi Oku' : 'Oyunu Oyna'
                                 }, void 0, false, {
                                     fileName: "[project]/src/tabs/CreateTab.jsx",
-                                    lineNumber: 177,
+                                    lineNumber: 160,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$galaxy$2f$GalaxyButton$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -2199,37 +2144,37 @@ const CreateTab = ()=>{
                                     children: "Yeni Hikaye Yaz"
                                 }, void 0, false, {
                                     fileName: "[project]/src/tabs/CreateTab.jsx",
-                                    lineNumber: 180,
+                                    lineNumber: 163,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/tabs/CreateTab.jsx",
-                            lineNumber: 176,
+                            lineNumber: 159,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/tabs/CreateTab.jsx",
-                    lineNumber: 164,
+                    lineNumber: 147,
                     columnNumber: 21
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/tabs/CreateTab.jsx",
-                lineNumber: 110,
+                lineNumber: 93,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(StatsSection, {
                 user: user
             }, void 0, false, {
                 fileName: "[project]/src/tabs/CreateTab.jsx",
-                lineNumber: 194,
+                lineNumber: 177,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/tabs/CreateTab.jsx",
-        lineNumber: 107,
+        lineNumber: 92,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -2241,13 +2186,12 @@ _s(CreateTab, "NDiCNyfnUbITvlMyar8doG7c534=", false, function() {
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AuthContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"]
     ];
 });
-_c2 = CreateTab;
-const __TURBOPACK__default__export__ = /*#__PURE__*/ _c3 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(CreateTab);
-var _c, _c1, _c2, _c3;
-__turbopack_context__.k.register(_c, "CreateHeader");
-__turbopack_context__.k.register(_c1, "StatsSection");
-__turbopack_context__.k.register(_c2, "CreateTab");
-__turbopack_context__.k.register(_c3, "%default%");
+_c1 = CreateTab;
+const __TURBOPACK__default__export__ = /*#__PURE__*/ _c2 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(CreateTab);
+var _c, _c1, _c2;
+__turbopack_context__.k.register(_c, "StatsSection");
+__turbopack_context__.k.register(_c1, "CreateTab");
+__turbopack_context__.k.register(_c2, "%default%");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
