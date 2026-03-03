@@ -1,4 +1,4 @@
-@reference "../../theme.css";
+@reference "../../global.css";
 
 .galaxy-list {
     @apply flex flex-col gap-4 w-full;

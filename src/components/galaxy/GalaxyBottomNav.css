@@ -1,4 +1,4 @@
-@reference "../../theme.css";
+@reference "../../global.css";
 
 .galaxy-bottom-nav-container {
     @apply fixed bottom-8 left-1/2 -translate-x-1/2 z-50 px-6 w-full max-w-lg;
