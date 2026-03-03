@@ -23,42 +23,17 @@
     --font-serif: "Fraunces", serif;
     --font-heading: "Outfit", sans-serif;
 
-    /* Deep Space Palette */
-    --color-dark-950: #020b12;
-    --color-dark-900: #023047;
-    --color-dark-800: #075985;
+    /* Elite Digital Palette: The Sovereign Mind */
+    --color-obsidian-950: #020617;
+    /* Deepest Base */
+    --color-obsidian-900: #0f172a;
+    /* Main Surface */
+    --color-slate-gold: #b45309;
+    /* Action Primary */
+    --color-slate-gold-light: #f59e0b;
+    /* Action Highlight */
 
-    /* Highlight Accents */
-    --color-neon-blue: #219EBC;
-    --color-neon-cyan: #8ECAE6;
-    --color-neon-amber: #FFB703;
-    --color-neon-orange: #FB8500;
-
-    /* Primary - Ocean & Sky */
-    --color-primary-50: #f0f9ff;
-    --color-primary-100: #e0f2fe;
-    --color-primary-200: #bae6fd;
-    --color-primary-300: #8ECAE6;
-    /* Sky Blue */
-    --color-primary-400: #5cbce0;
-    --color-primary-500: #219EBC;
-    /* Blue Green */
-    --color-primary-600: #0284c7;
-    --color-primary-700: #0369a1;
-    --color-primary-800: #075985;
-    --color-primary-900: #023047;
-    /* Deep Space Blue */
-    --color-primary-950: #011b29;
-
-    /* Secondary - Fire & Energy */
-    --color-secondary-400: #ffcf54;
-    --color-secondary-500: #FFB703;
-    /* Amber Flame */
-    --color-secondary-600: #FB8500;
-    /* Tiger Orange */
-    --color-secondary-700: #ea580c;
-
-    /* Neutral - Cool Slate */
+    /* Neutral - Serious Precise Slate */
     --color-neutral-50: #f8fafc;
     --color-neutral-100: #f1f5f9;
     --color-neutral-200: #e2e8f0;
@@ -70,6 +45,24 @@
     --color-neutral-800: #1e293b;
     --color-neutral-900: #0f172a;
     --color-neutral-950: #020617;
+
+    /* Semantic Overrides for the Sovereign Aesthetic */
+    --color-primary-50: #f8fafc;
+    --color-primary-100: #f1f5f9;
+    --color-primary-200: #e2e8f0;
+    --color-primary-300: #cbd5e1;
+    --color-primary-400: #94a3b8;
+    --color-primary-500: #0f172a;
+    /* Slate Primary */
+    --color-primary-600: #020617;
+    --color-primary-700: #0f172a;
+    --color-primary-800: #0f172a;
+    --color-primary-900: #000000;
+    --color-primary-950: #000000;
+
+    --color-secondary-500: #b45309;
+    /* Gold Secondary */
+    --color-secondary-600: #92400e;
 
     --color-success: #10b981;
     --color-warning: #FFB703;
@@ -92,18 +85,19 @@
     --shadow-premium: var(--shadow-liquid);
     --shadow-premium-lg: var(--shadow-liquid-deep);
 
-    /* Glass Tokens */
-    --glass-border: rgba(255, 255, 255, 0.4);
-    --glass-border-bright: rgba(255, 255, 255, 0.7);
-    --blur-premium: 40px;
+    /* Precision Tokens */
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-border-bright: rgba(255, 255, 255, 0.2);
+    --blur-premium: 10px;
+    --radius-technical: 2px;
 }
 
 @utility liquid-glass {
-    background-color: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(40px) saturate(200%);
-    -webkit-backdrop-filter: blur(40px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: var(--shadow-liquid);
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 @utility liquid-glass-dark {
@@ -126,7 +120,7 @@
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    background-image: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-500) 50%, var(--color-primary-900) 100%);
+    background-image: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-primary-500) 50%, var(--color-primary-600) 100%);
     background-size: 200% auto;
     animation: text-shimmer 4s linear infinite;
     will-change: background-position;

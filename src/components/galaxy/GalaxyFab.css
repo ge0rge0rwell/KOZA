@@ -1,4 +1,4 @@
-@reference "../../index.css";
+@reference "../../theme.css";
 
 .galaxy-fab {
     @apply fixed bottom-32 right-8 z-50 flex items-center justify-center border-none bg-transparent cursor-pointer transition-liquid outline-none;

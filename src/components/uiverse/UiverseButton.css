@@ -1,4 +1,4 @@
-@reference "../../index.css";
+@reference "../../theme.css";
 
 .uiverse-button {
     @apply transition-liquid relative overflow-hidden;

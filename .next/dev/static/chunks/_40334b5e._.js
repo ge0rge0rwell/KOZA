@@ -839,30 +839,41 @@ const GameView = ({ game, onClose })=>{
                 }["GameView.useCallback[handleOptionSelect]"]);
                 awardXP(50, 'Right decision');
             }
-            setTimeout({
-                "GameView.useCallback[handleOptionSelect]": ()=>{
+        }
+    }["GameView.useCallback[handleOptionSelect]"], [
+        awardXP
+    ]);
+    // Drive level progression in an effect so the timeout is properly cleaned up
+    // if the component unmounts before it fires (e.g. user closes the game mid-answer)
+    useEffect({
+        "GameView.useEffect": ()=>{
+            if (!showFeedback) return;
+            const timer = setTimeout({
+                "GameView.useEffect.timer": ()=>{
                     if (currentLevel < levels.length - 1) {
                         setCurrentLevel({
-                            "GameView.useCallback[handleOptionSelect]": (prev)=>prev + 1
-                        }["GameView.useCallback[handleOptionSelect]"]);
+                            "GameView.useEffect.timer": (prev)=>prev + 1
+                        }["GameView.useEffect.timer"]);
                         setSelectedOption(null);
                         setShowFeedback(false);
                     } else {
-                        // EXTREME OPTIMIZATION: Finalize state
                         setUser({
-                            "GameView.useCallback[handleOptionSelect]": (prev)=>({
+                            "GameView.useEffect.timer": (prev)=>({
                                     ...prev,
                                     gamesPlayed: prev.gamesPlayed + 1
                                 })
-                        }["GameView.useCallback[handleOptionSelect]"]);
+                        }["GameView.useEffect.timer"]);
                     }
                 }
-            }["GameView.useCallback[handleOptionSelect]"], 2000);
+            }["GameView.useEffect.timer"], 2000);
+            return ({
+                "GameView.useEffect": ()=>clearTimeout(timer)
+            })["GameView.useEffect"];
         }
-    }["GameView.useCallback[handleOptionSelect]"], [
+    }["GameView.useEffect"], [
+        showFeedback,
         currentLevel,
         levels.length,
-        awardXP,
         setUser
     ]);
     const isCompleted = currentLevel === levels.length - 1 && showFeedback;
@@ -876,7 +887,7 @@ const GameView = ({ game, onClose })=>{
                 onClose: onClose
             }, void 0, false, {
                 fileName: "[project]/src/views/GameView.jsx",
-                lineNumber: 159,
+                lineNumber: 166,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -892,7 +903,7 @@ const GameView = ({ game, onClose })=>{
                         selectedOption: selectedOption
                     }, void 0, false, {
                         fileName: "[project]/src/views/GameView.jsx",
-                        lineNumber: 169,
+                        lineNumber: 176,
                         columnNumber: 25
                     }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CompletionCard, {
                         score: score,
@@ -900,27 +911,27 @@ const GameView = ({ game, onClose })=>{
                         onClose: onClose
                     }, void 0, false, {
                         fileName: "[project]/src/views/GameView.jsx",
-                        lineNumber: 178,
+                        lineNumber: 185,
                         columnNumber: 25
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/views/GameView.jsx",
-                    lineNumber: 167,
+                    lineNumber: 174,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/views/GameView.jsx",
-                lineNumber: 166,
+                lineNumber: 173,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/views/GameView.jsx",
-        lineNumber: 158,
+        lineNumber: 165,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };
-_s(GameView, "siChDQ+7F1Zk1qKFy2ckeSYR0OQ=", false, function() {
+_s(GameView, "pjwGYnyMVwb7IWx/SbV+TA5JVPc=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$UserContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useUser"]
     ];

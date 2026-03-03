@@ -1234,7 +1234,7 @@ const AuthProvider = ({ children })=>{
             };
         }
     };
-    const ADMIN_EMAIL = 'oguzhanacar.bt@gmail.com';
+    const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || '';
     const value = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].useMemo(()=>({
             user,
             isAdmin: user?.email === ADMIN_EMAIL,
@@ -1680,6 +1680,7 @@ class Analytics {
     constructor(){
         this.events = [];
         this.sessionStart = Date.now();
+        this._saveTimer = null;
     }
     track(eventName, properties = {}) {
         const event = {
@@ -1689,9 +1690,10 @@ class Analytics {
             ...properties
         };
         this.events.push(event);
-        // Store in localStorage for persistence
-        this.saveToStorage();
-        // Send to Google Analytics
+        // Debounce storage writes: batch into a single write every 2s
+        if (this._saveTimer) clearTimeout(this._saveTimer);
+        this._saveTimer = setTimeout(()=>this.saveToStorage(), 2000);
+        // Send to Google Analytics immediately
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$googleAnalytics$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["googleAnalytics"].trackEvent('app_interaction', eventName, properties.label || '', properties.value || undefined);
         console.log('📊 Analytics:', eventName, properties);
     }
@@ -1704,6 +1706,7 @@ class Analytics {
             ].slice(-100); // Keep last 100 events
             localStorage.setItem('koza-analytics', JSON.stringify(combined));
             this.events = [];
+            this._saveTimer = null;
         } catch (e) {
             console.error('Failed to save analytics:', e);
         }
@@ -1754,22 +1757,22 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$xstate$2f$
 ;
 const UserContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createContext"])(null);
 const DEFAULT_USER = {
-    xp: 850,
+    xp: 0,
     level: 1,
     nextLevelXp: 1000,
-    storiesRead: 3,
-    gamesPlayed: 1,
+    storiesRead: 0,
+    gamesPlayed: 0,
     storiesCreated: 0,
     gamesCreated: 0,
-    totalXP: 850,
+    totalXP: 0,
     dailyStreak: 0,
     lastVisit: null,
-    title: "Empathy Apprentice",
+    title: "Newcomer",
     badges: [
         {
             id: 1,
             name: "First Step",
-            unlocked: true
+            unlocked: false
         },
         {
             id: 2,
@@ -1849,7 +1852,7 @@ const UserProvider = ({ children })=>{
             if (diff > 0) {
                 // We don't have the 'reason' here easily unless we store it in machine context 
                 // or listen to the event. For now, generic reason or passed via a side-channel?
-                // Actually, we can just say "XP Kazanıldı".
+                // Actually, we can just say "XP Awarded".
                 setLastUserEvent({
                     type: 'xp',
                     amount: diff,
@@ -2213,7 +2216,9 @@ const StoryProvider = ({ children })=>{
         storyActor
     ]); // data deps removed to avoid loops, relying on remote events
     const saveStory = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(async (story)=>{
-        const storyId = String(Date.now());
+        // Use crypto.randomUUID() instead of Date.now() to prevent ID collisions
+        // when multiple stories are saved within the same millisecond
+        const storyId = typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
         const newStory = {
             id: storyId,
             ...story,
@@ -2354,7 +2359,7 @@ const StoryProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "[project]/src/context/StoryContext.jsx",
-        lineNumber: 206,
+        lineNumber: 210,
         columnNumber: 12
     }, ("TURBOPACK compile-time value", void 0));
 };

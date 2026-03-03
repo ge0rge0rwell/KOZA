@@ -10,8 +10,8 @@ import LoginForm from '../components/auth/LoginForm';
 const FeatureCard = memo(({ icon: Icon, title, description, colorClass }) => (
     <div className={`p-8 bg-white/80 backdrop-blur-md rounded-3xl border border-neutral-100 transition-all shadow-sm hover:shadow-xl hover:-translate-y-1 will-change-transform ${colorClass}`}>
         <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 
-            ${colorClass.includes('secondary') ? 'bg-secondary-400/10 text-secondary-600' :
-                colorClass.includes('primary-900') ? 'bg-primary-900/5 text-primary-900' :
+            ${colorClass.includes('secondary') ? 'bg-secondary-500/10 text-secondary-600' :
+                colorClass.includes('primary-900') ? 'bg-primary-500/5 text-primary-500' :
                     'bg-primary-500/10 text-primary-600'}`}>
             <Icon size={24} />
         </div>
@@ -22,9 +22,9 @@ const FeatureCard = memo(({ icon: Icon, title, description, colorClass }) => (
 
 const HeroSection = memo(({ onStart }) => (
     <div className="text-center mb-16 animate-fade-in-up flex flex-col items-center">
-        <h1 className="text-5xl md:text-8xl font-black mb-8 leading-tight tracking-tighter text-neutral-900 italic">
-            <span className="block">Bullying Shouldn't Break You</span>
-            <span className="bg-gradient-to-r from-primary-500 via-primary-600 to-secondary-500 bg-clip-text text-transparent">It Should Empower You</span>
+        <h1 className="text-5xl md:text-8xl font-black mb-8 leading-tight tracking-tighter text-neutral-900 uppercase">
+            <span className="block italic text-neutral-400">Chaos is Noise.</span>
+            <span className="bg-gradient-to-r from-primary-500 via-primary-600 to-secondary-500 bg-clip-text text-transparent">KOZA is Signal.</span>
         </h1>
 
         <div className="w-full max-w-5xl relative mb-12 animate-float will-change-transform">
@@ -36,9 +36,9 @@ const HeroSection = memo(({ onStart }) => (
             </div>
         </div>
 
-        <p className="text-lg md:text-xl text-neutral-500 max-w-2xl mx-auto font-bold leading-relaxed mb-12 opacity-80">
-            You are not alone in your struggle against bullying. <br className="hidden md:block" />
-            Step out of your cocoon, rewrite your story, and discover the power of transformation.
+        <p className="text-lg md:text-xl text-neutral-500 max-w-2xl mx-auto font-bold leading-relaxed mb-12 opacity-80 border-l-2 border-primary-500 pl-6 text-left">
+            Eliminate cognitive entropy. Decompress narrative debt. <br className="hidden md:block" />
+            Establish sovereign mental agency through recursive structural auditing.
         </p>
 
         <button
@@ -46,7 +46,7 @@ const HeroSection = memo(({ onStart }) => (
             className="group relative flex items-center justify-center gap-3 px-12 py-5 bg-neutral-900 text-white rounded-full font-black transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-neutral-900/20 cursor-pointer overflow-hidden"
         >
             <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-secondary-500/20 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
-            <span className="relative z-10 uppercase tracking-widest">Start the Journey</span>
+            <span className="relative z-10 uppercase tracking-widest">Establish Sovereignty</span>
             <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" />
         </button>
     </div>
@@ -61,13 +61,13 @@ const HomePage = () => {
     const closeLogin = useCallback(() => setShowLogin(false), []);
 
     const features = useMemo(() => [
-        { icon: Zap, title: "Stories", description: "A new story every day that turns negativity into power.", colorClass: "hover:border-secondary-500" },
-        { icon: Heart, title: "Community", description: "Together with thousands of people walking the same path.", colorClass: "hover:border-primary-500" },
-        { icon: Shield, title: "Security", description: "Your data is end-to-end encrypted and completely safe.", colorClass: "hover:border-primary-900" }
+        { icon: Zap, title: "Audits", description: "Daily structural decompression of narrative vectors.", colorClass: "hover:border-secondary-500" },
+        { icon: Heart, title: "Precision", description: "Eliminate emotional noise with 99.9% structural accuracy.", colorClass: "hover:border-primary-500" },
+        { icon: Shield, title: "Privacy", description: "End-to-end encrypted cognitive data vault.", colorClass: "hover:border-primary-600" }
     ], []);
 
     return (
-        <div className="min-h-screen bg-[#FDFDFD] text-[#1A1A1A] font-sans selection:bg-primary-100 selection:text-primary-900 overflow-x-hidden">
+        <div className="min-h-screen bg-[#FDFDFD] text-[#1A1A1A] font-sans selection:bg-primary-100 selection:text-primary-600 overflow-x-hidden">
             {/* Background Effects */}
             <div className="fixed inset-0 z-0 opacity-40 will-change-opacity pointer-events-none">
                 <TransformationCanvas color="#219EBC" intensity={0.08} active={!showLogin} />

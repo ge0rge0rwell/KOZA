@@ -941,7 +941,7 @@ const FeatureCard = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: `w-12 h-12 rounded-xl flex items-center justify-center mb-6 
-            ${colorClass.includes('secondary') ? 'bg-secondary-400/10 text-secondary-600' : colorClass.includes('primary-900') ? 'bg-primary-900/5 text-primary-900' : 'bg-primary-500/10 text-primary-600'}`,
+            ${colorClass.includes('secondary') ? 'bg-secondary-500/10 text-secondary-600' : colorClass.includes('primary-900') ? 'bg-primary-500/5 text-primary-500' : 'bg-primary-500/10 text-primary-600'}`,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
                     size: 24
                 }, void 0, false, {
@@ -981,11 +981,11 @@ const HeroSection = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
         className: "text-center mb-16 animate-fade-in-up flex flex-col items-center",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                className: "text-5xl md:text-8xl font-black mb-8 leading-tight tracking-tighter text-neutral-900 italic",
+                className: "text-5xl md:text-8xl font-black mb-8 leading-tight tracking-tighter text-neutral-900 uppercase",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "block",
-                        children: "Bullying Shouldn't Break You"
+                        className: "block italic text-neutral-400",
+                        children: "Chaos is Noise."
                     }, void 0, false, {
                         fileName: "[project]/src/views/HomePage.jsx",
                         lineNumber: 26,
@@ -993,7 +993,7 @@ const HeroSection = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: "bg-gradient-to-r from-primary-500 via-primary-600 to-secondary-500 bg-clip-text text-transparent",
-                        children: "It Should Empower You"
+                        children: "KOZA is Signal."
                     }, void 0, false, {
                         fileName: "[project]/src/views/HomePage.jsx",
                         lineNumber: 27,
@@ -1044,17 +1044,17 @@ const HeroSection = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-lg md:text-xl text-neutral-500 max-w-2xl mx-auto font-bold leading-relaxed mb-12 opacity-80",
+                className: "text-lg md:text-xl text-neutral-500 max-w-2xl mx-auto font-bold leading-relaxed mb-12 opacity-80 border-l-2 border-primary-500 pl-6 text-left",
                 children: [
-                    "You are not alone in your struggle against bullying. ",
+                    "Eliminate cognitive entropy. Decompress narrative debt. ",
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {
                         className: "hidden md:block"
                     }, void 0, false, {
                         fileName: "[project]/src/views/HomePage.jsx",
                         lineNumber: 40,
-                        columnNumber: 66
+                        columnNumber: 69
                     }, ("TURBOPACK compile-time value", void 0)),
-                    "Step out of your cocoon, rewrite your story, and discover the power of transformation."
+                    "Establish sovereign mental agency through recursive structural auditing."
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/views/HomePage.jsx",
@@ -1074,7 +1074,7 @@ const HeroSection = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: "relative z-10 uppercase tracking-widest",
-                        children: "Start the Journey"
+                        children: "Establish Sovereignty"
                     }, void 0, false, {
                         fileName: "[project]/src/views/HomePage.jsx",
                         lineNumber: 49,
@@ -1118,26 +1118,26 @@ const HomePage = ()=>{
         "HomePage.useMemo[features]": ()=>[
                 {
                     icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$zap$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Zap$3e$__["Zap"],
-                    title: "Stories",
-                    description: "A new story every day that turns negativity into power.",
+                    title: "Audits",
+                    description: "Daily structural decompression of narrative vectors.",
                     colorClass: "hover:border-secondary-500"
                 },
                 {
                     icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$heart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Heart$3e$__["Heart"],
-                    title: "Community",
-                    description: "Together with thousands of people walking the same path.",
+                    title: "Precision",
+                    description: "Eliminate emotional noise with 99.9% structural accuracy.",
                     colorClass: "hover:border-primary-500"
                 },
                 {
                     icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__["Shield"],
-                    title: "Security",
-                    description: "Your data is end-to-end encrypted and completely safe.",
-                    colorClass: "hover:border-primary-900"
+                    title: "Privacy",
+                    description: "End-to-end encrypted cognitive data vault.",
+                    colorClass: "hover:border-primary-600"
                 }
             ]
     }["HomePage.useMemo[features]"], []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "min-h-screen bg-[#FDFDFD] text-[#1A1A1A] font-sans selection:bg-primary-100 selection:text-primary-900 overflow-x-hidden",
+        className: "min-h-screen bg-[#FDFDFD] text-[#1A1A1A] font-sans selection:bg-primary-100 selection:text-primary-600 overflow-x-hidden",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "fixed inset-0 z-0 opacity-40 will-change-opacity pointer-events-none",
@@ -1368,32 +1368,34 @@ var _s = __turbopack_context__.k.signature();
 const Onboarding = ({ onComplete })=>{
     _s();
     const [step, setStep] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].useState(0);
-    const steps = [
-        {
-            icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"],
-            title: "Welcome to KOZA",
-            description: "Transform your experiences into empowering stories and games. Every challenge is an opportunity for transformation.",
-            color: "primary"
-        },
-        {
-            icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$target$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Target$3e$__["Target"],
-            title: "Create a Story",
-            description: "Tell the challenge you're facing, and let our AI-powered tools turn it into a meaningful story.",
-            color: "success"
-        },
-        {
-            icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trending$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TrendingUp$3e$__["TrendingUp"],
-            title: "Track Your Growth",
-            description: "Earn XP, level up, and collect badges with every story and game.",
-            color: "warning"
-        },
-        {
-            icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$award$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Award$3e$__["Award"],
-            title: "Your Legacy",
-            description: "Discover your own transformation and store your experiences safely.",
-            color: "error"
-        }
-    ];
+    const steps = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "Onboarding.useMemo[steps]": ()=>[
+                {
+                    icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"],
+                    title: "Welcome to KOZA",
+                    description: "Transform your experiences into empowering stories and games. Every challenge is an opportunity for transformation.",
+                    color: "primary"
+                },
+                {
+                    icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$target$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Target$3e$__["Target"],
+                    title: "Create a Story",
+                    description: "Tell the challenge you're facing, and let our AI-powered tools turn it into a meaningful story.",
+                    color: "success"
+                },
+                {
+                    icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trending$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TrendingUp$3e$__["TrendingUp"],
+                    title: "Track Your Growth",
+                    description: "Earn XP, level up, and collect badges with every story and game.",
+                    color: "warning"
+                },
+                {
+                    icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$award$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Award$3e$__["Award"],
+                    title: "Your Legacy",
+                    description: "Discover your own transformation and store your experiences safely.",
+                    color: "error"
+                }
+            ]
+    }["Onboarding.useMemo[steps]"], []);
     const currentStep = steps[step];
     const Icon = currentStep.icon;
     const colorMap = {
@@ -1497,7 +1499,7 @@ const Onboarding = ({ onComplete })=>{
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };
-_s(Onboarding, "5L63dQvunH1XgKOLcNNkxeDh1IM=");
+_s(Onboarding, "HWYOOzBZCMpFdwhwoxlF5BFUYqU=");
 _c = Onboarding;
 const __TURBOPACK__default__export__ = Onboarding;
 var _c;
@@ -1887,6 +1889,8 @@ const Header = ()=>{
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: toggleDropdown,
+                            "aria-label": `User menu for ${authUser.displayName || authUser.email}`,
+                            "aria-expanded": showDropdown,
                             className: "flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer",
                             children: authUser.photoURL && !imgError ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                 src: authUser.photoURL,
@@ -1895,7 +1899,7 @@ const Header = ()=>{
                                 onError: ()=>setImgError(true)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/layout/Header.jsx",
-                                lineNumber: 82,
+                                lineNumber: 84,
                                 columnNumber: 33
                             }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "w-10 h-10 bg-white/60 flex items-center justify-center text-neutral-500 morph-shape border border-white/50",
@@ -1903,12 +1907,12 @@ const Header = ()=>{
                                     size: 20
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/layout/Header.jsx",
-                                    lineNumber: 90,
+                                    lineNumber: 92,
                                     columnNumber: 37
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/layout/Header.jsx",
-                                lineNumber: 89,
+                                lineNumber: 91,
                                 columnNumber: 33
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
@@ -1921,7 +1925,7 @@ const Header = ()=>{
                             onSignOut: handleSignOut
                         }, void 0, false, {
                             fileName: "[project]/src/components/layout/Header.jsx",
-                            lineNumber: 96,
+                            lineNumber: 98,
                             columnNumber: 29
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
@@ -2064,23 +2068,27 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$gamepad$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Gamepad2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/gamepad-2.js [app-client] (ecmascript) <export default as Gamepad2>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/log-out.js [app-client] (ecmascript) <export default as LogOut>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-client] (ecmascript) <export default as Trash2>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$triangle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertTriangle$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/triangle-alert.js [app-client] (ecmascript) <export default as AlertTriangle>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$UIContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/context/UIContext.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AuthContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/context/AuthContext.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$StoryContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/context/StoryContext.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$Logo$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/Logo.jsx [app-client] (ecmascript)");
 ;
-var _s = __turbopack_context__.k.signature();
+var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature();
 ;
 ;
 ;
 ;
 ;
 ;
-const SidebarItem = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(({ story, onClick, onDelete })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        onClick: ()=>onClick(story),
+const SidebarItem = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(_s(({ story, onClick, onDelete })=>{
+    _s();
+    const [confirmOpen, setConfirmOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "group relative w-full text-left p-3 rounded-xl hover:bg-neutral-50 transition-all cursor-pointer border border-transparent hover:border-neutral-100 will-change-transform",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                onClick: ()=>onClick(story),
                 className: "flex items-start gap-3",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2089,19 +2097,19 @@ const SidebarItem = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                             size: 16
                         }, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.jsx",
-                            lineNumber: 15,
-                            columnNumber: 43
+                            lineNumber: 17,
+                            columnNumber: 47
                         }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$gamepad$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Gamepad2$3e$__["Gamepad2"], {
                             size: 16
                         }, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.jsx",
-                            lineNumber: 15,
-                            columnNumber: 68
+                            lineNumber: 17,
+                            columnNumber: 72
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/Sidebar.jsx",
-                        lineNumber: 14,
-                        columnNumber: 13
+                        lineNumber: 16,
+                        columnNumber: 17
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex-1 min-w-0",
@@ -2111,8 +2119,8 @@ const SidebarItem = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                                 children: story.title || 'Untitled Transformation'
                             }, void 0, false, {
                                 fileName: "[project]/src/components/layout/Sidebar.jsx",
-                                lineNumber: 18,
-                                columnNumber: 17
+                                lineNumber: 20,
+                                columnNumber: 21
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-[10px] font-bold text-neutral-400 mt-0.5 uppercase tracking-widest",
@@ -2122,46 +2130,102 @@ const SidebarItem = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/src/components/layout/Sidebar.jsx",
-                                lineNumber: 21,
-                                columnNumber: 17
+                                lineNumber: 23,
+                                columnNumber: 21
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/layout/Sidebar.jsx",
-                        lineNumber: 17,
-                        columnNumber: 13
+                        lineNumber: 19,
+                        columnNumber: 17
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/layout/Sidebar.jsx",
-                lineNumber: 13,
-                columnNumber: 9
+                lineNumber: 15,
+                columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                onClick: (e)=>onDelete(e, story.id),
+            confirmOpen ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "mt-2 flex items-center gap-2 bg-red-50 border border-red-100 rounded-lg p-2",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$triangle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertTriangle$3e$__["AlertTriangle"], {
+                        size: 12,
+                        className: "text-red-500 shrink-0"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/layout/Sidebar.jsx",
+                        lineNumber: 32,
+                        columnNumber: 21
+                    }, ("TURBOPACK compile-time value", void 0)),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        className: "text-[10px] text-red-600 font-bold flex-1",
+                        children: "Delete?"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/layout/Sidebar.jsx",
+                        lineNumber: 33,
+                        columnNumber: 21
+                    }, ("TURBOPACK compile-time value", void 0)),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        onClick: (e)=>{
+                            e.stopPropagation();
+                            onDelete(e, story.id);
+                            setConfirmOpen(false);
+                        },
+                        className: "px-2 py-0.5 bg-red-500 text-white rounded text-[10px] font-bold hover:bg-red-600",
+                        "aria-label": "Confirm delete",
+                        children: "Yes"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/layout/Sidebar.jsx",
+                        lineNumber: 34,
+                        columnNumber: 21
+                    }, ("TURBOPACK compile-time value", void 0)),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        onClick: (e)=>{
+                            e.stopPropagation();
+                            setConfirmOpen(false);
+                        },
+                        className: "px-2 py-0.5 bg-neutral-200 text-neutral-600 rounded text-[10px] font-bold hover:bg-neutral-300",
+                        "aria-label": "Cancel delete",
+                        children: "No"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/layout/Sidebar.jsx",
+                        lineNumber: 39,
+                        columnNumber: 21
+                    }, ("TURBOPACK compile-time value", void 0))
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/layout/Sidebar.jsx",
+                lineNumber: 31,
+                columnNumber: 17
+            }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                onClick: (e)=>{
+                    e.stopPropagation();
+                    setConfirmOpen(true);
+                },
                 className: "absolute top-2 right-2 p-1.5 text-neutral-400 opacity-0 group-hover:opacity-100 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all z-10",
+                "aria-label": "Delete story",
                 title: "Delete",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__["Trash2"], {
                     size: 14
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/Sidebar.jsx",
-                    lineNumber: 31,
-                    columnNumber: 13
+                    lineNumber: 52,
+                    columnNumber: 21
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/components/layout/Sidebar.jsx",
-                lineNumber: 26,
-                columnNumber: 9
+                lineNumber: 46,
+                columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/layout/Sidebar.jsx",
-        lineNumber: 9,
-        columnNumber: 5
-    }, ("TURBOPACK compile-time value", void 0)));
+        lineNumber: 12,
+        columnNumber: 9
+    }, ("TURBOPACK compile-time value", void 0));
+}, "K0P4KBWx07RrP/6wa1lswi6XsbQ="));
 _c = SidebarItem;
 const Sidebar = ()=>{
-    _s();
+    _s1();
     const { setCurrentView, setActiveTab } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$UIContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useUI"])();
     const { signOut } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AuthContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"])();
     const { savedStories, deleteStory } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$StoryContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useStory"])();
@@ -2178,9 +2242,7 @@ const Sidebar = ()=>{
     const handleDelete = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "Sidebar.useCallback[handleDelete]": (e, id)=>{
             e.stopPropagation();
-            if (window.confirm('Are you sure you want to delete this story?')) {
-                deleteStory(id);
-            }
+            deleteStory(id);
         }
     }["Sidebar.useCallback[handleDelete]"], [
         deleteStory
@@ -2193,7 +2255,7 @@ const Sidebar = ()=>{
                         onDelete: handleDelete
                     }, story.id, false, {
                         fileName: "[project]/src/components/layout/Sidebar.jsx",
-                        lineNumber: 54,
+                        lineNumber: 75,
                         columnNumber: 13
                     }, ("TURBOPACK compile-time value", void 0))
             }["Sidebar.useMemo[storyItems]"])
@@ -2211,12 +2273,12 @@ const Sidebar = ()=>{
                     size: "lg"
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/Sidebar.jsx",
-                    lineNumber: 66,
+                    lineNumber: 87,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/components/layout/Sidebar.jsx",
-                lineNumber: 65,
+                lineNumber: 86,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2227,7 +2289,7 @@ const Sidebar = ()=>{
                         children: "Your Legacy"
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/Sidebar.jsx",
-                        lineNumber: 70,
+                        lineNumber: 91,
                         columnNumber: 17
                     }, ("TURBOPACK compile-time value", void 0)),
                     savedStories.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2237,25 +2299,25 @@ const Sidebar = ()=>{
                             children: "You don't have a metamorphosis story yet."
                         }, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.jsx",
-                            lineNumber: 76,
+                            lineNumber: 97,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/Sidebar.jsx",
-                        lineNumber: 75,
+                        lineNumber: 96,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "space-y-1",
                         children: storyItems
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/Sidebar.jsx",
-                        lineNumber: 79,
+                        lineNumber: 100,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/layout/Sidebar.jsx",
-                lineNumber: 69,
+                lineNumber: 90,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2268,35 +2330,35 @@ const Sidebar = ()=>{
                             size: 20
                         }, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.jsx",
-                            lineNumber: 90,
+                            lineNumber: 111,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                             children: "Sign Out"
                         }, void 0, false, {
                             fileName: "[project]/src/components/layout/Sidebar.jsx",
-                            lineNumber: 91,
+                            lineNumber: 112,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/layout/Sidebar.jsx",
-                    lineNumber: 86,
+                    lineNumber: 107,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/components/layout/Sidebar.jsx",
-                lineNumber: 85,
+                lineNumber: 106,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/layout/Sidebar.jsx",
-        lineNumber: 64,
+        lineNumber: 85,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };
-_s(Sidebar, "lYdOG5E8U9i5j6VXcyngqEG2udU=", false, function() {
+_s1(Sidebar, "lYdOG5E8U9i5j6VXcyngqEG2udU=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$UIContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useUI"],
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AuthContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"],
@@ -3403,7 +3465,7 @@ const MainLayout = ({ children })=>{
         isAdmin
     ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "flex h-screen bg-white/10 backdrop-blur-3xl koza-pattern text-neutral-900 selection:bg-primary-100 selection:text-primary-900 overflow-hidden font-sans",
+        className: "flex h-screen bg-white/10 backdrop-blur-3xl koza-pattern text-neutral-900 selection:bg-primary-100 selection:text-primary-600 overflow-hidden font-sans",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$layout$2f$Sidebar$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/src/components/layout/MainLayout.jsx",
@@ -3570,21 +3632,23 @@ const GameView = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d
 _c2 = GameView;
 const ProfileView = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["lazy"])(()=>__turbopack_context__.A("[project]/src/views/ProfileView.jsx [app-client] (ecmascript, async loader)"));
 _c3 = ProfileView;
+const PricingView = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["lazy"])(()=>__turbopack_context__.A("[project]/src/views/PricingView.jsx [app-client] (ecmascript, async loader)"));
+_c4 = PricingView;
 const FallbackLoader = ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "flex items-center justify-center p-20 animate-fade-in-up",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$galaxy$2f$GalaxySpinner$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
             size: "large"
         }, void 0, false, {
             fileName: "[project]/src/router/AppRouter.jsx",
-            lineNumber: 13,
+            lineNumber: 14,
             columnNumber: 9
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/src/router/AppRouter.jsx",
-        lineNumber: 12,
+        lineNumber: 13,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
-_c4 = FallbackLoader;
+_c5 = FallbackLoader;
 const AppRouter = ()=>{
     _s();
     const { currentView, setCurrentView, activeTab } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$UIContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useUI"])();
@@ -3593,7 +3657,7 @@ const AppRouter = ()=>{
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
             fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FallbackLoader, {}, void 0, false, {
                 fileName: "[project]/src/router/AppRouter.jsx",
-                lineNumber: 23,
+                lineNumber: 24,
                 columnNumber: 33
             }, void 0),
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(StoryView, {
@@ -3601,12 +3665,12 @@ const AppRouter = ()=>{
                 onClose: ()=>setCurrentView(null)
             }, void 0, false, {
                 fileName: "[project]/src/router/AppRouter.jsx",
-                lineNumber: 24,
+                lineNumber: 25,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/src/router/AppRouter.jsx",
-            lineNumber: 23,
+            lineNumber: 24,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -3614,7 +3678,7 @@ const AppRouter = ()=>{
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
             fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FallbackLoader, {}, void 0, false, {
                 fileName: "[project]/src/router/AppRouter.jsx",
-                lineNumber: 31,
+                lineNumber: 32,
                 columnNumber: 33
             }, void 0),
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(GameView, {
@@ -3622,12 +3686,12 @@ const AppRouter = ()=>{
                 onClose: ()=>setCurrentView(null)
             }, void 0, false, {
                 fileName: "[project]/src/router/AppRouter.jsx",
-                lineNumber: 32,
+                lineNumber: 33,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/src/router/AppRouter.jsx",
-            lineNumber: 31,
+            lineNumber: 32,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -3635,19 +3699,39 @@ const AppRouter = ()=>{
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
             fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FallbackLoader, {}, void 0, false, {
                 fileName: "[project]/src/router/AppRouter.jsx",
-                lineNumber: 39,
+                lineNumber: 40,
                 columnNumber: 33
             }, void 0),
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ProfileView, {
                 onClose: ()=>setCurrentView(null)
             }, void 0, false, {
                 fileName: "[project]/src/router/AppRouter.jsx",
-                lineNumber: 40,
+                lineNumber: 41,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/src/router/AppRouter.jsx",
-            lineNumber: 39,
+            lineNumber: 40,
+            columnNumber: 13
+        }, ("TURBOPACK compile-time value", void 0));
+    }
+    if (currentView?.type === 'pricing') {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
+            fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FallbackLoader, {}, void 0, false, {
+                fileName: "[project]/src/router/AppRouter.jsx",
+                lineNumber: 48,
+                columnNumber: 33
+            }, void 0),
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(PricingView, {
+                onClose: ()=>setCurrentView(null)
+            }, void 0, false, {
+                fileName: "[project]/src/router/AppRouter.jsx",
+                lineNumber: 49,
+                columnNumber: 17
+            }, ("TURBOPACK compile-time value", void 0))
+        }, void 0, false, {
+            fileName: "[project]/src/router/AppRouter.jsx",
+            lineNumber: 48,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -3657,22 +3741,22 @@ const AppRouter = ()=>{
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
             fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FallbackLoader, {}, void 0, false, {
                 fileName: "[project]/src/router/AppRouter.jsx",
-                lineNumber: 48,
+                lineNumber: 57,
                 columnNumber: 33
             }, void 0),
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CreateTab, {}, void 0, false, {
                 fileName: "[project]/src/router/AppRouter.jsx",
-                lineNumber: 49,
+                lineNumber: 58,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/src/router/AppRouter.jsx",
-            lineNumber: 48,
+            lineNumber: 57,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0))
     }, activeTab, false, {
         fileName: "[project]/src/router/AppRouter.jsx",
-        lineNumber: 47,
+        lineNumber: 56,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -3681,16 +3765,17 @@ _s(AppRouter, "VBeBpISi48GMlRgFb6ZHKWKrb/g=", false, function() {
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$UIContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useUI"]
     ];
 });
-_c5 = AppRouter;
-const __TURBOPACK__default__export__ = /*#__PURE__*/ _c6 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(AppRouter);
-var _c, _c1, _c2, _c3, _c4, _c5, _c6;
+_c6 = AppRouter;
+const __TURBOPACK__default__export__ = /*#__PURE__*/ _c7 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(AppRouter);
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7;
 __turbopack_context__.k.register(_c, "CreateTab");
 __turbopack_context__.k.register(_c1, "StoryView");
 __turbopack_context__.k.register(_c2, "GameView");
 __turbopack_context__.k.register(_c3, "ProfileView");
-__turbopack_context__.k.register(_c4, "FallbackLoader");
-__turbopack_context__.k.register(_c5, "AppRouter");
-__turbopack_context__.k.register(_c6, "%default%");
+__turbopack_context__.k.register(_c4, "PricingView");
+__turbopack_context__.k.register(_c5, "FallbackLoader");
+__turbopack_context__.k.register(_c6, "AppRouter");
+__turbopack_context__.k.register(_c7, "%default%");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -3741,7 +3826,7 @@ const App = ()=>{
     if (authLoading) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$KozaLoader$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
             fullScreen: true,
-            message: "Dönüşüm Hazırlanıyor..."
+            message: "Preparing Your Transformation..."
         }, void 0, false, {
             fileName: "[project]/src/App.jsx",
             lineNumber: 25,

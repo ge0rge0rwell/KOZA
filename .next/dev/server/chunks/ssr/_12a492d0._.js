@@ -274,15 +274,32 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ErrorBo
 ;
 ;
 const metadata = {
-    title: 'KOZA.AI',
-    description: 'KOZA.AI: Transform your challenges into stories and evolve.'
+    title: 'KOZA – The Sovereign Mind | Cognitive Processing System',
+    description: 'Transform chaos into structure. Decompress narratives into actionable insights with the world\'s first cognitive auditing platform.',
+    openGraph: {
+        title: 'KOZA – The Sovereign Mind',
+        description: 'Elite cognitive processing for high-agency individuals.',
+        url: 'https://koza-app.vercel.app',
+        siteName: 'KOZA.AI',
+        locale: 'en_US',
+        type: 'website'
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'KOZA – The Sovereign Mind',
+        description: 'Elite cognitive processing for high-agency individuals.'
+    },
+    robots: {
+        index: true,
+        follow: true
+    }
 };
 const viewport = {
     width: 'device-width',
     initialScale: 1.0,
     maximumScale: 1.0,
     userScalable: false,
-    themeColor: '#9333ea'
+    themeColor: '#0f172a'
 };
 function RootLayout({ children }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("html", {
@@ -298,42 +315,42 @@ function RootLayout({ children }) {
                                     children: children
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/layout.jsx",
-                                    lineNumber: 30,
+                                    lineNumber: 44,
                                     columnNumber: 37
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/layout.jsx",
-                                lineNumber: 29,
+                                lineNumber: 43,
                                 columnNumber: 33
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/layout.jsx",
-                            lineNumber: 28,
+                            lineNumber: 42,
                             columnNumber: 29
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/layout.jsx",
-                        lineNumber: 27,
+                        lineNumber: 41,
                         columnNumber: 25
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/layout.jsx",
-                    lineNumber: 26,
+                    lineNumber: 40,
                     columnNumber: 21
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/layout.jsx",
-                lineNumber: 25,
+                lineNumber: 39,
                 columnNumber: 17
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/app/layout.jsx",
-            lineNumber: 24,
+            lineNumber: 38,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/layout.jsx",
-        lineNumber: 23,
+        lineNumber: 37,
         columnNumber: 9
     }, this);
 }

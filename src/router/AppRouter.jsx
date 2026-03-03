@@ -7,6 +7,7 @@ const CreateTab = lazy(() => import('../tabs/CreateTab'));
 const StoryView = lazy(() => import('../views/StoryView'));
 const GameView = lazy(() => import('../views/GameView'));
 const ProfileView = lazy(() => import('../views/ProfileView'));
+const PricingView = lazy(() => import('../views/PricingView'));
 
 const FallbackLoader = () => (
     <div className="flex items-center justify-center p-20 animate-fade-in-up">
@@ -38,6 +39,14 @@ const AppRouter = () => {
         return (
             <Suspense fallback={<FallbackLoader />}>
                 <ProfileView onClose={() => setCurrentView(null)} />
+            </Suspense>
+        );
+    }
+
+    if (currentView?.type === 'pricing') {
+        return (
+            <Suspense fallback={<FallbackLoader />}>
+                <PricingView onClose={() => setCurrentView(null)} />
             </Suspense>
         );
     }

@@ -6,8 +6,9 @@ import { useUI } from '../context/UIContext';
 import { useAuth } from '../context/AuthContext';
 import { NarrativeDomain } from '../domain/narrativeDomain';
 import { SAFETY_DISCLAIMER } from '../utils/safety';
-import { Sparkles, BookOpen, Gamepad2, AlertCircle, Zap, Star, GamepadIcon, HeadphonesIcon } from 'lucide-react';
+import { Sparkles, BookOpen, Gamepad2, AlertCircle, Zap, Star, GamepadIcon, HeadphonesIcon, BarChart3 } from 'lucide-react';
 
+import { ClarityService } from '../services/ClarityService';
 import GalaxyContainer from '../components/galaxy/GalaxyContainer';
 import GalaxyTabs from '../components/galaxy/GalaxyTabs';
 import GalaxyTextarea from '../components/galaxy/GalaxyTextarea';
@@ -21,28 +22,32 @@ import KozaLoader from '../components/ui/KozaLoader';
 // Memoized Sub-Components for Scale
 const CreateHeader = memo(() => (
     <div className="text-center mb-16 px-4">
-        <div className="galaxy-badge primary mb-6 group cursor-default">
-            <Sparkles size={14} className="group-hover:rotate-12 transition-liquid" />
-            <span>AI-Powered Metamorphosis</span>
+        <div className="galaxy-badge primary mb-6 group cursor-default border-neutral-800 bg-neutral-900/50 text-neutral-300">
+            <Zap size={14} className="text-amber-500" />
+            <span>Sovereign Cognitive Auditing</span>
         </div>
-        <h1 className="text-5xl font-black mb-4 tracking-tighter italic text-shimmer">
-            Transform Experience
+        <h1 className="text-6xl font-black mb-4 tracking-tight uppercase text-neutral-900">
+            Structuralize Experience
         </h1>
-        <p className="text-neutral-500 text-lg font-medium max-w-xl mx-auto leading-relaxed">
-            Turn your challenges into empowering stories and immersive games.
+        <p className="text-neutral-500 text-lg font-medium max-w-xl mx-auto leading-relaxed border-l-2 border-neutral-200 pl-6 text-left">
+            Decompress complex narratives into actionable signal. Minimize entropy.
         </p>
     </div>
 ));
 
-const StatsSection = memo(({ user }) => (
-    <div className="mt-20">
-        <GalaxyGrid cols={3}>
-            <GalaxyStat icon={BookOpen} label="Stories Created" value={user?.storiesCreated || 0} />
-            <GalaxyStat icon={GamepadIcon} label="Games Created" value={user?.gamesCreated || 0} />
-            <GalaxyStat icon={HeadphonesIcon} label="Audiobooks Created" value={Math.floor((user?.storiesCreated || 0) * 0.4)} />
-        </GalaxyGrid>
-    </div>
-));
+const StatsSection = memo(({ user }) => {
+    const entropyScore = ClarityService.getEntropyReductionScore(user);
+
+    return (
+        <div className="mt-20 border-t border-neutral-200 pt-12">
+            <GalaxyGrid cols={3}>
+                <GalaxyStat icon={BookOpen} label="Narratives Structuralized" value={user?.storiesCreated || 0} />
+                <GalaxyStat icon={Zap} label="Clarity Index" value={user?.xp || 0} />
+                <GalaxyStat icon={BarChart3} label="Entropy Reduced" value={`${entropyScore}%`} />
+            </GalaxyGrid>
+        </div>
+    );
+});
 
 const CreateTab = () => {
     const { user, awardXP } = useUser();
@@ -63,7 +68,7 @@ const CreateTab = () => {
         if (!activeStory.trim() || isProcessing) return;
         setError(null);
         setIsProcessing(true);
-        setStage('Metamorphosis beginning...');
+        setStage('Decompressing narrative vectors...');
 
         try {
             const result = await NarrativeDomain.processNarrativeRequest(activeStory, creationMode);
@@ -76,8 +81,10 @@ const CreateTab = () => {
             const { data } = result;
             setAnalysisResult({ type: creationMode, category: data.title, data });
             saveStory(data);
-            awardXP(500, creationMode === 'story' ? 'Story created' : 'Game created');
-            addToast('success', 'Success!', creationMode === 'story' ? 'Story created' : 'Game created');
+
+            const clarityGain = ClarityService.calculateClarityGain(activeStory, data);
+            awardXP(clarityGain, creationMode === 'story' ? 'Narrative structuralized' : 'Logic simulation generated');
+            addToast('success', 'Clarity Increased', `+${clarityGain} Clarity Index`);
         } catch (error) {
             console.error('Generation failed:', error);
             setError(error.message || 'An error occurred. Please try again.');
@@ -108,8 +115,8 @@ const CreateTab = () => {
                                 activeTab={creationMode}
                                 onChange={setCreationMode}
                                 tabs={[
-                                    { id: 'story', label: 'Story', icon: BookOpen },
-                                    { id: 'game', label: 'Game', icon: Gamepad2 }
+                                    { id: 'story', label: 'Structural Audit', icon: BookOpen },
+                                    { id: 'game', label: 'Logic Simulation', icon: Gamepad2 }
                                 ]}
                             />
                         </div>
@@ -118,7 +125,7 @@ const CreateTab = () => {
                             <GalaxyTextarea
                                 value={activeStory}
                                 onChange={setActiveStory}
-                                placeholder={creationMode === 'story' ? "Tell a moment you struggled with, let it become a story..." : "Tell a challenge, let it become an overcoming game..."}
+                                placeholder={creationMode === 'story' ? "Input raw narrative data for structural decompression..." : "Input cognitive challenges for logic simulation..."}
                                 disabled={isProcessing}
                                 minHeight="150px"
                             />
@@ -128,9 +135,9 @@ const CreateTab = () => {
                                     onClick={handleGenerate}
                                     disabled={!activeStory.trim() || isProcessing}
                                     icon={Sparkles}
-                                    variant="magic"
+                                    variant="primary"
                                 >
-                                    {creationMode === 'story' ? 'Transform to Story' : 'Transform to Game'}
+                                    {creationMode === 'story' ? 'Begin Structuralization' : 'Generate Simulation'}
                                 </GalaxyButton>
                             </div>
                         </div>
@@ -177,7 +184,14 @@ const CreateTab = () => {
                                 }}
                                 variant="secondary"
                             >
-                                Create New
+                                Process New Vector
+                            </GalaxyButton>
+                            <GalaxyButton
+                                onClick={() => setCurrentView({ type: 'pricing' })}
+                                variant="gold"
+                                icon={Zap}
+                            >
+                                Optimize System
                             </GalaxyButton>
                         </div>
                     </GalaxyCard>

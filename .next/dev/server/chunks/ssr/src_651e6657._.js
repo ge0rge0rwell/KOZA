@@ -55,15 +55,22 @@ const detectCrisis = (text)=>{
 const SAFETY_DISCLAIMER = "KOZA is an educational tool and does not replace professional psychological support.";
 const getSafetyFilter = (text)=>{
     if (!text || typeof text !== 'string') return '';
-    // Basic filter for toxic content (placeholder for more advanced NLP if needed)
-    // In a real app, this would use a more comprehensive list or an external API
-    const toxicPatterns = [
-        /küfür1/gi,
-        /küfür2/gi,
-        /hakaret1/gi
+    // Basic toxic word filter. These are common English slurs/profanity.
+    // For production-grade filtering, integrate an external NLP safety API
+    // such as Perspective API (https://perspectiveapi.com/) or AWS Comprehend.
+    const TOXIC_PATTERNS = [
+        /\bfuck(ing)?\b/gi,
+        /\bshit\b/gi,
+        /\bbitch\b/gi,
+        /\basthole\b/gi,
+        /\bcunt\b/gi,
+        /\bdick\b/gi,
+        /\bfaggot\b/gi,
+        /\bnigger\b/gi,
+        /\bwhore\b/gi
     ];
     let filtered = text;
-    toxicPatterns.forEach((pattern)=>{
+    TOXIC_PATTERNS.forEach((pattern)=>{
         filtered = filtered.replace(pattern, '***');
     });
     return filtered;
@@ -794,7 +801,7 @@ const callGemini = async (prompt, userInput, retries = 3)=>{
                         },
                         {
                             role: 'user',
-                            content: `${prompt}\n\nKullanıcının deneyimi: ${userInput}`
+                            content: `${prompt}\n\nUser experience: ${userInput}`
                         }
                     ],
                     temperature: 0.8,
@@ -831,20 +838,20 @@ const callGemini = async (prompt, userInput, retries = 3)=>{
 };
 const generateStorybook = async (userStory)=>{
     if (!userStory || userStory.trim().length < 10) {
-        throw new Error('Lütfen en az 10 karakter uzunluğunda bir hikaye girin');
+        throw new Error('Please enter at least 10 characters describing your experience');
     }
     return callGemini(STORY_PROMPT, userStory);
 };
 const refineStorybook = async (existingStory, feedback)=>{
     if (!feedback || feedback.trim().length < 5) {
-        throw new Error('Lütfen daha detaylı bir geri bildirim girin');
+        throw new Error('Please provide more detailed feedback (at least 5 characters)');
     }
     const prompt = REFINE_STORY_PROMPT.replace('{{EXISTING_STORY}}', JSON.stringify(existingStory)).replace('{{USER_FEEDBACK}}', feedback);
     return callGemini(prompt, feedback);
 };
 const generateGame = async (userStory)=>{
     if (!userStory || userStory.trim().length < 10) {
-        throw new Error('Lütfen en az 10 karakter uzunluğunda bir deneyim girin');
+        throw new Error('Please enter at least 10 characters describing your experience');
     }
     return callGemini(GAME_PROMPT, userStory);
 };
@@ -855,23 +862,17 @@ const generateContentName = async (contentContext)=>{
         // Let's create a specialized lightweight call or just use callGemini with a JSON wrapper in prompt.
         // Revised NAME_PROMPT above now asks for just text, but callGemini expects JSON.
         // Let's adjust NAME_PROMPT to return JSON: {"title": "The Title"}
-        const jsonPrompt = NAME_PROMPT + `\n\nYanıtı şu JSON formatında ver: { "title": "Oluşturulan Başlık" }`;
+        const jsonPrompt = NAME_PROMPT + `\n\nRespond in this JSON format only: { "title": "Generated Title" }`;
         const result = await callGemini(jsonPrompt, contentContext);
         return result.title;
     } catch  {
         console.error("Naming failed");
-        return "Dönüşüm Hikayesi"; // Fallback
+        return "Transformation Story"; // Fallback
     }
 };
-// Clear old cache entries periodically
-setInterval(()=>{
-    const now = Date.now();
-    for (const [key, value] of cache.entries()){
-        if (now - value.timestamp > CACHE_DURATION) {
-            cache.delete(key);
-        }
-    }
-}, CACHE_DURATION);
+// Clear old cache entries periodically (browser-only, safe for SSR/Next.js)
+if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+;
 }),
 "[project]/src/utils/validation.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";

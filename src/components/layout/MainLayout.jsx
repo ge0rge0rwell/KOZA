@@ -49,7 +49,7 @@ const MainLayout = ({ children }) => {
     }, [isAdmin]);
 
     return (
-        <div className="flex h-screen bg-white/10 backdrop-blur-3xl koza-pattern text-neutral-900 selection:bg-primary-100 selection:text-primary-900 overflow-hidden font-sans">
+        <div className="flex h-screen bg-white/10 backdrop-blur-3xl koza-pattern text-neutral-900 selection:bg-primary-100 selection:text-primary-600 overflow-hidden font-sans">
             <Sidebar />
 
             <div className="flex-1 flex flex-col h-full overflow-hidden relative">
