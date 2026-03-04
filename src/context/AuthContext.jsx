@@ -63,26 +63,37 @@ export const AuthProvider = ({ children }) => {
                     user_email: firebaseUser.email
                 });
             } else {
+                // IMPORTANT: Before assuming unauthenticated, check if a redirect result is still being processed
+                // However, Firebase doesn't provide a "isRedirectPending" sync check.
+                // We'll trust the machine to handle the state transitions correctly.
                 authActor.send({ type: 'AUTH.CHECK_COMPLETE', user: null });
             }
         });
 
         // Check for redirect result
-        getRedirectResult(auth).then((result) => {
-            if (result?.user) {
-                const userData = {
-                    uid: result.user.uid,
-                    email: result.user.email,
-                    displayName: result.user.displayName,
-                    photoURL: result.user.photoURL
-                };
-                authActor.send({ type: 'AUTH.LOGIN_SUCCESS', user: userData });
-                googleAnalytics.trackEvent('user', 'sign_in', 'google_redirect');
+        const checkRedirect = async () => {
+            try {
+                const result = await getRedirectResult(auth);
+                if (result?.user) {
+                    const userData = {
+                        uid: result.user.uid,
+                        email: result.user.email,
+                        displayName: result.user.displayName,
+                        photoURL: result.user.photoURL
+                    };
+                    authActor.send({ type: 'AUTH.LOGIN_SUCCESS', user: userData });
+                    googleAnalytics.trackEvent('user', 'sign_in', 'google_redirect');
+                } else {
+                    // Signal that redirect check is finished even if no user found
+                    authActor.send({ type: 'AUTH.REDIRECT_CHECK_DONE' });
+                }
+            } catch (error) {
+                console.error('Redirect sign in failed:', error);
+                authActor.send({ type: 'AUTH.LOGIN_FAILURE', error: error.message });
             }
-        }).catch((error) => {
-            console.error('Redirect sign in failed:', error);
-            authActor.send({ type: 'AUTH.LOGIN_FAILURE', error: error.message });
-        });
+        };
+
+        checkRedirect();
 
         return () => unsubscribe();
     }, [authActor]);
@@ -200,7 +211,7 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || '';
+    const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'revanvitiate@gmail.com';
 
     const value = React.useMemo(() => ({
         user,

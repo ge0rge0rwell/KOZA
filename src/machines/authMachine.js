@@ -14,6 +14,12 @@ export const authMachine = setup({
         }),
         assignError: assign({
             error: ({ event }) => event.error
+        }),
+        markSessionChecked: assign({
+            sessionChecked: true
+        }),
+        markRedirectChecked: assign({
+            redirectChecked: true
         })
     }
 }).createMachine({
@@ -21,7 +27,9 @@ export const authMachine = setup({
     initial: 'checking',
     context: {
         user: null,
-        error: null
+        error: null,
+        sessionChecked: false,
+        redirectChecked: false
     },
     states: {
         checking: {
@@ -33,20 +41,32 @@ export const authMachine = setup({
                         actions: 'assignUser'
                     },
                     {
-                        target: 'unauthenticated'
+                        actions: 'markSessionChecked'
                     }
                 ],
                 'AUTH.LOGIN_SUCCESS': {
                     target: 'authenticated',
                     actions: 'assignUser'
+                },
+                'AUTH.LOGIN_FAILURE': {
+                    actions: ['assignError', 'markRedirectChecked']
+                },
+                'AUTH.REDIRECT_CHECK_DONE': {
+                    actions: 'markRedirectChecked'
                 }
-            }
+            },
+            always: [
+                {
+                    guard: ({ context }) => context.sessionChecked && context.redirectChecked && !context.user,
+                    target: 'unauthenticated'
+                }
+            ]
         },
         unauthenticated: {
             on: {
                 'AUTH.LOGIN_START': {
                     target: 'authenticating',
-                    actions: 'clearUser' // Clear specific error if needed
+                    actions: 'clearUser'
                 },
                 'AUTH.LOGIN_SUCCESS': {
                     target: 'authenticated',
@@ -61,7 +81,7 @@ export const authMachine = setup({
                     actions: 'assignUser'
                 },
                 'AUTH.LOGIN_FAILURE': {
-                    target: 'unauthenticated', // or 'error' state if we want to show a sticky error
+                    target: 'unauthenticated',
                     actions: 'assignError'
                 }
             }
