@@ -15,6 +15,7 @@ import GalaxyTextarea from '../components/galaxy/GalaxyTextarea';
 import GalaxyButton from '../components/galaxy/GalaxyButton';
 import GalaxyAlert from '../components/galaxy/GalaxyAlert';
 import GalaxyCard from '../components/galaxy/GalaxyCard';
+import GalaxyStat from '../components/galaxy/GalaxyStat';
 import { GalaxyBox, GalaxyFlex, GalaxyStack, GalaxyGrid, GalaxyCenter } from '../components/galaxy/GalaxyLayout';
 import KozaLoader from '../components/ui/KozaLoader';
 

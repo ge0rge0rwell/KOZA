@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/components/galaxy/GalaxyLayout.css"],"sourcesContent":[".galaxy-box {\n    box-sizing: border-box;\n}\n\n.galaxy-stack {\n    display: flex;\n    flex-direction: column;\n}\n\n.galaxy-stack.horizontal {\n    flex-direction: row;\n}\n\n.galaxy-center {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.galaxy-flex {\n    display: flex;\n}\n\n.galaxy-grid {\n    display: grid;\n}\n\n.galaxy-container {\n    width: 100%;\n    margin-left: auto;\n    margin-right: auto;\n    max-width: 1200px;\n    padding-left: 1rem;\n    padding-right: 1rem;\n}\n\n.galaxy-divider {\n    border: 0;\n    border-bottom: 1px solid var(--galaxy-glass-medium);\n    width: 100%;\n    opacity: 0.6;\n}\n\n.galaxy-spacer {\n    flex: 1;\n    justify-self: stretch;\n    align-self: stretch;\n}"],"names":[],"mappings":"AAAA;;;;AAIA;;;;;AAKA;;;;AAIA;;;;;;AAMA;;;;AAIA;;;;AAIA;;;;;;;;;AASA;;;;;;;AAOA"}}]
+}

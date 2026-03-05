@@ -49,9 +49,24 @@
       --tw-translate-x: 0;
       --tw-translate-y: 0;
       --tw-translate-z: 0;
+      --tw-font-weight: initial;
+      --tw-tracking: initial;
       --tw-scale-x: 1;
       --tw-scale-y: 1;
       --tw-scale-z: 1;
+      --tw-blur: initial;
+      --tw-brightness: initial;
+      --tw-contrast: initial;
+      --tw-grayscale: initial;
+      --tw-hue-rotate: initial;
+      --tw-invert: initial;
+      --tw-opacity: initial;
+      --tw-saturate: initial;
+      --tw-sepia: initial;
+      --tw-drop-shadow: initial;
+      --tw-drop-shadow-color: initial;
+      --tw-drop-shadow-alpha: 100%;
+      --tw-drop-shadow-size: initial;
     }
   }
 }
@@ -100,9 +115,72 @@
 }
 
 .uiverse-button.secondary:hover {
-  box-shadow: var(--shadow-liquid-deep);
+  box-shadow: var(--shadow-premium-lg);
   border-color: var(--glass-border-bright);
-  background: #fffc;
+  background: #ffffffe6;
+}
+
+.uiverse-button.magic {
+  color: #0000;
+  --tw-font-weight: var(--font-weight-black, 900);
+  font-size: 10px;
+  font-weight: var(--font-weight-black, 900);
+  --tw-tracking: var(--tracking-widest, .1em);
+  letter-spacing: var(--tracking-widest, .1em);
+  text-transform: uppercase;
+  background-image: linear-gradient(90deg, #ffb703, #fb8500, #219ebc, #8ecae6, #ffb703);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-color: var(--color-primary-900);
+  border: 1px solid var(--color-secondary-500);
+  border-radius: var(--radius-ultra);
+  padding: 14px 32px;
+  animation: 8s linear infinite chromatic-shimmer;
+  box-shadow: 0 0 30px #b4530933;
+}
+
+.uiverse-button.magic:hover {
+  --tw-translate-y: calc(var(--spacing, .25rem) * -1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+  --tw-scale-x: 105%;
+  --tw-scale-y: 105%;
+  --tw-scale-z: 105%;
+  scale: var(--tw-scale-x) var(--tw-scale-y);
+  background-color: var(--color-primary-950);
+  box-shadow: 0 0 50px #b4530966;
+}
+
+.uiverse-button.magic .button-content {
+  align-items: center;
+  gap: calc(var(--spacing, .25rem) * 3);
+  --tw-brightness: brightness(150%);
+  filter: var(--tw-blur, ) var(--tw-brightness, ) var(--tw-contrast, ) var(--tw-grayscale, ) var(--tw-hue-rotate, ) var(--tw-invert, ) var(--tw-saturate, ) var(--tw-sepia, ) var(--tw-drop-shadow, );
+  -webkit-background-clip: unset;
+  color: inherit;
+  display: flex;
+}
+
+.uiverse-button.magic .button-icon {
+  color: var(--color-amber-500, #f99c00);
+}
+
+@supports (color: lab(0% 0 0)) {
+  .uiverse-button.magic .button-icon {
+    color: var(--color-amber-500, lab(72.7183% 31.8672 97.9407));
+  }
+}
+
+.button-content {
+  z-index: 10;
+  align-items: center;
+  gap: calc(var(--spacing, .25rem) * 2);
+  display: flex;
+  position: relative;
+}
+
+.button-icon {
+  flex-shrink: 0;
 }
 
 .ripples {
@@ -181,6 +259,16 @@
   initial-value: 0;
 }
 
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false
+}
+
 @property --tw-scale-x {
   syntax: "*";
   inherits: false;
@@ -199,6 +287,72 @@
   initial-value: 1;
 }
 
+@property --tw-blur {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-brightness {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-contrast {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-grayscale {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-hue-rotate {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-invert {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-opacity {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-saturate {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-sepia {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-drop-shadow {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-drop-shadow-color {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-drop-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+@property --tw-drop-shadow-size {
+  syntax: "*";
+  inherits: false
+}
+
 /* [project]/src/components/uiverse/UiverseCard.css [app-client] (css) */
 @layer properties {
   @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
@@ -214,14 +368,13 @@
 
 .uiverse-card {
   padding: calc(var(--spacing, .25rem) * 8);
-  -webkit-backdrop-filter: blur(40px) saturate(200%);
-  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(var(--blur-premium)) saturate(180%);
+  border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-liquid), inset 0 0 0 1px #fff6, inset 0 10px 20px #fff3, inset 0 -10px 20px #00000005, inset 0 0 20px #007aff03;
   transform: rotateX(calc(var(--rotate-x, 0) * 1deg)) rotateY(calc(var(--rotate-y, 0) * 1deg));
   transform-style: preserve-3d;
   will-change: transform;
-  background: #ffffff26;
-  border: 1px solid #fff3;
+  background: #ffffff05;
   border-radius: 40px;
   transition: transform .1s ease-out, filter .5s ease-out, box-shadow .5s;
   position: relative;

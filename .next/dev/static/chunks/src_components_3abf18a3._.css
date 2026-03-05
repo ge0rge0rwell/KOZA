@@ -1,0 +1,361 @@
+/* [project]/src/components/galaxy/GalaxyLayout.css [app-client] (css) */
+.galaxy-box {
+  box-sizing: border-box;
+}
+
+.galaxy-stack {
+  flex-direction: column;
+  display: flex;
+}
+
+.galaxy-stack.horizontal {
+  flex-direction: row;
+}
+
+.galaxy-center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.galaxy-flex {
+  display: flex;
+}
+
+.galaxy-grid {
+  display: grid;
+}
+
+.galaxy-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.galaxy-divider {
+  border: 0;
+  border-bottom: 1px solid var(--galaxy-glass-medium);
+  opacity: .6;
+  width: 100%;
+}
+
+.galaxy-spacer {
+  flex: 1;
+  place-self: stretch stretch;
+}
+
+/* [project]/src/components/uiverse/UiverseButton.css [app-client] (css) */
+@layer properties {
+  @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+    *, :before, :after, ::backdrop {
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
+      --tw-font-weight: initial;
+      --tw-tracking: initial;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
+      --tw-blur: initial;
+      --tw-brightness: initial;
+      --tw-contrast: initial;
+      --tw-grayscale: initial;
+      --tw-hue-rotate: initial;
+      --tw-invert: initial;
+      --tw-opacity: initial;
+      --tw-saturate: initial;
+      --tw-sepia: initial;
+      --tw-drop-shadow: initial;
+      --tw-drop-shadow-color: initial;
+      --tw-drop-shadow-alpha: 100%;
+      --tw-drop-shadow-size: initial;
+    }
+  }
+}
+
+.uiverse-button {
+  background: var(--color-primary-500);
+  color: #fff;
+  letter-spacing: -.01em;
+  cursor: pointer;
+  z-index: 1;
+  border: 1px solid #fff3;
+  border-radius: 14px;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all .6s cubic-bezier(.23, 1, .32, 1);
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px #007aff33;
+}
+
+.uiverse-button:hover {
+  --tw-translate-y: calc(var(--spacing, .25rem) * -.5);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+  background: var(--color-primary-600);
+  border-color: #ffffff4d;
+  box-shadow: 0 8px 20px #007aff4d;
+}
+
+.uiverse-button:active {
+  --tw-translate-y: calc(var(--spacing, .25rem) * 0);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+  scale: .97;
+}
+
+.uiverse-button.secondary {
+  -webkit-backdrop-filter: blur(40px);
+  backdrop-filter: blur(40px);
+  color: var(--color-neutral-900);
+  box-shadow: var(--shadow-liquid);
+  background: #ffffff1a;
+  border: 1px solid #ffffff1a;
+}
+
+.uiverse-button.secondary:hover {
+  box-shadow: var(--shadow-premium-lg);
+  border-color: var(--glass-border-bright);
+  background: #ffffffe6;
+}
+
+.uiverse-button.magic {
+  color: #0000;
+  --tw-font-weight: var(--font-weight-black, 900);
+  font-size: 10px;
+  font-weight: var(--font-weight-black, 900);
+  --tw-tracking: var(--tracking-widest, .1em);
+  letter-spacing: var(--tracking-widest, .1em);
+  text-transform: uppercase;
+  background-image: linear-gradient(90deg, #ffb703, #fb8500, #219ebc, #8ecae6, #ffb703);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-color: var(--color-primary-900);
+  border: 1px solid var(--color-secondary-500);
+  border-radius: var(--radius-ultra);
+  padding: 14px 32px;
+  animation: 8s linear infinite chromatic-shimmer;
+  box-shadow: 0 0 30px #b4530933;
+}
+
+.uiverse-button.magic:hover {
+  --tw-translate-y: calc(var(--spacing, .25rem) * -1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+  --tw-scale-x: 105%;
+  --tw-scale-y: 105%;
+  --tw-scale-z: 105%;
+  scale: var(--tw-scale-x) var(--tw-scale-y);
+  background-color: var(--color-primary-950);
+  box-shadow: 0 0 50px #b4530966;
+}
+
+.uiverse-button.magic .button-content {
+  align-items: center;
+  gap: calc(var(--spacing, .25rem) * 3);
+  --tw-brightness: brightness(150%);
+  filter: var(--tw-blur, ) var(--tw-brightness, ) var(--tw-contrast, ) var(--tw-grayscale, ) var(--tw-hue-rotate, ) var(--tw-invert, ) var(--tw-saturate, ) var(--tw-sepia, ) var(--tw-drop-shadow, );
+  -webkit-background-clip: unset;
+  color: inherit;
+  display: flex;
+}
+
+.uiverse-button.magic .button-icon {
+  color: var(--color-amber-500, #f99c00);
+}
+
+@supports (color: lab(0% 0 0)) {
+  .uiverse-button.magic .button-icon {
+    color: var(--color-amber-500, lab(72.7183% 31.8672 97.9407));
+  }
+}
+
+.button-content {
+  z-index: 10;
+  align-items: center;
+  gap: calc(var(--spacing, .25rem) * 2);
+  display: flex;
+  position: relative;
+}
+
+.button-icon {
+  flex-shrink: 0;
+}
+
+.ripples {
+  pointer-events: none;
+  inset: calc(var(--spacing, .25rem) * 0);
+  position: absolute;
+}
+
+.ripple {
+  --tw-scale-x: 0%;
+  --tw-scale-y: 0%;
+  --tw-scale-z: 0%;
+  scale: var(--tw-scale-x) var(--tw-scale-y);
+  background-color: #ffffff4d;
+  border-radius: 3.40282e38px;
+  position: absolute;
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  .ripple {
+    background-color: color-mix(in oklab, var(--color-white, #fff) 30%, transparent);
+  }
+}
+
+.ripple {
+  animation: .6s ease-out ripple-animation;
+}
+
+@keyframes ripple-animation {
+  to {
+    opacity: 0;
+    transform: scale(2.5);
+  }
+}
+
+.uiverse-button.secondary .ripple {
+  background-color: #0f172a33;
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  .uiverse-button.secondary .ripple {
+    background-color: color-mix(in oklab, var(--color-primary-500, #0f172a) 20%, transparent);
+  }
+}
+
+.uiverse-button:disabled {
+  --tw-translate-y: calc(var(--spacing, .25rem) * 0);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+  --tw-scale-x: 100%;
+  --tw-scale-y: 100%;
+  --tw-scale-z: 100%;
+  scale: var(--tw-scale-x) var(--tw-scale-y);
+  cursor: not-allowed;
+  opacity: .4;
+  background: var(--color-neutral-200);
+  color: var(--color-neutral-400);
+  box-shadow: none;
+  border-color: #0000;
+}
+
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --tw-blur {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-brightness {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-contrast {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-grayscale {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-hue-rotate {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-invert {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-opacity {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-saturate {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-sepia {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-drop-shadow {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-drop-shadow-color {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-drop-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+@property --tw-drop-shadow-size {
+  syntax: "*";
+  inherits: false
+}
+
+/*# sourceMappingURL=src_components_3abf18a3._.css.map*/

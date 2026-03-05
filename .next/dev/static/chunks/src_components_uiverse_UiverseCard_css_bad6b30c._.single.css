@@ -13,14 +13,13 @@
 
 .uiverse-card {
   padding: calc(var(--spacing, .25rem) * 8);
-  -webkit-backdrop-filter: blur(40px) saturate(200%);
-  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(var(--blur-premium)) saturate(180%);
+  border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-liquid), inset 0 0 0 1px #fff6, inset 0 10px 20px #fff3, inset 0 -10px 20px #00000005, inset 0 0 20px #007aff03;
   transform: rotateX(calc(var(--rotate-x, 0) * 1deg)) rotateY(calc(var(--rotate-y, 0) * 1deg));
   transform-style: preserve-3d;
   will-change: transform;
-  background: #ffffff26;
-  border: 1px solid #fff3;
+  background: #ffffff05;
   border-radius: 40px;
   transition: transform .1s ease-out, filter .5s ease-out, box-shadow .5s;
   position: relative;

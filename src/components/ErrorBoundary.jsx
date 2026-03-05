@@ -38,8 +38,20 @@ class ErrorBoundary extends React.Component {
                         </button>
                     </div>
 
-                    {/* Admin-only detailed error info */}
-                    <AdminErrorDetails error={this.state.error} errorInfo={this.state.errorInfo} />
+                    {/* ALWAYS SHOW ERROR FOR DEBUGGING */}
+                    <div className="mt-8 max-w-2xl w-full p-6 bg-red-50 rounded-2xl border border-red-100 text-left overflow-auto shadow-sm">
+                        <p className="font-mono text-sm text-red-700 whitespace-pre-wrap font-bold mb-2 border-b border-red-100 pb-2">
+                            DEBUG VIEW: Error Details
+                        </p>
+                        <p className="font-mono text-sm text-red-700 whitespace-pre-wrap">
+                            {this.state.error?.toString()}
+                        </p>
+                        {this.state.errorInfo && (
+                            <pre className="mt-4 font-mono text-xs text-red-600 whitespace-pre-wrap p-3 bg-white/50 rounded-xl">
+                                {this.state.errorInfo.componentStack}
+                            </pre>
+                        )}
+                    </div>
                 </div>
             );
         }
@@ -48,32 +60,6 @@ class ErrorBoundary extends React.Component {
     }
 }
 
-// Separate component to use AuthContext hook or consumer safely
-import { useAuth } from '../context/AuthContext';
-const AdminErrorDetails = ({ error, errorInfo }) => {
-    try {
-        const { isAdmin } = useAuth();
-        if (!isAdmin || !error) return null;
 
-        return (
-            <div className="mt-8 max-w-2xl w-full p-6 bg-red-50 rounded-2xl border border-red-100 text-left overflow-auto animate-fade-in shadow-sm">
-                <p className="font-mono text-sm text-red-700 whitespace-pre-wrap font-bold mb-2 border-b border-red-100 pb-2">
-                    Admin View: Error Details
-                </p>
-                <p className="font-mono text-sm text-red-700 whitespace-pre-wrap">
-                    {error.toString()}
-                </p>
-                {errorInfo && (
-                    <pre className="mt-4 font-mono text-xs text-red-600 whitespace-pre-wrap p-3 bg-white/50 rounded-xl">
-                        {errorInfo.componentStack}
-                    </pre>
-                )}
-            </div>
-        );
-    } catch (e) {
-        // If AuthContext isn't available (e.g. error happened during provider init)
-        return null;
-    }
-};
 
 export default ErrorBoundary;

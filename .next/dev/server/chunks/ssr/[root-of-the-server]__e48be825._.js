@@ -438,6 +438,9 @@ const authMachine = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_mod
         }),
         assignError: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$xstate$2f$dist$2f$assign$2d$2343d091$2e$development$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__a__as__assign$3e$__["assign"])({
             error: ({ event })=>event.error
+        }),
+        markSessionChecked: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$xstate$2f$dist$2f$assign$2d$2343d091$2e$development$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__a__as__assign$3e$__["assign"])({
+            sessionChecked: true
         })
     }
 }).createMachine({
@@ -445,7 +448,8 @@ const authMachine = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_mod
     initial: 'checking',
     context: {
         user: null,
-        error: null
+        error: null,
+        sessionChecked: false
     },
     states: {
         checking: {
@@ -457,16 +461,33 @@ const authMachine = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_mod
                         actions: 'assignUser'
                     },
                     {
-                        target: 'unauthenticated'
+                        actions: 'markSessionChecked'
                     }
-                ]
-            }
+                ],
+                'AUTH.LOGIN_SUCCESS': {
+                    target: 'authenticated',
+                    actions: 'assignUser'
+                },
+                'AUTH.LOGIN_FAILURE': {
+                    actions: 'assignError'
+                }
+            },
+            always: [
+                {
+                    guard: ({ context })=>context.sessionChecked && !context.user,
+                    target: 'unauthenticated'
+                }
+            ]
         },
         unauthenticated: {
             on: {
                 'AUTH.LOGIN_START': {
                     target: 'authenticating',
-                    actions: 'clearUser' // Clear specific error if needed
+                    actions: 'clearUser'
+                },
+                'AUTH.LOGIN_SUCCESS': {
+                    target: 'authenticated',
+                    actions: 'assignUser'
                 }
             }
         },
@@ -1017,6 +1038,9 @@ const AuthProvider = ({ children })=>{
                     user_email: firebaseUser.email
                 });
             } else {
+                // IMPORTANT: Before assuming unauthenticated, check if a redirect result is still being processed
+                // However, Firebase doesn't provide a "isRedirectPending" sync check.
+                // We'll trust the machine to handle the state transitions correctly.
                 authActor.send({
                     type: 'AUTH.CHECK_COMPLETE',
                     user: null
@@ -1024,27 +1048,36 @@ const AuthProvider = ({ children })=>{
             }
         });
         // Check for redirect result
-        (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$auth$2f$dist$2f$node$2d$esm$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getRedirectResult"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["auth"]).then((result)=>{
-            if (result?.user) {
-                const userData = {
-                    uid: result.user.uid,
-                    email: result.user.email,
-                    displayName: result.user.displayName,
-                    photoURL: result.user.photoURL
-                };
+        const checkRedirect = async ()=>{
+            try {
+                const result = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$auth$2f$dist$2f$node$2d$esm$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getRedirectResult"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["auth"]);
+                if (result?.user) {
+                    const userData = {
+                        uid: result.user.uid,
+                        email: result.user.email,
+                        displayName: result.user.displayName,
+                        photoURL: result.user.photoURL
+                    };
+                    authActor.send({
+                        type: 'AUTH.LOGIN_SUCCESS',
+                        user: userData
+                    });
+                    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$googleAnalytics$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["googleAnalytics"].trackEvent('user', 'sign_in', 'google_redirect');
+                } else {
+                    // Signal that redirect check is finished even if no user found
+                    authActor.send({
+                        type: 'AUTH.REDIRECT_CHECK_DONE'
+                    });
+                }
+            } catch (error) {
+                console.error('Redirect sign in failed:', error);
                 authActor.send({
-                    type: 'AUTH.LOGIN_SUCCESS',
-                    user: userData
+                    type: 'AUTH.LOGIN_FAILURE',
+                    error: error.message
                 });
-                __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$googleAnalytics$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["googleAnalytics"].trackEvent('user', 'sign_in', 'google_redirect');
             }
-        }).catch((error)=>{
-            console.error('Redirect sign in failed:', error);
-            authActor.send({
-                type: 'AUTH.LOGIN_FAILURE',
-                error: error.message
-            });
-        });
+        };
+        checkRedirect();
         return ()=>unsubscribe();
     }, [
         authActor
@@ -1058,13 +1091,23 @@ const AuthProvider = ({ children })=>{
             type: 'AUTH.LOGIN_START'
         });
         try {
-            // Using redirect instead of popup to avoid "stuck" issues in some browsers
-            await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$auth$2f$dist$2f$node$2d$esm$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["signInWithRedirect"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["auth"], googleProvider);
+            const result = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$auth$2f$dist$2f$node$2d$esm$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["signInWithPopup"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["auth"], googleProvider);
+            const userData = {
+                uid: result.user.uid,
+                email: result.user.email,
+                displayName: result.user.displayName,
+                photoURL: result.user.photoURL
+            };
+            authActor.send({
+                type: 'AUTH.LOGIN_SUCCESS',
+                user: userData
+            });
+            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$googleAnalytics$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["googleAnalytics"].trackEvent('user', 'sign_in', 'google_popup');
             return {
                 success: true
             };
         } catch (error) {
-            console.error('Google sign in initiation failed:', error);
+            console.error('Google sign in failed:', error);
             authActor.send({
                 type: 'AUTH.LOGIN_FAILURE',
                 error: error.message
@@ -1084,12 +1127,23 @@ const AuthProvider = ({ children })=>{
             type: 'AUTH.LOGIN_START'
         });
         try {
-            await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$auth$2f$dist$2f$node$2d$esm$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["signInWithRedirect"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["auth"], githubProvider);
+            const result = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$auth$2f$dist$2f$node$2d$esm$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["signInWithPopup"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["auth"], githubProvider);
+            const userData = {
+                uid: result.user.uid,
+                email: result.user.email,
+                displayName: result.user.displayName,
+                photoURL: result.user.photoURL
+            };
+            authActor.send({
+                type: 'AUTH.LOGIN_SUCCESS',
+                user: userData
+            });
+            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$googleAnalytics$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["googleAnalytics"].trackEvent('user', 'sign_in', 'github_popup');
             return {
                 success: true
             };
         } catch (error) {
-            console.error('Github sign in initiation failed:', error);
+            console.error('Github sign in failed:', error);
             authActor.send({
                 type: 'AUTH.LOGIN_FAILURE',
                 error: error.message
@@ -1109,12 +1163,23 @@ const AuthProvider = ({ children })=>{
             type: 'AUTH.LOGIN_START'
         });
         try {
-            await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$auth$2f$dist$2f$node$2d$esm$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["signInWithRedirect"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["auth"], microsoftProvider);
+            const result = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$auth$2f$dist$2f$node$2d$esm$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["signInWithPopup"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["auth"], microsoftProvider);
+            const userData = {
+                uid: result.user.uid,
+                email: result.user.email,
+                displayName: result.user.displayName,
+                photoURL: result.user.photoURL
+            };
+            authActor.send({
+                type: 'AUTH.LOGIN_SUCCESS',
+                user: userData
+            });
+            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$googleAnalytics$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["googleAnalytics"].trackEvent('user', 'sign_in', 'microsoft_popup');
             return {
                 success: true
             };
         } catch (error) {
-            console.error('Microsoft sign in initiation failed:', error);
+            console.error('Microsoft sign in failed:', error);
             authActor.send({
                 type: 'AUTH.LOGIN_FAILURE',
                 error: error.message
@@ -1221,7 +1286,7 @@ const AuthProvider = ({ children })=>{
             };
         }
     };
-    const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || '';
+    const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'revanvitiate@gmail.com';
     const value = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].useMemo(()=>({
             user,
             isAdmin: user?.email === ADMIN_EMAIL,
@@ -1250,7 +1315,7 @@ const AuthProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "[project]/src/context/AuthContext.jsx",
-        lineNumber: 230,
+        lineNumber: 264,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };

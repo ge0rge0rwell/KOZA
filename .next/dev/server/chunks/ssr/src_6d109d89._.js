@@ -4,7 +4,8 @@ module.exports = [
 __turbopack_context__.v((parentImport) => {
     return Promise.all([
   "server/chunks/ssr/src_services_geminiService_8d10289c.js",
-  "server/chunks/ssr/_8821b4ca._.js"
+  "server/chunks/ssr/src_1c67d0b7._.js",
+  "server/chunks/ssr/node_modules_lucide-react_dist_esm_icons_chart-column_fd3e91e0.js"
 ].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
         return parentImport("[project]/src/tabs/CreateTab.jsx [app-ssr] (ecmascript)");
     });
@@ -14,7 +15,7 @@ __turbopack_context__.v((parentImport) => {
 
 __turbopack_context__.v((parentImport) => {
     return Promise.all([
-  "server/chunks/ssr/_cf121f5f._.js"
+  "server/chunks/ssr/_31e467a7._.js"
 ].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
         return parentImport("[project]/src/views/StoryView.jsx [app-ssr] (ecmascript)");
     });
@@ -24,7 +25,7 @@ __turbopack_context__.v((parentImport) => {
 
 __turbopack_context__.v((parentImport) => {
     return Promise.all([
-  "server/chunks/ssr/_da38dabf._.js"
+  "server/chunks/ssr/_fdf0912b._.js"
 ].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
         return parentImport("[project]/src/views/GameView.jsx [app-ssr] (ecmascript)");
     });
@@ -34,7 +35,7 @@ __turbopack_context__.v((parentImport) => {
 
 __turbopack_context__.v((parentImport) => {
     return Promise.all([
-  "server/chunks/ssr/src_views_ProfileView_jsx_cf4f4683._.js"
+  "server/chunks/ssr/src_70730187._.js"
 ].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
         return parentImport("[project]/src/views/ProfileView.jsx [app-ssr] (ecmascript)");
     });

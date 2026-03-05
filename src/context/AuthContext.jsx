@@ -1,7 +1,7 @@
 'use client';
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import {
-    signInWithRedirect,
+    signInWithPopup,
     getRedirectResult,
     GoogleAuthProvider,
     GithubAuthProvider,
@@ -104,11 +104,18 @@ export const AuthProvider = ({ children }) => {
         authActor.send({ type: 'AUTH.LOGIN_START' });
 
         try {
-            // Using redirect instead of popup to avoid "stuck" issues in some browsers
-            await signInWithRedirect(auth, googleProvider);
+            const result = await signInWithPopup(auth, googleProvider);
+            const userData = {
+                uid: result.user.uid,
+                email: result.user.email,
+                displayName: result.user.displayName,
+                photoURL: result.user.photoURL
+            };
+            authActor.send({ type: 'AUTH.LOGIN_SUCCESS', user: userData });
+            googleAnalytics.trackEvent('user', 'sign_in', 'google_popup');
             return { success: true };
         } catch (error) {
-            console.error('Google sign in initiation failed:', error);
+            console.error('Google sign in failed:', error);
             authActor.send({ type: 'AUTH.LOGIN_FAILURE', error: error.message });
             return { success: false, error: error.message };
         }
@@ -120,10 +127,18 @@ export const AuthProvider = ({ children }) => {
         authActor.send({ type: 'AUTH.LOGIN_START' });
 
         try {
-            await signInWithRedirect(auth, githubProvider);
+            const result = await signInWithPopup(auth, githubProvider);
+            const userData = {
+                uid: result.user.uid,
+                email: result.user.email,
+                displayName: result.user.displayName,
+                photoURL: result.user.photoURL
+            };
+            authActor.send({ type: 'AUTH.LOGIN_SUCCESS', user: userData });
+            googleAnalytics.trackEvent('user', 'sign_in', 'github_popup');
             return { success: true };
         } catch (error) {
-            console.error('Github sign in initiation failed:', error);
+            console.error('Github sign in failed:', error);
             authActor.send({ type: 'AUTH.LOGIN_FAILURE', error: error.message });
             return { success: false, error: error.message };
         }
@@ -135,10 +150,18 @@ export const AuthProvider = ({ children }) => {
         authActor.send({ type: 'AUTH.LOGIN_START' });
 
         try {
-            await signInWithRedirect(auth, microsoftProvider);
+            const result = await signInWithPopup(auth, microsoftProvider);
+            const userData = {
+                uid: result.user.uid,
+                email: result.user.email,
+                displayName: result.user.displayName,
+                photoURL: result.user.photoURL
+            };
+            authActor.send({ type: 'AUTH.LOGIN_SUCCESS', user: userData });
+            googleAnalytics.trackEvent('user', 'sign_in', 'microsoft_popup');
             return { success: true };
         } catch (error) {
-            console.error('Microsoft sign in initiation failed:', error);
+            console.error('Microsoft sign in failed:', error);
             authActor.send({ type: 'AUTH.LOGIN_FAILURE', error: error.message });
             return { success: false, error: error.message };
         }

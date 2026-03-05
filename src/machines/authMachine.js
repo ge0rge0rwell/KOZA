@@ -17,9 +17,6 @@ export const authMachine = setup({
         }),
         markSessionChecked: assign({
             sessionChecked: true
-        }),
-        markRedirectChecked: assign({
-            redirectChecked: true
         })
     }
 }).createMachine({
@@ -28,8 +25,7 @@ export const authMachine = setup({
     context: {
         user: null,
         error: null,
-        sessionChecked: false,
-        redirectChecked: false
+        sessionChecked: false
     },
     states: {
         checking: {
@@ -49,15 +45,12 @@ export const authMachine = setup({
                     actions: 'assignUser'
                 },
                 'AUTH.LOGIN_FAILURE': {
-                    actions: ['assignError', 'markRedirectChecked']
-                },
-                'AUTH.REDIRECT_CHECK_DONE': {
-                    actions: 'markRedirectChecked'
+                    actions: 'assignError'
                 }
             },
             always: [
                 {
-                    guard: ({ context }) => context.sessionChecked && context.redirectChecked && !context.user,
+                    guard: ({ context }) => context.sessionChecked && !context.user,
                     target: 'unauthenticated'
                 }
             ]
